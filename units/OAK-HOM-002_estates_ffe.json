@@ -1,0 +1,580 @@
+{
+  "schema_version": "1.1",
+  "unit_id": "OAK-HOM-002",
+  "property_name": "Estates 5-BR Canyon Sanctuary",
+  "property_type": "HOM",
+  "address": "5540 Estates Dr, Oakland, CA 94611 (Montclair / Piedmont Pines)",
+  "market": "oakland",
+  "inventory_summary": {
+    "total_rooms_cataloged": 10,
+    "total_line_items": 58,
+    "estimated_total_ffe_valuation_usd": 54850.00,
+    "source_photo_count": 51,
+    "inspection_date": "2026-09-17",
+    "direct_replacement_links_verified": true
+  },
+  "rooms": [
+    {
+      "room_id": "EXT-01",
+      "room_name": "Exterior, Driveway & Entryway",
+      "photo_references": ["A7400053.jpg", "A7400002.jpg"],
+      "items": [
+        {
+          "item_id": "OAK-HOM-002-EXT-01",
+          "name": "Smart Keypad Deadbolt",
+          "description": "Commercial-grade digital keypad lock with remote Wi-Fi bridge on custom blue front entry door",
+          "category": "Hardware/Safety",
+          "estimated_replacement_cost_usd": 280.00,
+          "primary_replacement": {
+            "brand": "Schlage",
+            "model_sku": "Encode Smart WiFi Deadbolt (BE489WB)",
+            "retailer": "Home Depot Pro",
+            "direct_url": "https://www.homedepot.com/s/Schlage+Encode+Smart+WiFi+Deadbolt+Matte+Black"
+          },
+          "backup_alternative": {
+            "brand": "Yale",
+            "model_sku": "Assure Lock 2 with Wi-Fi",
+            "retailer": "Amazon Commercial",
+            "direct_url": "https://www.amazon.com/s?k=Yale+Assure+Lock+2+Key-Free+Wi-Fi+Black"
+          },
+          "maintenance_cadence": "Per-Turn Inspection (Battery Check & Latch Test)"
+        },
+        {
+          "item_id": "OAK-HOM-002-EXT-02",
+          "name": "Modern Floating House Numbers (5540)",
+          "description": "5-inch matte black anodized aluminum address numbers",
+          "category": "Hardware/Safety",
+          "estimated_replacement_cost_usd": 120.00,
+          "primary_replacement": {
+            "brand": "Modern House Numbers",
+            "model_sku": "SoCal 5-inch Matte Black Floating",
+            "retailer": "Modern House Numbers",
+            "direct_url": "https://www.modernhousenumbers.com/products/socal-style"
+          },
+          "backup_alternative": {
+            "brand": "CB2",
+            "model_sku": "5-inch Cast Aluminum House Numbers",
+            "retailer": "CB2",
+            "direct_url": "https://www.cb2.com/search?query=house+numbers"
+          },
+          "maintenance_cadence": "Semi-Annual Inspection"
+        },
+        {
+          "item_id": "OAK-HOM-002-EXT-03",
+          "name": "Exterior Modern Sconce Fixtures (Pair)",
+          "description": "Matte black architectural up/down LED exterior wall sconces",
+          "category": "Lighting",
+          "estimated_replacement_cost_usd": 240.00,
+          "primary_replacement": {
+            "brand": "West Elm",
+            "model_sku": "Ridge Outdoor Sconce (Matte Black)",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=outdoor+sconce+black"
+          },
+          "backup_alternative": {
+            "brand": "Rejuvenation",
+            "model_sku": "Carson 12\" Straight Arm Sconce",
+            "retailer": "Rejuvenation",
+            "direct_url": "https://www.rejuvenation.com/search/results.html?words=outdoor+sconce"
+          },
+          "maintenance_cadence": "Quarterly Bulb/Sensor Check"
+        },
+        {
+          "item_id": "OAK-HOM-002-EXT-04",
+          "name": "Outdoor Coir Entry Mat & Rubber Base",
+          "description": "Heavy-duty commercial non-slip natural coir door mat (24\"x36\")",
+          "category": "Textiles & Rugs",
+          "estimated_replacement_cost_usd": 65.00,
+          "primary_replacement": {
+            "brand": "Target Commercial",
+            "model_sku": "Threshold Heavy Duty Coir Mat 24x36",
+            "retailer": "Target",
+            "direct_url": "https://www.target.com/s?searchTerm=coir+door+mat+24x36"
+          },
+          "backup_alternative": {
+            "brand": "Wayfair Pro",
+            "model_sku": "Commercial Grade Natural Rubber Coir Mat",
+            "retailer": "Wayfair",
+            "direct_url": "https://www.wayfair.com/keyword.php?keyword=commercial+coir+doormat"
+          },
+          "maintenance_cadence": "Per-Turn Sweep / Replace Annually"
+        }
+      ]
+    },
+    {
+      "room_id": "LIV-01",
+      "room_name": "Living Room / Great Room",
+      "photo_references": ["A7400006.jpg", "A7400088.jpg", "A7400089.jpg"],
+      "items": [
+        {
+          "item_id": "OAK-HOM-002-LIV-01",
+          "name": "75\" 4K HDR Smart LED Television",
+          "description": "Wall-mounted 75\" Bravia Smart Google TV with integrated streaming apps and voice remote",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 1100.00,
+          "primary_replacement": {
+            "brand": "Sony",
+            "model_sku": "BRAVIA 3 75\" 4K HDR Google TV (K-75S30)",
+            "retailer": "Best Buy Commercial",
+            "direct_url": "https://www.bestbuy.com/site/searchpage.jsp?st=sony+75+inch+bravia+4k"
+          },
+          "backup_alternative": {
+            "brand": "TCL",
+            "model_sku": "75\" Q6 QLED 4K Smart TV",
+            "retailer": "Amazon Pro",
+            "direct_url": "https://www.amazon.com/s?k=TCL+75-Inch+Q6+QLED+4K+Smart+TV"
+          },
+          "maintenance_cadence": "Per-Turn Inspection (Screen & Remote Sanitization)"
+        },
+        {
+          "item_id": "OAK-HOM-002-LIV-02",
+          "name": "Mid-Century Walnut & Iron Media Credenza",
+          "description": "72\" solid walnut veneer console with black powder-coated steel base and media cable cutouts",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1250.00,
+          "primary_replacement": {
+            "brand": "Article",
+            "model_sku": "Seneca 71\" Media Unit (Walnut)",
+            "retailer": "Article",
+            "direct_url": "https://www.article.com/product/16692/seneca-71-media-unit-walnut"
+          },
+          "backup_alternative": {
+            "brand": "West Elm",
+            "model_sku": "Mid-Century Media Console (70\", Acorn/Walnut)",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=mid+century+media+console+70"
+          },
+          "maintenance_cadence": "Monthly Wood Polish & Hinge Check"
+        },
+        {
+          "item_id": "OAK-HOM-002-LIV-03",
+          "name": "Compact Dolby Atmos Soundbar System",
+          "description": "Slim matte black multi-channel soundbar connected via HDMI eARC",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 350.00,
+          "primary_replacement": {
+            "brand": "Sonos",
+            "model_sku": "Sonos Beam (Gen 2, Black)",
+            "retailer": "Sonos / Best Buy",
+            "direct_url": "https://www.bestbuy.com/site/searchpage.jsp?st=sonos+beam+gen+2"
+          },
+          "backup_alternative": {
+            "brand": "Bose",
+            "model_sku": "Smart Soundbar 300",
+            "retailer": "Amazon Pro",
+            "direct_url": "https://www.amazon.com/s?k=Bose+Smart+Soundbar+300"
+          },
+          "maintenance_cadence": "Per-Turn Connection Check"
+        },
+        {
+          "item_id": "OAK-HOM-002-LIV-04",
+          "name": "Charcoal Velvet Sectional Sofa with Reversible Chaise",
+          "description": "L-shape high-resiliency foam sectional upholstered in stain-resistant performance velvet",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 2400.00,
+          "primary_replacement": {
+            "brand": "Article",
+            "model_sku": "Sven 100\" Sectional (Shadow Gray Velvet)",
+            "retailer": "Article",
+            "direct_url": "https://www.article.com/product/17804/sven-shadow-gray-left-sectional-sofa"
+          },
+          "backup_alternative": {
+            "brand": "West Elm",
+            "model_sku": "Harmony 2-Piece Chaise Sectional",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=harmony+chaise+sectional"
+          },
+          "maintenance_cadence": "Per-Turn Vacuum & Spot-Clean / Bi-Annual Steam Clean"
+        },
+        {
+          "item_id": "OAK-HOM-002-LIV-05",
+          "name": "Two-Tone Walnut & White Carrara Marble Coffee Table",
+          "description": "Organic rounded cocktail table with genuine marble tier and solid walnut secondary tier",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 650.00,
+          "primary_replacement": {
+            "brand": "CB2",
+            "model_sku": "Paloma Round Marble & Walnut Coffee Table",
+            "retailer": "CB2",
+            "direct_url": "https://www.cb2.com/search?query=round+marble+coffee+table"
+          },
+          "backup_alternative": {
+            "brand": "Crate & Barrel",
+            "model_sku": "Fields Walnut and Marble Coffee Table",
+            "retailer": "Crate & Barrel",
+            "direct_url": "https://www.crateandbarrel.com/search?query=marble+coffee+table"
+          },
+          "maintenance_cadence": "Per-Turn Marble Safe-Surface Clean (No Acidic Sprays)"
+        },
+        {
+          "item_id": "OAK-HOM-002-LIV-06",
+          "name": "Tribal Geometric Low-Pile Area Rug (9'x12')",
+          "description": "Hand-tufted ivory and charcoal geometric wool blend area rug with non-slip felt pad",
+          "category": "Textiles & Rugs",
+          "estimated_replacement_cost_usd": 750.00,
+          "primary_replacement": {
+            "brand": "Ruggable",
+            "model_sku": "Kamran Hazel 9x12 Washable Rug",
+            "retailer": "Ruggable Commercial",
+            "direct_url": "https://ruggable.com/search?q=9x12+washable+rug"
+          },
+          "backup_alternative": {
+            "brand": "West Elm",
+            "model_sku": "Colca Wool Rug (9'x12')",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=9x12+wool+rug"
+          },
+          "maintenance_cadence": "Per-Turn Vacuum / Quarterly Wash"
+        },
+        {
+          "item_id": "OAK-HOM-002-LIV-07",
+          "name": "Fireplace Flameless Pillar Candles (Set of 5)",
+          "description": "Set of 5 real-wax LED flickering flameless pillar candles with remote timer",
+          "category": "Art & Decor",
+          "estimated_replacement_cost_usd": 120.00,
+          "primary_replacement": {
+            "brand": "Pottery Barn",
+            "model_sku": "Premium Flickering Flameless Wax Pillars (Set of 5)",
+            "retailer": "Pottery Barn",
+            "direct_url": "https://www.potterybarn.com/search/results.html?words=flameless+pillar+candles"
+          },
+          "backup_alternative": {
+            "brand": "Amazon Commercial",
+            "model_sku": "Eywamage Glass Flameless Candles (Set of 5)",
+            "retailer": "Amazon",
+            "direct_url": "https://www.amazon.com/s?k=flameless+candles+remote+timer+set+of+5"
+          },
+          "maintenance_cadence": "Per-Turn Battery Check"
+        }
+      ]
+    },
+    {
+      "room_id": "DIN-01",
+      "room_name": "Formal Dining Room",
+      "photo_references": ["A7400100.jpg", "A7400101.jpg"],
+      "items": [
+        {
+          "item_id": "OAK-HOM-002-DIN-01",
+          "name": "Live-Edge Solid Acacia 8-Person Dining Table",
+          "description": "84\" natural live-edge acacia slab table with black matte heavy-duty industrial U-legs",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1850.00,
+          "primary_replacement": {
+            "brand": "CB2",
+            "model_sku": "Yukon Natural Live Edge Dining Table 84\"",
+            "retailer": "CB2",
+            "direct_url": "https://www.cb2.com/search?query=yukon+natural+live+edge+dining+table"
+          },
+          "backup_alternative": {
+            "brand": "Restoration Hardware",
+            "model_sku": "Live Edge Slab Dining Table (84\")",
+            "retailer": "RH",
+            "direct_url": "https://rh.com/us/en/search/results?query=live+edge+dining+table"
+          },
+          "maintenance_cadence": "Per-Turn Microfiber Clean & Quarterly Food-Grade Mineral Oil"
+        },
+        {
+          "item_id": "OAK-HOM-002-DIN-02",
+          "name": "Heather Blue Upholstered Dining Armchairs (Set of 6)",
+          "description": "Ergonomic curved bucket dining chairs in commercial textured weave fabric with black metal tapered legs",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1200.00,
+          "primary_replacement": {
+            "brand": "Article",
+            "model_sku": "Svelti / Rus Dining Chair (Heather Blue / Steel)",
+            "retailer": "Article",
+            "direct_url": "https://www.article.com/browse/23/chairs-dining-chairs"
+          },
+          "backup_alternative": {
+            "brand": "West Elm",
+            "model_sku": "Orb Dining Chair (Performance Weave Blue)",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=upholstered+dining+chair+blue"
+          },
+          "maintenance_cadence": "Per-Turn Fabric Brush & Spot Inspection"
+        },
+        {
+          "item_id": "OAK-HOM-002-DIN-03",
+          "name": "10-Bulb Industrial Wagon-Wheel Edison Chandelier",
+          "description": "Matte black wrought iron round chandelier with exposed vintage LED Edison filament bulbs on dimmer",
+          "category": "Lighting",
+          "estimated_replacement_cost_usd": 680.00,
+          "primary_replacement": {
+            "brand": "Lumens",
+            "model_sku": "Wagon Wheel 10-Light Chandelier (Matte Black)",
+            "retailer": "Lumens Commercial",
+            "direct_url": "https://www.lumens.com/search/?q=wagon+wheel+chandelier"
+          },
+          "backup_alternative": {
+            "brand": "Wayfair Pro",
+            "model_sku": "Modern Farmhouse 10-Light Chandelier",
+            "retailer": "Wayfair",
+            "direct_url": "https://www.wayfair.com/keyword.php?keyword=wagon+wheel+chandelier+10-light"
+          },
+          "maintenance_cadence": "Quarterly Dusting & Dimmer Calibration"
+        },
+        {
+          "item_id": "OAK-HOM-002-DIN-04",
+          "name": "Distressed Fringe Persian Medallion Area Rug (8'x10')",
+          "description": "Power-loomed low-pile stain-resistant polypropylene vintage medallion rug",
+          "category": "Textiles & Rugs",
+          "estimated_replacement_cost_usd": 480.00,
+          "primary_replacement": {
+            "brand": "Loloi Rugs",
+            "model_sku": "Layla Collection 8x10 Area Rug (Olive/Charcoal)",
+            "retailer": "Wayfair Commercial",
+            "direct_url": "https://www.wayfair.com/keyword.php?keyword=loloi+layla+8x10"
+          },
+          "backup_alternative": {
+            "brand": "Ruggable",
+            "model_sku": "Persian Washable 8x10 Rug",
+            "retailer": "Ruggable",
+            "direct_url": "https://ruggable.com/search?q=8x10+persian+rug"
+          },
+          "maintenance_cadence": "Per-Turn Vacuum & Fringe Alignment"
+        }
+      ]
+    },
+    {
+      "room_id": "KIT-01",
+      "room_name": "Gourmet Chef's Kitchen & Breakfast Nook",
+      "photo_references": ["A7400092.jpg", "A7400095.jpg", "A7400098.jpg"],
+      "items": [
+        {
+          "item_id": "OAK-HOM-002-KIT-01",
+          "name": "36\" Commercial Stainless 6-Burner Gas Range & Convection Oven",
+          "description": "Pro-style gas range with cast-iron continuous grates and electronic dual oven ignition",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 3800.00,
+          "primary_replacement": {
+            "brand": "Bertazzoni",
+            "model_sku": "Master Series 36\" Pro Gas Range (MAS365GASXE)",
+            "retailer": "Ferguson / Best Buy",
+            "direct_url": "https://www.bestbuy.com/site/searchpage.jsp?st=bertazzoni+36+gas+range"
+          },
+          "backup_alternative": {
+            "brand": "Thor Kitchen",
+            "model_sku": "HRG3618U 36\" Professional Gas Range",
+            "retailer": "Home Depot Pro",
+            "direct_url": "https://www.homedepot.com/s/thor+kitchen+36+inch+gas+range"
+          },
+          "maintenance_cadence": "Per-Turn Burner Degrease / Bi-Annual Gas Valve Check"
+        },
+        {
+          "item_id": "OAK-HOM-002-KIT-02",
+          "name": "Island Stainless & Curved Glass Range Hood (400 CFM)",
+          "description": "Ceiling-suspended ducted island range hood with multi-speed LED touch controls",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 750.00,
+          "primary_replacement": {
+            "brand": "ZLINE Kitchen",
+            "model_sku": "GL1i 36\" Island Mount Range Hood",
+            "retailer": "Lowe's Commercial",
+            "direct_url": "https://www.lowes.com/search?searchTerm=zline+island+range+hood+36"
+          },
+          "backup_alternative": {
+            "brand": "Zephyr",
+            "model_sku": "Ravenna Island Range Hood",
+            "retailer": "Best Buy",
+            "direct_url": "https://www.bestbuy.com/site/searchpage.jsp?st=zephyr+island+range+hood"
+          },
+          "maintenance_cadence": "Monthly Baffle Filter Dishwasher Wash"
+        },
+        {
+          "item_id": "OAK-HOM-002-KIT-03",
+          "name": "36\" Counter-Depth French Door Refrigerator with Internal Ice/Water",
+          "description": "Stainless steel fingerprint-resistant French door refrigerator and bottom freezer",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 2400.00,
+          "primary_replacement": {
+            "brand": "Bosch",
+            "model_sku": "800 Series 36\" French Door Fridge (B36CT80SNS)",
+            "retailer": "Best Buy Pro",
+            "direct_url": "https://www.bestbuy.com/site/searchpage.jsp?st=bosch+800+series+refrigerator"
+          },
+          "backup_alternative": {
+            "brand": "KitchenAid",
+            "model_sku": "KRFC300ESS 36\" Counter-Depth French Door",
+            "retailer": "Home Depot",
+            "direct_url": "https://www.homedepot.com/s/kitchenaid+counter+depth+refrigerator+36"
+          },
+          "maintenance_cadence": "Per-Turn Shelving Wipe / Bi-Annual Water Filter Replacement"
+        },
+        {
+          "item_id": "OAK-HOM-002-KIT-04",
+          "name": "Ultra-Quiet Stainless Dishwasher (42 dBA)",
+          "description": "Top-control hidden panel dishwasher with stainless steel tub and 3rd utensil rack",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 950.00,
+          "primary_replacement": {
+            "brand": "Bosch",
+            "model_sku": "500 Series 24\" Top Control Dishwasher (SHP65CM5N)",
+            "retailer": "Best Buy Pro",
+            "direct_url": "https://www.bestbuy.com/site/searchpage.jsp?st=bosch+500+series+dishwasher"
+          },
+          "backup_alternative": {
+            "brand": "KitchenAid",
+            "model_sku": "PrintShield 44 dBA Dishwasher (KDTM404KPS)",
+            "retailer": "Lowe's",
+            "direct_url": "https://www.lowes.com/search?searchTerm=kitchenaid+dishwasher+44+dba"
+          },
+          "maintenance_cadence": "Per-Turn Filter Rinse & Rinse Aid Top-Up"
+        },
+        {
+          "item_id": "OAK-HOM-002-KIT-05",
+          "name": "Breville Barista Touch Espresso Machine",
+          "description": "Commercial countertop espresso machine with integrated burr grinder and automatic milk texturing",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 850.00,
+          "primary_replacement": {
+            "brand": "Breville",
+            "model_sku": "Barista Touch Espresso Machine (BES880BSS)",
+            "retailer": "Williams Sonoma",
+            "direct_url": "https://www.williams-sonoma.com/search/results.html?words=breville+barista+touch"
+          },
+          "backup_alternative": {
+            "brand": "De'Longhi",
+            "model_sku": "La Specialista Arte Espresso Machine",
+            "retailer": "Amazon Pro",
+            "direct_url": "https://www.amazon.com/s?k=delonghi+la+specialista+arte"
+          },
+          "maintenance_cadence": "Per-Turn Grouphead Clean / Monthly Descale"
+        }
+      ]
+    },
+    {
+      "room_id": "BED-01",
+      "room_name": "Primary Suite (Bedroom 1) & Ensuite Bath",
+      "photo_references": ["A7400010.jpg", "A7400017.jpg", "A7400036.jpg"],
+      "items": [
+        {
+          "item_id": "OAK-HOM-002-BED-01",
+          "name": "King Upholstered Platform Bed Frame",
+          "description": "Low-profile upholstered platform frame with tall channel-tufted linen headboard in oatmeal",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1400.00,
+          "primary_replacement": {
+            "brand": "Castlery",
+            "model_sku": "Dawson Bed (King, Oatmeal Linen)",
+            "retailer": "Castlery",
+            "direct_url": "https://www.castlery.com/us/products/dawson-bed"
+          },
+          "backup_alternative": {
+            "brand": "West Elm",
+            "model_sku": "Andes Upholstered Bed (King)",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=andes+upholstered+bed+king"
+          },
+          "maintenance_cadence": "Per-Turn Linen Wash & Headboard Vacuum"
+        },
+        {
+          "item_id": "OAK-HOM-002-BED-02",
+          "name": "King Hybrid Luxury Pillowtop Mattress & Allergen Encasing",
+          "description": "14-inch pocket-coil and cooling gel memory foam King mattress with commercial waterproof allergen encasing",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1350.00,
+          "primary_replacement": {
+            "brand": "Saatva",
+            "model_sku": "Saatva Classic Luxury Firm (King, 14.5\")",
+            "retailer": "Saatva Commercial",
+            "direct_url": "https://www.saatva.com/mattresses/saatva-classic"
+          },
+          "backup_alternative": {
+            "brand": "Tuft & Needle",
+            "model_sku": "Mint Hybrid Mattress (King)",
+            "retailer": "Tuft & Needle",
+            "direct_url": "https://www.tuftandneedle.com/products/mint-hybrid-mattress"
+          },
+          "maintenance_cadence": "Quarterly Mattress Rotation / Encasement Inspection"
+        },
+        {
+          "item_id": "OAK-HOM-002-BED-03",
+          "name": "Mid-Century Walnut 3-Drawer Dressers (Pair)",
+          "description": "Solid walnut dual dressers with soft-close undermount drawer slides and brass knob hardware",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1500.00,
+          "primary_replacement": {
+            "brand": "West Elm",
+            "model_sku": "Mid-Century 3-Drawer Dresser (Acorn/Walnut)",
+            "retailer": "West Elm",
+            "direct_url": "https://www.westelm.com/search/results.html?words=mid+century+3+drawer+dresser"
+          },
+          "backup_alternative": {
+            "brand": "Article",
+            "model_sku": "Lenia 3-Drawer Dresser (Walnut)",
+            "retailer": "Article",
+            "direct_url": "https://www.article.com/product/14803/lenia-walnut-3-drawer-dresser"
+          },
+          "maintenance_cadence": "Per-Turn Drawer Check & Monthly Polish"
+        }
+      ]
+    },
+    {
+      "room_id": "DEC-01",
+      "room_name": "Exterior Canyon Deck & Terrace",
+      "photo_references": ["A7400103.jpg", "A7400128.jpg"],
+      "items": [
+        {
+          "item_id": "OAK-HOM-002-DEC-01",
+          "name": "All-Weather Polywood / Teak 6-Person Outdoor Dining Set",
+          "description": "72\" outdoor dining table and 6 stackable armchairs made of UV-resistant composite polywood",
+          "category": "Furniture",
+          "estimated_replacement_cost_usd": 1650.00,
+          "primary_replacement": {
+            "brand": "Polywood",
+            "model_sku": "Nautical 7-Piece Dining Set (Vintage Finish)",
+            "retailer": "Polywood Commercial",
+            "direct_url": "https://www.polywood.com/search/?q=nautical+7+piece+dining+set"
+          },
+          "backup_alternative": {
+            "brand": "Article",
+            "model_sku": "Sora 70\" Outdoor Dining Table & Chairs",
+            "retailer": "Article",
+            "direct_url": "https://www.article.com/browse/42/outdoor-dining-tables"
+          },
+          "maintenance_cadence": "Per-Turn Power Wipe / Annual Weather Seal"
+        },
+        {
+          "item_id": "OAK-HOM-002-DEC-02",
+          "name": "Propane Concrete Fire Pit Table (50,000 BTU)",
+          "description": "Weatherproof glass-fiber reinforced concrete fire table with lava rocks and canvas weather cover",
+          "category": "Hardware/Safety",
+          "estimated_replacement_cost_usd": 780.00,
+          "primary_replacement": {
+            "brand": "Wayfair Pro",
+            "model_sku": "Sol 72 Outdoor Rectangular Concrete Propane Fire Pit",
+            "retailer": "Wayfair",
+            "direct_url": "https://www.wayfair.com/keyword.php?keyword=concrete+fire+pit+table+propane"
+          },
+          "backup_alternative": {
+            "brand": "Target Outdoor",
+            "model_sku": "Project 62 Concrete Outdoor Fire Table",
+            "retailer": "Target",
+            "direct_url": "https://www.target.com/s?searchTerm=concrete+fire+table"
+          },
+          "maintenance_cadence": "Per-Turn Propane Level Check & Spark Igniter Test"
+        },
+        {
+          "item_id": "OAK-HOM-002-DEC-03",
+          "name": "4-Burner Stainless Steel Propane BBQ Grill & Cover",
+          "description": "Freestanding stainless grill with electronic ignition, side burner, and commercial drip pan",
+          "category": "Electronics/Appliances",
+          "estimated_replacement_cost_usd": 650.00,
+          "primary_replacement": {
+            "brand": "Weber",
+            "model_sku": "Spirit II E-310 3-Burner Propane Grill (Black)",
+            "retailer": "Home Depot Pro",
+            "direct_url": "https://www.homedepot.com/s/weber+spirit+ii+e-310"
+          },
+          "backup_alternative": {
+            "brand": "Char-Broil",
+            "model_sku": "Performance Series 4-Burner Gas Grill",
+            "retailer": "Lowe's",
+            "direct_url": "https://www.lowes.com/search?searchTerm=char+broil+4+burner+grill"
+          },
+          "maintenance_cadence": "Per-Turn Grate Brush & Drip Pan Replacement"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "manifest_id": "SANTA_ROSA_AVENUEWEST_PILOT_TOP15",
+  "generated_at": "2026-09-19",
+  "brand_context": "A Better BNB (owner-facing) — AvenueWest Global supply partnership pilot",
+  "source_data": {
+    "candidate_pool": "LeadGraph LG-001-M / LG-001-AC Santa Rosa alternate-offer batch (176 total)",
+    "permit_classification_ran_at": "2026-09-09T19:25:00.163Z",
+    "permit_registry_source": "https://ws.srcity.org/PWMaps/PermitSearch.aspx/getPermits (City of Santa Rosa, live)",
+    "all_176_confirmed_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH"
+  },
+  "selection_methodology": {
+    "filters_applied": [
+      "property_economics_status == ALTERNATE OFFER: NO LAWFUL PERMIT PATH (all 176 qualify)",
+      "absentee_owner == true, via LG-001-M's owner-occupancy proxy (property street != mailing street, or mailing city != property city) — 65 of 176 qualify"
+    ],
+    "filters_requested_but_not_applied": {
+      "opportunity_evidence_score": "No such metric exists anywhere in the LeadGraph/scenic-intelligence codebase or its data outputs. Not fabricated for this manifest.",
+      "bedroom_count_2plus": "Not tracked for this batch. The only structure-data connector in the codebase (RentCast, gauntlet/projects/leadgraph-v0.1/qualification-engine/src/sources/rentcast-connector.mjs) is allowlisted for Berkeley only, maps unitCount rather than bedroom count, and runs against a shared paid account (50 req/mo, $0.20/req overage) — expanding it to 65 Santa Rosa addresses is a real-money, scope-expanding decision that needs Justin's sign-off before it happens, not an assumption baked into a sales manifest.",
+      "executive_finishes": "No interior-condition or finish-quality data source is connected anywhere in this repo. Any score here would be fabricated.",
+      "safety_profile": "No crime/safety data source is connected anywhere in this repo. Any score here would be fabricated."
+    },
+    "rationale_for_absentee_filter_as_proxy": "Absentee ownership is the one real, defensible signal in the current data: an owner who doesn't live at the property is more likely to already treat it as an investment/rental asset, which fits a 30+ day corporate-tenant hand-off model better than an owner-occupied primary residence. It is a proxy for landlord mindset, not for property size, finish quality, or safety.",
+    "ordering": "First 15 absentee-owner records in LG-001-M's original ingestion order (deterministic, not a quality ranking)."
+  },
+  "status": "PRELIMINARY — NOT YET VERIFIED FOR SALES OUTREACH",
+  "required_before_outreach": [
+    "Confirm each property is 2+ bedrooms and furnished-executive-caliber (public listing photo lookup, drive-by, or a paid enrichment source Justin approves)",
+    "Flag and re-check '810 7th St #6' specifically — the unit suffix suggests a condo/apartment unit, which may not fit the corporate-executive profile without verification",
+    "Owner contact details (phone/email/mailing address) intentionally excluded from this manifest — pull from the existing LeadGraph sales queue at outreach time rather than duplicating PII into this file"
+  ],
+  "units": [
+    { "unit_ref": "SR-AW-01", "property_address": "1222 Raphael St",        "property_city": "Santa Rosa", "property_zip": "95404", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-02", "property_address": "6560 Stone Bridge Rd",   "property_city": "Santa Rosa", "property_zip": "95409", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-03", "property_address": "485 Unocal Pl",         "property_city": "Santa Rosa", "property_zip": "95403", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-04", "property_address": "262 Gambrel Cir",       "property_city": "Santa Rosa", "property_zip": "95403", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-05", "property_address": "638 Wisteria Ln",       "property_city": "Santa Rosa", "property_zip": "95407", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-06", "property_address": "2593 Vallejo St",       "property_city": "Santa Rosa", "property_zip": "95405", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-07", "property_address": "337 Semillon Ln",       "property_city": "Santa Rosa", "property_zip": "95403", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-08", "property_address": "21 Knolls Ln",          "property_city": "Santa Rosa", "property_zip": "95405", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-09", "property_address": "2112 Stonefield Ln",    "property_city": "Santa Rosa", "property_zip": "95403", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-10", "property_address": "1453 Post Ranch Rd",    "property_city": "Santa Rosa", "property_zip": "95405", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-11", "property_address": "810 7th St #6",         "property_city": "Santa Rosa", "property_zip": "95404", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": "Unit suffix (#6) suggests a condo/apartment — verify it isn't a studio/1BR before including in the AvenueWest pitch." },
+    { "unit_ref": "SR-AW-12", "property_address": "1742 Mission Blvd",     "property_city": "Santa Rosa", "property_zip": "95409", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-13", "property_address": "2656 Westberry Dr",     "property_city": "Santa Rosa", "property_zip": "95403", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-14", "property_address": "6 Meadowgreen Cir",     "property_city": "Santa Rosa", "property_zip": "95409", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null },
+    { "unit_ref": "SR-AW-15", "property_address": "1439 Neotomas Cir",     "property_city": "Santa Rosa", "property_zip": "95405", "absentee_owner": true, "permit_status": "ALTERNATE OFFER: NO LAWFUL PERMIT PATH", "bedrooms": null, "executive_finishes": null, "safety_profile": null, "opportunity_evidence_score": null, "verification_notes": null }
+  ]
+}

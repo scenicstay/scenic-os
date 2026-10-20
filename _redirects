@@ -1,0 +1,38 @@
+# Cloudflare Pages & Netlify Clean URL Routing for resetr.abetterbnb.com/<property-slug>
+https://resetr.abetterbnb.com/32ndstreet /host_dispatch_resetr.html?unit=32ndstreet&view=checklist 200
+https://resetr.abetterbnb.com/1023-32nd /host_dispatch_resetr.html?unit=1023-32nd&view=checklist 200
+https://resetr.abetterbnb.com/estates /host_dispatch_resetr.html?unit=estates&view=checklist 200
+https://resetr.abetterbnb.com/5540-estates /host_dispatch_resetr.html?unit=5540-estates&view=checklist 200
+https://resetr.abetterbnb.com/acton /host_dispatch_resetr.html?unit=acton&view=checklist 200
+https://resetr.abetterbnb.com/3007-acton /host_dispatch_resetr.html?unit=3007-acton&view=checklist 200
+https://resetr.abetterbnb.com/avis /host_dispatch_resetr.html?unit=avis&view=checklist 200
+https://resetr.abetterbnb.com/3146-avis /host_dispatch_resetr.html?unit=3146-avis&view=checklist 200
+https://resetr.abetterbnb.com/scenic-north /host_dispatch_resetr.html?unit=scenic-north&view=checklist 200
+https://resetr.abetterbnb.com/scenic-south /host_dispatch_resetr.html?unit=scenic-south&view=checklist 200
+https://resetr.abetterbnb.com/scenic /host_dispatch_resetr.html?unit=scenic&view=checklist 200
+https://resetr.abetterbnb.com/walsh /host_dispatch_resetr.html?unit=walsh&view=checklist 200
+https://resetr.abetterbnb.com/3270-walsh /host_dispatch_resetr.html?unit=3270-walsh&view=checklist 200
+https://resetr.abetterbnb.com/:slug /host_dispatch_resetr.html?unit=:slug&view=checklist 200
+https://resetr.abetterbnb.com/ /host_dispatch_resetr.html?view=checklist 200
+
+/32ndstreet /host_dispatch_resetr.html?unit=32ndstreet&view=checklist 200
+/1023-32nd /host_dispatch_resetr.html?unit=1023-32nd&view=checklist 200
+/estates /host_dispatch_resetr.html?unit=estates&view=checklist 200
+/5540-estates /host_dispatch_resetr.html?unit=5540-estates&view=checklist 200
+/acton /host_dispatch_resetr.html?unit=acton&view=checklist 200
+/3007-acton /host_dispatch_resetr.html?unit=3007-acton&view=checklist 200
+/avis /host_dispatch_resetr.html?unit=avis&view=checklist 200
+/3146-avis /host_dispatch_resetr.html?unit=3146-avis&view=checklist 200
+/scenic-north /host_dispatch_resetr.html?unit=scenic-north&view=checklist 200
+/scenic-south /host_dispatch_resetr.html?unit=scenic-south&view=checklist 200
+/scenic /host_dispatch_resetr.html?unit=scenic&view=checklist 200
+/walsh /host_dispatch_resetr.html?unit=walsh&view=checklist 200
+/3270-walsh /host_dispatch_resetr.html?unit=3270-walsh&view=checklist 200
+/resetr/:slug /host_dispatch_resetr.html?unit=:slug&view=checklist 200
+/blueprint /scenic_os_system_blueprint.html 200
+/pricing /scenic_os_system_blueprint.html 200
+/rulebook /hospitality_communications_rulebook.html 200
+/academy /scenic_academy_journey.html 200
+/operations /scenic_operations_academy.html 200
+/shadow /alyssa_shadow_playbook.html 200
+

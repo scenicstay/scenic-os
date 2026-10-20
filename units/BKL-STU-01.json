@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "unit_id": "BKL-STU-01",
+  "property_name": "Modern Retro Private Studio",
+  "property_type": "STU",
+  "address": "Berkeley, CA 94708 (North Berkeley Arts District)",
+  "market": "berkeley",
+  "gateway": {
+    "ssid": "ScenicStay \u2022 RetroStudio",
+    "headline": "Welcome to Modern Retro Private Studio \u2022 Scenic Stay",
+    "vlan_isolation": {
+      "owner_vlan": 10,
+      "guest_vlan": 20,
+      "iot_vlan": 30
+    }
+  },
+  "ical_feeds": {
+    "airbnb": "https://www.airbnb.com/calendar/ical/19951024.ics?t=4b53479d96b64be39395a49f9ab1f659",
+    "vrbo": "",
+    "direct": "https://abetterbnb.com/api/v1/ical/BKL-STU-01.ics"
+  },
+  "dispatch_partners": {
+    "primary_cleaner": {
+      "name": "Cicilia Barbosa (Barbosa Turnover)",
+      "phone": "+1 (510) 555-0182",
+      "language": "pt-BR",
+      "rate_per_turn": "135.00",
+      "payout_rail": "ramp"
+    },
+    "backup_cleaner": {
+      "name": "Rosa Linda Cleans",
+      "phone": "+1 (510) 555-0189",
+      "rate_per_turn": ".00",
+      "payout_rail": "ramp",
+      "rollover_hours": 2
+    },
+    "handyman": {
+      "name": "Dave Miller Repairs",
+      "phone": "+1 (510) 555-0199",
+      "rate": ".00 / hr",
+      "payout_rail": "ramp",
+      "preapproved_ceiling_usd": 50.0
+    }
+  },
+  "on_site_standards": {
+    "cordless_vacuum_verified": true,
+    "cleaner_brings_agents": true
+  }
+}

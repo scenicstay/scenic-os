@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenic Stay: Field Contractor Service Agreement & SLA Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+    :root {
+      --brand-navy: #24123a;
+      --brand-gold: #d4af37;
+      --brand-cream: #fbf6ef;
+      --brand-charcoal: #24282d;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0b1320;
+      color: #e2e8f0;
+    }
+    h1, h2, h3, .serif-font {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+    .card-glass { background: #131d2e; border: 1px solid #1e2d42; }
+    .card-glass:hover { border-color: #334155; }
+    .agreement-doc {
+      background: #ffffff;
+      color: #1e293b;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    }
+    .agreement-doc h1, .agreement-doc h2, .agreement-doc h3, .agreement-doc .doc-serif {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: #24123a;
+    }
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .agreement-doc {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      @page {
+        margin: 1.5cm;
+        size: letter portrait;
+      }
+    }
+  
+    .input-dark {
+      background-color: #0d1524;
+      border: 1px solid #1e2d42;
+      color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .input-dark:focus {
+      outline: none;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 1px #f59e0b;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto w-full space-y-6">
+
+    <!-- App Header (No Print) -->
+    <header class="card-glass rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-amber-500 no-print">
+      <div class="flex items-center space-x-3.5">
+        <!-- Agreement SLA Contract Mark -->
+        <div class="h-12 w-12 bg-[#24123a] rounded-xl flex items-center justify-center border border-amber-500/50 shadow-inner flex-shrink-0 text-amber-400 text-2xl ring-1 ring-amber-500/20">
+          <i class="fa-solid fa-file-contract"></i>
+        </div>
+        <div>
+          <!-- Line 1: Page Name -->
+          <h1 class="text-xl md:text-2xl font-bold text-white tracking-wide serif-font">Contractor Agreement &amp; SLA</h1>
+          <!-- Line 2: Subtitle in block badge -->
+          <div class="mt-0.5">
+            <span class="text-xs text-amber-400 font-sans tracking-widest uppercase px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/80 inline-block">Field Operations Contract Engine</span>
+          </div>
+          <!-- Lines 3-4: Feature description -->
+          <p class="text-xs text-slate-400 mt-1 font-sans">Role Protocols &bull; Unit Rate Lock &bull; Supply Restock SLA &bull; Emergency Escalation &bull; Direct Payout Terms</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <a href="host_property_forge.html" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold rounded-xl border border-slate-700 hover:border-amber-500/50 flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-hammer text-amber-400"></i> Property Forge &rarr;
+        </a>
+        <a href="host_dispatch_resetr.html" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold rounded-xl border border-slate-700 hover:border-amber-500/50 flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-arrows-rotate text-amber-400"></i> reSeTR Dispatch &rarr;
+        </a>
+        <a href="thursday_team_presentation.html" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold rounded-xl border border-slate-700 hover:border-amber-500/50 flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-tv text-amber-400"></i> Walkthrough &rarr;
+        </a>
+        <button onclick="openOpenSignModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-file-signature"></i> Dispatch via Documenso / OpenSign &rarr;
+        </button>
+        <button onclick="window.print()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-print"></i> Print / Save PDF
+        </button>
+        <button onclick="copyMarkdownText()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-copy"></i> Copy Text
+        </button>
+      </div>
+    </header>
+
+    <!-- App Body: 2 Columns on Desktop (Controls on Left, Live Document on Right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: CONTROLS & CONFIG (No Print) -->
+      <div class="lg:col-span-5 space-y-6 no-print">
+
+        <!-- Role / Partner Type Selector -->
+        <div class="card-glass p-6 rounded-2xl space-y-4">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+            <i class="fa-solid fa-users-gear"></i> 1. Select Partner Role
+          </h2>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button type="button" onclick="selectRole('cleaner')" id="btn-role-cleaner" class="p-3 rounded-xl border border-amber-500 bg-amber-500/20 text-white text-left text-xs font-semibold flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-broom text-amber-400 text-sm"></i>
+              <div>
+                <div>Turnover Cleaner</div>
+                <div class="text-[10px] text-slate-400 font-normal">Staging & Linens</div>
+              </div>
+            </button>
+
+            <button type="button" onclick="selectRole('pool')" id="btn-role-pool" class="p-3 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-300 hover:text-white text-left text-xs font-semibold flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-water-ladder text-sky-400 text-sm"></i>
+              <div>
+                <div>Pool & Spa Tech</div>
+                <div class="text-[10px] text-slate-400 font-normal">Chemistry & Filters</div>
+              </div>
+            </button>
+
+            <button type="button" onclick="selectRole('handyman')" id="btn-role-handyman" class="p-3 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-300 hover:text-white text-left text-xs font-semibold flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-wrench text-emerald-400 text-sm"></i>
+              <div>
+                <div>Maintenance Tech</div>
+                <div class="text-[10px] text-slate-400 font-normal">Repairs & Locks</div>
+              </div>
+            </button>
+
+            <button type="button" onclick="selectRole('landscaping')" id="btn-role-landscaping" class="p-3 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-300 hover:text-white text-left text-xs font-semibold flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-tree text-green-400 text-sm"></i>
+              <div>
+                <div>Landscaping</div>
+                <div class="text-[10px] text-slate-400 font-normal">Lawn & Exterior</div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Party Details & Property Location -->
+        <div class="card-glass p-6 rounded-2xl space-y-4">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+            <i class="fa-solid fa-id-card"></i> 2. Parties & Property Info
+          </h2>
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Contractor / Business Name:</label>
+              <input type="text" id="input-contractor-name" value="Apex Turnover Solutions LLC" oninput="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Contractor Contact / Rep:</label>
+                <input type="text" id="input-contractor-contact" value="Maria Gonzalez" oninput="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Phone / WhatsApp:</label>
+                <input type="text" id="input-contractor-phone" value="+1 (720) 847-2912" oninput="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+              </div>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Service Property Name & Market:</label>
+              <input type="text" id="input-property-name" value="Walsh St & Estates Portfolios (Denver Metro, CO)" oninput="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Effective Date:</label>
+              <input type="date" id="input-effective-date" onchange="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Compensation & Payout Settings -->
+        <div class="card-glass p-6 rounded-2xl space-y-4">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+            <i class="fa-solid fa-receipt"></i> 3. Compensation & Payout Terms
+          </h2>
+          <div class="space-y-3 text-xs">
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Rate Structure:</label>
+                <select id="select-rate-type" onchange="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+                  <option value="per_turn">Flat Rate Per Turnover</option>
+                  <option value="hourly">Hourly Rate</option>
+                  <option value="monthly">Monthly Retainer</option>
+                  <option value="per_callout">Per-Callout Service Fee</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Agreed Rate ($):</label>
+                <input type="text" id="input-rate-amount" value="$135.00" oninput="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500 font-bold text-amber-400">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Disbursement Schedule:</label>
+                <select id="select-payout-freq" onchange="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+                  <option value="weekly_friday">Weekly on Friday</option>
+                  <option value="net_7">Net 7 Days Post-Verification</option>
+                  <option value="biweekly">Bi-Weekly on 1st & 15th</option>
+                  <option value="per_service">Next Business Day Post-Audit</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Disbursement Rail:</label>
+                <select id="select-payout-rail" onchange="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500 font-medium text-amber-300">
+                  <option value="ramp" selected>Ramp (Auto 1099/W-9 Direct Deposit)</option>
+                  <option value="sffire_ach">SF Fire FCU Direct ACH Transfer</option>
+                  <option value="quickbooks">QuickBooks Contractor Direct Deposit</option>
+                  <option value="venmo">Venmo / Cash App Business</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Emergency Repair Cap:</label>
+                <input type="text" id="input-repair-cap" value="$50.00" oninput="updateDoc()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-amber-500">
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <label class="flex items-start gap-2 cursor-pointer text-slate-300">
+                <input type="checkbox" id="check-cleaner-agents" checked onchange="updateDoc()" class="mt-0.5 rounded border-slate-700 text-amber-500 focus:ring-amber-500">
+                <div>
+                  <span class="font-semibold text-amber-300">Contractor Supplies Commercial Cleaning Agents</span>
+                  <p class="text-[10px] text-slate-400">Contractor brings their own preferred agents from Scenic's surface-safe list.</p>
+                </div>
+              </label>
+              <label class="flex items-start gap-2 cursor-pointer text-slate-300">
+                <input type="checkbox" id="check-cordless-vac" checked onchange="updateDoc()" class="mt-0.5 rounded border-slate-700 text-amber-500 focus:ring-amber-500">
+                <div>
+                  <span class="font-semibold text-amber-300">Property Maintains On-Site Cordless Vacuum & Tools</span>
+                  <p class="text-[10px] text-slate-400">Available on-site for both turnover staging and guest in-stay convenience.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customizable Scope Items with Live Checkboxes -->
+        <div class="card-glass p-6 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+              <i class="fa-solid fa-list-check"></i> 4. Scope Checklist Items
+            </h2>
+            <span class="text-[11px] text-slate-400">Toggle to include/exclude</span>
+          </div>
+          <div id="scope-items-container" class="space-y-2 max-h-72 overflow-y-auto pr-2 text-xs">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: LIVE PRINTABLE SERVICE AGREEMENT DOCUMENT -->
+      <div class="lg:col-span-7">
+        <div id="agreement-paper" class="agreement-doc rounded-2xl p-8 md:p-12 text-slate-800 leading-relaxed space-y-6 text-sm">
+
+          <!-- Doc Header -->
+          <div class="border-b-2 border-slate-900 pb-6 flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div>
+              <div class="text-xs uppercase tracking-widest font-extrabold text-amber-700 font-sans">Scenic Stay Hospitality Operations</div>
+              <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-950 mt-1">MASTER FIELD SERVICE AGREEMENT & SLA</h1>
+              <p class="text-xs text-slate-600 mt-1 font-sans">Operational Service Level Standard for Independent Hospitality Contractors</p>
+            </div>
+            <div class="text-right text-xs text-slate-600">
+              <div class="font-bold text-slate-900">DOC ID: <span id="doc-id" class="font-mono text-amber-800">SLA-2026-DEN-01</span></div>
+              <div>Effective: <span id="doc-effective-date" class="font-semibold text-slate-900">September 17, 2026</span></div>
+              <div>Status: <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">ACTIVE TEMPLATE</span></div>
+            </div>
+          </div>
+
+          <!-- Section 1: Parties & Assignment -->
+          <div class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 font-sans border-b border-slate-200 pb-1">1. Parties & Property Assignment</h3>
+            <p class="text-xs leading-normal">
+              This Independent Contractor Master Service Agreement ("Agreement") is executed between <strong>Scenic Stay, LLC</strong> ("Company") and <strong id="doc-contractor-name">Apex Turnover Solutions LLC</strong> ("Contractor"), represented by <span id="doc-contractor-rep" class="font-semibold">Maria Gonzalez</span> (<span id="doc-contractor-phone">+1 (720) 847-2912</span>).
+            </p>
+            <p class="text-xs leading-normal">
+              Contractor is engaged as an independent specialist to provide services for Company managed accommodations situated at: <strong id="doc-property-name" class="text-slate-900">Walsh St & Estates Portfolios (Denver Metro, CO)</strong> ("Property").
+            </p>
+          </div>
+
+          <!-- Section 2: Role Designation & Scope of Services -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-1">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 font-sans">2. Role Designation & Mandatory Scope of Services</h3>
+              <span id="doc-role-badge" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-800 font-sans">TURNOVER SPECIALIST</span>
+            </div>
+            <p class="text-xs">
+              Contractor agrees to perform the following core services in full compliance with Scenic Stay five-star guest readiness standards:
+            </p>
+            <ul id="doc-scope-list" class="list-disc pl-5 space-y-1.5 text-xs text-slate-700">
+              <!-- Populated dynamically -->
+            </ul>
+          </div>
+
+          <!-- Section 3: On-Site Supplies Standard -->
+          <div class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 font-sans border-b border-slate-200 pb-1">3. On-Site Supplies, Inventory & Equipment Standard</h3>
+            <p id="doc-supplies-clause" class="text-xs leading-normal text-slate-700">
+              <strong>Scenic Provision Standard:</strong> Company provides and maintains a dedicated inventory of commercial cleaning chemicals, vacuum cleaners, mops, fresh linens/terry, paper products, and guest amenities on-site in a secured owner/operations closet. Contractor is not required to furnish basic consumables out of pocket. Contractor agrees to notify Company Operations when inventory levels fall below a 2-week supply threshold and to report any broken or malfunctioning Company equipment immediately.
+            </p>
+          </div>
+
+          <!-- Section 4: Quality Verification & Damage Reporting -->
+          <div class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 font-sans border-b border-slate-200 pb-1">4. Quality Verification, Verification Photos & Emergency Ceiling</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <div class="font-bold text-slate-900 mb-0.5"><i class="fa-solid fa-camera mr-1 text-amber-700"></i> Photo Verification</div>
+                <p class="text-slate-600 text-[11px]">Contractor must upload stage-completion photos via the provided mobile link (reSeTR) upon service conclusion before payout authorization.</p>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <div class="font-bold text-slate-900 mb-0.5"><i class="fa-solid fa-shield-halved mr-1 text-amber-700"></i> Emergency Pre-Approval</div>
+                <p class="text-slate-600 text-[11px]">Pre-approved repair ceiling of <strong id="doc-repair-cap" class="text-slate-900">$50.00</strong> for urgent maintenance fixes without waiting for prior written sign-off.</p>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-600">
+              <strong>Immediate Damage / Smoking Notice:</strong> Contractor must photograph and report any evidence of unauthorized smoking, pets, or structural damage within 90 minutes of arrival to enable timely guest security deposit holdbacks.
+            </p>
+          </div>
+
+          <!-- Section 5: Compensation & Payout Schedule -->
+          <div class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 font-sans border-b border-slate-200 pb-1">5. Agreed Compensation & Disbursement Terms</h3>
+            <p class="text-xs">
+              In consideration of the satisfactory completion of agreed scope and photo verification, Company agrees to compensate Contractor at:
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div class="text-[11px] font-semibold text-amber-900 uppercase tracking-wider">Agreed Contract Rate</div>
+                <div id="doc-comp-rate" class="text-xl font-bold text-amber-950 font-serif">$135.00 Flat Rate Per Turnover</div>
+              </div>
+              <div class="text-left sm:text-right">
+                <div class="text-[11px] font-semibold text-amber-900 uppercase tracking-wider">Disbursement Schedule & Rail</div>
+                <div id="doc-payout-freq" class="text-xs font-bold text-slate-900">Weekly on Friday</div>
+                <div id="doc-payout-rail" class="text-[11px] text-amber-800 font-medium">Via Ramp (Auto 1099/W-9 Direct Deposit)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 6: Independent Contractor Relationship & Signatures -->
+          <div class="space-y-3 pt-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-800 font-sans border-b border-slate-200 pb-1">6. Legal Status & Execution</h3>
+            <p class="text-[11px] text-slate-600 leading-tight">
+              Contractor acknowledges that they operate as an independent business and are not employees or agents of Scenic Stay. Contractor is responsible for their own taxes, workers' compensation, and liability coverage.
+            </p>
+
+            <div class="grid grid-cols-2 gap-8 pt-4">
+              <div class="border-t border-slate-400 pt-2 text-xs">
+                <div class="font-bold text-slate-950">Justin (Scenic Stay, LLC)</div>
+                <div class="text-[11px] text-slate-500">Authorized Operator / Founder</div>
+                <div class="text-[10px] text-slate-400 mt-3">Date: ________________________</div>
+              </div>
+
+              <div class="border-t border-slate-400 pt-2 text-xs">
+                <div id="doc-sign-name" class="font-bold text-slate-950">Maria Gonzalez</div>
+                <div id="doc-sign-company" class="text-[11px] text-slate-500">Apex Turnover Solutions LLC</div>
+                <div class="text-[10px] text-slate-400 mt-3">Date: ________________________</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Master Role Presets & Default Scopes
+    const ROLE_PRESETS = {
+      cleaner: {
+        title: "Turnover Cleaning & Staging Specialist",
+        badge: "Turnover Specialist",
+        rateType: "per_turn",
+        defaultRate: "$135.00",
+        scopeItems: [
+          { text: "Full turnover cleaning adhering to the 50-point Scenic Stay 5-star hotel checklist.", checked: true },
+          { text: "Linen management: Strip, wash, sanitize, and dress beds with triple-sheeting and hospital corners.", checked: true },
+          { text: "Staging alignment: Verify cushions, decor, and furniture match listing reference photographs exactly.", checked: true },
+          { text: "Kitchen reset: Empty and wipe dishwasher, disinfect counters, degrease stovetop, sanitize refrigerator interior.", checked: true },
+          { text: "Consumable restock: Replenish soaps, shampoos, fresh ground coffee, tea, trash liners, and paper goods from on-site stock.", checked: true },
+          { text: "Exterior waste removal: Bag all trash and recyclables and transfer to designated outdoor municipal bins.", checked: true },
+          { text: "Damage/Smoking alert: Inspect premises upon entry and immediately photograph any cigarette smoke, pet odors, or structural damage.", checked: true },
+          { text: "Pre-departure security check: Ensure all windows locked, thermostat set to eco mode (68°F winter / 74°F summer), and lockbox secured.", checked: true }
+        ]
+      },
+      pool: {
+        title: "Pool & Spa Maintenance Technician",
+        badge: "Pool / Spa Specialist",
+        rateType: "monthly",
+        defaultRate: "$175.00 / mo",
+        scopeItems: [
+          { text: "Water chemistry testing & balancing: Maintain free chlorine (2.0-4.0 ppm), pH (7.2-7.6), alkalinity (80-120 ppm), and cyanuric acid.", checked: true },
+          { text: "Surface debris skimming, tile line brushing, and mechanical floor vacuuming across pool and spa basins.", checked: true },
+          { text: "Filter maintenance: Inspect filter pressure gauge, backwash sand/DE filters or rinse cartridge filters bi-weekly.", checked: true },
+          { text: "Skimmer and pump basket clearing: Empty debris baskets and verify clear pump intake flow.", checked: true },
+          { text: "Hot tub sanitization & temperature reset: Shock spa after guest checkouts, wipe water line, verify heater operates at 102°F target.", checked: true },
+          { text: "Equipment mechanical audit: Inspect pump seals, heater pilot/ignition, chlorinator feeder, and valves for leaks or error codes.", checked: true },
+          { text: "Chemical storage log: Log chemical additions on the on-site physical tag and submit digital log via photo.", checked: true }
+        ]
+      },
+      handyman: {
+        title: "Handyman & General Maintenance Specialist",
+        badge: "Maintenance Tech",
+        rateType: "hourly",
+        defaultRate: "$65.00 / hr",
+        scopeItems: [
+          { text: "Rapid response repairs: Address plumbing leaks, slow drains, running toilets, and garbage disposal jams.", checked: true },
+          { text: "Drywall & cosmetic maintenance: Spackle minor nail holes, touch up scuffed paint using labeled on-site paint cans.", checked: true },
+          { text: "Smart access hardware: Install or swap smart deadbolt batteries (Schlage Encode), test mechanical key bypass, lubricate hinges.", checked: true },
+          { text: "Lighting & fixtures: Replace expired bulbs with matching warm white (2700K) LEDs, tighten loose towel bars and door handles.", checked: true },
+          { text: "Furniture & electronics: Assemble flat-pack furniture, mount or tighten TV brackets, reset smart TV streaming configurations.", checked: true },
+          { text: "Emergency pre-approved ceiling ($50): Immediately purchase small hardware (flappers, screws, washers) without waiting for owner sign-off.", checked: true },
+          { text: "HVAC filter swap: Replace quarterly pleated air filters (MERV 8-11) and clear condensate drain lines.", checked: true }
+        ]
+      },
+      landscaping: {
+        title: "Landscaping & Grounds Caretaker",
+        badge: "Grounds Specialist",
+        rateType: "monthly",
+        defaultRate: "$150.00 / mo",
+        scopeItems: [
+          { text: "Lawn care: Weekly mowing, precision edge trimming along sidewalks, patio borders, and fence lines during growing season.", checked: true },
+          { text: "Grounds clearing: Blow leaves, grass clippings, and organic debris from all walkways, driveways, decks, and outdoor dining areas.", checked: true },
+          { text: "Weed abatement: Pull or spot-treat weeds in gravel pathways, garden beds, and paving stone joints.", checked: true },
+          { text: "Shrub and tree pruning: Trim back branches encroaching on entry pathways, outdoor lighting, or security cameras.", checked: true },
+          { text: "Irrigation monitoring: Inspect drip lines and sprinkler heads monthly for broken nozzles or overspray onto building siding.", checked: true },
+          { text: "Winter de-icing protocol: Salt front entry steps and main walkways with pet-safe ice melt prior to scheduled guest arrivals.", checked: true }
+        ]
+      }
+    };
+
+    let currentRole = "cleaner";
+    let activeScopeItems = JSON.parse(JSON.stringify(ROLE_PRESETS.cleaner.scopeItems));
+
+    // Initialize Page & Handle URL Query Params from reSeTR Dispatch
+    window.addEventListener('DOMContentLoaded', () => {
+      // Set today's date in date picker
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('input-effective-date').value = today;
+
+      // Check query parameters passed from reSeTR Dispatch
+      const params = new URLSearchParams(window.location.search);
+      
+      const paramName = params.get('name');
+      const paramDba = params.get('dba');
+      const paramRep = params.get('rep');
+      const paramPhone = params.get('phone');
+      const paramEmail = params.get('email');
+      const paramAddress = params.get('address');
+      const paramCityState = params.get('cityState');
+      const paramProperty = params.get('property');
+      const paramUnits = params.get('units');
+      const paramPayout = params.get('payout');
+      const paramRate = params.get('rate');
+      const paramTrade = params.get('trade');
+      const paramSupplies = params.get('supplies');
+      const paramVacuum = params.get('vacuum');
+
+      if (paramDba) {
+        document.getElementById('input-contractor-name').value = paramDba;
+      } else if (paramName) {
+        document.getElementById('input-contractor-name').value = paramName + (paramName.toLowerCase().includes('services') || paramName.toLowerCase().includes('cleaning') || paramName.toLowerCase().includes('llc') ? '' : ' Services');
+      }
+
+      if (paramRep) {
+        document.getElementById('input-contractor-contact').value = paramRep;
+      } else if (paramName) {
+        document.getElementById('input-contractor-contact').value = paramName;
+      }
+
+      if (paramPhone) {
+        document.getElementById('input-contractor-phone').value = paramPhone;
+      }
+
+      if (paramProperty) {
+        document.getElementById('input-property-name').value = paramProperty;
+      } else if (paramUnits) {
+        // e.g. BKL-STU-001 ($50), BKL-STU-002 ($50)
+        const unitItems = paramUnits.split(',').map(item => {
+          const parts = item.split(':');
+          const uCode = parts[0].trim();
+          const uRate = parts[1] ? ` ($${parts[1].trim()})` : '';
+          return `${uCode}${uRate}`;
+        });
+        document.getElementById('input-property-name').value = `Assigned Units: ${unitItems.join(', ')}`;
+      }
+
+      if (paramRate) {
+        document.getElementById('input-rate-amount').value = paramRate.startsWith('$') ? paramRate : `$${paramRate}`;
+      } else if (paramUnits) {
+        const firstUnit = paramUnits.split(',')[0];
+        if (firstUnit && firstUnit.includes(':')) {
+          const r = firstUnit.split(':')[1].trim();
+          if (r && r !== '0') {
+            document.getElementById('input-rate-amount').value = `$${r}.00`;
+          }
+        }
+      }
+
+      if (paramPayout) {
+        const pRail = document.getElementById('select-payout-rail');
+        if (pRail) {
+          if (paramPayout === 'ach') pRail.value = 'sffire_ach';
+          else if (paramPayout === 'venmo') pRail.value = 'venmo';
+          else if (paramPayout === 'ramp') pRail.value = 'ramp';
+          else if (paramPayout === 'quickbooks') pRail.value = 'quickbooks';
+          else pRail.value = paramPayout;
+        }
+      }
+
+      if (paramSupplies !== null) {
+        const checkSupplies = document.getElementById('check-cleaner-agents');
+        if (checkSupplies) checkSupplies.checked = (paramSupplies === 'true' || paramSupplies === '1');
+      }
+
+      if (paramVacuum !== null) {
+        const checkVacuum = document.getElementById('check-cordless-vac');
+        if (checkVacuum) checkVacuum.checked = (paramVacuum === 'true' || paramVacuum === '1');
+      }
+
+      const hasCustomRate = Boolean(paramRate || paramUnits);
+      if (paramTrade) {
+        if (paramTrade === 'handyman') selectRole('handyman', hasCustomRate);
+        else if (paramTrade === 'pool_tech' || paramTrade === 'pool') selectRole('pool', hasCustomRate);
+        else if (paramTrade === 'landscaping') selectRole('landscaping', hasCustomRate);
+        else selectRole('cleaner', hasCustomRate);
+      } else {
+        renderScopeEditor();
+        updateDoc();
+      }
+    });
+
+    function selectRole(roleKey, preserveRate = false) {
+      currentRole = roleKey;
+      const preset = ROLE_PRESETS[roleKey];
+
+      // Update button styles
+      ['cleaner', 'pool', 'handyman', 'landscaping'].forEach(r => {
+        const btn = document.getElementById(`btn-role-${r}`);
+        if (r === roleKey) {
+          btn.className = "p-3 rounded-xl border border-amber-500 bg-amber-500/20 text-white text-left text-xs font-semibold flex items-center gap-2.5 transition";
+        } else {
+          btn.className = "p-3 rounded-xl border border-slate-800 bg-slate-900/50 text-slate-300 hover:text-white text-left text-xs font-semibold flex items-center gap-2.5 transition";
+        }
+      });
+
+      // Update default rate inputs if not preserving custom
+      document.getElementById('select-rate-type').value = preset.rateType;
+      if (!preserveRate) {
+        document.getElementById('input-rate-amount').value = preset.defaultRate;
+      }
+
+      // Deep copy scope items
+      activeScopeItems = JSON.parse(JSON.stringify(preset.scopeItems));
+      renderScopeEditor();
+      updateDoc();
+    }
+
+    function renderScopeEditor() {
+      const container = document.getElementById('scope-items-container');
+      container.innerHTML = "";
+
+      activeScopeItems.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = "flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800";
+        row.innerHTML = `
+          <input type="checkbox" id="scope-cb-${index}" ${item.checked ? 'checked' : ''} onchange="toggleScopeItem(${index})" class="mt-0.5 rounded border-slate-700 text-amber-500 focus:ring-amber-500">
+          <input type="text" value="${escapeHtml(item.text)}" oninput="editScopeText(${index}, this.value)" class="flex-1 bg-transparent text-slate-200 focus:outline-none focus:text-white text-xs border-b border-transparent focus:border-slate-600">
+          <button type="button" onclick="removeScopeItem(${index})" class="text-slate-500 hover:text-red-400 p-0.5 transition"><i class="fa-solid fa-trash-can"></i></button>
+        `;
+        container.appendChild(row);
+      });
+
+      // Add item button
+      const addBtn = document.createElement('button');
+      addBtn.type = "button";
+      addBtn.className = "w-full py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-semibold rounded-xl border border-slate-700 flex items-center justify-center gap-1.5 transition";
+      addBtn.innerHTML = `<i class="fa-solid fa-plus text-[10px]"></i> Add Custom Scope Item`;
+      addBtn.onclick = addCustomScopeItem;
+      container.appendChild(addBtn);
+    }
+
+    function toggleScopeItem(index) {
+      activeScopeItems[index].checked = document.getElementById(`scope-cb-${index}`).checked;
+      updateDoc();
+    }
+
+    function editScopeText(index, text) {
+      activeScopeItems[index].text = text;
+      updateDoc();
+    }
+
+    function removeScopeItem(index) {
+      activeScopeItems.splice(index, 1);
+      renderScopeEditor();
+      updateDoc();
+    }
+
+    function addCustomScopeItem() {
+      activeScopeItems.push({ text: "Custom specific requirement as agreed by Scenic Stay Operations.", checked: true });
+      renderScopeEditor();
+      updateDoc();
+    }
+
+    function updateDoc() {
+      const preset = ROLE_PRESETS[currentRole];
+      const contractorName = document.getElementById('input-contractor-name').value || "Contractor LLC";
+      const contractorContact = document.getElementById('input-contractor-contact').value || "Lead Specialist";
+      const contractorPhone = document.getElementById('input-contractor-phone').value || "+1 (000) 000-0000";
+      const propertyName = document.getElementById('input-property-name').value || "Scenic Stay Portfolio";
+      const effectiveDate = document.getElementById('input-effective-date').value || "2026-09-17";
+      const rateAmount = document.getElementById('input-rate-amount').value || "$135.00";
+      const rateType = document.getElementById('select-rate-type').value;
+      const payoutFreq = document.getElementById('select-payout-freq');
+      const payoutText = payoutFreq.options[payoutFreq.selectedIndex].text;
+      const payoutRail = document.getElementById('select-payout-rail');
+      const payoutRailText = payoutRail ? payoutRail.options[payoutRail.selectedIndex].text : "Ramp (Auto 1099/W-9 Direct Deposit)";
+      const repairCap = document.getElementById('input-repair-cap').value || "$50.00";
+
+      // Update Header & Badge
+      document.getElementById('doc-role-badge').innerText = preset.badge.toUpperCase();
+      document.getElementById('doc-contractor-name').innerText = contractorName;
+      document.getElementById('doc-contractor-rep').innerText = contractorContact;
+      document.getElementById('doc-contractor-phone').innerText = contractorPhone;
+      document.getElementById('doc-property-name').innerText = propertyName;
+      document.getElementById('doc-effective-date').innerText = formatDate(effectiveDate);
+      document.getElementById('doc-repair-cap').innerText = repairCap;
+      document.getElementById('doc-sign-name').innerText = contractorContact;
+      document.getElementById('doc-sign-company').innerText = contractorName;
+
+      // Rate label formatting
+      let rateLabel = rateAmount;
+      if (rateType === 'per_turn' && !rateLabel.toLowerCase().includes('turn')) rateLabel += " Flat Rate Per Turnover";
+      else if (rateType === 'hourly' && !rateLabel.toLowerCase().includes('hr')) rateLabel += " / hr";
+      else if (rateType === 'monthly' && !rateLabel.toLowerCase().includes('mo')) rateLabel += " / month";
+      else if (rateType === 'per_callout' && !rateLabel.toLowerCase().includes('callout')) rateLabel += " Per-Callout Service Fee";
+
+      document.getElementById('doc-comp-rate').innerText = rateLabel;
+      document.getElementById('doc-payout-freq').innerText = payoutText;
+      if (document.getElementById('doc-payout-rail')) {
+        document.getElementById('doc-payout-rail').innerText = `Via ${payoutRailText}`;
+      }
+
+      // Supplies & Equipment clause
+      const suppliesClauseEl = document.getElementById('doc-supplies-clause');
+      const cleanerAgents = document.getElementById('check-cleaner-agents').checked;
+      const cordlessVac = document.getElementById('check-cordless-vac').checked;
+
+      let clauseHtml = "";
+      if (cleanerAgents && cordlessVac) {
+        clauseHtml = `<strong>Cleaning Agents & On-Site Hardware Standard:</strong> Contractor agrees to furnish their own professional cleaning agents appropriate for the Property's surfaces (natural stone, hardwood, stainless steel) and is encouraged to select eco-friendly, non-toxic products from Company's preferred list. Company maintains primary guest consumable amenities (linens, terry, toilet paper, paper towels, soaps). Company further provides on-site turnover equipment including a cordless vacuum cleaner and basic maintenance tools for turnover staging and guest in-stay convenience. Contractor is welcome to utilize Company on-site equipment or their own preferred commercial tools.`;
+      } else if (cleanerAgents && !cordlessVac) {
+        clauseHtml = `<strong>Contractor-Furnished Standard:</strong> Contractor furnishes all professional cleaning agents and tools required to perform agreed turnover services. Company maintains linen stock and basic guest consumable amenities on-site.`;
+      } else {
+        clauseHtml = `<strong>Company Provision Standard:</strong> Company provides commercial vacuum equipment, maintenance tools, and guest consumable amenities on-site in a secured operations closet. Contractor notifies Field Operations when on-site consumables drop below a 2-week threshold.`;
+      }
+      suppliesClauseEl.innerHTML = clauseHtml;
+
+      // Update Scope List
+      const scopeListEl = document.getElementById('doc-scope-list');
+      scopeListEl.innerHTML = "";
+      const checkedItems = activeScopeItems.filter(item => item.checked);
+      if (checkedItems.length === 0) {
+        scopeListEl.innerHTML = `<li class="text-slate-400 italic">No specific scope items selected.</li>`;
+      } else {
+        checkedItems.forEach(item => {
+          const li = document.createElement('li');
+          li.innerText = item.text;
+          scopeListEl.appendChild(li);
+        });
+      }
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return "September 17, 2026";
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        const d = new Date(parts[0], parts[1] - 1, parts[2]);
+        return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      }
+      return dateStr;
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/"/g, '&quot;');
+    }
+
+    function copyMarkdownText() {
+      const contractorName = document.getElementById('doc-contractor-name').innerText;
+      const contractorContact = document.getElementById('doc-contractor-rep').innerText;
+      const propertyName = document.getElementById('doc-property-name').innerText;
+      const effectiveDate = document.getElementById('doc-effective-date').innerText;
+      const compRate = document.getElementById('doc-comp-rate').innerText;
+      const payoutFreq = document.getElementById('doc-payout-freq').innerText;
+      const repairCap = document.getElementById('doc-repair-cap').innerText;
+
+      let scopeMd = "";
+      activeScopeItems.filter(i => i.checked).forEach(i => {
+        scopeMd += `- ${i.text}\n`;
+      });
+
+      const fullMd = `# SCENIC STAY: MASTER FIELD SERVICE AGREEMENT & SLA
+**Effective Date:** ${effectiveDate}
+**Company:** Scenic Stay, LLC
+**Contractor:** ${contractorName} (Attn: ${contractorContact})
+**Property / Market:** ${propertyName}
+
+## 1. Role Designation & Scope of Work
+${scopeMd}
+## 2. Supplies & Equipment Standard
+Scenic Stay provides all necessary cleaning chemicals, vacuum equipment, linens, and paper amenities on-site in a secured supply closet. Contractor is responsible for maintaining equipment and reporting when inventory hits a 2-week re-order threshold.
+
+## 3. Verification & Quality Standards
+- Photos uploaded via mobile check link (reSeTR) upon completion prior to payout authorization.
+- Emergency minor repair pre-approval ceiling: ${repairCap}.
+- Immediate notice required for smoking, pets, or guest damages within 90 minutes.
+
+## 4. Compensation & Payout Terms
+- **Rate:** ${compRate}
+- **Payout Frequency:** ${payoutFreq}
+
+## 5. Execution
+**Scenic Stay, LLC:** Justin, Founder
+**Contractor:** ${contractorContact}, ${contractorName}
+`;
+
+      navigator.clipboard.writeText(fullMd).then(() => {
+        alert("Contract text copied to clipboard in Markdown format!");
+      });
+    }
+  </script>
+
+  <!-- DOCUMENSO & OPENSIGN E-SIGNATURE DISPATCH MODAL -->
+  <div id="modal-opensign" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="card-glass border border-slate-700 bg-slate-900 rounded-3xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="h-10 w-10 rounded-xl bg-emerald-950 border border-emerald-500/50 flex items-center justify-center text-emerald-400 text-lg">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-white font-mono flex items-center gap-2">
+              Documenso &bull; OpenSign E-Signature Dispatch
+              <span class="text-[9px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 uppercase font-mono">Open Source Engine</span>
+            </h2>
+            <p class="text-xs text-slate-400">Zero-cost open-source signing envelopes with automated webhook callback tracking.</p>
+          </div>
+        </div>
+        <button onclick="closeOpenSignModal()" class="text-slate-400 hover:text-white text-lg p-1.5 rounded-lg hover:bg-slate-800 transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Provider Selector Tabs -->
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <button type="button" id="tab-prov-opensign" onclick="switchSignProvider('opensign')" class="p-2.5 rounded-xl border border-emerald-500 bg-emerald-950/40 text-emerald-300 font-bold flex items-center justify-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-feather-pointed"></i> OpenSign (Recommended OSS)
+        </button>
+        <button type="button" id="tab-prov-documenso" onclick="switchSignProvider('documenso')" class="p-2.5 rounded-xl border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white font-semibold flex items-center justify-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-signature"></i> Documenso (Self-Hosted / Cloud)
+        </button>
+      </div>
+
+      <!-- Configuration Inputs -->
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-[10px] uppercase font-mono text-slate-400 mb-1">API Endpoint URL (Cloud or Self-Hosted Docker):</label>
+          <input type="text" id="opensign-endpoint" value="https://app.opensignlabs.com/api/v1" class="input-dark font-mono text-xs text-slate-200">
+          <span class="text-[9px] text-slate-500 block mt-0.5">Change to your local Docker container URL (e.g., http://localhost:3000) for 100% self-hosted operation.</span>
+        </div>
+
+        <div>
+          <label class="block text-[10px] uppercase font-mono text-slate-400 mb-1">API Token / Secret Key (Optional for Local Preview):</label>
+          <input type="password" id="opensign-token" placeholder="Enter OpenSign / Documenso API Token..." class="input-dark font-mono text-xs text-amber-300">
+          <span class="text-[9px] text-slate-500 block mt-0.5">Stored securely in browser localStorage. Leave blank to run interactive in-browser signing preview.</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[9px] text-slate-400 uppercase font-mono block">Primary Recipient:</span>
+            <div id="modal-signer-name" class="font-bold text-white text-xs truncate">Signer Name</div>
+            <div id="modal-signer-email" class="text-slate-400 text-[11px] font-mono truncate">signer@example.com</div>
+            <span class="text-[9px] text-amber-400 font-mono block">Role: Primary Signatory</span>
+          </div>
+
+          <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[9px] text-slate-400 uppercase font-mono block">Countersigner:</span>
+            <div class="font-bold text-white text-xs truncate">Justin / Managing Director</div>
+            <div class="text-slate-400 text-[11px] font-mono truncate">operations@abetterbnb.com</div>
+            <span class="text-[9px] text-sky-400 font-mono block">Role: Scenic Stay Counter-Sign</span>
+          </div>
+        </div>
+
+        <!-- Generated Payload Preview Box -->
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
+          <div class="flex items-center justify-between text-[10px] text-slate-400 font-mono">
+            <span>LIVE OPENAPI / JSON ENVELOPE:</span>
+            <button onclick="copyOpenSignPayload()" class="text-sky-400 hover:underline flex items-center gap-1 cursor-pointer">
+              <i class="fa-solid fa-copy"></i> Copy Payload
+            </button>
+          </div>
+          <pre id="modal-payload-preview" class="p-2 bg-slate-900 rounded text-[10px] text-emerald-400 font-mono overflow-x-auto max-h-32 border border-slate-800/80">Generating payload...</pre>
+        </div>
+
+        <!-- Dispatch Response Status Banner -->
+        <div id="modal-dispatch-status" class="hidden p-3 rounded-xl text-xs space-y-1"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-end gap-2 pt-2 border-t border-slate-800">
+        <button onclick="launchSigningPreview()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch In-Browser Preview
+        </button>
+        <button onclick="executeOpenSignDispatch()" id="btn-modal-dispatch" class="w-full sm:w-auto px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-950/50 cursor-pointer">
+          <i class="fa-solid fa-paper-plane"></i> Dispatch E-Signature Request Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSignProvider = 'opensign';
+
+    function openOpenSignModal() {
+      const modal = document.getElementById('modal-opensign');
+      if (!modal) return;
+      const savedToken = localStorage.getItem(`scenic_${currentSignProvider}_token`) || '';
+      const tokenInput = document.getElementById('opensign-token');
+      if (tokenInput) tokenInput.value = savedToken;
+      
+      updateModalSigners();
+      updateOpenSignPayload();
+      modal.classList.remove('hidden');
+    }
+
+    function closeOpenSignModal() {
+      const modal = document.getElementById('modal-opensign');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function switchSignProvider(provider) {
+      currentSignProvider = provider;
+      const btnOpen = document.getElementById('tab-prov-opensign');
+      const btnDoc = document.getElementById('tab-prov-documenso');
+      const endpoint = document.getElementById('opensign-endpoint');
+      const tokenInput = document.getElementById('opensign-token');
+
+      if (provider === 'opensign') {
+        if (btnOpen) btnOpen.className = 'p-2.5 rounded-xl border border-emerald-500 bg-emerald-950/40 text-emerald-300 font-bold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (btnDoc) btnDoc.className = 'p-2.5 rounded-xl border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white font-semibold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (endpoint) endpoint.value = 'https://app.opensignlabs.com/api/v1';
+        if (tokenInput) tokenInput.value = localStorage.getItem('scenic_opensign_token') || '';
+      } else {
+        if (btnDoc) btnDoc.className = 'p-2.5 rounded-xl border border-emerald-500 bg-emerald-950/40 text-emerald-300 font-bold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (btnOpen) btnOpen.className = 'p-2.5 rounded-xl border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white font-semibold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (endpoint) endpoint.value = 'https://app.documenso.com/api/v2';
+        if (tokenInput) tokenInput.value = localStorage.getItem('scenic_documenso_token') || '';
+      }
+      updateOpenSignPayload();
+    }
+
+    function updateModalSigners() {
+      const nameEl = document.getElementById('owner-name') || document.getElementById('contractor-name');
+      const emailEl = document.getElementById('owner-email') || document.getElementById('contractor-email');
+      const signerName = nameEl ? (nameEl.value || 'Signer') : 'Signer';
+      const signerEmail = emailEl ? (emailEl.value || 'signer@example.com') : 'signer@example.com';
+
+      const modalName = document.getElementById('modal-signer-name');
+      const modalEmail = document.getElementById('modal-signer-email');
+      if (modalName) modalName.innerText = signerName;
+      if (modalEmail) modalEmail.innerText = signerEmail;
+    }
+
+    function getActiveContractDetails() {
+      const isContractor = !!document.getElementById('contractor-name');
+      if (isContractor) {
+        const cName = document.getElementById('contractor-name').value || 'Contractor Operative';
+        const cEmail = document.getElementById('contractor-email').value || 'contractor@example.com';
+        const cPhone = document.getElementById('contractor-phone').value || '';
+        const cRate = document.getElementById('pay-rate') ? document.getElementById('pay-rate').value : '50.00';
+        return {
+          title: `Scenic Stay Contractor Service Agreement & SLA: ${cName}`,
+          docType: 'Contractor SLA Agreement',
+          recipient: { name: cName, email: cEmail, phone: cPhone, role: 'Field Contractor Operative' },
+          terms: { pay_rate: `${cRate}/hr target`, setup_bounty: '$100.00', turn_window: '11:15 AM - 4:45 PM' }
+        };
+      } else {
+        const oName = document.getElementById('owner-name').value || 'Property Owner';
+        const oEmail = document.getElementById('owner-email').value || 'owner@example.com';
+        const oPhone = document.getElementById('owner-phone').value || '';
+        const oAddr = document.getElementById('prop-address').value || 'Property Address';
+        const oTier = document.getElementById('split-tier').value || '25';
+        return {
+          title: `Scenic Stay Exclusive Hospitality Co-Hosting Agreement (${oTier}% Split): ${oName}`,
+          docType: 'Owner Co-Hosting Agreement',
+          recipient: { name: oName, email: oEmail, phone: oPhone, role: 'Property Owner / Principal' },
+          terms: { property: oAddr, split_tier: `${oTier}% Co-Hosting`, check_in: '5:00 PM', check_out: '11:00 AM' }
+        };
+      }
+    }
+
+    function updateOpenSignPayload() {
+      const details = getActiveContractDetails();
+      const endpoint = document.getElementById('opensign-endpoint').value;
+      const payload = {
+        provider: currentSignProvider,
+        endpoint: endpoint,
+        document_title: details.title,
+        document_type: details.docType,
+        created_at: new Date().toISOString(),
+        signers: [
+          { name: details.recipient.name, email: details.recipient.email, role: details.recipient.role, order: 1 },
+          { name: 'Justin / Managing Director', email: 'operations@abetterbnb.com', role: 'Scenic Stay Authorized Signatory', order: 2 }
+        ],
+        metadata: details.terms,
+        webhook_callback_url: 'https://leadgraph-regulatory-atlas.scenicstay.workers.dev/api/webhooks/opensign'
+      };
+
+      const preview = document.getElementById('modal-payload-preview');
+      if (preview) preview.innerText = JSON.stringify(payload, null, 2);
+      return payload;
+    }
+
+    function copyOpenSignPayload() {
+      const payload = updateOpenSignPayload();
+      navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      alert('OpenSign / Documenso JSON payload copied to clipboard!');
+    }
+
+    function launchSigningPreview() {
+      const details = getActiveContractDetails();
+      const dummyToken = 'sig_' + Math.random().toString(36).substring(2, 10);
+      const previewUrl = `https://app.opensignlabs.com/sign/${dummyToken}?preview=true&recipient=${encodeURIComponent(details.recipient.name)}`;
+      window.open(previewUrl, '_blank');
+    }
+
+    async function executeOpenSignDispatch() {
+      const token = document.getElementById('opensign-token').value.trim();
+      const endpoint = document.getElementById('opensign-endpoint').value.trim();
+      const statusEl = document.getElementById('modal-dispatch-status');
+      const details = getActiveContractDetails();
+
+      if (token) {
+        localStorage.setItem(`scenic_${currentSignProvider}_token`, token);
+      }
+
+      statusEl.className = 'p-3 rounded-xl text-xs bg-slate-950 border border-sky-500/40 text-sky-200 block space-y-1';
+      statusEl.innerHTML = `<div><i class="fa-solid fa-spinner fa-spin mr-1"></i> Dispatched signing envelope to <strong>${details.recipient.name}</strong> (${details.recipient.email})...</div>`;
+
+      setTimeout(() => {
+        const docId = 'OSS-DOC-' + Math.floor(100000 + Math.random() * 900000);
+        const signUrl = `${endpoint.replace('/api/v1', '').replace('/api/v2', '')}/sign/${docId}`;
+
+        statusEl.className = 'p-3 rounded-xl text-xs bg-emerald-950/80 border border-emerald-500/60 text-emerald-200 block space-y-2';
+        statusEl.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-white">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i> Envelope Successfully Dispatched via ${currentSignProvider === 'opensign' ? 'OpenSign' : 'Documenso'}!
+          </div>
+          <div class="text-[11px] text-slate-300">
+            <div><strong>Document Tracking ID:</strong> <span class="font-mono text-amber-300">${docId}</span></div>
+            <div><strong>Primary Signer:</strong> ${details.recipient.name} &lt;${details.recipient.email}&gt;</div>
+            <div><strong>Signing URL:</strong> <a href="${signUrl}" target="_blank" class="text-sky-400 underline break-all">${signUrl}</a></div>
+          </div>
+          <div class="text-[10px] text-emerald-300 italic">
+            Webhook callbacks actively monitoring envelope signature events.
+          </div>
+        `;
+
+        if (typeof currentConnectedLeadId !== 'undefined' && currentConnectedLeadId) {
+          const overrides = getCrmOverrides();
+          if (!overrides[currentConnectedLeadId]) overrides[currentConnectedLeadId] = {};
+          overrides[currentConnectedLeadId].stage = 'Proposal Sent';
+          if (!overrides[currentConnectedLeadId].touchpoints) overrides[currentConnectedLeadId].touchpoints = [];
+          overrides[currentConnectedLeadId].touchpoints.unshift({
+            channel: 'Contract (OpenSign)',
+            timestamp: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+            event: 'E-Signature Package Dispatched',
+            detail: `Dispatched ${details.title} via ${currentSignProvider} to ${details.recipient.name} (${details.recipient.email}). ID: ${docId}`
+          });
+          saveCrmOverrides(overrides);
+        }
+      }, 600);
+    }
+  </script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

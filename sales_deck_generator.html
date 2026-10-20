@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Better BNB  -  Sales Collateral & Proposal Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+    :root {
+      --brand-navy: #00162f;
+      --brand-gold: #b06b17;
+      --brand-cream: #fbf6ef;
+      --brand-charcoal: #24282d;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0b1320;
+      color: #e2e8f0;
+    }
+    h1, h2, h3, .serif-font {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+    .card-glass { background: #131d2e; border: 1px solid #1e2d42; }
+    .card-glass:hover { border-color: #334155; }
+    .input-dark {
+      background-color: #0d1524;
+      border: 1px solid #1e2d42;
+      color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .input-dark:focus {
+      outline: none;
+      border-color: #b06b17;
+    }
+
+    /* Print / PDF Document Canvas */
+    .document-canvas {
+      background-color: #fbf6ef;
+      color: #24282d;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    .document-canvas h1, .document-canvas h2, .document-canvas h3, .document-canvas .doc-serif {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: #00162f;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .document-canvas {
+        box-shadow: none !important;
+        border: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+      }
+      @page {
+        margin: 1.2cm;
+        size: letter portrait;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
+
+  <div class="max-w-7xl mx-auto w-full space-y-6">
+
+    <!-- Header (no-print) -->
+    <header class="card-glass rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-amber-500 no-print">
+      <div class="flex items-center space-x-3">
+        <div class="h-10 w-10 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center font-bold text-xl border border-amber-500/40">
+          <i class="fa-solid fa-file-powerpoint"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl md:text-2xl font-bold text-white tracking-wide">A BETTER BNB <span class="text-xs text-amber-400 font-sans tracking-widest uppercase ml-2 px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/80">Design Studio</span></h1>
+          </div>
+          <p class="text-xs text-slate-400 mt-0.5 font-sans">Brand Standards &bull; Boutique Hotel Proposals &bull; Owner Co-Hosting Sheets &bull; Print to PDF</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <button onclick="window.print()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow-lg flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-print"></i> Print / Save PDF
+        </button>
+        <button onclick="copyDocMarkdown()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-copy"></i> Copy Copy
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: CONTROLS & TEMPLATE SELECTOR (no-print) (4 cols) -->
+      <div class="lg:col-span-4 space-y-6 no-print">
+
+        <!-- Template Selector -->
+        <div class="card-glass p-5 rounded-2xl space-y-3 border-t-2 border-t-amber-500">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+            <i class="fa-solid fa-layer-group"></i> 1. Select Collateral Type
+          </h2>
+          <div class="space-y-2 text-xs">
+            <label class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center gap-3 cursor-pointer hover:border-amber-500/50">
+              <input type="radio" name="doc-template" value="boutique_proposal" checked onchange="changeTemplate(this.value)" class="text-amber-500">
+              <div>
+                <div class="font-bold text-white">Boutique Hotel Partnership Proposal</div>
+                <div class="text-[10px] text-slate-400">OTA recapture, Airbnb distribution, captive Wi-Fi</div>
+              </div>
+            </label>
+
+            <label class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center gap-3 cursor-pointer hover:border-amber-500/50">
+              <input type="radio" name="doc-template" value="owner_cohosting" onchange="changeTemplate(this.value)" class="text-amber-500">
+              <div>
+                <div class="font-bold text-white">Residential STR Co-Hosting Overview</div>
+                <div class="text-[10px] text-slate-400">20-25% fee, direct payout, hands-off operations</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Brand Profile Toggle -->
+        <div class="card-glass p-5 rounded-2xl space-y-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+            <i class="fa-solid fa-building-flag"></i> 2. Brand Surface & Audience
+          </h2>
+          <div>
+            <label class="block text-slate-400 mb-1 font-semibold text-xs">Publishing Brand Profile:</label>
+            <select id="brand-selector" onchange="renderDocument()" class="input-dark font-bold text-amber-400">
+              <option value="abetterbnb" selected>A Better BNB (New Sales Default • abetterbnb.com)</option>
+              <option value="scenicstay">Scenic Stay (Current Partners & Grandfathered Owners • abetterbnb.com)</option>
+            </select>
+            <p class="text-[10px] text-slate-400 mt-1">Default is A Better BNB for sales; toggle to Scenic Stay for existing property owners.</p>
+          </div>
+        </div>
+
+        <!-- Customization Fields & Fee Tiers -->
+        <div class="card-glass p-5 rounded-2xl space-y-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+            <i class="fa-solid fa-sliders"></i> 3. Target Property & Terms
+          </h2>
+          <div class="space-y-2 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-0.5 font-semibold">Recipient / General Manager Name:</label>
+              <input type="text" id="input-recipient-name" value="Marcus Vance, General Manager" oninput="renderDocument()" class="input-dark">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-0.5 font-semibold">Property Name:</label>
+              <input type="text" id="input-property-name" value="Paso Robles Vineyard & Garden Suites" oninput="renderDocument()" class="input-dark font-bold text-amber-400">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-0.5 font-semibold">Location / Metro:</label>
+              <input type="text" id="input-location" value="Paso Robles, CA" oninput="renderDocument()" class="input-dark">
+            </div>
+
+            <!-- Agreement Fee Tier Selector -->
+            <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-800 space-y-2">
+              <label class="block text-slate-300 font-semibold">Co-Hosting Agreement Fee Tier:</label>
+              <div class="grid grid-cols-2 gap-2">
+                <select id="fee-tier-select" onchange="handleFeeTierChange(this.value)" class="input-dark font-bold text-amber-400">
+                  <option value="15%">15% (Essential)</option>
+                  <option value="20%" selected>20% (Standard)</option>
+                  <option value="25%">25% (Full-Service)</option>
+                  <option value="30%">30% (White-Glove)</option>
+                  <option value="custom">Wildcard (Negotiated)</option>
+                </select>
+                <input type="text" id="input-custom-fee" value="22.5%" oninput="renderDocument()" placeholder="Custom %" class="input-dark hidden font-bold text-amber-300">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-400 mb-0.5 font-semibold">Contract Exit Term:</label>
+                <input type="text" id="input-exit-term" value="60-Day Written Exit" oninput="renderDocument()" class="input-dark font-semibold text-white">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-0.5 font-semibold">Current OTA Fee:</label>
+                <input type="text" id="input-ota-fee" value="18% - 22%" oninput="renderDocument()" class="input-dark">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: LIVE PRINT-READY CANVAS (8 cols) -->
+      <div class="lg:col-span-8">
+        <div id="document-render-canvas" class="document-canvas rounded-2xl p-8 md:p-12 space-y-8 border border-amber-900/20 transition-all">
+          <!-- Dynamic Content Rendered Here via JS -->
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    let currentTemplate = 'boutique_proposal';
+
+    function changeTemplate(val) {
+      currentTemplate = val;
+      renderDocument();
+    }
+
+    function handleFeeTierChange(val) {
+      const customInput = document.getElementById('input-custom-fee');
+      if (val === 'custom') {
+        customInput.classList.remove('hidden');
+      } else {
+        customInput.classList.add('hidden');
+      }
+      renderDocument();
+    }
+
+    function renderDocument() {
+      const recipient = document.getElementById('input-recipient-name').value || "Property Leader";
+      const propName = document.getElementById('input-property-name').value || "Target Property";
+      const location = document.getElementById('input-location').value || "California";
+      const unitCount = document.getElementById('input-unit-count') ? document.getElementById('input-unit-count').value : "All Suites";
+      const otaFee = document.getElementById('input-ota-fee').value || "18% - 22%";
+      const exitTerm = document.getElementById('input-exit-term').value || "60-Day Written Exit";
+
+      const brandKey = document.getElementById('brand-selector').value;
+      const isABetterBNB = brandKey === 'abetterbnb';
+      const brandTitle = isABetterBNB ? "A BETTER BNB" : "SCENIC STAY";
+      const brandTagline = isABetterBNB ? "A Division of Scenic Stay &bull; abetterbnb.com" : "Boutique Hospitality & Property Co-Hosting &bull; abetterbnb.com";
+      const brandEmail = isABetterBNB ? "justin@abetterbnb.com" : "justin@abetterbnb.com";
+
+      const feeSelect = document.getElementById('fee-tier-select').value;
+      const activeFee = feeSelect === 'custom' ? (document.getElementById('input-custom-fee').value || '20%') : feeSelect;
+
+      const container = document.getElementById('document-render-canvas');
+
+      if (currentTemplate === 'boutique_proposal') {
+        container.innerHTML = `
+          <!-- Header Bar -->
+          <div class="flex items-center justify-between border-b-2 border-[#b06b17]/40 pb-6">
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.25em] font-bold text-[#b06b17]">Executive Partnership Brief</div>
+              <h1 class="text-2xl md:text-3xl font-bold mt-1 text-[#00162f]">${brandTitle}</h1>
+              <div class="text-xs text-[#24282d]/70 font-medium">${brandTagline}</div>
+            </div>
+            <div class="text-right text-xs text-[#24282d]/80">
+              <div class="font-bold text-[#00162f]">Prepared Exclusively For:</div>
+              <div class="font-medium">${recipient}</div>
+              <div class="text-[11px] text-[#b06b17] font-semibold">${propName}</div>
+              <div class="text-[10px] text-[#24282d]/60">${location} &bull; September 2026</div>
+            </div>
+          </div>
+
+          <!-- Hero Callout -->
+          <div class="bg-[#ffffff] p-6 rounded-xl border border-[#b06b17]/30 shadow-sm space-y-2">
+            <h2 class="text-lg md:text-xl font-bold text-[#00162f]">Recapturing High-Yield Leisure ADR & Slashing OTA Rent-Seeking</h2>
+            <p class="text-xs text-[#24282d] leading-relaxed">
+              Independent boutique hotels routinely forfeit <strong>${otaFee}</strong> of gross lodging revenue to legacy online travel agencies (Expedia, Booking.com) while remaining invisible to high-intent leisure guests and autonomous AI agents. <strong>${brandTitle}</strong> partners with premier independent properties like <strong>${propName}</strong> to capture premium weekend ADR on Airbnb and convert one-time visitors into permanent direct bookers.
+            </p>
+          </div>
+
+          <!-- 3 Value Pillars -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-2">
+              <div class="h-8 w-8 rounded-lg bg-[#b06b17]/10 text-[#b06b17] flex items-center justify-center font-bold text-sm">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="font-bold text-[#00162f] text-sm">1. Exclusive AI & Agentic Co-Hosting</div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                Keep your existing team and on-site staff. We serve as your exclusive AI co-host, distributing select suites (${unitCount}) across autonomous AI booking agents (Stayker, ChatGPT, Claude) and corporate GDS networks (Duffel) to capture high-ADR travelers legacy OTAs miss.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-2">
+              <div class="h-8 w-8 rounded-lg bg-[#00162f]/10 text-[#00162f] flex items-center justify-center font-bold text-sm">
+                <i class="fa-solid fa-wifi"></i>
+              </div>
+              <div class="font-bold text-[#00162f] text-sm">2. Captive Wi-Fi Guest Capture</div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                Our bespoke micro-gateway captive portal captures verified guest emails and mobile numbers on arrival, creating your private direct-booking marketing asset.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-2">
+              <div class="h-8 w-8 rounded-lg bg-[#10b981]/10 text-[#10b981] flex items-center justify-center font-bold text-sm">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+              <div class="font-bold text-[#00162f] text-sm">3. Aligned Performance Pricing</div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                Zero upfront software setup or SaaS seat tax. We operate strictly on a transparent ${activeFee} performance co-hosting model that drives net RevPAR expansion.
+              </p>
+            </div>
+          </div>
+
+          <!-- Financial Comparison Table -->
+          <div class="space-y-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#00162f] flex items-center gap-2">
+              <i class="fa-solid fa-scale-balanced text-[#b06b17]"></i> Financial & Distribution Architecture
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs bg-[#ffffff] rounded-xl border border-[#00162f]/10 overflow-hidden">
+                <thead class="bg-[#00162f] text-white text-[11px] uppercase tracking-wider">
+                  <tr>
+                    <th class="p-3 font-semibold">Distribution Rail</th>
+                    <th class="p-3 font-semibold">Effective Cost</th>
+                    <th class="p-3 font-semibold">Guest Identity & Retargeting</th>
+                    <th class="p-3 font-semibold">Net Property Impact</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-[#24282d]">
+                  <tr>
+                    <td class="p-3 font-bold text-[#00162f]">Legacy OTAs (Expedia / Booking)</td>
+                    <td class="p-3 text-red-600 font-bold">18%  -  25%</td>
+                    <td class="p-3 text-slate-500">Masked Relays (Zero CRM data)</td>
+                    <td class="p-3 text-slate-600">Heavy margin erosion; zero repeat retention</td>
+                  </tr>
+                  <tr class="bg-[#fbf6ef]/60">
+                    <td class="p-3 font-bold text-[#b06b17]">${brandTitle} Co-Hosting + Direct</td>
+                    <td class="p-3 text-emerald-700 font-bold">${activeFee} Performance Split</td>
+                    <td class="p-3 text-emerald-700 font-bold">100% Owned by Property</td>
+                    <td class="p-3 font-semibold text-[#00162f]">Higher net ADR + permanent direct booking pipeline</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Next Steps & Signature Block -->
+          <div class="border-t-2 border-[#b06b17]/30 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div>
+              <div class="font-bold text-[#00162f]">Ready to Pilot 2 - 3 Suites?</div>
+              <div class="text-[#24282d]/70 text-[11px]">Justin, Founder &bull; ${brandTitle} &bull; ${brandEmail}</div>
+              <div class="text-[10px] text-[#b06b17] font-semibold mt-0.5">${exitTerm} &bull; Zero Long-Term Lock-In</div>
+            </div>
+            <div class="px-5 py-2.5 bg-[#00162f] text-white font-bold rounded-xl text-center shadow cursor-pointer">
+              Schedule 10-Minute Pilot Walkthrough
+            </div>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <!-- Header Bar -->
+          <div class="flex items-center justify-between border-b-2 border-[#b06b17]/40 pb-6">
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.25em] font-bold text-[#b06b17]">Owner Services & Operating Standard</div>
+              <h1 class="text-2xl md:text-3xl font-bold mt-1 text-[#00162f]">${brandTitle}</h1>
+              <div class="text-xs text-[#24282d]/70 font-medium">${brandTagline}</div>
+            </div>
+            <div class="text-right text-xs text-[#24282d]/80">
+              <div class="font-bold text-[#00162f]">Owner Briefing For:</div>
+              <div class="font-medium">${recipient}</div>
+              <div class="text-[11px] text-[#b06b17] font-semibold">${propName}</div>
+              <div class="text-[10px] text-[#24282d]/60">${location} &bull; September 2026</div>
+            </div>
+          </div>
+
+          <!-- Hero Callout -->
+          <div class="bg-[#ffffff] p-6 rounded-xl border border-[#b06b17]/30 shadow-sm space-y-2">
+            <h2 class="text-lg md:text-xl font-bold text-[#00162f]">Hands-Off Short-Term Rental Stewardship & Superior Net Yield</h2>
+            <p class="text-xs text-[#24282d] leading-relaxed">
+              Operating a high-performing short-term rental demands proactive rate setting, rapid guest communication, meticulous turnover quality control, and strict asset care. <strong>${brandTitle}</strong> delivers full-service co-hosting with complete operational transparency: you maintain full calendar oversight, retain direct lodging deposits into your bank account, and operate under a balanced <strong>${exitTerm}</strong>.
+            </p>
+          </div>
+
+          <!-- 4 Core Pillars -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-1.5">
+              <div class="font-bold text-[#00162f] text-sm flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-[#b06b17]"></i> Algorithmic Yield & Pricing Optimization
+              </div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                Dynamic daily rate calibration tuned to regional market compression, local event spikes, and strict baseline floor protection to maximize net annual revenue.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-1.5">
+              <div class="font-bold text-[#00162f] text-sm flex items-center gap-2">
+                <i class="fa-solid fa-broom text-[#b06b17]"></i> Proprietary Multilingual Turnover QC (reSetr)
+              </div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                Automated cleaner dispatch in English, Spanish, and Portuguese with mandatory 4-zone photo verification uploaded before cleaner payment approval.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-1.5">
+              <div class="font-bold text-[#00162f] text-sm flex items-center gap-2">
+                <i class="fa-solid fa-building-shield text-[#b06b17]"></i> 10+ Years Experience: Asset Safeguards
+              </div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                With over a decade of STR stewardship, A Better BNB provides a proven suite of hardware recommendations (including Schlage smart deadbolts and Minut decibel monitors) installed at owner discretion, backed by 24/7 guest screening and quiet-hour oversight to protect your property without premise liability risk.
+              </p>
+            </div>
+
+            <div class="p-4 bg-[#ffffff] rounded-xl border border-[#00162f]/10 space-y-1.5">
+              <div class="font-bold text-[#00162f] text-sm flex items-center gap-2">
+                <i class="fa-solid fa-receipt text-[#b06b17]"></i> Direct Lodging Remittance & Transparent Fees
+              </div>
+              <p class="text-[11px] text-[#24282d]/80 leading-relaxed">
+                Lodging proceeds flow directly from Airbnb/VRBO into your personal or business bank account. Our transparent ${activeFee} co-hosting fee is billed with zero software surcharges.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Summary -->
+          <div class="border-t-2 border-[#b06b17]/30 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div>
+              <div class="font-bold text-[#00162f]">${exitTerm} &bull; Direct OTA Revenue Remittance</div>
+              <div class="text-[#24282d]/70 text-[11px]">Justin, Founder &bull; ${brandTitle} &bull; ${brandEmail}</div>
+            </div>
+            <div class="px-5 py-2.5 bg-[#00162f] text-white font-bold rounded-xl text-center shadow cursor-pointer">
+              Review Master Co-Hosting Agreement
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function copyDocMarkdown() {
+      alert('Document copy ready! You can also click "Print / Save PDF" to generate an executive PDF.');
+    }
+
+    window.onload = () => {
+      renderDocument();
+    };
+  </script>
+</body>
+</html>

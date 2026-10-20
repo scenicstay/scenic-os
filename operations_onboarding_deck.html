@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenic Stay Academy (Part 2): Inside Operations, Guest Care & Field Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f4f1ea;
+    color: #1c1917;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    background: #180820;
+    color: #ffffff;
+    border-bottom: 2px solid #e59523;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .brand-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .brand-pill img {
+    height: 34px;
+    width: auto;
+  }
+
+  .chapter-pills {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+
+  .chapter-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 11px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #d6d3d1;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .chapter-btn:hover {
+    background: rgba(255, 190, 59, 0.16);
+    color: #ffffff;
+  }
+
+  .chapter-btn.active {
+    background: #ffbe3b;
+    color: #180820;
+    font-weight: 800;
+  }
+
+  .top-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .top-link-pill {
+    border: 1px solid rgba(255, 190, 59, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffbe3b;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .top-link-pill:hover {
+    background: #ffbe3b;
+    color: #180820;
+  }
+
+  .feedback-trigger {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #ffffff;
+    color: #180820;
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .feedback-trigger:hover {
+    background: #ffbe3b;
+    border-color: #ffbe3b;
+  }
+
+  .stage-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 36px 16px;
+  }
+
+  .slide-canvas {
+    width: 100%;
+    max-width: 1380px;
+    min-height: 74vh;
+    border-radius: 32px;
+    padding: 52px 60px;
+    display: grid;
+    grid-template-columns: 1.05fr 1.15fr;
+    gap: 52px;
+    align-items: center;
+    box-shadow: 0 24px 60px rgba(28, 25, 23, 0.08);
+    transition: background-color 0.35s ease, color 0.35s ease;
+    position: relative;
+  }
+
+  .theme-mauve {
+    background-color: #a97886;
+    color: #181316;
+  }
+
+  .theme-plum {
+    background-color: #180820;
+    color: #f8fafc;
+  }
+
+  .theme-sage {
+    background-color: #7c9082;
+    color: #141a16;
+  }
+
+  .theme-sand {
+    background-color: #ffffff;
+    color: #1c1917;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+  }
+
+  .theme-slate {
+    background-color: #263138;
+    color: #f8fafc;
+  }
+
+  .theme-terracotta {
+    background-color: #b87b68;
+    color: #1c1412;
+  }
+
+  .slide-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .title-brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(24, 8, 32, 0.85);
+    color: #ffbe3b;
+    align-self: flex-start;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .title-brand-badge img {
+    height: 26px;
+    width: auto;
+  }
+
+  .slide-kicker {
+    font-size: 1.02rem;
+    font-weight: 700;
+    opacity: 0.88;
+    letter-spacing: -0.01em;
+  }
+
+  .slide-title-hero {
+    font-size: clamp(2.45rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  .slide-title-bullet {
+    font-size: clamp(1.8rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .slide-subtitle {
+    font-size: clamp(1.12rem, 1.45vw, 1.34rem);
+    line-height: 1.62;
+    font-weight: 500;
+    opacity: 0.94;
+  }
+
+  .bullet-point-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 22px 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+    color: #1c1917;
+  }
+
+  .theme-slate .bullet-point-box,
+  .theme-plum .bullet-point-box {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f8fafc;
+  }
+
+  .bullet-marker {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: #180820;
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .bullet-text {
+    font-size: 1.08rem;
+    line-height: 1.66;
+    font-weight: 500;
+  }
+
+  .supporting-card {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+    border-radius: 18px;
+    padding: 18px 22px;
+    color: #1c1917;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .theme-slate .supporting-card,
+  .theme-plum .supporting-card {
+    background: rgba(15, 23, 42, 0.65);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #f1f5f9;
+  }
+
+  .supporting-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .supporting-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7c2d12;
+    background: #ffedd5;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .source-link {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #0f766e;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(15, 118, 110, 0.35);
+    transition: opacity 0.2s;
+  }
+
+  .theme-slate .source-link,
+  .theme-plum .source-link {
+    color: #ffbe3b;
+    border-bottom-color: rgba(255, 190, 59, 0.45);
+  }
+
+  .source-link:hover {
+    opacity: 0.8;
+  }
+
+  .supporting-quote {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.06rem;
+    line-height: 1.58;
+    font-style: italic;
+  }
+
+  .quote-toggle-btn {
+    align-self: flex-start;
+    border: none;
+    background: rgba(28, 25, 23, 0.08);
+    color: inherit;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .theme-slate .quote-toggle-btn,
+  .theme-plum .quote-toggle-btn {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .extended-quote-drawer {
+    display: none;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(120, 113, 108, 0.35);
+    font-size: 0.94rem;
+    line-height: 1.62;
+    font-style: normal;
+  }
+
+  .extended-quote-drawer.open {
+    display: block;
+  }
+
+  .cta-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .cta-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: #180820;
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 2px solid #ffbe3b;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease;
+  }
+
+  .cta-hero-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .cta-hero-btn.secondary {
+    background: #ffffff;
+    color: #180820;
+    border-color: #180820;
+  }
+
+  .slide-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-frame {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow: hidden;
+  }
+
+  .visual-img-wrap {
+    width: 100%;
+    height: 430px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f5f5f4;
+    position: relative;
+    cursor: zoom-in;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+  }
+
+  .visual-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.35s ease;
+  }
+
+  .visual-img-wrap:hover img {
+    transform: scale(1.015);
+  }
+
+  .visual-caption-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 2px 6px;
+    color: #44403c;
+    font-size: 0.83rem;
+    font-weight: 600;
+  }
+
+  .visual-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: #180820;
+    color: #ffbe3b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .visual-action-btn:hover {
+    background: #2a1038;
+  }
+
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px 36px 26px;
+  }
+
+  .progress-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #57534e;
+  }
+
+  .progress-track {
+    width: 220px;
+    height: 8px;
+    background: rgba(28, 25, 23, 0.12);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: #180820;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid rgba(28, 25, 23, 0.2);
+    background: #ffffff;
+    color: #1c1917;
+    transition: all 0.2s ease;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    background: #f5f5f4;
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .nav-btn.primary {
+    background: #180820;
+    color: #ffbe3b;
+    border-color: #180820;
+  }
+
+  .nav-btn.primary:hover:not(:disabled) {
+    background: #2a1038;
+  }
+
+  .lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 32px;
+  }
+
+  .lightbox-backdrop.open {
+    display: flex;
+  }
+
+  .lightbox-content {
+    max-width: 92vw;
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lightbox-content img {
+    max-width: 88vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .feedback-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 25, 23, 0.65);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 210;
+    padding: 24px;
+  }
+
+  .feedback-modal.open {
+    display: flex;
+  }
+
+  .feedback-card {
+    background: #ffffff;
+    color: #1c1917;
+    max-width: 560px;
+    width: 100%;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feedback-card textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #d6d3d1;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 1024px) {
+    .slide-canvas {
+      grid-template-columns: 1fr;
+      padding: 36px 28px;
+      gap: 32px;
+    }
+    .visual-img-wrap {
+      height: 320px;
+    }
+  }
+</style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body>
+
+<header class="top-nav">
+  <a class="brand-pill" href="scenic_academy_journey.html">
+    <img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Scenic Stay Redwood Icon">
+    <span>Scenic Stay: A Better BNB</span>
+  </a>
+  <nav class="chapter-pills" id="chapter-nav"></nav>
+  <div class="top-right-actions">
+    <a class="top-link-pill" href="scenic_academy_journey.html">← Part 1: Sales &amp; Philosophy</a><a class="top-link-pill" href="hospitality_communications_rulebook.html">Company SOP Rulebook</a><a class="top-link-pill" href="alyssa_shadow_playbook.html">Shadow Workbook</a>
+    <button class="feedback-trigger" onclick="openFeedbackModal()">Share Earnest Feedback</button>
+  </div>
+</header>
+
+<main class="stage-wrapper">
+  <section class="slide-canvas theme-mauve" id="slide-canvas">
+    <div class="slide-left" id="slide-left"></div>
+    <div class="slide-right" id="slide-right"></div>
+  </section>
+</main>
+
+<footer class="bottom-bar">
+  <div class="progress-meta">
+    <span id="slide-counter">Slide 1</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width: 5%;"></div>
+    </div>
+    <span id="chapter-label">Module 1</span>
+  </div>
+  <div class="nav-buttons">
+    <button class="nav-btn" id="prev-btn" onclick="stepSlide(-1)">Previous Slide</button>
+    <button class="nav-btn primary" id="next-btn" onclick="stepSlide(1)">Next Slide →</button>
+  </div>
+</footer>
+
+<div class="lightbox-backdrop" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="Expanded view">
+    <div style="display:flex; justify-content:space-between; align-items:center; padding: 4px 8px;">
+      <span id="lightbox-caption" style="font-size:0.9rem; font-weight:700; color:#1c1917;"></span>
+      <button class="visual-action-btn" onclick="closeLightbox()">Close Preview</button>
+    </div>
+  </div>
+</div>
+
+<div class="feedback-modal" id="feedback-modal" onclick="closeFeedbackModal()">
+  <div class="feedback-card" onclick="event.stopPropagation()">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="font-size:1.3rem; font-weight:800;">Shape Scenic Stay With Us</h3>
+      <button class="quote-toggle-btn" onclick="closeFeedbackModal()">Close</button>
+    </div>
+    <p style="font-size:0.94rem; line-height:1.55; color:#57534e;">
+      You are joining an organization that is just beginning, so you have the opportunity to help shape its future. If anything on this slide feels unclear, or if you spot a rough edge in our apps, write your honest note below. Our leadership team and the AI engineering crew iterate daily on your feedback.
+    </p>
+    <div style="font-size:0.82rem; font-weight:700; color:#78716c;" id="feedback-slide-context"></div>
+    <textarea id="feedback-textarea" placeholder="What would make this training step or application clearer, faster, or better?"></textarea>
+    <div style="display:flex; justify-content:flex-end; gap:10px;">
+      <button class="nav-btn" onclick="copyFeedbackToClipboard()">Save &amp; Copy Feedback Note</button>
+    </div>
+    <div id="feedback-saved-toast" style="display:none; font-size:0.85rem; font-weight:700; color:#0f766e;">
+      Saved locally and copied to clipboard! Paste directly in chat or Slack.
+    </div>
+  </div>
+</div>
+
+<script>
+const DECK_KEY = "ops_track";
+
+const SLIDES = [
+  // PART 1: GUEST COMMUNICATIONS & SHADOWING
+  {
+    chapterId: 1,
+    chapterName: "1. Guest Communications",
+    layout: "title",
+    theme: "theme-sage",
+    showBrandBadge: true,
+    kicker: "Inside Operations & Hospitality Academy · Module 01",
+    title: "Guest Communications & Anticipatory Care",
+    subtitle: "Why we start by shadowing live guest conversations, sending test-run replies for review, and relating genuinely to what every guest says.",
+    ctaButtons: [
+      { label: "Open Participative Shadow-First Workbook ↗", href: "alyssa_shadow_playbook.html", primary: true },
+      { label: "Open Company Hospitality Rulebook (SOP) ↗", href: "hospitality_communications_rulebook.html", primary: false }
+    ],
+    image: "assets/airbnb_screenshots/clean_justin_host_profile.png",
+    imageCaption: "Shadowing 10 Years of Superhost Hospitality Across 1,783 Verified Guest Stays",
+    appLink: "alyssa_shadow_playbook.html",
+    appLinkLabel: "Open Shadow Workbook ↗"
+  },
+  {
+    chapterId: 1,
+    chapterName: "1. Guest Communications",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 1 · Step 1: Shadow First to Learn",
+    title: "Watch First, Draft Test Runs, Then Step In When Ready",
+    bulletNumber: "01",
+    bulletText: "We never want you to feel overwhelmed by jumping into everything at once. First, you will watch live guest communications from the Scenic Stay profile to get a natural feel for our rhythm and warmth. Next, when you begin drafting replies, you will send test-run messages internally for review first before sending them to guests. We hold off completely on owner communications until guest communications feel effortless.",
+    quoteBadge: "Interactive Practice Workbook",
+    quoteShort: "Use the interactive Shadow-First Workbook to practice writing replies to real guest scenarios (late Greek Theatre arrivals, Cal graduation early check-in requests, and family emergencies) and share your drafts for team review.",
+    quoteExtended: "This phased approach protects you and our guests while giving you immediate coaching feedback as you build confidence.",
+    sourceUrl: "alyssa_shadow_playbook.html",
+    sourceLabel: "Launch Interactive Shadow-First Workbook ↗",
+    image: "assets/airbnb_screenshots/clean_justin_host_profile.png",
+    imageCaption: "Shadowing 10 Years of Verified Superhost Communications Before Stepping In Live",
+    appLink: "alyssa_shadow_playbook.html",
+    appLinkLabel: "Practice Test Replies ↗"
+  },
+  {
+    chapterId: 1,
+    chapterName: "1. Guest Communications",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 1 · Step 2: Crisp, Friendly Cadence vs. Talking Their Ear Off",
+    title: "Keep It Tight, Match Their Note, and Dig In With Links When They Ask",
+    bulletNumber: "02",
+    bulletText: "Guests will not read a long wall of text. Our cadence is crisp, friendly, and tailored to what the guest actually sends. If their booking note has nothing substantial, we simply say: 'Welcome! Let me know if there's anything we can do to help during your visit.' If they mention a reason for their visit, like 'Coming for a show at the Greek,' we tack on one brief, warm line: 'The Greek is such a great venue. Welcome! Let me know if there's anything we can do to help during your visit.' Only when they ask a specific question (like 'Where's a good place to eat before the show?') do we dig in, and we always include short Google Maps links!",
+    quoteBadge: "When Guests Ask Where to Eat Before the Greek (Always Include Short Maps Links)",
+    quoteShort: "\"There are a couple spots near the venue off Euclid like La Val's Pizza (https://maps.app.goo.gl/LaValsEuclid) and La Burrita (https://maps.app.goo.gl/LaBurritaEuclid), but I would recommend hitting up Berkeley Social Club (https://maps.app.goo.gl/BerkeleySocialClub), East Bay Spice Co. (https://maps.app.goo.gl/EastBaySpiceCo), or Gather (https://maps.app.goo.gl/GatherBerkeley) downtown.\"",
+    quoteExtended: "Local Geography Note: Walking from 1545 Scenic Avenue to the Greek Theatre or UC Berkeley goes south/southeast toward campus, whereas the Berkeley Rose Garden is in the opposite direction up the hill to the north. Never tell Greek Theatre guests they will pass the Rose Garden on their walk to the venue!",
+    sourceUrl: "hospitality_communications_rulebook.html",
+    sourceLabel: "Read Crisp Cadence Examples in the Company Rulebook ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_oatmeal_deep_cuts.png",
+    imageCaption: "Crisp, Friendly Replies + Short Google Maps Links When Guests Ask for Recommendations",
+    appLink: "hospitality_communications_rulebook.html",
+    appLinkLabel: "View Tone Rulebook ↗"
+  },
+  {
+    chapterId: 1,
+    chapterName: "1. Guest Communications",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 1 · Step 3: Pre-Arrival & Early Check-In Care",
+    title: "Two-Day Pre-Arrival Check-In & Proactive Early Door Code Activation",
+    bulletNumber: "03",
+    bulletText: "Two days before arrival, we message guests with clear arrival details and ask when we should expect them. We make sure they know the practical realities (such as free street parking with the 2-hour weekday limit, never parking in the driveway, and using a phone flashlight for the two steps down from the driveway at night). Do not proactively tell guests about visitor parking passes in standard messages: we only receive 60 paid passes per year from the City of Berkeley, and offering them upfront causes guests to request passes they do not truly need. Then, on arrival day, the very moment our cleaner finishes inside the 11:00 AM to 5:00 PM window, we update the guest's smart lock code time early and message them that their space is ready.",
+    quoteBadge: "Why Guests Rave About Check-In (5.0 Stars Across 875 Reviews)",
+    quoteShort: "Julie (November 2025): \"Nice stay in a beautiful neighborhood. Justin notified us that the unit was available sooner than the listed check-in time. Communication was clear and helpful.\"",
+    quoteExtended: "Visitor Parking Pass Rule: Keep our 60 annual Berkeley visitor passes in reserve for guests who specifically ask about all-day weekday parking and genuinely need one.",
+    sourceUrl: "https://www.airbnb.com/rooms/14185254/reviews",
+    sourceLabel: "Verify Check-In Praise on Airbnb ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_julie_early_checkin.png",
+    imageCaption: "Proactive Early Door Code Activation Turns Standard Check-Ins Into Five-Star Reviews",
+    appLink: "https://www.airbnb.com/rooms/14185254/reviews",
+    appLinkLabel: "View on Airbnb ↗"
+  },
+
+  // PART 2: FIELD OPERATIONS, SOURCING & PRESETR / RESETR
+  {
+    chapterId: 2,
+    chapterName: "2. Field Ops & Turnovers",
+    layout: "title",
+    theme: "theme-terracotta",
+    kicker: "Inside Operations Academy · Module 02",
+    title: "Field Operations: Sourcing, Interviewing, preSeTR & reSeTR",
+    subtitle: "How we find and vet local field partners in new markets, separate Cleaner Arrival Info from Guest Arrival Info, and manage our 11:00 AM to 5:00 PM hospitality turnovers.",
+    image: "assets/airbnb_screenshots/app_resetr_dispatch.png",
+    imageCaption: "reSeTR Field Partner Intake, Clean Subdomain Routing (resetr.abetterbnb.com) & Timely Partner Payouts",
+    appLink: "host_dispatch_resetr.html",
+    appLinkLabel: "Open reSeTR Console ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Field Ops & Turnovers",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 2 · Step 1: Finding & Interviewing Field Partners",
+    title: "Sourcing Cleaners & Handymen via Google Maps, Yelp, Nextdoor & Craigslist",
+    bulletNumber: "01",
+    bulletText: "Whenever we onboard a property in a new city or need a specialized trade (turnover cleaner, handyman, landscaper, pool tech, or photographer), HOSt Property Forge generates 1-click localized searches across Google Maps, Yelp, Nextdoor, and Craigslist. When interviewing candidates, we verify their capacity for our 11:00 AM to 5:00 PM hospitality turnover window, confirm flat per-turn or transparent hourly rates, and onboard them through a structured 5-turn paid trial.",
+    quoteBadge: "Real Example: 3270 W Walsh Pl (Denver, CO 80219)",
+    quoteShort: "In HOSt Property Forge, clicking the Walsh Property Handyman Search displays our four pre-vetted Southwest Denver handyman candidates (Denver Handyman Solutions, Handyman Hub Denver, Home Improvement Express, and Ace Handyman Services) with 1-click vetting SMS scripts.",
+    quoteExtended: "Always ensure every property has both a Primary Partner and a Backup Partner so a sick day or scheduling conflict never leaves a guest waiting.",
+    sourceUrl: "host_property_forge.html",
+    sourceLabel: "Open Vendor Sourcing Console in HOSt Property Forge ↗",
+    image: "assets/airbnb_screenshots/app_host_property_forge_admin.png",
+    imageCaption: "HOSt Property Forge Admin View: Automated Local Vendor Discovery & Pre-Vetted Roster",
+    appLink: "host_property_forge.html",
+    appLinkLabel: "Launch Property Forge ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Field Ops & Turnovers",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 2 · Step 2: preSeTR Scheduling & Access Nuance",
+    title: "Cleaner Arrival Info Is Not Always the Same as a Guest's Arrival Info",
+    bulletNumber: "02",
+    bulletText: "When setting up a property in HOSt Property Forge and running our automated preSeTR calendar scheduler, remember a vital operational rule: a cleaner's arrival and access instructions are often different from a guest's check-in instructions. Guests need street parking rules and front-path directions, while cleaners need master keypad codes, lockbox backups, supply closet locations, vacuum storage, and supply restock inventory.",
+    quoteBadge: "How preSeTR Works Automatically",
+    quoteShort: "preSeTR polls each property's live Airbnb iCal feed, identifies every checkout and back-to-back check-in, and generates personalized .ics calendar feeds (for our cleaning partners) containing the exact street address, Cleaner Service Access instructions, and direct checklist link (such as resetr.abetterbnb.com/32ndstreet).",
+    quoteExtended: "Every turnover is scheduled inside our 11:00 AM to 5:00 PM hospitality window, with back-to-back same-day check-ins flagged clearly so cleaners know when a new guest is arriving at 5:00 PM.",
+    sourceUrl: "host_dispatch_resetr.html",
+    sourceLabel: "Inspect preSeTR Calendar & Cleaner Arrival Setup ↗",
+    image: "assets/airbnb_screenshots/app_host_property_forge_admin.png",
+    imageCaption: "Separate Guest Check-In Path vs. Cleaner Service & Supply Closet Access in HOSt Forge",
+    appLink: "host_dispatch_resetr.html",
+    appLinkLabel: "Verify Arrival Setup ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Field Ops & Turnovers",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 2 · Step 3: Daily Turnover Follow-Up in reSeTR",
+    title: "Two-Phase Photo QA, Supply Restock & Partner Payouts",
+    bulletNumber: "03",
+    bulletText: "Inside reSeTR Dispatch, we onboard field partners in their preferred language (for example, English, Spanish, or Brazilian Portuguese, with more languages added as we partner with teams from or in other countries) and coordinate daily turnovers. Cleaners follow a two-phase protocol: Phase 1 is logging any arrival damage or missing items before cleaning begins, and Phase 2 is sending staging photos once the unit is spotless and supplies are restocked.",
+    quoteBadge: "Timely Partner Payouts",
+    quoteShort: "Because we always put adding value in front for our field partners too, approved turnovers are paid out on a timely basis in our partners' preferred method of payment.",
+    quoteExtended: "Each property also has a clean, memorable checklist URL (such as resetr.abetterbnb.com/32ndstreet or resetr.abetterbnb.com/acton) so cleaners can open their room-by-room reset checklist in one tap.",
+    sourceUrl: "host_dispatch_resetr.html",
+    sourceLabel: "Open reSeTR Field Partner Dispatch Console ↗",
+    image: "assets/airbnb_screenshots/app_resetr_dispatch.png",
+    imageCaption: "reSeTR Console: Multilingual Partner Checklists, Clean Property Slugs & Timely Partner Payouts",
+    appLink: "host_dispatch_resetr.html",
+    appLinkLabel: "Launch reSeTR Console ↗"
+  },
+
+  // PART 3: OWNER INTERACTIONS & BALANSETR BOOKKEEPING
+  {
+    chapterId: 3,
+    chapterName: "3. Owner Comms & Ledger",
+    layout: "title",
+    theme: "theme-mauve",
+    kicker: "Inside Operations Academy · Module 03",
+    title: "Graduating to Owner Interactions & Running balanSeTR",
+    subtitle: "How we communicate transparently, selectively, and tactfully with homeowners once you are ready, and how balanSeTR automates bookkeeping and Year-End taxes.",
+    image: "assets/airbnb_screenshots/app_balansetr_ledger.png",
+    imageCaption: "Stage 5: balanSeTR (Scenic Ledger) Autonomous Bookkeeper, Monthly Statements & Tax Command",
+    appLink: "scenic_ledger_bookkeeper.html",
+    appLinkLabel: "Open balanSeTR Ledger ↗"
+  },
+  {
+    chapterId: 3,
+    chapterName: "3. Owner Comms & Ledger",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 3 · Step 1: Intentional Owner Stewardship",
+    title: "Transparent, Selective, Tactful & Friendly Owner Engagement",
+    bulletNumber: "01",
+    bulletText: "You will step into owner communications after mastering guest care and when our leadership team feels you are 100% ready. When it is time to engage with owners, this is our approach: we are transparent, but also selective in what we discuss. We are tactful and friendly, solving day-to-day operational details behind the scenes so the owner feels confident and unburdened. For Discord partner channels, we roll those out gradually over time, starting with new partners.",
+    quoteBadge: "Calendar Blocks & Post-Owner-Stay Turnovers",
+    quoteShort: "When an owner wants unbooked dates for personal use, we block the calendar on their behalf. Both sides recognize that personal blocks are a shared revenue loss for both Owner and Manager, and we never cancel on booked guests. After an owner's stay, we coordinate the cleaners (11:00 AM to 5:00 PM) and invoice the owner at cost.",
+    quoteExtended: "Out-of-scope services (coordinating repairs, maintenance dispatches, or mailing lost items back to guests) carry a transparent 20% coordination markup, and unexpended Resolution Center claims split 50/50.",
+    sourceUrl: "hospitality_communications_rulebook.html",
+    sourceLabel: "Review Owner Communication Standards in the Company Rulebook ↗",
+    image: "assets/airbnb_screenshots/app_owner_agreement.png",
+    imageCaption: "Every Owner Rule Is Grounded in Our Plain-Language Agreement Summary",
+    appLink: "owner_agreement_generator.html",
+    appLinkLabel: "View Agreement Terms ↗"
+  },
+  {
+    chapterId: 3,
+    chapterName: "3. Owner Comms & Ledger",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Module 3 · Step 2: Daily Bookkeeping & Tax Readiness in balanSeTR",
+    title: "Automating 95% of Bookkeeping, Statements & Global Tax Readiness",
+    bulletNumber: "02",
+    bulletText: "balanSeTR is built to replace QuickBooks Online. It routes payouts cleanly across our banking architecture. Tabs 3 and 4 generate monthly statements and year-end tax packages across domestic and international jurisdictions, taking care of our needs and our owners' needs all within the same app.",
+    quoteBadge: "Complete Scenic Stay Ecosystem",
+    quoteShort: "You can switch between Internal Admin Mode and Partner Homeowner Portal View at the top of balanSeTR to preview the exact cent-verified statement each homeowner receives.",
+    quoteExtended: "Have questions or spot an improvement as you use HOSt, preSeTR, reSeTR, or balanSeTR? Click 'Share Earnest Feedback' in the top right corner at any time!",
+    sourceUrl: "scenic_ledger_bookkeeper.html",
+    sourceLabel: "Open balanSeTR (Scenic Ledger & Tax Command) ↗",
+    image: "assets/airbnb_screenshots/app_balansetr_ledger.png",
+    imageCaption: "balanSeTR: Cent-Verified Payout Splits, Monthly Statements & Domestic/International Tax Readiness",
+    appLink: "scenic_ledger_bookkeeper.html",
+    appLinkLabel: "Launch balanSeTR ↗"
+  }
+];
+
+const CHAPTERS = [
+  { id: 1, label: "1. Guest Communications" },
+  { id: 2, label: "2. Field Ops (preSeTR & reSeTR)" },
+  { id: 3, label: "3. Owner Comms & balanSeTR" }
+];
+
+
+let currentIndex = 0;
+
+function renderChapterNav() {
+  const nav = document.getElementById("chapter-nav");
+  const activeChapter = SLIDES[currentIndex].chapterId;
+  nav.innerHTML = CHAPTERS.map(ch => {
+    const isActive = ch.id === activeChapter ? "active" : "";
+    return `<button class="chapter-btn ${isActive}" onclick="jumpToChapter(${ch.id})">${ch.label}</button>`;
+  }).join("");
+}
+
+function jumpToChapter(chapterId) {
+  const idx = SLIDES.findIndex(s => s.chapterId === chapterId);
+  if (idx !== -1) {
+    currentIndex = idx;
+    renderSlide();
+  }
+}
+
+function stepSlide(delta) {
+  const next = currentIndex + delta;
+  if (next >= 0 && next < SLIDES.length) {
+    currentIndex = next;
+    renderSlide();
+  }
+}
+
+function toggleExtendedQuote() {
+  const drawer = document.getElementById("extended-quote-drawer");
+  const btn = document.getElementById("quote-toggle-btn");
+  if (!drawer || !btn) return;
+  const isOpen = drawer.classList.toggle("open");
+  btn.textContent = isOpen ? "Hide Extended Context" : "Read Full Quote & Context";
+}
+
+function openLightbox(src, caption) {
+  const lb = document.getElementById("lightbox");
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox-caption").textContent = caption || "";
+  lb.classList.add("open");
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+}
+
+function openFeedbackModal() {
+  const slide = SLIDES[currentIndex];
+  document.getElementById("feedback-slide-context").textContent =
+    `Current Slide (${currentIndex + 1}/${SLIDES.length}): ${slide.title}`;
+  const savedKey = `scenic_feedback_${DECK_KEY}_${currentIndex}`;
+  document.getElementById("feedback-textarea").value = localStorage.getItem(savedKey) || "";
+  document.getElementById("feedback-saved-toast").style.display = "none";
+  document.getElementById("feedback-modal").classList.add("open");
+}
+
+function closeFeedbackModal() {
+  document.getElementById("feedback-modal").classList.remove("open");
+}
+
+function copyFeedbackToClipboard() {
+  const slide = SLIDES[currentIndex];
+  const note = document.getElementById("feedback-textarea").value.trim();
+  const savedKey = `scenic_feedback_${DECK_KEY}_${currentIndex}`;
+  localStorage.setItem(savedKey, note);
+  const payload = `[Scenic Academy Feedback (${DECK_KEY}) · Slide ${currentIndex + 1}: ${slide.title}]\n${note}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(payload).catch(() => {});
+  }
+  document.getElementById("feedback-saved-toast").style.display = "block";
+}
+
+function renderSlide() {
+  const slide = SLIDES[currentIndex];
+  const canvas = document.getElementById("slide-canvas");
+  canvas.className = `slide-canvas ${slide.theme}`;
+
+  const leftEl = document.getElementById("slide-left");
+  const rightEl = document.getElementById("slide-right");
+
+  const brandBadgeHtml = slide.showBrandBadge
+    ? `<div class="title-brand-badge"><img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Redwood Icon"><span>Scenic Stay &bull; A Better BNB</span></div>`
+    : "";
+
+  const ctaHtml = slide.ctaButtons
+    ? `<div class="cta-button-group">` + slide.ctaButtons.map(b =>
+        `<a class="cta-hero-btn ${b.primary ? '' : 'secondary'}" href="${b.href}">${b.label}</a>`
+      ).join("") + `</div>`
+    : "";
+
+  if (slide.layout === "title") {
+    leftEl.innerHTML = `
+      ${brandBadgeHtml}
+      <div class="slide-kicker">${slide.kicker}</div>
+      <h1 class="slide-title-hero">${slide.title}</h1>
+      <p class="slide-subtitle">${slide.subtitle}</p>
+      ${ctaHtml}
+    `;
+  } else {
+    leftEl.innerHTML = `
+      <div class="slide-kicker">${slide.kicker}</div>
+      <h2 class="slide-title-bullet">${slide.title}</h2>
+      <div class="bullet-point-box">
+        <div class="bullet-marker">${slide.bulletNumber}</div>
+        <div class="bullet-text">${slide.bulletText}</div>
+      </div>
+      <div class="supporting-card">
+        <div class="supporting-header">
+          <span class="supporting-badge">${slide.quoteBadge}</span>
+          <a class="source-link" href="${slide.sourceUrl}" target="_blank" rel="noopener">${slide.sourceLabel}</a>
+        </div>
+        <div class="supporting-quote">${slide.quoteShort}</div>
+        <button class="quote-toggle-btn" id="quote-toggle-btn" onclick="toggleExtendedQuote()">Read Full Quote &amp; Context</button>
+        <div class="extended-quote-drawer" id="extended-quote-drawer">${slide.quoteExtended}</div>
+      </div>
+    `;
+  }
+
+  const safeCaption = (slide.imageCaption || "").replace(/'/g, "\\'");
+  const imgFitStyle = slide.imageContain
+    ? "object-fit: contain; object-position: center center; background: #180820; padding: 12px;"
+    : (slide.imageContainLight ? "object-fit: contain; object-position: center center; background: #fbf9f5; padding: 6px;" : "");
+  rightEl.innerHTML = `
+    <div class="visual-frame">
+      <div class="visual-img-wrap" onclick="openLightbox('${slide.image}', '${safeCaption}')" title="Click to expand screenshot">
+        <img src="${slide.image}" alt="${slide.title}" style="${imgFitStyle}">
+      </div>
+      <div class="visual-caption-bar">
+        <span>${slide.imageCaption}</span>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="quote-toggle-btn" onclick="openLightbox('${slide.image}', '${safeCaption}')">Zoom Image</button>
+          <a class="visual-action-btn" href="${slide.appLink}" target="_blank" rel="noopener">${slide.appLinkLabel}</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("slide-counter").textContent = `Slide ${currentIndex + 1} of ${SLIDES.length}`;
+  document.getElementById("chapter-label").textContent = slide.chapterName;
+  const pct = Math.round(((currentIndex + 1) / SLIDES.length) * 100);
+  document.getElementById("progress-fill").style.width = `${pct}%`;
+
+  document.getElementById("prev-btn").disabled = currentIndex === 0;
+  document.getElementById("next-btn").textContent =
+    currentIndex === SLIDES.length - 1 ? "Completed Track" : "Next Slide →";
+  document.getElementById("next-btn").disabled = currentIndex === SLIDES.length - 1;
+
+  renderChapterNav();
+}
+
+document.addEventListener("keydown", (e) => {
+  if (document.getElementById("feedback-modal").classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") stepSlide(1);
+  if (e.key === "ArrowLeft") stepSlide(-1);
+});
+
+renderSlide();
+</script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

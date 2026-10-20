@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenic Stay Academy (Part 1): Philosophy, Sales & Owner Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f4f1ea;
+    color: #1c1917;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    background: #180820;
+    color: #ffffff;
+    border-bottom: 2px solid #e59523;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .brand-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .brand-pill img {
+    height: 34px;
+    width: auto;
+  }
+
+  .chapter-pills {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+
+  .chapter-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 11px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #d6d3d1;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .chapter-btn:hover {
+    background: rgba(255, 190, 59, 0.16);
+    color: #ffffff;
+  }
+
+  .chapter-btn.active {
+    background: #ffbe3b;
+    color: #180820;
+    font-weight: 800;
+  }
+
+  .top-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .top-link-pill {
+    border: 1px solid rgba(255, 190, 59, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffbe3b;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .top-link-pill:hover {
+    background: #ffbe3b;
+    color: #180820;
+  }
+
+  .feedback-trigger {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #ffffff;
+    color: #180820;
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .feedback-trigger:hover {
+    background: #ffbe3b;
+    border-color: #ffbe3b;
+  }
+
+  .stage-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 36px 16px;
+  }
+
+  .slide-canvas {
+    width: 100%;
+    max-width: 1380px;
+    min-height: 74vh;
+    border-radius: 32px;
+    padding: 52px 60px;
+    display: grid;
+    grid-template-columns: 1.05fr 1.15fr;
+    gap: 52px;
+    align-items: center;
+    box-shadow: 0 24px 60px rgba(28, 25, 23, 0.08);
+    transition: background-color 0.35s ease, color 0.35s ease;
+    position: relative;
+  }
+
+  .theme-mauve {
+    background-color: #a97886;
+    color: #181316;
+  }
+
+  .theme-plum {
+    background-color: #180820;
+    color: #f8fafc;
+  }
+
+  .theme-sage {
+    background-color: #7c9082;
+    color: #141a16;
+  }
+
+  .theme-sand {
+    background-color: #ffffff;
+    color: #1c1917;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+  }
+
+  .theme-slate {
+    background-color: #263138;
+    color: #f8fafc;
+  }
+
+  .theme-terracotta {
+    background-color: #b87b68;
+    color: #1c1412;
+  }
+
+  .slide-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .title-brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(24, 8, 32, 0.85);
+    color: #ffbe3b;
+    align-self: flex-start;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .title-brand-badge img {
+    height: 26px;
+    width: auto;
+  }
+
+  .slide-kicker {
+    font-size: 1.02rem;
+    font-weight: 700;
+    opacity: 0.88;
+    letter-spacing: -0.01em;
+  }
+
+  .slide-title-hero {
+    font-size: clamp(2.45rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  .slide-title-bullet {
+    font-size: clamp(1.8rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .slide-subtitle {
+    font-size: clamp(1.12rem, 1.45vw, 1.34rem);
+    line-height: 1.62;
+    font-weight: 500;
+    opacity: 0.94;
+  }
+
+  .bullet-point-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 22px 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+    color: #1c1917;
+  }
+
+  .theme-slate .bullet-point-box,
+  .theme-plum .bullet-point-box {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f8fafc;
+  }
+
+  .bullet-marker {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: #180820;
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .bullet-text {
+    font-size: 1.08rem;
+    line-height: 1.66;
+    font-weight: 500;
+  }
+
+  .supporting-card {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+    border-radius: 18px;
+    padding: 18px 22px;
+    color: #1c1917;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .theme-slate .supporting-card,
+  .theme-plum .supporting-card {
+    background: rgba(15, 23, 42, 0.65);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #f1f5f9;
+  }
+
+  .supporting-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .supporting-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7c2d12;
+    background: #ffedd5;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  .source-link {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #0f766e;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(15, 118, 110, 0.35);
+    transition: opacity 0.2s;
+  }
+
+  .theme-slate .source-link,
+  .theme-plum .source-link {
+    color: #ffbe3b;
+    border-bottom-color: rgba(255, 190, 59, 0.45);
+  }
+
+  .source-link:hover {
+    opacity: 0.8;
+  }
+
+  .supporting-quote {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.06rem;
+    line-height: 1.58;
+    font-style: italic;
+  }
+
+  .quote-toggle-btn {
+    align-self: flex-start;
+    border: none;
+    background: rgba(28, 25, 23, 0.08);
+    color: inherit;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .theme-slate .quote-toggle-btn,
+  .theme-plum .quote-toggle-btn {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .extended-quote-drawer {
+    display: none;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(120, 113, 108, 0.35);
+    font-size: 0.94rem;
+    line-height: 1.62;
+    font-style: normal;
+  }
+
+  .extended-quote-drawer.open {
+    display: block;
+  }
+
+  .cta-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .cta-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: #180820;
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 2px solid #ffbe3b;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease;
+  }
+
+  .cta-hero-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .cta-hero-btn.secondary {
+    background: #ffffff;
+    color: #180820;
+    border-color: #180820;
+  }
+
+  .slide-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-frame {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow: hidden;
+  }
+
+  .visual-img-wrap {
+    width: 100%;
+    height: 430px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f5f5f4;
+    position: relative;
+    cursor: zoom-in;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+  }
+
+  .visual-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.35s ease;
+  }
+
+  .visual-img-wrap:hover img {
+    transform: scale(1.015);
+  }
+
+  .visual-caption-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 2px 6px;
+    color: #44403c;
+    font-size: 0.83rem;
+    font-weight: 600;
+  }
+
+  .visual-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: #180820;
+    color: #ffbe3b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .visual-action-btn:hover {
+    background: #2a1038;
+  }
+
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px 36px 26px;
+  }
+
+  .progress-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #57534e;
+  }
+
+  .progress-track {
+    width: 220px;
+    height: 8px;
+    background: rgba(28, 25, 23, 0.12);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: #180820;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid rgba(28, 25, 23, 0.2);
+    background: #ffffff;
+    color: #1c1917;
+    transition: all 0.2s ease;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    background: #f5f5f4;
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .nav-btn.primary {
+    background: #180820;
+    color: #ffbe3b;
+    border-color: #180820;
+  }
+
+  .nav-btn.primary:hover:not(:disabled) {
+    background: #2a1038;
+  }
+
+  .lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 32px;
+  }
+
+  .lightbox-backdrop.open {
+    display: flex;
+  }
+
+  .lightbox-content {
+    max-width: 92vw;
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lightbox-content img {
+    max-width: 88vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .feedback-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 25, 23, 0.65);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 210;
+    padding: 24px;
+  }
+
+  .feedback-modal.open {
+    display: flex;
+  }
+
+  .feedback-card {
+    background: #ffffff;
+    color: #1c1917;
+    max-width: 560px;
+    width: 100%;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feedback-card textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #d6d3d1;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 1024px) {
+    .slide-canvas {
+      grid-template-columns: 1fr;
+      padding: 36px 28px;
+      gap: 32px;
+    }
+    .visual-img-wrap {
+      height: 320px;
+    }
+  }
+</style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body>
+
+<header class="top-nav">
+  <a class="brand-pill" href="scenic_academy_journey.html">
+    <img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Scenic Stay Redwood Icon">
+    <span>Scenic Stay: A Better BNB</span>
+  </a>
+  <nav class="chapter-pills" id="chapter-nav"></nav>
+  <div class="top-right-actions">
+    <a class="top-link-pill" href="hospitality_communications_rulebook.html">Company SOP Rulebook</a><a class="top-link-pill" href="scenic_operations_academy.html">Part 2: Inside Operations Academy →</a>
+    <button class="feedback-trigger" onclick="openFeedbackModal()">Share Earnest Feedback</button>
+  </div>
+</header>
+
+<main class="stage-wrapper">
+  <section class="slide-canvas theme-mauve" id="slide-canvas">
+    <div class="slide-left" id="slide-left"></div>
+    <div class="slide-right" id="slide-right"></div>
+  </section>
+</main>
+
+<footer class="bottom-bar">
+  <div class="progress-meta">
+    <span id="slide-counter">Slide 1</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width: 5%;"></div>
+    </div>
+    <span id="chapter-label">Module 1</span>
+  </div>
+  <div class="nav-buttons">
+    <button class="nav-btn" id="prev-btn" onclick="stepSlide(-1)">Previous Slide</button>
+    <button class="nav-btn primary" id="next-btn" onclick="stepSlide(1)">Next Slide →</button>
+  </div>
+</footer>
+
+<div class="lightbox-backdrop" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="Expanded view">
+    <div style="display:flex; justify-content:space-between; align-items:center; padding: 4px 8px;">
+      <span id="lightbox-caption" style="font-size:0.9rem; font-weight:700; color:#1c1917;"></span>
+      <button class="visual-action-btn" onclick="closeLightbox()">Close Preview</button>
+    </div>
+  </div>
+</div>
+
+<div class="feedback-modal" id="feedback-modal" onclick="closeFeedbackModal()">
+  <div class="feedback-card" onclick="event.stopPropagation()">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="font-size:1.3rem; font-weight:800;">Shape Scenic Stay With Us</h3>
+      <button class="quote-toggle-btn" onclick="closeFeedbackModal()">Close</button>
+    </div>
+    <p style="font-size:0.94rem; line-height:1.55; color:#57534e;">
+      You are joining an organization that is just beginning, so you have the opportunity to help shape its future. If anything on this slide feels unclear, or if you spot a rough edge in our apps, write your honest note below. Our leadership team and the AI engineering crew iterate daily on your feedback.
+    </p>
+    <div style="font-size:0.82rem; font-weight:700; color:#78716c;" id="feedback-slide-context"></div>
+    <textarea id="feedback-textarea" placeholder="What would make this training step or application clearer, faster, or better?"></textarea>
+    <div style="display:flex; justify-content:flex-end; gap:10px;">
+      <button class="nav-btn" onclick="copyFeedbackToClipboard()">Save &amp; Copy Feedback Note</button>
+    </div>
+    <div id="feedback-saved-toast" style="display:none; font-size:0.85rem; font-weight:700; color:#0f766e;">
+      Saved locally and copied to clipboard! Paste directly in chat or Slack.
+    </div>
+  </div>
+</div>
+
+<script>
+const DECK_KEY = "sales_track";
+
+const SLIDES = [
+  // PART 1: ORIGIN STORY
+  {
+    chapterId: 1,
+    chapterName: "1. Origin Story",
+    layout: "title",
+    theme: "theme-mauve",
+    showBrandBadge: true,
+    kicker: "Staff Training & Onboarding Journey",
+    title: "Scenic Stay: A Better BNB",
+    subtitle: "How a family decision in the Berkeley Hills became a 10-year craft in anticipatory hospitality, and how you will help us scale that care to homeowners and boutique hotels.",
+    image: "assets/brand/venmo_banner_illustrated_split.jpg",
+    imageContain: true,
+    imageCaption: "Scenic Stay: A Better BNB & A Better Boutique (10 Years of Berkeley Hills & Bay Area Stewardship)",
+    appLink: "https://www.airbnb.com/rooms/14185254",
+    appLinkLabel: "View Flagship Studio on Airbnb ↗"
+  },
+  {
+    chapterId: 1,
+    chapterName: "1. Origin Story",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 1 · Why Scenic Stay Began",
+    title: "Built for Family Presence, Not a 9-to-5 Desk",
+    bulletNumber: "01",
+    bulletText: "A Better BNB Founder started Scenic Stay so he would never have to take a conventional 9-to-5 job and miss his three children growing up. Hosting allowed him to pick his kids up after school, cook supper for them every evening, spend summers together, and offset high Bay Area property taxes without paying for childcare.",
+    quoteBadge: "Host Bio · Live on Airbnb",
+    quoteShort: "\"I arrived in the Bay in 2011 and met my lovely wife later that year. We are parents to three lovely children... My host approach is similar to what I like when I'm a guest: To be as informative as possible and help visitors know what it's like to live in this amazing area.\"",
+    quoteExtended: "From day one, hospitality was personal. Because the studios were attached to the family home on Scenic Avenue, every guest interaction was treated like welcoming a neighbor while protecting the peace and rhythm of family life.",
+    sourceUrl: "https://www.airbnb.com/rooms/14185254",
+    sourceLabel: "Justin's Live Airbnb Host Profile (1,783 Reviews) ↗",
+    image: "assets/airbnb_screenshots/clean_justin_host_profile.png",
+    imageCaption: "Meet Your Host: A Better BNB Founder · Superhost · 10 Years Hosting · 1,783 Verified Reviews · 4.94 Rating",
+    appLink: "https://www.airbnb.com/rooms/14185254",
+    appLinkLabel: "Verify Host Profile ↗"
+  },
+  {
+    chapterId: 1,
+    chapterName: "1. Origin Story",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 1 · 10 Years of Hands-On Craft",
+    title: "Two Studios on Scenic Ave & Every Role Done by Hand",
+    bulletNumber: "02",
+    bulletText: "When Justin and his family moved into their Berkeley Hills home at 1545 Scenic Avenue, they were fortunate that the house included two ground-floor studios with private entrances and bathrooms. It took time to equip and list them, and for ten straight years Justin handled every single detail himself: guest communications, turnover cleanings, accounting, copywriting, and listing optimization.",
+    quoteBadge: "Portfolio Track Record · 1,707+ Studio Reviews",
+    quoteShort: "South Studio (Spacious Private Garden Studio): 4.95 Stars across 875 reviews. North Studio (Modern Retro Private Studio): 4.93 Stars across 832 reviews. Both rank in the Top 10% of eligible homes on Airbnb as Guest Favorites.",
+    quoteExtended: "Because Justin cleaned the bathrooms, made the beds, balanced the books, and answered midnight arrival messages himself for a decade, no process in Scenic Stay is theoretical. Every tool you will use was born from real operational experience.",
+    sourceUrl: "https://www.airbnb.com/rooms/19951024",
+    sourceLabel: "Modern Retro Private Studio (#19951024) ↗",
+    image: "assets/airbnb_screenshots/clean_north_studio_hero.png",
+    imageCaption: "Modern Retro Private Studio at 1545 Scenic Ave (4.93 Stars across 832 Verified Reviews)",
+    appLink: "https://www.airbnb.com/rooms/19951024",
+    appLinkLabel: "View North Studio ↗"
+  },
+  {
+    chapterId: 1,
+    chapterName: "1. Origin Story",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 1 · Global Perspective & Mission",
+    title: "From Volunteering in Mexico & an International MBA in Madrid to Helping Other Owners",
+    bulletNumber: "03",
+    bulletText: "Earlier in life, Justin spent nearly two years volunteering in Mexico and later earned his International MBA at IE Business School in Madrid, Spain. Combining that cross-cultural empathy and business rigor with ten years as a Superhost, he realized he had built a distinct point of view that helps both residential homeowners (A Better BNB) and independent boutique hotels (A Better Boutique) thrive.",
+    quoteBadge: "Why We Are Scaling Now",
+    quoteShort: "Legacy vacation rental conglomerates often take 35% to 50% in effective fees and hidden maintenance markups while delivering robotic service, or leave owners exhausted doing everything themselves. We step in behind the scenes to teach and deliver five-star service while putting more net income in the owner's pocket.",
+    quoteExtended: "Whether a property is a beloved backyard cottage in Berkeley or a 12-key heritage boutique hotel with four rental houses in wine country, our mission is identical: uncover what makes the stay special, remove the friction, and take care of people.",
+    sourceUrl: "https://www.airbnb.com/rooms/46689853",
+    sourceLabel: "Dual-Unit Listing: Two Cozy Private Studios (#46689853) ↗",
+    image: "assets/airbnb_screenshots/clean_both_studios_hero.png",
+    imageCaption: "Two Cozy Private Studios (#46689853): Combining Units for Families & Multi-Generational Stays",
+    appLink: "https://www.airbnb.com/rooms/46689853",
+    appLinkLabel: "View Dual Listing ↗"
+  },
+
+  // PART 2: WHAT GUESTS SAY OVER 10 YEARS
+  {
+    chapterId: 2,
+    chapterName: "2. Guest Reviews",
+    layout: "title",
+    theme: "theme-sage",
+    kicker: "Module 02 · Proof Across 1,783 Verified Reviews",
+    title: "What Guests Have Said Over the Years",
+    subtitle: "Before we ask you to learn our philosophy, look at what guests actually remember and write about across a decade of stays.",
+    image: "assets/airbnb_screenshots/south_studio_14185254_reviews_modal.png",
+    imageCaption: "4.95 Guest Favorite Rating Breakdown: 5.0 Cleanliness, 5.0 Check-In, 5.0 Communication, 478 Hospitality Mentions",
+    appLink: "https://www.airbnb.com/rooms/14185254/reviews",
+    appLinkLabel: "Read Live Reviews on Airbnb ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Guest Reviews",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 2 · Five-Star Hotel Energy in a Private Home",
+    title: "Hospitality Praised Even by Ritz-Carlton Veterans",
+    bulletNumber: "01",
+    bulletText: "When you genuinely care about the people staying under your roof, meeting them warmly, checking in on them, and sharing the energy of the neighborhood, guests feel the difference immediately. Even hospitality professionals from luxury hotels notice.",
+    quoteBadge: "Private Host Note & 5-Star Review · Xaviera (May 2026)",
+    quoteShort: "Private Note from Xaviera (Only visible to Host): \"Justin! Thank you so much for the lovely bourbon, your hospitality is fantastic (I should know, I worked at the Ritz Carlton in the city 😂). We felt that your home's energy and your energy was just amazing, only good things will come your way. We will look forward to staying with you again! Xaviera and Diego.\"",
+    quoteExtended: "Public Review (5 Stars): \"Justin's place is wonderful and convenient, it had everything we could possibly need. Justin is a fantastic host, he made a point to meet and greet us and even came by to bid us farewell. It felt like a five star experience at a hotel. The location is amazing and there's something special about being greeted by the aroma of jasmine. I can't recommend it enough.\"",
+    sourceUrl: "https://www.airbnb.com/rooms/19951024/reviews",
+    sourceLabel: "Source: Xaviera's Verified 5-Star Review & Private Note (#19951024) ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_xaviera_ritz_carlton.png",
+    imageContainLight: true,
+    imageCaption: "Host Dashboard Archive (May 2026): Xaviera's Private Ritz-Carlton Note (Left) & 5-Star Public Review (Right)",
+    appLink: "https://www.airbnb.com/rooms/19951024/reviews",
+    appLinkLabel: "Verify on Airbnb ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Guest Reviews",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 2 · Anticipating Needs Across the Years (2022 to 2023 & Beyond)",
+    title: "Thoughtful Touches Waiting After a Late Arrival",
+    bulletNumber: "02",
+    bulletText: "When guests arrive late after a concert at the Greek Theatre, a show at Berkeley Rep, or a long trip with a toddler, they shouldn't have to hunt for breakfast the next morning. Pre-stocking coffee, creamer, tea, and oatmeal in the studio is a simple habit that guests have praised year after year.",
+    quoteBadge: "Multi-Year 5-Star Reviews · Jeff (June 2023) & Estefania (January 2022)",
+    quoteShort: "Jeff (June 2023): \"The coffee/tea bar was well stocked to get us going in the morning (including instant oatmeal had we needed a quick breakfast).\" · Estefania (January 2022): \"Very clean and cute and thoughtful touches like coffee and oatmeal. Overall delightful and I really appreciated the communication from the host!\"",
+    quoteExtended: "From day one, keeping the kitchenette stocked with morning essentials (coffee, creamer, tea, and instant oatmeal) has given late-arriving travelers peace of mind the next morning.",
+    sourceUrl: "https://www.airbnb.com/rooms/14185254/reviews",
+    sourceLabel: "Source: Multi-Year Verified Reviews (#14185254) ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_oatmeal_deep_cuts.png",
+    imageCaption: "Live Airbnb Review Archive: Jeff (June 2023) & Estefania (January 2022) Praising the Coffee, Tea & Oatmeal Bar",
+    appLink: "https://www.airbnb.com/rooms/14185254/reviews",
+    appLinkLabel: "Verify Reviews on Airbnb ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Guest Reviews",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 2 · Proactive Communication",
+    title: "Updating the Door Code the Moment the Studio Is Clean",
+    bulletNumber: "03",
+    bulletText: "Travelers carrying luggage always wonder if they can drop their bags or check in early. Instead of making them beg or charging an arbitrary early check-in fee, our listing promises that the moment our cleaner finishes and the room is ready, we proactively activate their smart lock code early and message them.",
+    quoteBadge: "Verbatim Airbnb Review · Julie (November 2025)",
+    quoteShort: "\"Nice stay in a beautiful neighborhood. Justin notified us that the unit was available sooner than the listed check-in time. Communication was clear and helpful. The place was very clean and comfortable, especially the bed!\"",
+    quoteExtended: "From Justin's live Airbnb listing ('Other things to note'): \"The day of your stay, we'll update code time if the unit's clean and ready for you before the agreed upon check-in time.\" We also warn guests in advance that there are two steps down from the driveway so they know to use their phone flashlight if arriving after dark.",
+    sourceUrl: "https://www.airbnb.com/rooms/14185254/reviews",
+    sourceLabel: "Source: Julie's Verified 5-Star Review (#14185254) ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_julie_early_checkin.png",
+    imageCaption: "Live Screenshot: Julie (Cincinnati, OH · November 2025) Highlighting Proactive Early Check-In Notification",
+    appLink: "https://www.airbnb.com/rooms/14185254/reviews",
+    appLinkLabel: "View Review on Airbnb ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Guest Reviews",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 2 · Grace Under Pressure",
+    title: "Compassionate, Fair Problem-Solving When Life Happens",
+    bulletNumber: "04",
+    bulletText: "True hospitality is tested when plans fall apart. When a guest booked both studios for a family gathering and suffered a sudden family health emergency right before check-in, we didn't hide behind a rigid policy or act coldly. We listened with empathy and crafted a solution that was fair to both the guest and the calendar.",
+    quoteBadge: "Verbatim Airbnb Review · Kirk (Claremont, California · July 2026)",
+    quoteShort: "\"We had originally booked both basement units at this location, for two couples in our family. Unfortunately, a last minute health emergency prevented one couple from joining. Justin was compassionate and accommodating, and worked out a solution that was fair for everyone. We would definitely stay here if we visit Berkeley again!\"",
+    quoteExtended: "Also on the dual-studio listing, read Mel's review: \"Justin was a fantastic host, quick and attentive whenever a need came up. Since we booked two units at once for a slightly longer stay, having his responsive support made all the difference.\"",
+    sourceUrl: "https://www.airbnb.com/rooms/14185254/reviews",
+    sourceLabel: "Source: Kirk's Verified 5-Star Review (#14185254) ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_kirk_compassionate.png",
+    imageCaption: "Live Screenshot: Kirk (Claremont, CA · July 2026) Highlighting Compassionate, Fair Resolution",
+    appLink: "https://www.airbnb.com/rooms/14185254/reviews",
+    appLinkLabel: "Read Kirk's Review on Airbnb ↗"
+  },
+  {
+    chapterId: 2,
+    chapterName: "2. Guest Reviews",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 2 · 258 Comfort Mentions, 178 Sleep Quality Tags & 110+ Explicit Bed Reviews",
+    title: "'Like Sleeping on a Cloud': Why Bed Comfort Is Non-Negotiable",
+    bulletNumber: "05",
+    bulletText: "Airbnb's own review analyzer tags 258 reviews for Comfort and 178 reviews specifically for Sleep Quality on our flagship studio alone, with over 110+ reviews explicitly praising our comfortable King beds across the studios. Based on ten years of hosting experience, we recommend off-white linens that go with the room, three sets per bed (3-par rotation), and duvet covers that match the sheet set (and, by default, the room), rather than all-white linens that stain easily, show stains easily, and have to be replaced with far greater frequency, though partner owners may always choose to select or manage their own linens.",
+    quoteBadge: "258 Comfort Tags · 178 Sleep Quality Tags · 110+ Explicit Bed Callouts",
+    quoteShort: "Nicole (Nebraska): \"The bed was like sleeping on a cloud and was extra cozy with the fireplace.\" · Nathalie (10 Years on Airbnb): \"One of the most comfortable beds in an airbnb I ever had.\" · Robert (June 2026): \"Great room. Excellent bed. We had a very comfortable stay.\"",
+    quoteExtended: "Dual Studios Guest Review (#46689853): \"A big thank you to Justin for providing such a lovely stay! Each ensuite was beautifully appointed with a very comfortable king size bed, a kitchenette...\" · Tammy (Roseville, CA): \"This lovely space was so cozy and comfy and spotlessly clean! Justin was so easy to communicate with and even let us have a last minute earlier check-in time.\"",
+    sourceUrl: "https://www.airbnb.com/rooms/19951024/reviews",
+    sourceLabel: "Source: 258 Comfort & 178 Sleep Quality Reviews (#19951024, #14185254 & #46689853) ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_comfortable_beds.png",
+    imageCaption: "Live Airbnb Review: Nicole Praising the Bed ('Like Sleeping on a Cloud') + Our Recommended Off-White 3-Set Linen Standard",
+    appLink: "https://www.airbnb.com/rooms/19951024/reviews",
+    appLinkLabel: "Read Reviews on Airbnb ↗"
+  },
+
+  // PART 3: CORE PHILOSOPHY & CULTURE
+  {
+    chapterId: 3,
+    chapterName: "3. Core Philosophy",
+    layout: "title",
+    theme: "theme-terracotta",
+    kicker: "Module 03 · Our Operating Compass",
+    title: "How We Treat People & How We Work Together",
+    subtitle: "Four core principles that guide every guest message, every owner conversation, every vendor partnership, and every software tool we build.",
+    image: "assets/airbnb_screenshots/clean_oakland_32nd_hero.png",
+    imageCaption: "Expanding the Standard: Cozy, Bright & Airy 2BR Home in Oakland (#577740514242923213)",
+    appLink: "hospitality_communications_rulebook.html",
+    appLinkLabel: "Open Company SOP Rulebook ↗"
+  },
+  {
+    chapterId: 3,
+    chapterName: "3. Core Philosophy",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 3 · Principle 1",
+    title: "Always Put Adding Value in Front",
+    bulletNumber: "01",
+    bulletText: "Whether we are speaking with a prospective homeowner, a traveler dropped off an hour early by friends, or a local cleaner and handyman in a new city, our first instinct is always to add value. In sales, we never pitch blindly; we bring the owner real research about their property and market. In operations, we step up to accommodate guests and solve problems before they become chores for the owner.",
+    quoteBadge: "Going Above & Beyond Across the Years · Verified Guest Review (#19951024)",
+    quoteShort: "\"Justin was very hospitable and accommodating. My friends dropped me off an hour early and Justin quickly got the room ready early for me. Linens were fabulous. Had all the amenities I needed for a short weekend trip.\"",
+    quoteExtended: "Before sending any message or making any call, ask yourself: 'Does this interaction leave the other person better informed, more relieved, and more respected than before I reached out?' Click the link above to read the full Scenic Stay Hospitality & Partner Communications Rulebook (SOP).",
+    sourceUrl: "hospitality_communications_rulebook.html",
+    sourceLabel: "Open Hospitality & Partner Communications Rulebook (HTML SOP) ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_above_and_beyond_early.png",
+    imageCaption: "Years of Putting Value First: Quickly Getting the Room Ready When Friends Dropped a Guest Off an Hour Early",
+    appLink: "hospitality_communications_rulebook.html",
+    appLinkLabel: "Open Company Rulebook ↗"
+  },
+  {
+    chapterId: 3,
+    chapterName: "3. Core Philosophy",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 3 · Principle 2",
+    title: "Answer the Question Beyond the Question (QBQ)",
+    bulletNumber: "02",
+    bulletText: "'Going the extra mile' is a tired cliche. Real hospitality is understanding what people truly want and need, and providing it before they even have to ask. Whether it is leaving a personalized welcome note with flowers, chocolate, or a bottle of wine for a special trip, or answering the unspoken worry behind a question (like explaining the 2-hour weekday street parking rule and the two steps down from the driveway at night when a guest asks about arrival), we make people feel completely cared for.",
+    quoteBadge: "Creating Customers for Life · Surprise & Delight Reviews",
+    quoteShort: "\"Our stay was perfect! Very clean, stylish and comfortable. The hosts left a personalized note along with flowers & chocolate.\" · Dual-Studio Guest (#46689853): \"Bonus: Easy walk to the Greek Theatre for a show, and our kind hosts gifted us a bottle of wine.\"",
+    quoteExtended: "In sales, when an owner asks 'Why is your fee 15% to 25%?' their unspoken Question Beyond the Question is 'Will your fee eat into the income I already make?' We answer that before they ask by showing itemized revenue upside that funds our fee and increases their net take-home pay.",
+    sourceUrl: "hospitality_communications_rulebook.html",
+    sourceLabel: "Source: Scenic Stay QBQ Standard in the Company Rulebook ↗",
+    image: "assets/airbnb_screenshots/clean_reviews_surprise_gift_wine.png",
+    imageCaption: "Surprise & Delight in Action: Personalized Note with Flowers & Chocolate (#19951024)",
+    appLink: "hospitality_communications_rulebook.html",
+    appLinkLabel: "Read QBQ Standard ↗"
+  },
+  {
+    chapterId: 3,
+    chapterName: "3. Core Philosophy",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 3 · Principle 3",
+    title: "Tactful Kindness Paired with Firm Boundaries",
+    bulletNumber: "03",
+    bulletText: "We maintain a warm, tactful, kind approach while setting clear, firm boundaries and expectations. Never equate kindness with weakness, and never equate meanness with strength. We pursue fairness and a sensible, efficient, cost-effective approach to managing every property.",
+    quoteBadge: "Fairness for Guests, Owners, and Our Team",
+    quoteShort: "We protect our owners' homes, enforce quiet hours and occupancy rules with calm respect, and structure agreements where both sides win (including clear turnover cleaning arrangements and a transparent 20% coordination markup on out-of-scope repairs).",
+    quoteExtended: "Similarly, when an owner blocks open calendar dates for personal use, we block the calendar on their behalf gladly, while both sides recognize it is a shared revenue loss and never cancel on confirmed guests.",
+    sourceUrl: "owner_agreement_generator.html",
+    sourceLabel: "Source: Fair & Transparent Owner Agreement Standards ↗",
+    image: "assets/airbnb_screenshots/app_owner_agreement.png",
+    imageCaption: "Transparent, Fair Boundaries Built Directly into Our Owner Agreements",
+    appLink: "owner_agreement_generator.html",
+    appLinkLabel: "Preview Owner Agreement ↗"
+  },
+  {
+    chapterId: 3,
+    chapterName: "3. Core Philosophy",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 3 · Principle 4 (Our Culture Promise to You)",
+    title: "Weathering Rough Spots Together & Welcoming Your Earnest Feedback",
+    bulletNumber: "04",
+    bulletText: "Welcome to Scenic Stay: A Better BNB! You are joining an organization that is just beginning, which means you have a rare opportunity to help shape its future. We are looking for team members who understand that there may be rough spots as we grow, and that we will weather them together with honesty and mutual support.",
+    quoteBadge: "You + Leadership + The AI Robot Crew",
+    quoteShort: "Behind these applications is our leadership working alongside an autonomous crew of AI engineering agents (Antigravity, Claude Code, and Codex). Whenever a tool feels clunky, a lead has a gap, or a workflow can be smarter, tell us immediately.",
+    quoteExtended: "We don't want silent frustration or superficial politeness. Your earnest feedback from the front lines is the exact fuel we use to upgrade this system into the best hospitality and sales platform in the world.",
+    sourceUrl: "javascript:openFeedbackModal()",
+    sourceLabel: "Click Here Anytime to Share Earnest Feedback ↗",
+    image: "assets/brand/venmo_banner_sunset_photo.jpg",
+    imageContain: true,
+    imageCaption: "Ground-Floor Opportunity: Helping Shape the Future of Scenic Stay Together",
+    appLink: "javascript:openFeedbackModal()",
+    appLinkLabel: "Open Feedback Box ↗"
+  },
+
+  // PART 4: HOW LEADS ARE GATHERED & VETTED
+  {
+    chapterId: 4,
+    chapterName: "4. How Leads Are Vetted",
+    layout: "title",
+    theme: "theme-slate",
+    kicker: "Module 04 · Instructive Overview (Behind the Scenes)",
+    title: "How New Leads Are Gathered & Vetted",
+    subtitle: "Before a property ever appears on a salesperson's screen, ATLAS and Beacon Scout do the heavy research so you never walk into a call blind.",
+    image: "assets/airbnb_screenshots/app_beacon_lead_command_grid.png",
+    imageCaption: "Beacon Scout feeds only fully researched, multi-gate verified leads into Beacon Lead Command",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Open Beacon Lead Command ↗"
+  },
+  {
+    chapterId: 4,
+    chapterName: "4. How Leads Are Vetted",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 4 · Step 1 of Lead Generation",
+    title: "ATLAS Regulatory Clearance & Finding Places With Buzz That Need Help",
+    bulletNumber: "01",
+    bulletText: "First, our ATLAS regulatory database checks municipal short-term rental ordinances and commercial lodging codes so we only prospect in legal, viable jurisdictions. Then Beacon Scout seeks out popular, trending travel areas, regardless of whether they are rural, coastal, mountain, wine-country, or urban, looking for properties that have genuine design appeal or social buzz, but show operational fatigue.",
+    quoteBadge: "What Beacon Scout Looks For Automatically",
+    quoteShort: "We look for places where the product is special, such as a boutique hotel that also rents four private houses, or a great residential home with a weak listing title, static pricing, tedious checkout rules, or slipping guest reviews (4.1 to 4.7 stars).",
+    quoteExtended: "Beacon Scout crawls the property's website (About Us, Contact page, room and house inventory, booking engine/PMS) and checks Instagram, Facebook, and LinkedIn to see if their social presence has gone dormant or if guests are complaining about slow replies.",
+    sourceUrl: "beacon_lead_command.html",
+    sourceLabel: "Inspect Verified Market Intelligence in Beacon ↗",
+    image: "assets/airbnb_screenshots/app_beacon_tab1_research.png",
+    imageCaption: "Beacon Scout Deep Web & Social Audit Feeding Directly Into Beacon Lead Command",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Open Beacon Lead Command ↗"
+  },
+  {
+    chapterId: 4,
+    chapterName: "4. How Leads Are Vetted",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 4 · Step 2 of Lead Generation",
+    title: "Strict Sequential Qualification Gates (Quarantine Until Ready)",
+    bulletNumber: "02",
+    bulletText: "No lead is allowed to jump the line into our active sales pipeline. Every prospect must pass sequentially through six qualification gates using free public records, local property registries, business filings, and live web verification. If a lead fails any gate along the way, it goes into Quarantine with a clear note explaining why, and cannot advance until it passes that gate and every remaining gate in sequence.",
+    quoteBadge: "The 6 Sequential Gates Before You Ever See a Lead",
+    quoteShort: "Gate 1: Legal Jurisdiction & Asset Fit · Gate 2: Clickable Online Proof & PMS Audit · Gate 3: Verified Operational or Distribution Gap (Thriving 4.9-star benchmarks are quarantined!) · Gate 4: Real Owner/GM Contact Unmasked · Gate 5: Multi-Channel Social & Web Check · Gate 6: Net-Pocket Fee Viability Proof.",
+    quoteExtended: "By exhausting every free investigative resource first and quarantining incomplete or already-thriving properties across domestic and international markets alike, we make sure that when a lead lands in Beacon Lead Command, it already answers the questions you and the owner will have.",
+    sourceUrl: "beacon_lead_command.html",
+    sourceLabel: "View Active YES Pipeline vs. Quarantine Cohort in Beacon ↗",
+    image: "assets/airbnb_screenshots/app_beacon_lead_command_grid.png",
+    imageCaption: "Active YES Pipeline vs. Quarantined Leads (With Gate-Failure Reasons Logged)",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Inspect Gate Verification ↗"
+  },
+
+  // PART 5: MASTERING BEACON LEAD COMMAND (EACH TAB ON ITS OWN DEDICATED SLIDE)
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "title",
+    theme: "theme-mauve",
+    kicker: "Module 05 · Interactive Sales & Intake Walkthrough",
+    title: "Mastering Beacon Lead Command & Owner Intake",
+    subtitle: "Let's walk through each of the five tabs inside Beacon Lead Command one by one, followed by the Owner Agreement Generator and the Owner Intake handoff.",
+    image: "assets/airbnb_screenshots/app_beacon_tab1_research.png",
+    imageCaption: "Each Lead Opens a 5-Tab Consultative Dossier Built for Zero-Question Discovery",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Launch Beacon Lead Command ↗"
+  },
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 5 · Beacon Lead Command (Tab 1 of 5)",
+    title: "Tab 1: Property Story, PMS Stack & Plain-Language Regulatory Digest",
+    bulletNumber: "01",
+    bulletText: "When you click any lead in Beacon Lead Command, Tab 1 gives you the complete property story before you ever pick up the phone. Right next to the property name at the top is a clickable link to visit their live website or listing. Below that, Tab 1 shows their full inventory (including whether a boutique hotel also rents standalone houses or villas), what PMS or booking engine they use, nearby demand drivers, and a Plain-Language Regulatory & Tax Digest.",
+    quoteBadge: "Why Tab 1 Matters on Every Call",
+    quoteShort: "You never have to decipher a dense municipal PDF or guess what software they run. Tab 1 hands you the exact PMS discovery question to ask, such as how their current booking engine handles multi-room or house buyouts.",
+    quoteExtended: "Tab 1 also includes the 5-Point System & Distribution Gap Audit (Channel Presence, Pricing Curve, Minimum-Stay/Orphan Nights, Booking/PMS Friction, and Repeat Guest Capture) so you can see every operational lever at a glance.",
+    sourceUrl: "beacon_lead_command.html",
+    sourceLabel: "Open Beacon Lead Command & Inspect Tab 1 ↗",
+    image: "assets/airbnb_screenshots/app_beacon_tab1_research.png",
+    imageCaption: "Tab 1 Screenshot: Live Website Link, Property Story, PMS Friction Notes & Plain-Language Lodging Digest",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Explore Tab 1 Live ↗"
+  },
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 5 · Beacon Lead Command (Tab 2 of 5)",
+    title: "Tab 2: The 3-Line Authority Cadence & Direct Channel Inference",
+    bulletNumber: "02",
+    bulletText: "Tab 2 tells you exactly who owns the property, who manages the front desk, and who actually holds signing authority. Every lead displays a clear 3-Line Authority Cadence: Line 1 is the Legal Owner or Corporate Entity, Line 2 is the On-Site General Manager or Gatekeeper, and Line 3 is the Decision Maker Routing strategy (telling you whether to approach the owner directly or partner with an empowered GM).",
+    quoteBadge: "Smart Channel Inference (WhatsApp vs. Quo)",
+    quoteShort: "If Beacon Scout detects a live WhatsApp widget on the property's website (especially common for international and boutique properties), Tab 2 highlights an emerald banner instructing you to reach out via WhatsApp directly rather than placing a cold Quo call.",
+    quoteExtended: "Tab 2 also provides the Owner/GM Psychological Persona Angle so you can tailor your tone to a pride-of-ownership founder versus a fatigued self-managing homeowner.",
+    sourceUrl: "beacon_lead_command.html",
+    sourceLabel: "Open Beacon Lead Command & Inspect Tab 2 ↗",
+    image: "assets/airbnb_screenshots/app_beacon_tab2_authority.png",
+    imageCaption: "Tab 2 Screenshot: Legal Owner Entity, GM Contact, Decision-Maker Routing & WhatsApp Detection",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Explore Tab 2 Live ↗"
+  },
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 5 · Beacon Lead Command (Tab 3 of 5)",
+    title: "Tab 3: Division-Aware Fee Slider & Net-Pocket Uplift Proof",
+    bulletNumber: "03",
+    bulletText: "Tab 3 automatically adapts its financial calculator to the property type: 15% to 30% for Residential STRs, or 8% to 15% for Boutique Hotel wedges. Right beside the interactive slider, the Itemized Value Levers & Fee-Burden Proof Card proves side-by-side what the owner nets today versus what they net after our fee once we unlock dynamic pricing, multi-channel distribution, and higher conversion.",
+    quoteBadge: "Answering the Unspoken Fee Question",
+    quoteShort: "Owners don't mind paying a fair fee when they can see clearly that our operational uplift pays for our fee and still puts thousands of extra dollars in their pocket every year.",
+    quoteExtended: "Tab 3 also calculates exact door/key counts for smart lock modernization (noting clearly that hardware costs are paid by the owner, and never pitching 'firing a night clerk' to a staffed luxury hotel).",
+    sourceUrl: "beacon_lead_command.html",
+    sourceLabel: "Open Beacon Lead Command & Test the Tab 3 Slider ↗",
+    image: "assets/airbnb_screenshots/app_beacon_tab3_economics.png",
+    imageCaption: "Tab 3 Screenshot: Interactive Fee Slider & Side-by-Side Net-Pocket Gain Proof",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Try Tab 3 Slider Live ↗"
+  },
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 5 · Beacon Lead Command (Tab 4 of 5)",
+    title: "Tab 4: Citable Review Distress, Socratic Discovery & QBQ Decoder",
+    bulletNumber: "04",
+    bulletText: "In Tab 4, you see verbatim Citable Review Complaints from Google, TripAdvisor, or Airbnb alongside our Socratic Discovery Map. Because we already know the answer from our research (for instance, that their checkout process is tedious or that guests mention slow replies), we never lecture the owner. Instead, we ask an earnest question that lets them share the challenge in their own words.",
+    quoteBadge: "Know the Answer -> Ask the Earnest Question -> Guide the Discovery",
+    quoteShort: "Example Earnest Question: 'We noticed you have those four beautiful private houses alongside the main hotel rooms; how is your current booking setup handling guests who want to book the houses or combine rooms, and how much time is checkout taking your front desk?'",
+    quoteExtended: "Tab 4 also includes the Question Behind the Question (QBQ) Objection Decoder and 1-click multi-channel outreach templates (Quo SMS, WhatsApp, and Email).",
+    sourceUrl: "beacon_lead_command.html",
+    sourceLabel: "Open Beacon Lead Command & Inspect Tab 4 ↗",
+    image: "assets/airbnb_screenshots/app_beacon_tab4_socratic.png",
+    imageCaption: "Tab 4 Screenshot: Verbatim Review Distress, Socratic Discovery Prompts & QBQ Decoder",
+    appLink: "beacon_lead_command.html",
+    appLinkLabel: "Explore Tab 4 Live ↗"
+  },
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 5 · Beacon Lead Command (Tab 5) & Stage 3 Agreement",
+    title: "Tab 5 & Generating the Pre-Filled Owner Agreement",
+    bulletNumber: "05",
+    bulletText: "When an owner is ready to see our proposal, go to Tab 5 in Beacon Lead Command and click 'Draft Owner Agreement.' Every verified detail from Beacon flows automatically into the Owner Agreement Generator, topped by a Plain-Language Executive Summary that answers their biggest questions right up front: we manage the calendar and block personal dates on their behalf (recognizing it is a shared revenue loss for both of us), routine cleaning fees follow the clear pass-through terms of their agreement, and out-of-scope repairs carry a transparent 20% coordination markup.",
+    quoteBadge: "Clear Service Tiers in the Agreement",
+    quoteShort: "15% Tier: Owner handles cleaning, maintenance, and supplies coordination (shared calendar timing). · 20% Tier: Manager coordinates turnover cleaning and routine maintenance; Owner handles supplies. · 25% Tier: Manager maintains inventory, orders supplies (invoiced to Owner), and coordinates all turnovers and repairs.",
+    quoteExtended: "Following any personal stay by the Owner, we coordinate the turnover cleaners during our standard 11:00 AM to 5:00 PM hospitality turnover window and invoice the Owner at cost.",
+    sourceUrl: "owner_agreement_generator.html",
+    sourceLabel: "Open Owner Agreement Generator ↗",
+    image: "assets/airbnb_screenshots/app_owner_agreement.png",
+    imageCaption: "Stage 3: Owner Agreement Generator with Plain-Language Zero-Question Executive Summary",
+    appLink: "owner_agreement_generator.html",
+    appLinkLabel: "Launch Agreement Generator ↗"
+  },
+  {
+    chapterId: 5,
+    chapterName: "5. Beacon & Intake",
+    layout: "bullet",
+    theme: "theme-sand",
+    kicker: "Part 5 · Where Sales Ends & Operations Begins",
+    title: "Starting Owner Intake & Sourcing Cleaners in a New City",
+    bulletNumber: "06",
+    bulletText: "The moment the agreement is signed, clicking 'Step 1: Open Owner Intake (Homeowner View Lock)' launches HOSt Property Forge with 80% of the property profile already filled in from Beacon Scout. The owner only fills in the remaining blanks (like Wi-Fi password, water shutoff, and existing vendors). If the property is in a new city and needs a turnover cleaner for our 11:00 AM to 5:00 PM window or a local handyman, the Automated Vendor Sourcing Console generates 1-click searches across Google Maps, Yelp, Nextdoor, and Craigslist. Starting this intake and vendor search is where Sales ends and Operations begins.",
+    quoteBadge: "The Exact Handoff Line",
+    quoteShort: "Sales reps complete their mission once the agreement is signed, the pre-filled Homeowner Intake link is sent, and any missing Day-1 city vendor search (cleaner or handyman) is triggered. From that exact moment, our Inside Operations team takes the baton.",
+    quoteExtended: "Homeowner View locks the screen to that single property so the owner never sees our internal pipeline dropdown, while Internal Admin Mode lets our operations team manage all properties and vendor candidates.",
+    sourceUrl: "host_property_forge.html?mode=owner",
+    sourceLabel: "Preview Pre-Filled Homeowner Intake View ↗",
+    image: "assets/airbnb_screenshots/app_host_property_forge_owner.png",
+    imageCaption: "Stage 4: HOSt Property Forge (80% Pre-Filled Intake + Nextdoor/Craigslist/Maps/Yelp Vendor Sourcing)",
+    appLink: "host_property_forge.html",
+    appLinkLabel: "Open HOSt Property Forge ↗"
+  },
+
+  // PART 6: SALES TRAINING CONCLUSION & BRIDGE TO OPERATIONS ACADEMY
+  {
+    chapterId: 6,
+    chapterName: "6. Next Steps",
+    layout: "title",
+    theme: "theme-plum",
+    showBrandBadge: true,
+    kicker: "Sales & Intake Journey Complete",
+    title: "You Have Completed the Sales & Philosophy Track",
+    subtitle: "If you are on the Sales Team, you are ready to dive into Beacon Lead Command and our Company Hospitality Rulebook. If you are continuing into Inside Operations & Guest Care, click below to launch Part 2: The Inside Operations Academy.",
+    ctaButtons: [
+      { label: "Continue to Part 2: Inside Operations Academy →", href: "scenic_operations_academy.html", primary: true },
+      { label: "Open Company Hospitality Rulebook (SOP) ↗", href: "hospitality_communications_rulebook.html", primary: false },
+      { label: "Open Shadow-First Workbook ↗", href: "alyssa_shadow_playbook.html", primary: false }
+    ],
+    image: "assets/brand/scenic_stay_canonical_emblem.png",
+    imageContain: true,
+    imageCaption: "Scenic Stay: A Better BNB & A Better Boutique",
+    appLink: "scenic_operations_academy.html",
+    appLinkLabel: "Start Operations Academy →"
+  }
+];
+
+const CHAPTERS = [
+  { id: 1, label: "1. Origin Story" },
+  { id: 2, label: "2. Guest Reviews" },
+  { id: 3, label: "3. Core Philosophy" },
+  { id: 4, label: "4. How Leads Are Vetted" },
+  { id: 5, label: "5. Beacon & Intake" },
+  { id: 6, label: "6. Conclusion & Next Track" }
+];
+
+
+let currentIndex = 0;
+
+function renderChapterNav() {
+  const nav = document.getElementById("chapter-nav");
+  const activeChapter = SLIDES[currentIndex].chapterId;
+  nav.innerHTML = CHAPTERS.map(ch => {
+    const isActive = ch.id === activeChapter ? "active" : "";
+    return `<button class="chapter-btn ${isActive}" onclick="jumpToChapter(${ch.id})">${ch.label}</button>`;
+  }).join("");
+}
+
+function jumpToChapter(chapterId) {
+  const idx = SLIDES.findIndex(s => s.chapterId === chapterId);
+  if (idx !== -1) {
+    currentIndex = idx;
+    renderSlide();
+  }
+}
+
+function stepSlide(delta) {
+  const next = currentIndex + delta;
+  if (next >= 0 && next < SLIDES.length) {
+    currentIndex = next;
+    renderSlide();
+  }
+}
+
+function toggleExtendedQuote() {
+  const drawer = document.getElementById("extended-quote-drawer");
+  const btn = document.getElementById("quote-toggle-btn");
+  if (!drawer || !btn) return;
+  const isOpen = drawer.classList.toggle("open");
+  btn.textContent = isOpen ? "Hide Extended Context" : "Read Full Quote & Context";
+}
+
+function openLightbox(src, caption) {
+  const lb = document.getElementById("lightbox");
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox-caption").textContent = caption || "";
+  lb.classList.add("open");
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+}
+
+function openFeedbackModal() {
+  const slide = SLIDES[currentIndex];
+  document.getElementById("feedback-slide-context").textContent =
+    `Current Slide (${currentIndex + 1}/${SLIDES.length}): ${slide.title}`;
+  const savedKey = `scenic_feedback_${DECK_KEY}_${currentIndex}`;
+  document.getElementById("feedback-textarea").value = localStorage.getItem(savedKey) || "";
+  document.getElementById("feedback-saved-toast").style.display = "none";
+  document.getElementById("feedback-modal").classList.add("open");
+}
+
+function closeFeedbackModal() {
+  document.getElementById("feedback-modal").classList.remove("open");
+}
+
+function copyFeedbackToClipboard() {
+  const slide = SLIDES[currentIndex];
+  const note = document.getElementById("feedback-textarea").value.trim();
+  const savedKey = `scenic_feedback_${DECK_KEY}_${currentIndex}`;
+  localStorage.setItem(savedKey, note);
+  const payload = `[Scenic Academy Feedback (${DECK_KEY}) · Slide ${currentIndex + 1}: ${slide.title}]\n${note}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(payload).catch(() => {});
+  }
+  document.getElementById("feedback-saved-toast").style.display = "block";
+}
+
+function renderSlide() {
+  const slide = SLIDES[currentIndex];
+  const canvas = document.getElementById("slide-canvas");
+  canvas.className = `slide-canvas ${slide.theme}`;
+
+  const leftEl = document.getElementById("slide-left");
+  const rightEl = document.getElementById("slide-right");
+
+  const brandBadgeHtml = slide.showBrandBadge
+    ? `<div class="title-brand-badge"><img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Redwood Icon"><span>Scenic Stay &bull; A Better BNB</span></div>`
+    : "";
+
+  const ctaHtml = slide.ctaButtons
+    ? `<div class="cta-button-group">` + slide.ctaButtons.map(b =>
+        `<a class="cta-hero-btn ${b.primary ? '' : 'secondary'}" href="${b.href}">${b.label}</a>`
+      ).join("") + `</div>`
+    : "";
+
+  if (slide.layout === "title") {
+    leftEl.innerHTML = `
+      ${brandBadgeHtml}
+      <div class="slide-kicker">${slide.kicker}</div>
+      <h1 class="slide-title-hero">${slide.title}</h1>
+      <p class="slide-subtitle">${slide.subtitle}</p>
+      ${ctaHtml}
+    `;
+  } else {
+    leftEl.innerHTML = `
+      <div class="slide-kicker">${slide.kicker}</div>
+      <h2 class="slide-title-bullet">${slide.title}</h2>
+      <div class="bullet-point-box">
+        <div class="bullet-marker">${slide.bulletNumber}</div>
+        <div class="bullet-text">${slide.bulletText}</div>
+      </div>
+      <div class="supporting-card">
+        <div class="supporting-header">
+          <span class="supporting-badge">${slide.quoteBadge}</span>
+          <a class="source-link" href="${slide.sourceUrl}" target="_blank" rel="noopener">${slide.sourceLabel}</a>
+        </div>
+        <div class="supporting-quote">${slide.quoteShort}</div>
+        <button class="quote-toggle-btn" id="quote-toggle-btn" onclick="toggleExtendedQuote()">Read Full Quote &amp; Context</button>
+        <div class="extended-quote-drawer" id="extended-quote-drawer">${slide.quoteExtended}</div>
+      </div>
+    `;
+  }
+
+  const safeCaption = (slide.imageCaption || "").replace(/'/g, "\\'");
+  const imgFitStyle = slide.imageContain
+    ? "object-fit: contain; object-position: center center; background: #180820; padding: 12px;"
+    : (slide.imageContainLight ? "object-fit: contain; object-position: center center; background: #fbf9f5; padding: 6px;" : "");
+  rightEl.innerHTML = `
+    <div class="visual-frame">
+      <div class="visual-img-wrap" onclick="openLightbox('${slide.image}', '${safeCaption}')" title="Click to expand screenshot">
+        <img src="${slide.image}" alt="${slide.title}" style="${imgFitStyle}">
+      </div>
+      <div class="visual-caption-bar">
+        <span>${slide.imageCaption}</span>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="quote-toggle-btn" onclick="openLightbox('${slide.image}', '${safeCaption}')">Zoom Image</button>
+          <a class="visual-action-btn" href="${slide.appLink}" target="_blank" rel="noopener">${slide.appLinkLabel}</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("slide-counter").textContent = `Slide ${currentIndex + 1} of ${SLIDES.length}`;
+  document.getElementById("chapter-label").textContent = slide.chapterName;
+  const pct = Math.round(((currentIndex + 1) / SLIDES.length) * 100);
+  document.getElementById("progress-fill").style.width = `${pct}%`;
+
+  document.getElementById("prev-btn").disabled = currentIndex === 0;
+  document.getElementById("next-btn").textContent =
+    currentIndex === SLIDES.length - 1 ? "Completed Track" : "Next Slide →";
+  document.getElementById("next-btn").disabled = currentIndex === SLIDES.length - 1;
+
+  renderChapterNav();
+}
+
+document.addEventListener("keydown", (e) => {
+  if (document.getElementById("feedback-modal").classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") stepSlide(1);
+  if (e.key === "ArrowLeft") stepSlide(-1);
+});
+
+renderSlide();
+</script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

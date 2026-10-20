@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Better BNB / Scenic Stay: Operational Operating System Walkthrough</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+    body { font-family: 'Montserrat', sans-serif; background-color: #070e18; color: #f1f5f9; }
+    h1, h2, h3, .serif-font { font-family: 'Libre Baskerville', Georgia, serif; }
+    .mono-font { font-family: 'JetBrains Mono', monospace; }
+    .card-glass { background: #0f192a; border: 1px solid #1e293b; }
+    .card-active { border-color: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.15); }
+    .badge-step { background: #1e293b; color: #f59e0b; border: 1px solid #334155; }
+    .nav-btn { background: #0b1524; border: 1px solid #1e2d42; color: #cbd5e1; transition: all 0.2s ease; }
+    .nav-btn:hover { background: #132238; border-color: #f59e0b; color: #ffffff; }
+
+    /* Pulse badge for interactive visualizer */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .pulse-hotspot {
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+    .simulator-screen {
+      background: #060b13;
+      border: 1px solid #1e293b;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    }
+  </style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
+
+  <!-- Header & Navigation Bar -->
+  <header class="max-w-[1500px] mx-auto w-full card-glass rounded-2xl p-5 md:p-6 shadow-2xl mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-amber-500">
+    <div class="flex items-center space-x-3.5">
+      <!-- Screen Display Mark for Walkthrough -->
+      <div class="h-12 w-12 bg-[#24123a] rounded-xl flex items-center justify-center border border-amber-500/50 shadow-inner flex-shrink-0 text-amber-400 text-2xl ring-1 ring-amber-500/20">
+        <i class="fa-solid fa-tv"></i>
+      </div>
+      <div>
+        <!-- Line 1: Page Name -->
+        <h1 class="text-xl md:text-2xl font-bold text-white tracking-wide serif-font">System Walkthrough</h1>
+        <!-- Line 2: Subtitle in block badge -->
+        <div class="mt-0.5">
+          <span class="text-xs text-amber-400 font-sans tracking-widest uppercase px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/80 inline-block">Executive Operating System</span>
+        </div>
+        <!-- Lines 3-4: Feature description -->
+        <p class="text-xs text-slate-400 mt-1 font-sans">Pipeline Lifecycle &bull; Sourcing to Dispatch &bull; Lead Atlas Underwriting &bull; SLA Governance &bull; Culture Alignment</p>
+      </div>
+    </div>
+
+    <!-- Live System Navigation -->
+    <div class="flex flex-wrap items-center gap-2 text-xs">
+      <a href="beacon_lead_command.html" class="nav-btn px-3.5 py-2 font-semibold rounded-xl flex items-center gap-1.5 border-amber-500/50 bg-amber-950/40 text-amber-300 hover:bg-amber-900/60 shadow-sm transition">
+        <i class="fa-solid fa-tower-broadcast text-amber-400"></i>
+        <span>Beacon Leads &rarr;</span>
+      </a>
+      <a href="owner_agreement_generator.html" class="nav-btn px-3.5 py-2 font-semibold rounded-xl flex items-center gap-1.5 border-sky-500/50 bg-sky-950/40 text-sky-300 hover:bg-sky-900/60 shadow-sm transition">
+        <i class="fa-solid fa-file-signature text-sky-400"></i>
+        <span>Owner Agreement &rarr;</span>
+      </a>
+      <a href="host_property_forge.html" class="nav-btn px-3.5 py-2 font-semibold rounded-xl flex items-center gap-1.5 border-purple-500/50 bg-purple-950/40 text-purple-300 hover:bg-purple-900/60 shadow-sm transition">
+        <i class="fa-solid fa-hammer text-purple-400"></i>
+        <span>Property Forge &rarr;</span>
+      </a>
+      <a href="host_dispatch_resetr.html" class="nav-btn px-3.5 py-2 font-semibold rounded-xl flex items-center gap-1.5 border-emerald-500/50 bg-emerald-950/40 text-emerald-300 hover:bg-emerald-900/60 shadow-sm transition">
+        <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
+        <span>reSeTR Dispatch &rarr;</span>
+      </a>
+      <button onclick="openLivePipelineModal()" class="px-3.5 py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold rounded-xl border border-amber-500/60 flex items-center gap-1.5 transition cursor-pointer shadow-lg">
+        <i class="fa-solid fa-play text-amber-400"></i>
+        <span>Live Pipeline Simulation &rarr;</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Walkthrough Stage -->
+  <main class="max-w-[1500px] mx-auto w-full space-y-4">
+
+    <!-- Master View Switcher (Walkthrough vs Playbook Handbook vs Interactive Simulator) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+      <div class="flex items-center gap-2 text-xs">
+        <span class="text-slate-400 font-semibold uppercase tracking-wider font-mono">Operating Console Mode:</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="switchAppMode('walkthrough')" id="btn-mode-walkthrough" class="px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-tv"></i>
+          <span>1. Streamlined Walkthrough</span>
+        </button>
+        <button onclick="switchAppMode('playbook')" id="btn-mode-playbook" class="px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-book-bookmark text-sky-400"></i>
+          <span>2. Team How-To Playbook (Reference SOPs)</span>
+        </button>
+        <button onclick="switchAppMode('simulator')" id="btn-mode-simulator" class="px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i>
+          <span>3. Interactive Beacon Simulator (.GIF Visualizer)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MODE 1: STREAMLINED WALKTHROUGH SECTION -->
+    <div id="section-walkthrough" class="space-y-4">
+      <!-- Interactive Track Selector & Controls -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-900/90 p-4 rounded-2xl border border-slate-800">
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-slate-400 font-semibold uppercase tracking-wider font-mono">Demonstration Track:</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <button onclick="switchTrack('boutique')" id="btn-track-boutique" class="px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-lg flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-hotel"></i> Track A: Boutique Hotel Partner (14-Key Inn)
+          </button>
+          <button onclick="switchTrack('str')" id="btn-track-str" class="px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-house-user"></i> Track B: STR Property Owner (3-Unit Portfolio)
+          </button>
+        </div>
+      </div>
+
+      <!-- Stepper Navigation Bar -->
+      <div class="flex items-center justify-between gap-2 overflow-x-auto pb-1" id="stepper-bar">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Main Presentation Slide Stage View -->
+      <div class="card-glass p-5 md:p-6 rounded-3xl border border-slate-800 shadow-2xl space-y-5" id="walkthrough-display">
+        <!-- Dynamic Large Presentation Slide Injected via JS -->
+      </div>
+
+      <!-- Sequential Bottom Navigation Bar (< / Indicator / >) -->
+      <div class="card-glass p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between gap-4">
+        <button onclick="navigateSlide(-1)" id="btn-prev-slide" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold border border-slate-700 hover:border-amber-500 transition flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-arrow-left"></i> Previous
+        </button>
+        
+        <div class="flex items-center gap-3 text-xs md:text-sm" id="slide-position-indicator">
+          <!-- Position Indicator Injected via JS -->
+        </div>
+
+        <button onclick="navigateSlide(1)" id="btn-next-slide" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition flex items-center gap-2 shadow-lg cursor-pointer">
+          Next <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- System Core Philosophy Callout -->
+      <div class="card-glass p-4 rounded-2xl border-l-4 border-l-amber-500 space-y-1.5">
+        <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2 serif-font">
+          <i class="fa-solid fa-scale-balanced text-amber-400"></i> Core Philosophy &amp; Standard
+        </h3>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          <strong>Pure Underwriting &amp; Net Operating Yield:</strong> Every opportunity is underwritten on real Net Operating Yield (NOY), localized carrying costs, and verified operational SLAs. We do not rely on arbitrary industry assumptions or third-party black boxes. All owner settlements and field payouts reconcile cleanly against actual invoiced performance.
+        </p>
+      </div>
+    </div>
+
+    <!-- MODE 2: TEAM HOW-TO PLAYBOOK (REFERENCE HANDBOOK) -->
+    <div id="section-playbook" class="space-y-6 hidden">
+      <!-- Playbook Header -->
+      <div class="card-glass p-6 rounded-3xl border-l-4 border-l-sky-500 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-sky-950 text-sky-400 border border-sky-800">Operational Reference Handbook</span>
+            <span class="text-xs text-slate-400 font-mono">Version 2.4 &bull; Active Standard</span>
+          </div>
+          <h2 class="text-xl md:text-2xl font-bold text-white serif-font mt-1">Team Field Playbook &amp; SOP Reference</h2>
+          <p class="text-xs text-slate-300 mt-1">Permanent procedural guide for Sales Closers, Contract Specialists, Property Forge Technicians, and reSeTR Housekeeping Operators.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-2 transition cursor-pointer">
+            <i class="fa-solid fa-print text-sky-400"></i> Print SOP Guide
+          </button>
+        </div>
+      </div>
+
+      <!-- Playbook Role Sections Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Role 1: Sales Closers & Lead Managers -->
+        <div class="card-glass p-6 rounded-2xl border-t-4 border-t-amber-500 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="h-9 w-9 rounded-xl bg-amber-950/80 border border-amber-500/50 flex items-center justify-center text-amber-400 text-sm">
+                <i class="fa-solid fa-tower-broadcast"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider">1. Sales Closer &amp; Sourcing SOP</h3>
+                <span class="text-[10px] text-amber-400 font-mono">Beacon Lead Command Rhythm</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 text-[10px] font-mono border border-slate-700">Daily Execution</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-slate-300">
+            <div>
+              <strong class="text-white block mb-1">Cadence Schedule (Manager Dispatched):</strong>
+              <ul class="space-y-1 list-disc pl-4 text-slate-300">
+                <li><strong class="text-amber-300">Day 1:</strong> Initial phone call &amp; SMS via Quo (+1 numbers only) or WhatsApp (+52, +506).</li>
+                <li><strong class="text-amber-300">Day 2:</strong> Personalized email referencing verified guest review distress points.</li>
+                <li><strong class="text-amber-300">Day 4:</strong> Midweek follow-up call with local ADR comp snapshot.</li>
+                <li><strong class="text-amber-300">Day 7:</strong> Executive closing touch offering custom revenue model walkthrough.</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-phone text-emerald-400"></i> Telephony Routing Rules:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                <strong>US / Canada (+1):</strong> Dial exclusively via Quo softphone or SMS. Never use Twilio.
+              </p>
+              <p class="text-slate-400 leading-relaxed">
+                <strong>International (+52 Mexico, +506 Costa Rica):</strong> Route exclusively to WhatsApp Business. Quo charges per-minute international tolls; WhatsApp VoIP and chat over data/Wi-Fi is 100% free with zero fees.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-bridge-water text-purple-400"></i> "Ask the Robots" AI Bridge Console:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                Use the AI Bridge input on any lead card to query Beacon Scout, Codex, and Claude. Inquiries synthesize zoning ordinances, property tax records, RevPAR comps, or boutique distribution gaps with 1-click appending to lead notes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 2: Legal & Contract Operations -->
+        <div class="card-glass p-6 rounded-2xl border-t-4 border-t-sky-500 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="h-9 w-9 rounded-xl bg-sky-950/80 border border-sky-500/50 flex items-center justify-center text-sky-400 text-sm">
+                <i class="fa-solid fa-file-signature"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider">2. Owner Agreement &amp; SLA SOP</h3>
+                <span class="text-[10px] text-sky-400 font-mono">OpenSign Agreement Generator</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 text-[10px] font-mono border border-slate-700">Contract Gating</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-slate-300">
+            <div>
+              <strong class="text-white block mb-1">Tiered Service Architecture:</strong>
+              <ul class="space-y-1 list-disc pl-4 text-slate-300">
+                <li><strong class="text-sky-300">25% Turnkey Co-Hosting (Standard):</strong> Complete hands-off management, 24/7 guest care (&lt;3 min SLA), dynamic revenue pricing, reSeTR field turnover dispatch, linen inventory buffer, and smart lock automation.</li>
+                <li><strong class="text-sky-300">20% Hybrid Operations:</strong> Multi-channel distribution, guest messaging, and dynamic pricing. Owner coordinates their own cleaning and on-site maintenance.</li>
+                <li><strong class="text-sky-300">15% Distribution &amp; Guest Ops (Boutique Hotels):</strong> Airbnb/VRBO channel management, Google/Meta digital ad management, and remote night desk (9:00 PM to 8:00 AM). On-site hotel staff handles day operations.</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-triangle-exclamation text-amber-400"></i> Lower Tier Exclusions Disclosure:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                When an owner negotiates below 25%, the contract explicitly attaches a Schedule of Excluded Services: no reSeTR turnover dispatch, no linen restocking buffer, and no agency liability for on-site property damage.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-shield text-sky-400"></i> Open-Source E-Signature Policy:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                Agreements dispatch exclusively via open-source OpenSign / Documenso. We do not pay for DocuSign. Uncontacted leads in "Discovery" are locked: buttons for agreements remain hidden until advanced to closer cadence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 3: HOSt Property Forge & Setup -->
+        <div class="card-glass p-6 rounded-2xl border-t-4 border-t-purple-500 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="h-9 w-9 rounded-xl bg-purple-950/80 border border-purple-500/50 flex items-center justify-center text-purple-400 text-sm">
+                <i class="fa-solid fa-hammer"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider">3. HOSt Property Forge SOP</h3>
+                <span class="text-[10px] text-purple-400 font-mono">Digital Twin &amp; Hardware Pairing</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 text-[10px] font-mono border border-slate-700">72-Hour SLA</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-slate-300">
+            <div>
+              <strong class="text-white block mb-1">Canonical Starter Listing Model:</strong>
+              <p class="text-slate-300 leading-relaxed">
+                <strong class="text-purple-300">5540 Estates Dr (OAK-HOM-002 / OAK-HOM-003):</strong> Serves as our golden benchmark for room taxonomy, photo staging standards, parent-child multi-unit configuration, and the required 25% inventory buffer setup.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-key text-purple-400"></i> Seam Smart Lock Automation:
+              </strong>
+              <ul class="space-y-1 list-disc pl-4 text-slate-400">
+                <li>Locks paired directly through Seam API (Schlage Encode WiFi / Yale Assure 2).</li>
+                <li>PINs automatically derived from guest's last 4 phone digits.</li>
+                <li>Access auto-activates at check-in (5:00 PM) and auto-revokes at check-out (11:00 AM).</li>
+                <li>Negative alerting protocol: Silent on success; instant dispatch escalation if PIN fails to provision within 1-hour SLA.</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-wifi text-sky-400"></i> Captive Wi-Fi Guest Portal:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                Every unit deploys a branded captive splash portal. Captures verified guest mobile numbers and emails upon Wi-Fi connection, delivering the digital house guide and parking directions instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 4: reSeTR Field Operations -->
+        <div class="card-glass p-6 rounded-2xl border-t-4 border-t-emerald-500 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="h-9 w-9 rounded-xl bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-center text-emerald-400 text-sm">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider">4. reSeTR Field Operations SOP</h3>
+                <span class="text-[10px] text-emerald-400 font-mono">Housekeeping &amp; Inspection QA</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 text-[10px] font-mono border border-slate-700">100% Photo Proof</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-slate-300">
+            <div>
+              <strong class="text-white block mb-1">Standardized Compensation &amp; Roles:</strong>
+              <ul class="space-y-1 list-disc pl-4 text-slate-300">
+                <li><strong class="text-emerald-300">Operative Rate:</strong> Flat $50.00/hr for certified turnovers. Payouts sent next-day via Venmo, PayPal, or Direct ACH.</li>
+                <li><strong class="text-emerald-300">Setup Bounty:</strong> $100 initial setup bounty per new property onboarded.</li>
+                <li><strong class="text-emerald-300">Cleaners as Certified Inspectors:</strong> Operatives are trained property inspectors checking linens, smart locks, water valves, and safety sensors on every turn.</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-clock text-amber-400"></i> Turnover Windows &amp; 25% Inventory Buffer:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                Standard cleaning window: 11:15 AM to 4:45 PM (standard 11:00 AM check-out and 5:00 PM check-in window). Every property maintains a mandatory 25% inventory buffer for linens, towels, and essential amenities locked in owner closets.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <strong class="text-white flex items-center gap-1.5">
+                <i class="fa-solid fa-vial-circle-check text-emerald-400"></i> Primary Live QA Field Testers:
+              </strong>
+              <p class="text-slate-400 leading-relaxed">
+                <strong>1545 Scenic Ave (BKL-STU-001/002/003)</strong> and <strong>3007 Acton St (BKL-ADU-001/002/003)</strong> serve as our canonical live QA test properties. All new checklist protocols and photo verification gates must pass here first before portfolio-wide deployment.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODE 3: INTERACTIVE BEACON SIMULATOR (.GIF VISUALIZER) -->
+    <div id="section-simulator" class="space-y-6 hidden">
+      <!-- Simulator Controls Header -->
+      <div class="card-glass p-5 rounded-3xl border-l-4 border-l-purple-500 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-purple-950 text-purple-400 border border-purple-800">Software Tutorial Visualizer</span>
+            <span class="text-xs text-amber-400 font-mono flex items-center gap-1">
+              <span class="h-2 w-2 rounded-full bg-amber-400 animate-ping"></span> Interactive Simulator
+            </span>
+          </div>
+          <h2 class="text-xl md:text-2xl font-bold text-white serif-font mt-1">Interactive Beacon Workflow Simulator</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Click through the 4 core actions or hit Auto-Play to watch the complete Beacon workflow animate step-by-step.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="toggleSimulatorAutoPlay()" id="btn-sim-autoplay" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-play" id="icon-sim-autoplay"></i>
+            <span id="text-sim-autoplay">Auto-Play Tutorial</span>
+          </button>
+          <button onclick="stepSimulator(-1)" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold cursor-pointer">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button onclick="stepSimulator(1)" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold cursor-pointer">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step Scrubber Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 text-xs font-mono">
+        <button onclick="setSimFrame(0)" id="sim-tab-0" class="p-3 rounded-xl border text-left transition cursor-pointer bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-md">
+          <div class="text-[10px] uppercase tracking-wider opacity-80">Action 01</div>
+          <div class="font-bold text-xs truncate">1. Review Deficit Sourcing</div>
+        </button>
+        <button onclick="setSimFrame(1)" id="sim-tab-1" class="p-3 rounded-xl border text-left transition cursor-pointer bg-slate-900 text-slate-400 border-slate-800 hover:text-white">
+          <div class="text-[10px] uppercase tracking-wider opacity-80">Action 02</div>
+          <div class="font-bold text-xs truncate">2. 1-Click Multi-Channel Outreach</div>
+        </button>
+        <button onclick="setSimFrame(2)" id="sim-tab-2" class="p-3 rounded-xl border text-left transition cursor-pointer bg-slate-900 text-slate-400 border-slate-800 hover:text-white">
+          <div class="text-[10px] uppercase tracking-wider opacity-80">Action 03</div>
+          <div class="font-bold text-xs truncate">3. Contract Tier Negotiation</div>
+        </button>
+        <button onclick="setSimFrame(3)" id="sim-tab-3" class="p-3 rounded-xl border text-left transition cursor-pointer bg-slate-900 text-slate-400 border-slate-800 hover:text-white">
+          <div class="text-[10px] uppercase tracking-wider opacity-80">Action 04</div>
+          <div class="font-bold text-xs truncate">4. Forge &amp; reSeTR Dispatch</div>
+        </button>
+      </div>
+
+      <!-- Live Simulator Screen Stage -->
+      <div class="simulator-screen p-5 md:p-8 space-y-5" id="simulator-canvas">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Live Pipeline Simulation Modal -->
+  <div id="live-pipeline-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-8 hidden">
+    <div class="relative w-full max-w-5xl card-glass rounded-3xl p-6 md:p-8 border border-amber-500/60 shadow-2xl flex flex-col justify-between space-y-6 max-h-[95vh] overflow-y-auto">
+      
+      <!-- Modal Top Bar -->
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3.5">
+          <div class="h-11 w-11 rounded-xl bg-amber-950/80 border border-amber-500/50 flex items-center justify-center text-amber-400 text-xl shadow-inner">
+            <i class="fa-solid fa-network-wired"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h2 class="text-xl md:text-2xl font-bold text-white serif-font">Live Pipeline Simulation</h2>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500 text-slate-950 uppercase tracking-wider">End-to-End Walkthrough</span>
+            </div>
+            <p class="text-xs text-amber-300/80 font-sans mt-0.5">Watch Sales Discovery & Lead Atlas enrichment flow seamlessly into Partner Contracts & Operations</p>
+          </div>
+        </div>
+        <button onclick="closeLivePipelineModal()" class="h-9 w-9 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 transition cursor-pointer">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Test Subject Selector & Pipeline Stepper -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center bg-slate-900/90 p-4 rounded-2xl border border-slate-800">
+        <div class="lg:col-span-5 flex items-center gap-3">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono">Test Subject:</span>
+          <select id="sim-subject-select" onchange="switchSimSubject(this.value)" class="bg-slate-950 border border-slate-700 text-amber-300 font-bold rounded-xl px-3 py-2 text-xs focus:ring-1 focus:ring-amber-500 w-full cursor-pointer">
+            <option value="denver-adu" selected>DEN-ADU-001: 3270 W Walsh Pl ADU Suite (Denver, CO)</option>
+            <option value="boutique-inn">BKL-STU-001: Modern Retro Studio (1545 Scenic Ave - $195 Parity)</option>
+            <option value="pinole-avis">PIN-HOM-001: 3146 Avis Way 5-BR Executive (Pinole, CA - $465 ADR)</option>
+            <option value="todos-santos-inn">BCN-INT-TS-001: Todos Santos Boutique Hotel (10 Keys, Todos Santos, Mexico)</option>
+          </select>
+        </div>
+
+        <!-- 4 Step Pipeline Indicators -->
+        <div class="lg:col-span-7 flex items-center justify-between gap-1 overflow-x-auto pb-1 text-xs">
+          <button onclick="setSimPhase(1)" id="btn-sim-p1" class="px-3 py-1.5 rounded-lg font-bold border transition flex items-center gap-1.5 cursor-pointer bg-amber-500 text-slate-950 border-amber-400">
+            <span>1. Lead Atlas</span>
+          </button>
+          <i class="fa-solid fa-angle-right text-slate-600 text-xs"></i>
+          <button onclick="setSimPhase(2)" id="btn-sim-p2" class="px-3 py-1.5 rounded-lg font-semibold border transition flex items-center gap-1.5 cursor-pointer bg-slate-950 text-slate-400 border-slate-800 hover:text-white">
+            <span>2. Sales Lock</span>
+          </button>
+          <i class="fa-solid fa-angle-right text-slate-600 text-xs"></i>
+          <button onclick="setSimPhase(3)" id="btn-sim-p3" class="px-3 py-1.5 rounded-lg font-semibold border transition flex items-center gap-1.5 cursor-pointer bg-slate-950 text-slate-400 border-slate-800 hover:text-white">
+            <span>3. Property Forge</span>
+          </button>
+          <i class="fa-solid fa-angle-right text-slate-600 text-xs"></i>
+          <button onclick="setSimPhase(4)" id="btn-sim-p4" class="px-3 py-1.5 rounded-lg font-semibold border transition flex items-center gap-1.5 cursor-pointer bg-slate-950 text-slate-400 border-slate-800 hover:text-white">
+            <span>4. Agreement SLA</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Interactive Simulation Container -->
+      <div id="sim-phase-content" class="space-y-4">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+      <!-- Live Launch Action Bar -->
+      <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center gap-2 text-xs text-slate-400">
+          <i class="fa-solid fa-database text-amber-400"></i>
+          <span>Zero manual re-entry: Sales team findings pre-populate the entire operational suite.</span>
+        </div>
+        <div class="flex items-center gap-2.5 w-full sm:w-auto">
+          <button onclick="advanceSimPhase()" id="btn-sim-advance" class="w-full sm:w-auto px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2 cursor-pointer">
+            <span>Next Pipeline Step</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Master Presentation Slide Deck Data
+    const presentationData = {
+      boutique: {
+        title: "Track A: Boutique Hotel Partner (14-Key Inn)",
+        kicker: "Commercial Hospitality Sourcing & Remote Guest Operations",
+        overview: "A strategic acquisition pathway designed to partner with high-quality independent boutique hotels. By evaluating authentic guest sentiment in trending travel destinations, we identify properties with outstanding physical accommodations that suffer from offline front-desk constraints. We deploy 24/7 guest communications, automated smart-access, and global distribution without hotel payroll bloat.",
+        steps: [
+          {
+            number: 1,
+            title: "Sourcing: Autonomous Review Evaluation",
+            tag: "Review Sentiment Sourcing",
+            headline: "Discover High-Facility Properties with Offline Service Deficits",
+            takeaway: "Scans guest reviews in trending destinations to find 4.5+ star hotels that struggle with offline communications.",
+            color: "amber",
+            icon: "fa-magnifying-glass",
+            bullets: [
+              "Autonomous evaluation monitors guest reviews in trending, high-demand travel corridors.",
+              "Identifies 4.5+ star properties with recurring communication friction: 'No front desk after 7 PM', 'Couldn't reach anyone for extra towels', 'Check-in was confusing.'",
+              "Filters for owner-operated properties where remote operations unlock instant bottom-line savings."
+            ],
+            demoType: "reviews-card",
+            metricTitle: "Target Deficit Threshold",
+            metricValue: "4.5+ Physical Rating &bull; 15%+ Communication Friction Flag"
+          },
+          {
+            number: 2,
+            title: "Scout Dossier: Global Traveler Distribution",
+            tag: "Global Distribution",
+            headline: "Onboard Boutique Inventory to 150M+ Global Travelers",
+            takeaway: "Opens direct exposure to English-speaking and American travelers via Airbnb and global OTA syndication.",
+            color: "sky",
+            icon: "fa-earth-americas",
+            bullets: [
+              "Onboards independent boutique properties onto Airbnb with optimized multi-room inventory mapping.",
+              "Dramatically expands direct exposure to English-speaking and American international travelers.",
+              "Elevates guest satisfaction scorecards with automated arrival briefings from booking through review."
+            ],
+            demoType: "distribution-card",
+            metricTitle: "Audience Expansion",
+            metricValue: "Direct Reach to 150M+ Active Verified Traveler Profiles"
+          },
+          {
+            number: 3,
+            title: "Beacon Closer: Executive Partnership Proposal",
+            tag: "Executive Proposal",
+            headline: "Deliver Founder-Voice Pitch with Zero Upfront Overhead",
+            takeaway: "Demonstrates 24/7 remote guest care, eliminates front-desk payroll, and preserves real estate equity.",
+            color: "indigo",
+            icon: "fa-user-tie",
+            bullets: [
+              "Closer deploys an executive dossier containing verified ownership records and tailored revenue models.",
+              "Executes a tailored founder-voice pitch emphasizing high-touch hospitality and under 3-minute response times.",
+              "Presents a turnkey transition eliminating $60k+/year in front-desk night payroll."
+            ],
+            demoType: "pitch-card",
+            metricTitle: "Owner Bottom-Line Impact",
+            metricValue: "$60,000+ Annual Front-Desk Payroll Eliminated"
+          },
+          {
+            number: 4,
+            title: "Contract Gate: Turnkey Partnership SLA",
+            tag: "Turnkey SLA",
+            headline: "Lock Performance Thresholds with Pure Operational Focus",
+            takeaway: "Under 3-minute response SLA during waking hours, 24/7 emergency dispatch, and transparent terms.",
+            color: "emerald",
+            icon: "fa-file-signature",
+            bullets: [
+              "Generates custom Hospitality Management Agreement with explicit operational covenants.",
+              "Guarantees under 3-minute remote guest response times from 7:00 AM to 11:00 PM.",
+              "Provides 24/7 emergency dispatch protocols and structured damage resolution handling."
+            ],
+            demoType: "sla-card",
+            metricTitle: "Service Level Agreement",
+            metricValue: "< 3 Minute Response Time &bull; 24/7 Escalation Response"
+          },
+          {
+            number: 5,
+            title: "Property Forge: Rapid Digital Twin & Blueprint",
+            tag: "Digital Blueprint",
+            headline: "72-Hour Rapid Onboarding from Photos & Spec Sheets",
+            takeaway: "Ingests room specifications, maps smart locks, and deploys captive Wi-Fi guest portals.",
+            color: "purple",
+            icon: "fa-cubes",
+            bullets: [
+              "Rapid inventory ingestion directly from professional photos and specification sheets with minimal downtime.",
+              "Configures parent-child multi-key room architectures, floor plans, and digital entry codes.",
+              "Deploys branded captive Wi-Fi splash portals for guest email capture and house guide delivery."
+            ],
+            demoType: "forge-card",
+            metricTitle: "Turnkey Launch Velocity",
+            metricValue: "72-Hour Onboarding Cycle from Signed Agreement to Live Calendar"
+          },
+          {
+            number: 6,
+            title: "reSeTR Field Operations: Standardized Housekeeping",
+            tag: "Field Operations",
+            headline: "Property-Tailored Turnover Windows & Photo Proof",
+            takeaway: "11:15 AM - 4:45 PM window, geo-location check-in, smart-lock entry, and photo verification.",
+            color: "rose",
+            icon: "fa-arrows-rotate",
+            bullets: [
+              "Enforces property-tailored turnover window (standard 11:15 AM - 4:45 PM (standard 11:00 AM check-out / 5:00 PM check-in window)).",
+              "Requires geo-location check-in verification and smart-door pairing for authenticated cleaner entry.",
+              "Mandatory start photos, room-by-room staging checklist, supply replenishment verification, and finish photos.",
+              "Strict resolution protocol: all damage reports require photos and written descriptions before unit release."
+            ],
+            demoType: "resetr-card",
+            metricTitle: "Field Verification Gate",
+            metricValue: "100% Photo Proof Required Before Unit Marked Ready"
+          }
+        ]
+      },
+      str: {
+        title: "Track B: STR Property Owner (3-Unit Portfolio)",
+        kicker: "Short-Term Rental Co-Hosting & Yield Execution",
+        overview: "A disciplined acquisition track for residential multi-unit property owners in jurisdictions with verified short-term rental permit eligibility. We eliminate owner operational friction through strict regulatory compliance, clear listing ownership, transparent monthly payouts, and professional field dispatch.",
+        steps: [
+          {
+            number: 1,
+            title: "Sourcing: Eligible Market Discovery",
+            tag: "Eligible Sourcing",
+            headline: "Target Compliant, Permitted Multi-Unit Properties",
+            takeaway: "Identifies residential operators in jurisdictions with verified, mutually profitable STR permit rules.",
+            color: "amber",
+            icon: "fa-magnifying-glass",
+            bullets: [
+              "Identifies multi-unit residential property operators located in jurisdictions with active STR permit pathways.",
+              "Targets properties suitable for high-yield short-term rental occupancy models.",
+              "Evaluates local zoning allowances and property tax records to confirm legal viability before outreach."
+            ],
+            demoType: "str-source-card",
+            metricTitle: "Asset Target",
+            metricValue: "2 to 4 Unit Residential Properties in Verified Permit Districts"
+          },
+          {
+            number: 2,
+            title: "Scout Dossier: Lead Atlas Regulatory Verification",
+            tag: "Lead Atlas Gate",
+            headline: "Autonomous Municipal Compliance & Yield Underwriting",
+            takeaway: "Lead Atlas verifies municipal permit codes, TOT taxes, and residency rules, underwriting true Net Operating Yield.",
+            color: "sky",
+            icon: "fa-scale-balanced",
+            bullets: [
+              "Lead Atlas checks municipal short-term rental codes, primary residency criteria, and night caps.",
+              "Underwrites realistic Net Operating Yield based on true carrying costs and cleaning expenses.",
+              "Instant gate: Any property in an unpermitted or banned jurisdiction is suppressed immediately."
+            ],
+            demoType: "atlas-card",
+            metricTitle: "Compliance Standard",
+            metricValue: "100% Verified Regulatory Profile Prior to Contract Generation"
+          },
+          {
+            number: 3,
+            title: "Beacon Closer: Asset Preservation Pitch",
+            tag: "Asset Preservation",
+            headline: "Deliver Hands-Off Co-Hosting with Strict Asset Care",
+            takeaway: "Guest screening, noise sensor monitoring, zero-party covenant, and premium owner yield.",
+            color: "indigo",
+            icon: "fa-user-tie",
+            bullets: [
+              "Closer deploys a tailored outreach sequence focusing on hands-off asset preservation.",
+              "Emphasizes rigorous guest screening, noise monitoring, and zero-party covenants.",
+              "Demonstrates how professional co-hosting outperforms passive long-term leasing by 20% to 35%."
+            ],
+            demoType: "preservation-card",
+            metricTitle: "Target Yield Premium",
+            metricValue: "20% to 35% NOI Premium Over Passive Long-Term Rent"
+          },
+          {
+            number: 4,
+            title: "Contract Gate: Listing Ownership & Settlements",
+            tag: "Ownership & Payouts",
+            headline: "Sole Listing Ownership with Clean Monthly Payouts",
+            takeaway: "We own the listing, owner holds permit, cleaners paid per arrangement, owners paid monthly.",
+            color: "emerald",
+            icon: "fa-file-signature",
+            bullets: [
+              "Sole Listing Ownership: Scenic Stay is the sole owner and creator of the digital listing asset.",
+              "Licensing Structure: Property owner holds municipal STR permit; we operate listing as exclusive agent.",
+              "Payout Schedule: Field contractors paid per arrangement; property owners receive clean monthly disbursements.",
+              "Resolution Center Splits: Damage settlements split net of actual reimbursements and invoiced costs."
+            ],
+            demoType: "str-contract-card",
+            metricTitle: "Settlement Schedule",
+            metricValue: "Monthly Reconciled Disbursements &bull; Zero Dispute Ambiguity"
+          },
+          {
+            number: 5,
+            title: "Property Forge: Multi-Unit Blueprint",
+            tag: "Portfolio Blueprint",
+            headline: "Synchronized Parent-Child Multi-Unit Calendars",
+            takeaway: "Eliminates double-bookings with sub-second two-way iCal sync across single and joint units.",
+            color: "purple",
+            icon: "fa-cubes",
+            bullets: [
+              "Configures individual suites and joint combination listings in parent-child synchronized calendars.",
+              "Automated two-way iCal synchronization prevents double-bookings across sub-units and joint listings.",
+              "Establishes digital twin: smart lock credentials, emergency codes, and captive Wi-Fi portal."
+            ],
+            demoType: "calendar-card",
+            metricTitle: "Calendar Integrity",
+            metricValue: "Sub-Second Synchronized Availability Across All Channels"
+          },
+          {
+            number: 6,
+            title: "reSeTR Field Operations: Rolling Dispatch",
+            tag: "Rolling Dispatch",
+            headline: "7-Day Rolling Dispatch & Cleaning Window Enforcement",
+            takeaway: "7-day rolling notice, 11:15 AM - 4:45 PM window, supply checkpoints, and damage photo proof.",
+            color: "rose",
+            icon: "fa-arrows-rotate",
+            bullets: [
+              "Assigns field turnovers on a rolling 7-day notification window, giving cleaners ample lead time.",
+              "Enforces property cleaning window (11:15 AM - 4:45 PM (standard 11:00 AM check-out / 5:00 PM check-in window)).",
+              "Cleaning lead executes mandatory supply checklist, linen staging, start photos, and finish photos.",
+              "Strict resolution protocol: supply deficits and damage reports require photo proof and written descriptions."
+            ],
+            demoType: "str-dispatch-card",
+            metricTitle: "Turnover Window",
+            metricValue: "11:15 AM - 4:45 PM Standard Window &bull; 100% Photo Proof"
+          }
+        ]
+      }
+    };
+
+    // State Variables
+    let currentTrack = 'boutique';
+    let currentStep = 0; // 0 = Overview, 1-6 = Specific Step Slide
+    let isDoorsOpen = false;
+
+    // Switch Demonstration Track
+    function switchTrack(trackKey) {
+      currentTrack = trackKey;
+      currentStep = 0; // Reset to overview on track switch
+      updateTrackButtons();
+      renderPresentation();
+    }
+
+    function updateTrackButtons() {
+      const btnBoutique = document.getElementById('btn-track-boutique');
+      const btnStr = document.getElementById('btn-track-str');
+      if (currentTrack === 'boutique') {
+        btnBoutique.className = 'px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-lg flex items-center gap-2 cursor-pointer';
+        btnStr.className = 'px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer';
+      } else {
+        btnStr.className = 'px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-lg flex items-center gap-2 cursor-pointer';
+        btnBoutique.className = 'px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer';
+      }
+    }
+
+    // Set Slide Directly
+    function setStep(stepNum) {
+      currentStep = stepNum;
+      renderPresentation();
+    }
+
+    // Navigate Slide (< / >)
+    function navigateSlide(direction) {
+      currentStep += direction;
+      if (currentStep < 0) {
+        currentStep = 6;
+      } else if (currentStep > 6) {
+        currentStep = 0;
+      }
+      renderPresentation();
+    }
+
+    // Render the Top Stepper Bar
+    function renderStepper() {
+      const stepper = document.getElementById('stepper-bar');
+      const t = presentationData[currentTrack];
+      
+      let html = `
+        <button onclick="setStep(0)" class="flex-shrink-0 px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${currentStep === 0 ? 'bg-amber-500 text-slate-950 shadow-md ring-2 ring-amber-400/50' : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'}">
+          <i class="fa-solid fa-table-cells"></i>
+          <span>Overview</span>
+        </button>
+      `;
+
+      t.steps.forEach((s) => {
+        const isActive = currentStep === s.number;
+        const colorClasses = {
+          amber: isActive ? 'bg-amber-500 text-slate-950 ring-2 ring-amber-400/50 font-bold' : 'bg-slate-900 text-amber-400 hover:bg-slate-800 border-slate-800',
+          sky: isActive ? 'bg-sky-500 text-slate-950 ring-2 ring-sky-400/50 font-bold' : 'bg-slate-900 text-sky-400 hover:bg-slate-800 border-slate-800',
+          indigo: isActive ? 'bg-indigo-500 text-slate-950 ring-2 ring-indigo-400/50 font-bold' : 'bg-slate-900 text-indigo-400 hover:bg-slate-800 border-slate-800',
+          emerald: isActive ? 'bg-emerald-500 text-slate-950 ring-2 ring-emerald-400/50 font-bold' : 'bg-slate-900 text-emerald-400 hover:bg-slate-800 border-slate-800',
+          purple: isActive ? 'bg-purple-500 text-slate-950 ring-2 ring-purple-400/50 font-bold' : 'bg-slate-900 text-purple-400 hover:bg-slate-800 border-slate-800',
+          rose: isActive ? 'bg-rose-500 text-white ring-2 ring-rose-400/50 font-bold' : 'bg-slate-900 text-rose-400 hover:bg-slate-800 border-slate-800'
+        }[s.color];
+
+        html += `
+          <button onclick="setStep(${s.number})" class="flex-shrink-0 px-3.5 py-2.5 rounded-xl text-xs transition border flex items-center gap-1.5 cursor-pointer ${colorClasses}">
+            <span class="font-mono">0${s.number}.</span>
+            <span class="truncate max-w-[120px] md:max-w-none">${s.tag}</span>
+          </button>
+        `;
+      });
+
+      stepper.innerHTML = html;
+    }
+
+    // Render Bottom Position Indicator
+    function renderPositionIndicator() {
+      const ind = document.getElementById('slide-position-indicator');
+      const t = presentationData[currentTrack];
+      if (currentStep === 0) {
+        ind.innerHTML = `
+          <span class="text-slate-400 font-medium">Viewing:</span>
+          <span class="text-amber-400 font-bold">Track Overview</span>
+        `;
+      } else {
+        const step = t.steps[currentStep - 1];
+        const formattedTitle = step.title.replace(/reSeTR/g, 'reSe<span class="text-amber-400 font-bold">TR</span>');
+        ind.innerHTML = `
+          <span class="text-slate-400 font-medium">Slide ${currentStep} of 6:</span>
+          <span class="text-white font-bold truncate max-w-[250px] md:max-w-md">${formattedTitle}</span>
+          <button onclick="setStep(0)" class="text-xs text-amber-400 hover:underline ml-2 uppercase font-mono">(Return to Overview)</button>
+        `;
+      }
+    }
+
+    // Helper to generate visual demonstration card HTML
+    function getDemonstrationHtml(demoType) {
+      if (demoType === 'reviews-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-amber-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-amber-400 uppercase font-mono">Guest Sentiment Scanner: Deficit Detected</span>
+              <span class="text-xs text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">Physical Rating: 4.8 / 5.0</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+                <span class="text-rose-400 font-bold block text-[11px]"><i class="fa-solid fa-triangle-exclamation"></i> After-Hours Friction</span>
+                <p class="text-slate-300 italic">"No front desk after 7 PM. Had to wait outside for 45 minutes for our room key."</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+                <span class="text-rose-400 font-bold block text-[11px]"><i class="fa-solid fa-triangle-exclamation"></i> Communication Delay</span>
+                <p class="text-slate-300 italic">"Couldn't reach anyone for extra towels or Wi-Fi code until the next morning."</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+                <span class="text-rose-400 font-bold block text-[11px]"><i class="fa-solid fa-triangle-exclamation"></i> Check-in Confusion</span>
+                <p class="text-slate-300 italic">"Check-in directions were confusing with nobody on-site to help us navigate."</p>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-200 flex items-center justify-between">
+              <span><strong>Operational Solution:</strong> 24/7 Remote Guest Support + Automated Smart-Lock Access Code</span>
+              <span class="text-emerald-400 font-bold">$60,000/yr Saved</span>
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'atlas-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-sky-500/50 space-y-3 shadow-inner">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-emerald-950 text-emerald-300 border border-emerald-800">Status: Eligible</span>
+                <span class="text-sm font-bold text-white">Atlas Regulatory Profile: Permitted Short-Term Rental District</span>
+              </div>
+              <span class="text-xs font-mono text-slate-400">Checked: Active Sprint &bull; Refresh: 90 Days</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <span class="text-slate-400 font-semibold block text-xs">Intended Operating Model:</span>
+                <p class="text-slate-200 mt-0.5 font-medium">Owner-Licensed Short-Term Rental with Agency Digital Management</p>
+              </div>
+              <div>
+                <span class="text-slate-400 font-semibold block text-xs">Key Municipal Standards:</span>
+                <ul class="text-slate-300 list-disc pl-4 space-y-0.5 text-xs mt-0.5">
+                  <li>Active municipal STR permit registration required</li>
+                  <li>Remittance of Berkeley 14% TOT (12% guest tax + 2% municipal enforcement tax absorbed by host)</li>
+                  <li>24/7 designated emergency response contact on file</li>
+                </ul>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-sky-950/40 border border-sky-900/60 text-xs text-sky-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div><strong>Scenic Strategy:</strong> Owner secures primary municipal permit; Scenic Stay operates listing as exclusive host and manager, absorbing all turnovers, guest messaging, and calendar synchronization.</div>
+              <button onclick="openLivePipelineModal(); setSimPhase(1);" class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition flex-shrink-0 flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-map-location-dot"></i> Inspect in Lead Atlas &rarr;
+              </button>
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'distribution-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-sky-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-sky-400 uppercase font-mono">Global Distribution Engine</span>
+              <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-circle-check"></i> Airbnb Global Partner Active</span>
+            </div>
+            <div class="grid grid-cols-3 gap-3 text-center text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                <span class="text-lg font-bold text-white block">150M+</span>
+                <span class="text-slate-400 text-[11px]">English-Speaking Travelers</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                <span class="text-lg font-bold text-sky-400 block">Instant Book</span>
+                <span class="text-slate-400 text-[11px]">Automated Verification</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">
+                <span class="text-lg font-bold text-amber-400 block">24/7 Care</span>
+                <span class="text-slate-400 text-[11px]">Sub-3 Min Response</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'pitch-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-indigo-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-indigo-400 uppercase font-mono">Beacon Executive Pitch: 14-Key Inn Proposition</span>
+              <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-calculator"></i> Verified ROI Model</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 font-semibold block text-[11px]">Legacy Night Front-Desk</span>
+                <span class="text-lg font-bold text-rose-400 block">$62,400 / yr</span>
+                <span class="text-slate-400 text-[10px]">11 PM to 7 AM shift payroll + payroll taxes</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 font-semibold block text-[11px]">Scenic Remote Front-Desk</span>
+                <span class="text-lg font-bold text-emerald-400 block">$0 Upfront Cost</span>
+                <span class="text-slate-400 text-[10px]">Pure performance-aligned management fee</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 font-semibold block text-[11px]">Net Owner Annual Gain</span>
+                <span class="text-lg font-bold text-amber-400 block">+$62.4k + 18% ADR</span>
+                <span class="text-slate-400 text-[10px]">100% payroll retained directly in owner equity</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/60 text-xs text-indigo-200">
+              <strong>Executive Angle:</strong> "Keep your on-site day host for guest hospitality; let Scenic Stay absorb all midnight lockouts, after-hours calls, and global OTA messaging."
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'sla-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-emerald-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-emerald-400 uppercase font-mono">Turnkey Partnership SLA Parameters</span>
+              <span class="text-xs text-slate-400 font-mono">Agreement Code: HMA-SLA-V2</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Response Ceiling</span>
+                <span class="text-base font-bold text-emerald-400 block">&lt; 3 Minutes</span>
+                <span class="text-slate-400 text-[10px]">7:00 AM to 11:00 PM PST</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Emergency Escalation</span>
+                <span class="text-base font-bold text-amber-400 block">24 / 7 / 365</span>
+                <span class="text-slate-400 text-[10px]">Water, locks, security</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Damage Protocol</span>
+                <span class="text-base font-bold text-sky-400 block">100% Invoiced</span>
+                <span class="text-slate-400 text-[10px]">AirCover & Direct Claims</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Settlement Audit</span>
+                <span class="text-base font-bold text-white block">Monthly Net</span>
+                <span class="text-slate-400 text-[10px]">Itemized receipt backup</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-900/60 text-xs text-emerald-200">
+              <strong>Contractual Precision:</strong> Every performance threshold is measured against deterministic logs. No vague best-efforts clauses.
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'forge-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-purple-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-purple-400 uppercase font-mono">Property Forge: Digital Twin Engine</span>
+              <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-cube"></i> Blueprint Synchronized</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]"><i class="fa-solid fa-sitemap mr-1"></i> Parent-Child Hierarchy</span>
+                <p class="text-slate-300">Rooms 101-104 linked to Main Inn joint listing. Sub-second calendar lock across single and master bookings.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]"><i class="fa-solid fa-wifi mr-1"></i> Captive Wi-Fi Portal</span>
+                <p class="text-slate-300">Auto-routes guest mobile devices upon arrival to house guide, amenity codes, and email verification.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]"><i class="fa-solid fa-key mr-1"></i> Smart Access Deadbolt</span>
+                <p class="text-slate-300">Integrates Schlage Encode PIN cycling matching reservation last-4 phone digits. Zero key drop friction.</p>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-purple-950/30 border border-purple-900/60 text-xs text-purple-200 flex items-center justify-between">
+              <span><strong>Velocity Standard:</strong> 72 hours from photos and specs to active synchronized calendar.</span>
+              <a href="host_property_forge.html" class="text-amber-400 font-bold hover:underline">Open Property Forge &rarr;</a>
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'str-source-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-amber-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-amber-400 uppercase font-mono">Market Discovery: Multi-Unit Operator Scanner</span>
+              <span class="text-xs text-slate-400 font-mono">Coverage: Permitted Municipalities</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-amber-400 font-bold block text-[11px]"><i class="fa-solid fa-map-location-dot mr-1"></i> Target Geography</span>
+                <p class="text-slate-300">Denver (ADU/Primary allowance), Berkeley (14-day & ADU rules), Tahoe, Oakland (Multi-family zoning).</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-amber-400 font-bold block text-[11px]"><i class="fa-solid fa-building mr-1"></i> Asset Profile</span>
+                <p class="text-slate-300">2-4 unit residential buildings, carriage houses, ADUs, and duplexes suitable for STR/MTR hybrid yield.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-amber-400 font-bold block text-[11px]"><i class="fa-solid fa-filter mr-1"></i> Owner Disqualification</span>
+                <p class="text-slate-300">Properties in strict HOA bans or jurisdictions requiring on-site primary residency without ADU are filtered out.</p>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-amber-950/30 border border-amber-900/60 text-xs text-amber-200">
+              <strong>Sourcing Philosophy:</strong> We only reach out where economics and municipal zoning allow a compliant, profitable operation.
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'preservation-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-indigo-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-indigo-400 uppercase font-mono">Beacon Asset Preservation Pitch</span>
+              <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-shield-halved"></i> Asset Defense First</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-indigo-400 font-bold block text-[11px]"><i class="fa-solid fa-volume-high mr-1"></i> Minut Noise Sensors</span>
+                <p class="text-slate-300">Continuous decibel monitoring without audio recording. Automated warnings sent if volume exceeds 70dB after 10 PM.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-indigo-400 font-bold block text-[11px]"><i class="fa-solid fa-user-shield mr-1"></i> Zero-Party Covenant</span>
+                <p class="text-slate-300">Strict guest screening against previous host reviews. Immediate contract cancellation and police dispatch for unauthorized parties.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-indigo-400 font-bold block text-[11px]"><i class="fa-solid fa-chart-line mr-1"></i> 20% to 35% Yield Premium</span>
+                <p class="text-slate-300">Demonstrates how active short-term hospitality co-hosting yields significantly higher net profit than passive tenant wear-and-tear.</p>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-indigo-950/30 border border-indigo-900/60 text-xs text-indigo-200">
+              <strong>Owner Mindset:</strong> Long-term tenants cause progressive deferred maintenance; our weekly professional turns keep the property in 5-star condition.
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'str-contract-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-emerald-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-emerald-400 uppercase font-mono">Contract Architecture & Settlement Principles</span>
+              <span class="text-xs text-slate-400 font-mono">Standard: Sole Listing Ownership</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 text-xs">
+              <div class="p-2.5 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-emerald-400 font-bold block text-[11px]">Sole Asset Ownership</span>
+                <span class="text-slate-400 text-[10px]">Scenic Stay creates and owns the digital listing asset</span>
+              </div>
+              <div class="p-2.5 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-emerald-400 font-bold block text-[11px]">Municipal Permit</span>
+                <span class="text-slate-400 text-[10px]">Owner holds primary STR permit; we act as authorized agent</span>
+              </div>
+              <div class="p-2.5 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-emerald-400 font-bold block text-[11px]">Contractor Settlements</span>
+                <span class="text-slate-400 text-[10px]">Field cleaners paid per arrangement with prompt, reliable disbursement</span>
+              </div>
+              <div class="p-2.5 bg-slate-900 rounded-xl border border-slate-800 text-center space-y-1">
+                <span class="text-emerald-400 font-bold block text-[11px]">Owner Disbursements</span>
+                <span class="text-slate-400 text-[10px]">Clean monthly payout reconciled net of direct expenses</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-900/60 text-xs text-emerald-200 flex items-center justify-between">
+              <span><strong>Resolution Center Splits:</strong> Damage settlements split net of actual reimbursements and invoiced costs.</span>
+              <a href="contractor_agreement_generator.html" class="text-amber-400 font-bold hover:underline">Open Agreement SLA &rarr;</a>
+            </div>
+          </div>
+        `;
+      } else if (demoType === 'calendar-card') {
+        return `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-purple-500/40 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-bold text-purple-400 uppercase font-mono">Synchronized Parent-Child Multi-Unit Architecture</span>
+              <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-arrows-rotate"></i> Two-Way iCal Lock Active</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]">Child Unit A: Scenic North (BKL-STU-001)</span>
+                <p class="text-slate-300">$195 base ADR parity. Independent Seam keypad deadbolt (PIN = phone digits). High-occupancy core yield driver.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]">Child Unit B: Scenic South (BKL-STU-002)</span>
+                <p class="text-slate-300">$195 base ADR parity. Independent Seam garden deadbolt. Proves simultaneous non-overlapping co-existence.</p>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]">Parent Combo: Both (BKL-STU-003)</span>
+                <p class="text-slate-300">0.019 ms Collision Shield: Programmatic rejection on overlapping instant bookings. $0 penalty, zero door codes issued.</p>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-800/80 text-xs text-emerald-200 flex items-center justify-between">
+              <span><strong>Value-Based PMS SaaS Model:</strong> $18/month per physical door. $0/month for virtual parent combo overlays. 1% micro-fee only when booked.</span>
+              <span class="font-mono text-[10px] text-amber-300 font-bold">Industry Disruptor</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-purple-950/30 border border-purple-900/60 text-xs text-purple-200">
+              <strong>Historical Precedent:</strong> Five years of uninterrupted flawless synchronization across multi-unit portfolios.
+            </div>
+          </div>
+        `;
+      } else {
+        return `
+          <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2">
+            <span class="text-xs font-bold text-amber-400 uppercase font-mono">System Execution Demonstration</span>
+            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 text-xs text-slate-300">
+              Standardized operational protocols lock execution parameters, eliminate administrative friction, and maintain verified audit trails.
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Render Main Presentation Stage
+    function renderPresentation() {
+      renderStepper();
+      renderPositionIndicator();
+      const stage = document.getElementById('walkthrough-display');
+      const t = presentationData[currentTrack];
+
+      if (currentStep === 0) {
+        // High-Level Overview Grid
+        let cardsHtml = '';
+        t.steps.forEach((s) => {
+          cardsHtml += `
+            <div onclick="setStep(${s.number})" class="p-5 bg-slate-900/70 hover:bg-slate-800/90 rounded-2xl border border-slate-800 hover:border-amber-500/60 transition cursor-pointer flex flex-col justify-between space-y-4 group shadow-lg">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-amber-400 font-mono">STEP 0${s.number}</span>
+                  <i class="fa-solid ${s.icon} text-slate-500 group-hover:text-amber-400 transition text-base"></i>
+                </div>
+                <h4 class="text-base font-bold text-white mt-2 group-hover:text-amber-300 transition serif-font">${s.title}</h4>
+                <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">${s.takeaway}</p>
+              </div>
+              <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-amber-400 font-semibold">
+                <span>View Slide Presentation</span>
+                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </div>
+            </div>
+          `;
+        });
+
+        stage.innerHTML = `
+          <div class="space-y-3 border-b border-slate-800 pb-5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-widest font-mono">${t.kicker}</span>
+              <span class="text-xs bg-amber-950/60 text-amber-300 border border-amber-800/80 px-2.5 py-0.5 rounded font-mono">Track Overview</span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white serif-font">${t.title}</h2>
+            <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-4xl">${t.overview}</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            ${cardsHtml}
+          </div>
+        `;
+      } else {
+        // Large Focused Slide View for Remote Meeting
+        const s = t.steps[currentStep - 1];
+        const demoHtml = getDemonstrationHtml(s.demoType);
+
+        let bulletsHtml = '';
+        s.bullets.forEach((b) => {
+          bulletsHtml += `
+            <li class="flex items-start gap-3 text-sm md:text-base text-slate-200 leading-relaxed">
+              <i class="fa-solid fa-circle-check text-amber-400 mt-1 text-xs flex-shrink-0"></i>
+              <span>${b}</span>
+            </li>
+          `;
+        });
+
+        stage.innerHTML = `
+          <!-- Slide Header (Presentation Fonts) -->
+          <div class="space-y-2 border-b border-slate-800 pb-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="h-6 w-6 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center font-mono">0${s.number}</span>
+                <span class="text-xs md:text-sm font-bold text-amber-400 uppercase tracking-widest font-mono">${s.tag}</span>
+              </div>
+              <span class="text-xs font-mono text-slate-400 bg-slate-900 px-2.5 py-0.5 rounded-lg border border-slate-800">Slide ${currentStep} of 6</span>
+            </div>
+            <h2 class="text-xl md:text-2xl font-extrabold text-white serif-font tracking-tight">${s.headline}</h2>
+            <p class="text-sm md:text-base text-amber-300 font-medium">${s.takeaway}</p>
+          </div>
+
+          <!-- Slide Visual Demonstration Element -->
+          <div>
+            ${demoHtml}
+          </div>
+
+          <!-- Key Takeaway Bullets & Performance SLA -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+            
+            <!-- Bullets (8 cols) -->
+            <div class="lg:col-span-8 p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">Core Execution Strategy</h4>
+              <ul class="space-y-2">
+                ${bulletsHtml}
+              </ul>
+            </div>
+
+            <!-- Metric Box (4 cols) -->
+            <div class="lg:col-span-4 p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-amber-500/40 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block font-mono"><i class="fa-solid fa-bullseye mr-1.5"></i> ${s.metricTitle}</span>
+                <p class="text-sm md:text-base font-bold text-white mt-1.5 leading-snug">${s.metricValue}</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800">
+                <span class="text-[11px] text-slate-400 block">Operating Discipline: Pure Net Operating Yield &bull; Verified SLAs</span>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }
+    }
+
+    // Master View Switcher Function
+    let currentAppMode = 'walkthrough';
+
+    function switchAppMode(mode) {
+      currentAppMode = mode;
+      const secWalkthrough = document.getElementById('section-walkthrough');
+      const secPlaybook = document.getElementById('section-playbook');
+      const secSimulator = document.getElementById('section-simulator');
+
+      const btnWalkthrough = document.getElementById('btn-mode-walkthrough');
+      const btnPlaybook = document.getElementById('btn-mode-playbook');
+      const btnSimulator = document.getElementById('btn-mode-simulator');
+
+      // Hide all sections first
+      secWalkthrough.classList.add('hidden');
+      secPlaybook.classList.add('hidden');
+      secSimulator.classList.add('hidden');
+
+      // Reset button styles
+      btnWalkthrough.className = 'px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer';
+      btnPlaybook.className = 'px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer';
+      btnSimulator.className = 'px-4 py-2.5 rounded-xl text-xs font-semibold transition bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 cursor-pointer';
+
+      if (mode === 'walkthrough') {
+        secWalkthrough.classList.remove('hidden');
+        btnWalkthrough.className = 'px-4 py-2.5 rounded-xl text-xs font-bold transition bg-amber-500 text-slate-950 shadow-md flex items-center gap-2 cursor-pointer';
+        renderPresentation();
+      } else if (mode === 'playbook') {
+        secPlaybook.classList.remove('hidden');
+        btnPlaybook.className = 'px-4 py-2.5 rounded-xl text-xs font-bold transition bg-sky-500 text-slate-950 shadow-md flex items-center gap-2 cursor-pointer';
+      } else if (mode === 'simulator') {
+        secSimulator.classList.remove('hidden');
+        btnSimulator.className = 'px-4 py-2.5 rounded-xl text-xs font-bold transition bg-purple-500 text-slate-950 shadow-md flex items-center gap-2 cursor-pointer';
+        renderSimulatorScreen();
+      }
+    }
+
+    // Interactive Beacon Workflow Simulator State & Controller
+    let currentSimFrame = 0;
+    let simAutoPlayTimer = null;
+    let isSimAutoPlaying = false;
+
+    const simulatorFrames = [
+      {
+        actionNum: '01',
+        title: 'Review Deficit Sourcing & Deficit Detection',
+        tag: 'Autonomous Sourcing',
+        color: 'amber',
+        annotation: 'Beacon Scout monitors reviews in high-demand destinations. Real guest sentiment flags front-desk queues and off-hours communication gaps with zero synthetic guesses.',
+        canvasHtml: `
+          <div class="card-glass p-5 rounded-2xl border border-amber-500/50 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-xl bg-amber-950/80 border border-amber-500/50 flex items-center justify-center text-amber-400 text-lg">
+                  <i class="fa-solid fa-hotel"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-base font-bold text-white">Guaycura Boutique Hotel Beach Club &amp; Spa</h3>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800">Regional Inn</span>
+                  </div>
+                  <span class="text-xs text-slate-400 font-mono">Todos Santos, BCS, Mexico &bull; 14 Guest Keys</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-xl bg-emerald-950/80 text-emerald-400 border border-emerald-800 text-xs font-bold font-mono">
+                  <i class="fa-solid fa-chart-line mr-1"></i> Score: 88 (High Priority)
+                </span>
+              </div>
+            </div>
+
+            <!-- Review Distress Badges with Hotspot Pulse -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-amber-400 uppercase font-mono flex items-center gap-1.5">
+                  <span class="h-2.5 w-2.5 rounded-full bg-amber-400 pulse-hotspot inline-block"></span>
+                  Detected Operational Friction Points (Guest Reviews)
+                </span>
+                <span class="text-[11px] text-slate-400">Verified Sourced Deficit</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                <div class="p-3 rounded-xl bg-slate-950/90 border border-amber-500/40 relative space-y-1">
+                  <span class="text-amber-400 font-bold block text-[11px]"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Front Desk Queue</span>
+                  <p class="text-slate-300 italic">"Waited 30 minutes at check-in line during peak arrival hour."</p>
+                  <span class="text-[10px] text-emerald-400 block font-mono">Direct Source: Tripadvisor 2026</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-950/90 border border-amber-500/40 relative space-y-1">
+                  <span class="text-amber-400 font-bold block text-[11px]"><i class="fa-solid fa-moon mr-1"></i> Off-Hours Response Gap</span>
+                  <p class="text-slate-300 italic">"No front desk staff after 9 PM. Couldn't request extra towels."</p>
+                  <span class="text-[10px] text-emerald-400 block font-mono">Direct Source: Google Review 2026</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-950/90 border border-amber-500/40 relative space-y-1">
+                  <span class="text-amber-400 font-bold block text-[11px]"><i class="fa-solid fa-bell-concierge mr-1"></i> Turnover Readiness SLA</span>
+                  <p class="text-slate-300 italic">"Room not ready until 4:45 PM; turnover delay during high occupancy."</p>
+                  <span class="text-[10px] text-emerald-400 block font-mono">Direct Source: Booking.com 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Tooltip Banner -->
+            <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-800/60 text-xs text-amber-200 flex items-center justify-between">
+              <span><strong>Closer Action:</strong> Pitch hybrid remote front-desk and Airbnb/VRBO distribution. No hotel payroll increase.</span>
+              <button onclick="setSimFrame(1)" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition cursor-pointer">
+                Next: Launch Outreach &rarr;
+              </button>
+            </div>
+          </div>
+        `
+      },
+      {
+        actionNum: '02',
+        title: '1-Click Multi-Channel Outreach & Telephony Rails',
+        tag: 'Omnichannel Outreach',
+        color: 'sky',
+        annotation: 'Beacon enforces strict telephony rails. US/Canada dials via Quo. International leads (+52, +506) route exclusively to WhatsApp Business to eliminate per-minute long-distance toll charges.',
+        canvasHtml: `
+          <div class="card-glass p-5 rounded-2xl border border-sky-500/50 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold text-white">Cadence Dispatch Console: Guaycura Hotel</h3>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-sky-950 text-sky-400 border border-sky-800">Day 1 Initial Outreach</span>
+                </div>
+                <span class="text-xs text-slate-400 font-mono">Recipient: +52 612 123 4567 &bull; Mexico (+52) Country Code Detected</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 text-xs font-mono">Assigned Closer: Operations & Admin Lead (Sales Lead)</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Outreach Rails -->
+              <div class="space-y-3">
+                <div class="text-xs font-bold text-slate-400 uppercase font-mono">Select Communication Channel</div>
+                
+                <!-- WhatsApp Business Button (Active, Pulsing) -->
+                <div class="p-3.5 rounded-xl bg-emerald-950/60 border-2 border-emerald-500 space-y-1.5 relative">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-emerald-300 text-xs flex items-center gap-1.5">
+                      <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i> WhatsApp Business (Recommended)
+                    </span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 pulse-hotspot"></span>
+                  </div>
+                  <p class="text-[11px] text-slate-300">Free international VoIP and direct messaging over data. 100% bypass of international carrier tolls.</p>
+                  <div class="pt-1">
+                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">Pre-Flight Link Ready: web.whatsapp.com/send</span>
+                  </div>
+                </div>
+
+                <!-- Quo Voice Button (Disabled with explanation) -->
+                <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 opacity-60 space-y-1">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-slate-400 text-xs flex items-center gap-1.5">
+                      <i class="fa-solid fa-phone text-slate-500"></i> Quo Softphone (+1 US/CA Only)
+                    </span>
+                    <span class="text-[10px] text-rose-400 font-mono font-bold">Toll Restricted</span>
+                  </div>
+                  <p class="text-[11px] text-slate-500">Quo softphone is locked on international numbers (+52, +506) to prevent per-minute carrier charges.</p>
+                </div>
+              </div>
+
+              <!-- Message Template Preview -->
+              <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                <span class="text-[10px] uppercase font-mono font-bold text-sky-400 block">Pre-Populated Message Payload</span>
+                <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 font-sans leading-relaxed">
+                  "Hola Guaycura Team: We love your property and noticed guests occasionally wait for after-hours front desk check-in. Scenic Stay deploys 24/7 guest communication with sub-15 minute SLAs and global Airbnb/VRBO distribution. Can we share our net revenue model?"
+                </div>
+                <div class="flex items-center justify-between pt-1 text-[11px] text-slate-400">
+                  <span>Touches: Day 1 SMS queued</span>
+                  <span class="text-emerald-400 font-bold"><i class="fa-solid fa-check"></i> Zero manual copy-paste</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Tooltip Banner -->
+            <div class="p-3 rounded-xl bg-sky-950/30 border border-sky-800/60 text-xs text-sky-200 flex items-center justify-between">
+              <span><strong>Execution Standard:</strong> One-click trigger logs CRM cadence action and advances lead stage automatically.</span>
+              <button onclick="setSimFrame(2)" class="px-3 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition cursor-pointer">
+                Next: Shape Agreement &rarr;
+              </button>
+            </div>
+          </div>
+        `
+      },
+      {
+        actionNum: '03',
+        title: 'Sales Context Shapes the Contract (Tier Selection)',
+        tag: 'OpenSign Contract SLA',
+        color: 'indigo',
+        annotation: 'Sales negotiations shape the legal agreement. Selecting 15%, 20%, or 25% automatically updates service descriptions and appends the explicit exclusions disclosure. Dispatched via open-source OpenSign.',
+        canvasHtml: `
+          <div class="card-glass p-5 rounded-2xl border border-indigo-500/50 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold text-white">Owner Agreement Generator: Negotiated Level of Service</h3>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-950 text-indigo-400 border border-indigo-800">OpenSign SLA</span>
+                </div>
+                <span class="text-xs text-slate-400 font-mono">Contract Target: Guaycura Boutique Hotel (Todos Santos)</span>
+              </div>
+              <span class="px-3 py-1 rounded-xl bg-indigo-950/80 text-indigo-300 border border-indigo-700 text-xs font-mono font-bold">HMA-V2 Standard</span>
+            </div>
+
+            <!-- Tier Selector Pills -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-center space-y-1 opacity-70">
+                <span class="text-[10px] text-slate-400 font-mono uppercase">Standard STR</span>
+                <span class="text-base font-bold text-slate-300 block">25% Turnkey Co-Host</span>
+                <span class="text-[10px] text-slate-500 block">Full turnover dispatch + linen buffer</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-center space-y-1 opacity-70">
+                <span class="text-[10px] text-slate-400 font-mono uppercase">Hybrid Model</span>
+                <span class="text-base font-bold text-slate-300 block">20% Hybrid Operations</span>
+                <span class="text-[10px] text-slate-500 block">Owner coordinates cleanings</span>
+              </div>
+              <div class="p-3 rounded-xl bg-indigo-950/80 border-2 border-indigo-500 text-center space-y-1 relative">
+                <span class="text-[10px] text-amber-400 font-mono uppercase font-bold flex items-center justify-center gap-1">
+                  <span class="h-2 w-2 rounded-full bg-amber-400 pulse-hotspot inline-block"></span>
+                  Selected for Hotel
+                </span>
+                <span class="text-base font-bold text-white block">15% Boutique Hotel Ops</span>
+                <span class="text-[10px] text-indigo-300 block">Airbnb/VRBO + Ads + 24/7 Night Desk</span>
+              </div>
+            </div>
+
+            <!-- Inclusions vs Exclusions Breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-800/60 space-y-1.5">
+                <strong class="text-emerald-300 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-circle-check"></i> Contract Inclusions (15% Level):
+                </strong>
+                <ul class="space-y-1 list-disc pl-4 text-slate-300 text-[11px]">
+                  <li>Multi-room inventory syndication onto Airbnb &amp; VRBO.</li>
+                  <li>Dedicated Google Hotel Ads &amp; Meta campaign management.</li>
+                  <li>24/7 Remote Night Desk (9:00 PM to 8:00 AM) with sub-15 minute SLA.</li>
+                  <li>Monthly itemized settlements net of verified OTA fees.</li>
+                </ul>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-rose-950/30 border border-rose-800/60 space-y-1.5">
+                <strong class="text-rose-300 font-bold block flex items-center gap-1.5">
+                  <i class="fa-solid fa-triangle-exclamation"></i> Schedule of Excluded Services:
+                </strong>
+                <ul class="space-y-1 list-disc pl-4 text-slate-300 text-[11px]">
+                  <li>On-site day desk staffing (retained by property owner).</li>
+                  <li>reSeTR turnover dispatch (handled by hotel housekeeping).</li>
+                  <li>On-site physical damage resolution liability.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Bottom Tooltip Banner -->
+            <div class="p-3 rounded-xl bg-indigo-950/30 border border-indigo-800/60 text-xs text-indigo-200 flex items-center justify-between">
+              <span><strong>DocuSign Elimination:</strong> Contract dispatches via OpenSign / Documenso. Zero third-party SaaS fees.</span>
+              <button onclick="setSimFrame(3)" class="px-3 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs transition cursor-pointer">
+                Next: Forge &amp; reSeTR &rarr;
+              </button>
+            </div>
+          </div>
+        `
+      },
+      {
+        actionNum: '04',
+        title: 'HOSt Property Forge & reSeTR Dispatch Execution',
+        tag: 'Operational Twin & Turnover',
+        color: 'emerald',
+        annotation: 'Signed contracts push directly into Property Forge to map Seam smart locks and captive Wi-Fi portals, while reSeTR dispatches certified cleaner-inspectors at $50/hr with 25% inventory buffers.',
+        canvasHtml: `
+          <div class="card-glass p-5 rounded-2xl border border-emerald-500/50 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold text-white">HOSt Digital Twin &amp; reSeTR Field Dispatch</h3>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">Operational Loop</span>
+                </div>
+                <span class="text-xs text-slate-400 font-mono">Canonical Test Property: 1545 Scenic Ave (BKL-STU-001)</span>
+              </div>
+              <span class="px-3 py-1 rounded-xl bg-emerald-950/80 text-emerald-300 border border-emerald-700 text-xs font-mono font-bold">100% Ready</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <!-- Seam Hardware Telemetry -->
+              <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] text-purple-400 font-mono uppercase font-bold">Seam Smart Lock</span>
+                  <span class="text-emerald-400 text-[10px] font-mono"><i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i>ONLINE</span>
+                </div>
+                <strong class="text-white text-xs block">Schlage Encode Smart WiFi</strong>
+                <div class="text-[11px] text-slate-300">Active PIN: <strong class="text-amber-400 font-mono">4821</strong> (Guest Last 4)</div>
+                <div class="text-[10px] text-slate-500">Auto-valid: 5:00 PM to 11:00 AM</div>
+              </div>
+
+              <!-- Wi-Fi Captive Portal -->
+              <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] text-sky-400 font-mono uppercase font-bold">Guest Portal</span>
+                  <span class="text-emerald-400 text-[10px] font-mono">DEPLOYED</span>
+                </div>
+                <strong class="text-white text-xs block">SSID: ScenicStay • Studio</strong>
+                <div class="text-[11px] text-slate-300">Captive splash active on connection</div>
+                <div class="text-[10px] text-slate-500">Captures phone/email; delivers house guide</div>
+              </div>
+
+              <!-- reSeTR Housekeeping Dispatch -->
+              <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] text-emerald-400 font-mono uppercase font-bold">reSeTR Turnover QA</span>
+                  <span class="text-amber-400 text-[10px] font-mono">$50.00 / hr</span>
+                </div>
+                <strong class="text-white text-xs block">Cleaner as Certified Inspector</strong>
+                <div class="text-[11px] text-slate-300">Window: 11:15 AM - 4:45 PM</div>
+                <div class="text-[10px] text-emerald-400 font-mono">25% Linen Buffer: VERIFIED</div>
+              </div>
+            </div>
+
+            <!-- Canonical Portfolio Standards Reference Bar -->
+            <div class="p-3.5 rounded-xl bg-slate-950/90 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-2 text-slate-300">
+                <i class="fa-solid fa-check-double text-emerald-400"></i>
+                <span><strong>Live Field Testers:</strong> 1545 Scenic Ave (BKL-STU) &bull; 3007 Acton St (BKL-ADU) &bull; <strong>Starter Model:</strong> 5540 Estates Dr (OAK-HOM)</span>
+              </div>
+              <a href="beacon_lead_command.html" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition cursor-pointer">
+                Return to Beacon Command &rarr;
+              </a>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    function setSimFrame(idx) {
+      currentSimFrame = idx;
+      renderSimulatorScreen();
+    }
+
+    function stepSimulator(direction) {
+      currentSimFrame += direction;
+      if (currentSimFrame < 0) currentSimFrame = 3;
+      if (currentSimFrame > 3) currentSimFrame = 0;
+      renderSimulatorScreen();
+    }
+
+    function toggleSimulatorAutoPlay() {
+      const btn = document.getElementById('btn-sim-autoplay');
+      const icon = document.getElementById('icon-sim-autoplay');
+      const text = document.getElementById('text-sim-autoplay');
+
+      isSimAutoPlaying = !isSimAutoPlaying;
+      if (isSimAutoPlaying) {
+        icon.className = 'fa-solid fa-pause';
+        text.textContent = 'Pause Auto-Play';
+        btn.classList.replace('bg-purple-600', 'bg-rose-600');
+        btn.classList.replace('hover:bg-purple-500', 'hover:bg-rose-500');
+        simAutoPlayTimer = setInterval(() => {
+          stepSimulator(1);
+        }, 4500);
+      } else {
+        icon.className = 'fa-solid fa-play';
+        text.textContent = 'Auto-Play Tutorial';
+        btn.classList.replace('bg-rose-600', 'bg-purple-600');
+        btn.classList.replace('hover:bg-rose-500', 'hover:bg-purple-500');
+        if (simAutoPlayTimer) {
+          clearInterval(simAutoPlayTimer);
+          simAutoPlayTimer = null;
+        }
+      }
+    }
+
+    function renderSimulatorScreen() {
+      const canvas = document.getElementById('simulator-canvas');
+      if (!canvas) return;
+      const frame = simulatorFrames[currentSimFrame];
+
+      // Update scrubber tab buttons
+      for (let i = 0; i < 4; i++) {
+        const tab = document.getElementById(`sim-tab-${i}`);
+        if (tab) {
+          if (i === currentSimFrame) {
+            tab.className = 'p-3 rounded-xl border text-left transition cursor-pointer bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-md';
+          } else {
+            tab.className = 'p-3 rounded-xl border text-left transition cursor-pointer bg-slate-900 text-slate-400 border-slate-800 hover:text-white';
+          }
+        }
+      }
+
+      canvas.innerHTML = `
+        <div class="space-y-4">
+          <!-- Screen Header Bar -->
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs font-mono">Action ${frame.actionNum} / 04</span>
+              <h3 class="text-sm md:text-base font-bold text-white serif-font">${frame.title}</h3>
+            </div>
+            <span class="text-xs text-slate-400 font-mono hidden sm:inline">Beacon Workflow Visualizer</span>
+          </div>
+
+          <!-- Annotation Bar -->
+          <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-200 flex items-start gap-2.5">
+            <i class="fa-solid fa-circle-info text-amber-400 mt-0.5 flex-shrink-0"></i>
+            <span class="leading-relaxed">${frame.annotation}</span>
+          </div>
+
+          <!-- Dynamic Mockup Canvas -->
+          <div>
+            ${frame.canvasHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // Live Pipeline Simulation Data & Controller
+    const simData = {
+      'denver-adu': {
+        unitId: 'DEN-ADU-001',
+        title: 'Denver ADU Suite (3270 W Walsh Pl)',
+        type: 'ADU',
+        market: 'Denver, CO',
+        ownerName: 'Addie Lynne',
+        ownerPhone: '(303) 555-0194',
+        driveFolder: 'https://drive.google.com/drive/folders/1kqIM-mbR8icVjM5QpuFg9tBs6MycdO:',
+        payoutRail: 'direct_ach',
+        nightlyRate: 145,
+        cleaningFee: 'Assessed Post-Walkthrough',
+        guestCleaningFee: 'TBD Post-Inventory',
+        mgmtFeePercent: 25,
+        cleanerTrade: 'cleaner',
+        cleanerRate: 'Assessed Post-Inventory Walkthrough',
+        funnelCandidateCount: 5,
+        funnelStage: 'Scout Disqualification & Net Yield Lock',
+        funnelCandidates: [
+          { name: '3270 W Walsh Pl (ADU)', yield: '25% Agreed Split', status: 'QUALIFIED', note: 'Primary ADU allowed under Ord 2020-0431. 25% co-host service level agreed.' },
+          { name: '1420 S Federal Blvd (Triplex)', yield: 'Negative Yield', status: 'DISQUALIFIED', note: 'E-TU-B zoning restricts STR; non-compliant under municipal cap.' },
+          { name: '2811 W 26th Ave (Duplex)', yield: 'Marginal (+6%)', status: 'DISQUALIFIED', note: 'Carrying costs and HOA assessment erode co-host profitability.' },
+          { name: '915 Knox Ct (Boutique 4-Plex)', yield: 'Non-Primary Ban', status: 'DISQUALIFIED', note: 'Fails Denver primary residency ordinance. Immediate gate suppression.' },
+          { name: '3410 W 32nd Ave (ADU Suite)', yield: 'Owner Conflict', status: 'DISQUALIFIED', note: 'Demands sub-15% fee structure incompatible with full-service operations.' }
+        ],
+        photos: [
+          { title: 'Living & Staging Area', tag: 'Living Area', icon: 'fa-couch', color: 'from-amber-900/40 to-slate-900', desc: 'Custom wood slat partition, sleeper sofa, curated Denver art prints' },
+          { title: 'Kitchenette & Coffee Bar', tag: 'Kitchenette', icon: 'fa-mug-hot', color: 'from-sky-900/40 to-slate-900', desc: 'Induction cooktop, quartz counters, Chemex station, compact fridge' },
+          { title: 'Queen Bed Suite', tag: 'Sleeping Quarters', icon: 'fa-bed', color: 'from-indigo-900/40 to-slate-900', desc: 'Queen mattress, triple-sheeted percale linens, reading sconces' },
+          { title: 'Spa Bath & Walk-in Shower', tag: 'Bath', icon: 'fa-shower', color: 'from-emerald-900/40 to-slate-900', desc: 'Frameless glass shower, matte black fixtures, bulk dispensers' }
+        ],
+        atlasChecks: [
+          { label: 'Denver Muni Code STR Permit', status: 'VERIFIED', detail: 'Primary residence ADU ordinance eligible under Ord 2020-0431. Permit application #2026-BFN-00194 ready.' },
+          { label: 'Transient Occupancy Tax (TOT)', status: 'PASS', detail: 'Denver 10.75% Lodging Tax automatically collected and remitted by agency agreement.' },
+          { label: 'Zoning & Parking Compliance', status: 'PASS', detail: 'E-SU-Dx zone allows detached accessory dwelling unit with 1 dedicated off-street stall.' },
+          { label: 'Net Operating Yield (NOY)', status: 'PASS', detail: 'Projected net yield calculated after 25% co-host service level. Outperforms long-term leasing.' }
+        ],
+        wifiSsid: 'ScenicStay • DenverSuite',
+        wifiHeadline: 'Welcome to Denver ADU Suite • Scenic Stay',
+        smartLockModel: 'Schlage Encode Wi-Fi Deadbolt (Keyless Entry Auto-Cycle)'
+      },
+      'boutique-inn': {
+        unitId: 'BKL-STU-001',
+        title: 'Modern Retro Studio (1545 Scenic Ave)',
+        type: 'STU',
+        market: 'Berkeley, CA',
+        ownerName: 'Marcus Vance',
+        ownerPhone: '(510) 555-0812',
+        driveFolder: 'https://drive.google.com/drive/folders/BKL-1545-Scenic',
+        payoutRail: 'direct_ach',
+        nightlyRate: 195,
+        cleaningFee: '50.00',
+        guestCleaningFee: '60.00',
+        mgmtFeePercent: 18,
+        cleanerTrade: 'cleaner',
+        cleanerRate: '$100.00',
+        funnelCandidateCount: 5,
+        funnelStage: 'Scout Review Sentiment & Service Deficit Scanner',
+        funnelCandidates: [
+          { name: '1545 Scenic Ave (Historic Inn)', yield: '+18% ADR / -$60k Desk', status: 'QUALIFIED', note: 'Physical 4.8/5.0 with severe after-hours communication deficit. Closed via Beacon.' },
+          { name: '2118 University Ave (12-Key Motel)', yield: 'Negative Yield', status: 'DISQUALIFIED', note: 'Severe deferred maintenance; fails quality onboarding standard.' },
+          { name: '1802 Telegraph Ave (Boutique Lodge)', yield: 'Non-Exclusive', status: 'DISQUALIFIED', note: 'Owner declined exclusive OTA digital asset management.' },
+          { name: '2430 Channing Way (6-Key Suites)', yield: 'Zoning Deficit', status: 'DISQUALIFIED', note: 'Berkeley commercial zoning restrictions prevent flexible STR hybrid.' },
+          { name: '1604 Shattuck Ave (Victorian Inn)', yield: 'Staffing Friction', status: 'DISQUALIFIED', note: 'Union housekeeping contract precludes standardized reSeTR dispatch.' }
+        ],
+        photos: [
+          { title: 'Main Living & Mid-Century Lounge', tag: 'Studio Lounge', icon: 'fa-couch', color: 'from-amber-900/40 to-slate-900', desc: 'Eames-style lounge chair, vintage console, hardwood floors with wool rug' },
+          { title: 'Chef Kitchen & Dining Nook', tag: 'Kitchen', icon: 'fa-kitchen-set', color: 'from-sky-900/40 to-slate-900', desc: 'Gas range, butcher-block counter, pour-over station, fully stocked dinnerware' },
+          { title: 'Private Garden Patio', tag: 'Exterior Grounds', icon: 'fa-tree', color: 'from-emerald-900/40 to-slate-900', desc: 'Secluded redwood-fringed garden patio with cafe bistro table and string lights' },
+          { title: 'Tiled Bath & Dressing Suite', tag: 'Bath Suite', icon: 'fa-bath', color: 'from-purple-900/40 to-slate-900', desc: 'Original Spanish tile, clawfoot shower tub, Turkish cotton towel set' }
+        ],
+        atlasChecks: [
+          { label: 'Berkeley Short-Term Rental Registry', status: 'VERIFIED', detail: 'Eligible under Berkeley BMC 23C.22 accessory unit exception. 14-day rule compliant.' },
+          { label: 'Transient Occupancy Tax (TOT)', status: 'PASS', detail: 'Berkeley 14% TOT (12% guest tax + 2% municipal enforcement tax absorbed by host) accounted.' },
+          { label: 'Parent-Child Multi-Key Synchronization', status: 'PASS', detail: 'iCal linkage between South Studio (001), North Studio (002), and Dual Booking (003) active.' },
+          { label: 'Net Operating Yield (NOY)', status: 'PASS', detail: '$4,914/mo gross yield ($195 ADR @ 84% occ, exact parity with South Studio). Replaces $60k/yr night front-desk overhead.' }
+        ],
+        wifiSsid: 'ScenicStay • NorthStudio',
+        wifiHeadline: 'Welcome to Modern Retro Garden Studio • Scenic Stay',
+        smartLockModel: 'Schlage Encode Smart Access Keypad (PIN = last-4 digits)'
+      },
+      'pinole-avis': {
+        unitId: 'PIN-HOM-001',
+        title: 'Avis Way 5-BR Executive Retreat (3146 Avis Way)',
+        type: 'HOM',
+        market: 'Pinole, CA',
+        ownerName: 'East Bay Residential Trust',
+        ownerPhone: '(510) 724-8100',
+        driveFolder: 'https://drive.google.com/drive/folders/PIN-3146-Avis',
+        payoutRail: 'direct_ach',
+        nightlyRate: 465,
+        cleaningFee: '195.00',
+        guestCleaningFee: '230.00',
+        mgmtFeePercent: 20,
+        cleanerTrade: 'cleaner',
+        cleanerRate: '$195.00',
+        funnelCandidateCount: 5,
+        funnelStage: 'Scout Review Sentiment & Sizing Alignment',
+        funnelCandidates: [
+          { name: '3146 Avis Way (5-BR Home)', yield: '$10,880/mo Gross Target', status: 'QUALIFIED', note: 'Full 5-bedroom home with horseshoe driveway. Ideal Napa/SF family gateway. $465 midweek / $585 weekend.' },
+          { name: '1208 San Pablo Ave (Duplex)', yield: 'Negative Yield', status: 'DISQUALIFIED', note: 'Commercial street frontage noise drag exceeds threshold.' },
+          { name: '840 Pinole Valley Rd (SFR)', yield: 'Permit Deficit', status: 'DISQUALIFIED', note: 'HOA CC&Rs prohibit rentals under 30 days.' },
+          { name: '2415 Appian Way (4-Plex)', yield: 'Staffing Friction', status: 'DISQUALIFIED', note: 'Owner demands unvetted on-site maintenance contractor.' },
+          { name: '710 Tennent Ave (Cottage)', yield: 'Marginal (+8%)', status: 'DISQUALIFIED', note: 'Single-bedroom footprint yields below minimum portfolio margin.' }
+        ],
+        photos: [
+          { title: 'Great Room & Lounge', tag: 'Living Quarters', icon: 'fa-couch', color: 'from-amber-900/40 to-slate-900', desc: 'Spacious open-concept living area, leather sectional, 65-inch 4K Roku TV' },
+          { title: 'Chef Kitchen & Dining Table', tag: 'Kitchen', icon: 'fa-kitchen-set', color: 'from-sky-900/40 to-slate-900', desc: 'Full stainless appliances, granite island, seating for 10 guests' },
+          { title: 'Master Bedroom Suite', tag: 'Master Bed', icon: 'fa-bed', color: 'from-indigo-900/40 to-slate-900', desc: 'King Tuft & Needle mattress, ensuite dual vanity, walk-in closet' },
+          { title: 'Private Grounds & Driveway', tag: 'Exterior Grounds', icon: 'fa-tree', color: 'from-emerald-900/40 to-slate-900', desc: 'Spacious horseshoe driveway with parking for 4 vehicles, fenced yard' }
+        ],
+        atlasChecks: [
+          { label: 'Pinole Municipal STR Permit', status: 'VERIFIED', detail: 'Eligible single-family residential parcel. No municipal caps violated.' },
+          { label: 'Transient Occupancy Tax (TOT)', status: 'PASS', detail: 'Contra Costa County lodging tax accounted and remitted.' },
+          { label: 'Collision Shield Verification', status: 'PASS', detail: 'Autonomous 0.019 ms collision shield active. Zero double-booking risk.' },
+          { label: 'Net Operating Yield (NOY)', status: 'PASS', detail: '$6,754/mo net owner payout projected after cleaning and 20% co-host fee.' }
+        ],
+        wifiSsid: 'ScenicStay • AvisHouse',
+        wifiHeadline: 'Welcome to Avis Way • Scenic Stay',
+        smartLockModel: 'Schlage Encode Smart Access Keypad (Horseshoe Driveway)'
+      },
+      'todos-santos-inn': {
+        unitId: 'BCN-INT-TS-001',
+        title: 'Todos Santos Boutique Hotel (10 Keys)',
+        type: 'INT-BOU',
+        market: 'Todos Santos, BCS, Mexico',
+        ownerName: 'Todos Santos Boutique Lodging Group',
+        ownerPhone: '+52 612 145 0600',
+        driveFolder: 'https://drive.google.com/drive/folders/TS-Boutique-10Key',
+        payoutRail: 'direct_ach',
+        nightlyRate: 485,
+        cleaningFee: '75.00',
+        guestCleaningFee: '95.00',
+        mgmtFeePercent: 20,
+        cleanerTrade: 'cleaner',
+        cleanerRate: '$45.00',
+        funnelCandidateCount: 5,
+        funnelStage: 'International Commercial Lodging & Airbnb Channel Audit',
+        funnelCandidates: [
+          { name: 'Todos Santos Boutique Hotel (10 Keys)', yield: '+$196,000/yr Revenue Lift', status: 'QUALIFIED', note: 'Historic 10-key luxury estate. Under-indexed on Airbnb: pitch US channel expansion, 24/7 bilingual guest concierge, and keyless check-in SOPs.' },
+          { name: '45 Calle Centenario (Casitas)', yield: 'Deferred Capital', status: 'DISQUALIFIED', note: 'Requires $80k in solar and water cistern remediation.' },
+          { name: '120 Topete St (Inn)', yield: 'Leasehold Encumbrance', status: 'DISQUALIFIED', note: 'Property subject to multi-year master lease expiring 2028.' },
+          { name: '14 Juarez St (B&B)', yield: 'Owner Hold', status: 'DISQUALIFIED', note: 'Owner-operator unready for remote operational transition.' },
+          { name: '88 Calle Obregon (Condos)', yield: 'HOA Restriction', status: 'DISQUALIFIED', note: 'Fractional regime bylaws restrict third-party commercial management.' }
+        ],
+        photos: [
+          { title: 'Historic Brick Hacienda Lobby', tag: 'Hacienda Lobby', icon: 'fa-couch', color: 'from-amber-900/40 to-slate-900', desc: 'Historic brick arches, courtyard fountain, private guest check-in lounge' },
+          { title: 'Desert Luxury King Suite', tag: 'King Suite', icon: 'fa-bed', color: 'from-sky-900/40 to-slate-900', desc: 'Handcrafted Mexican parota wood furnishings, private terrace, soaking tub' },
+          { title: 'Courtyard Pool & Sun Deck', tag: 'Courtyard Pool', icon: 'fa-water-ladder', color: 'from-emerald-900/40 to-slate-900', desc: 'Heated plunge pool surrounded by endemic desert landscaping and lounge cabanas' },
+          { title: 'Rooftop Sunset Lounge', tag: 'Rooftop Terrace', icon: 'fa-martini-glass-citrus', color: 'from-indigo-900/40 to-slate-900', desc: 'Panoramic Pacific and Sierra de la Laguna mountain views for evening cocktails' }
+        ],
+        atlasChecks: [
+          { label: 'Commercial Boutique Lodging Permit', status: 'VERIFIED', detail: 'Exempt from residential STR caps under Mexican commercial lodging framework. Registered for IVA and ISH (4% state lodging tax).' },
+          { label: 'Direct Payout Settlement Rail', status: 'PASS', detail: 'USD disbursements direct to Mexican bank or US LLC via Ramp ACH, eliminating cross-border banking friction.' },
+          { label: 'Seam Hardware Core Telemetry', status: 'PASS', detail: 'Keyless commercial access with negative alerting protocol and battery telemetry.' },
+          { label: 'Net Operating Yield (NOY)', status: 'PASS', detail: 'Projected net owner revenue lift of $196,000/yr via North American Airbnb category capture and dynamic holiday pacing.' }
+        ],
+        wifiSsid: 'TodosSantos • Guest',
+        wifiHeadline: 'Welcome to Todos Santos Boutique Hotel',
+        smartLockModel: 'Commercial Smart Keypad Access (Seam Hardware Telemetry)'
+      }
+    };
+
+    let simActiveSubject = 'denver-adu';
+    let simActivePhase = 1;
+
+    function openLivePipelineModal() {
+      document.getElementById('live-pipeline-modal').classList.remove('hidden');
+      renderSimPhase();
+    }
+
+    function closeLivePipelineModal() {
+      document.getElementById('live-pipeline-modal').classList.add('hidden');
+    }
+
+    function switchSimSubject(subjectKey) {
+      simActiveSubject = subjectKey;
+      simActivePhase = 1;
+      renderSimPhase();
+    }
+
+    function setSimPhase(phaseNum) {
+      simActivePhase = phaseNum;
+      renderSimPhase();
+    }
+
+    function advanceSimPhase() {
+      if (simActivePhase < 4) {
+        simActivePhase += 1;
+      } else {
+        simActivePhase = 1;
+      }
+      renderSimPhase();
+    }
+
+    function renderSimPhase() {
+      const subject = simData[simActiveSubject];
+      const container = document.getElementById('sim-phase-content');
+      const advanceBtn = document.getElementById('btn-sim-advance');
+
+      // Update Phase Header Buttons
+      for (let p = 1; p <= 4; p++) {
+        const btn = document.getElementById(`btn-sim-p${p}`);
+        if (p === simActivePhase) {
+          btn.className = 'px-3 py-1.5 rounded-lg font-bold border transition flex items-center gap-1.5 cursor-pointer bg-amber-500 text-slate-950 border-amber-400 shadow-md';
+        } else if (p < simActivePhase) {
+          btn.className = 'px-3 py-1.5 rounded-lg font-semibold border transition flex items-center gap-1.5 cursor-pointer bg-emerald-950/80 text-emerald-300 border-emerald-700/60';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-lg font-semibold border transition flex items-center gap-1.5 cursor-pointer bg-slate-950 text-slate-400 border-slate-800 hover:text-white';
+        }
+      }
+
+      if (simActivePhase === 1) {
+        advanceBtn.innerHTML = `<span>Advance to Phase 2: Sales Lock</span> <i class="fa-solid fa-arrow-right"></i>`;
+        
+        let funnelHtml = '';
+        subject.funnelCandidates.forEach((fc) => {
+          const isWinner = fc.status === 'QUALIFIED';
+          funnelHtml += `
+            <div class="p-3 rounded-xl ${isWinner ? 'bg-amber-950/40 border border-amber-500/70' : 'bg-slate-900/60 border border-slate-800'} flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold ${isWinner ? 'text-amber-300' : 'text-slate-300'}">${fc.name}</span>
+                  <span class="px-2 py-0.5 rounded font-mono font-bold text-[9px] ${isWinner ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-400'}">${fc.status}</span>
+                </div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">${fc.note}</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <span class="font-mono font-bold ${isWinner ? 'text-emerald-400' : 'text-slate-500'} text-xs">${fc.yield}</span>
+              </div>
+            </div>
+          `;
+        });
+
+        let checksHtml = '';
+        subject.atlasChecks.forEach((c) => {
+          checksHtml += `
+            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-start justify-between gap-3 text-xs">
+              <div class="space-y-0.5">
+                <span class="font-bold text-white block">${c.label}</span>
+                <p class="text-slate-300 text-[11px] leading-relaxed">${c.detail}</p>
+              </div>
+              <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 flex-shrink-0">${c.status}</span>
+            </div>
+          `;
+        });
+
+        let photosHtml = '';
+        subject.photos.forEach((ph) => {
+          photosHtml += `
+            <div class="p-3 rounded-xl bg-gradient-to-b ${ph.color} border border-slate-800 space-y-2 flex flex-col justify-between">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded bg-black/60 text-amber-400 font-mono text-[10px] font-bold">${ph.tag}</span>
+                <i class="fa-solid ${ph.icon} text-slate-400 text-sm"></i>
+              </div>
+              <div>
+                <h5 class="font-bold text-white text-xs">${ph.title}</h5>
+                <p class="text-[11px] text-slate-300 mt-1 line-clamp-2">${ph.desc}</p>
+              </div>
+              <div class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+                <i class="fa-solid fa-circle-check"></i> <span>Catalog Asset Verified</span>
+              </div>
+            </div>
+          `;
+        });
+
+        container.innerHTML = `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-sky-500/50 space-y-4 shadow-inner">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div>
+                <span class="text-xs font-bold text-sky-400 uppercase font-mono tracking-wider">Pipeline Phase 1: Market Sourcing &amp; Lead Atlas Qualification</span>
+                <h3 class="text-lg font-bold text-white serif-font mt-0.5">5 Candidates Scanned &rarr; 1 Qualified Winner</h3>
+              </div>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono font-bold bg-sky-950 text-sky-300 border border-sky-800 flex items-center gap-1.5 self-start sm:self-auto">
+                <i class="fa-solid fa-filter"></i> Strict 5-to-1 Funnel Selection
+              </span>
+            </div>
+
+            <!-- Funnel Breakdown Table -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">Market Candidate Scan (${subject.funnelStage})</span>
+                <span class="text-[10px] font-mono text-amber-400">1 Advances to Contract</span>
+              </div>
+              <div class="space-y-2">
+                ${funnelHtml}
+              </div>
+            </div>
+
+            <!-- Subject Spec Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Qualified Asset</span>
+                <span class="font-bold text-white">${subject.title}</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Jurisdiction</span>
+                <span class="font-bold text-amber-400">${subject.market}</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Target Turn Clean</span>
+                <span class="font-bold text-emerald-400">${subject.cleaningFee}</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Service Fee Tier</span>
+                <span class="font-bold text-sky-400">${subject.mgmtFeePercent}% Co-Hosting</span>
+              </div>
+            </div>
+
+            <!-- Visual Photo Staging Preview & Drive Link -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">Curated Mock Listing Photo Assets (Ingested for Launch)</span>
+                <a href="${subject.driveFolder}" target="_blank" class="text-[11px] font-mono text-amber-400 hover:underline flex items-center gap-1">
+                  <i class="fa-brands fa-google-drive"></i> Open Source Drive Folder &rarr;
+                </a>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                ${photosHtml}
+              </div>
+            </div>
+
+            <!-- Lead Atlas Invariant Audit Checks -->
+            <div class="space-y-2 pt-2 border-t border-slate-800/80">
+              <span class="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">Lead Atlas Compliance Audit Checks</span>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                ${checksHtml}
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (simActivePhase === 2) {
+        advanceBtn.innerHTML = `<span>Advance to Phase 3: Property Forge</span> <i class="fa-solid fa-arrow-right"></i>`;
+        
+        container.innerHTML = `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-indigo-500/50 space-y-4 shadow-inner">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div>
+                <span class="text-xs font-bold text-indigo-400 uppercase font-mono tracking-wider">Pipeline Phase 2: Beacon Sales Proposal</span>
+                <h3 class="text-lg font-bold text-white serif-font mt-0.5">Commercial Term Lock &amp; Partner Alignment</h3>
+              </div>
+              <span class="px-3 py-1 rounded-xl text-xs font-mono font-bold bg-indigo-950 text-indigo-300 border border-indigo-800 flex items-center gap-1.5 self-start sm:self-auto">
+                <i class="fa-solid fa-handshake"></i> Terms Agreed: Zero Upfront Overhead
+              </span>
+            </div>
+
+            <!-- Owner & Terms Card -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Owner / Decision Maker</span>
+                <span class="font-bold text-white text-sm block">${subject.ownerName}</span>
+                <span class="text-slate-400 text-[11px]">${subject.ownerPhone}</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Agreed Operational Tier</span>
+                <span class="font-bold text-amber-400 text-sm block">${subject.mgmtFeePercent}% Level of Service</span>
+                <span class="text-slate-400 text-[11px]">Reconciled net monthly against real payouts</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Turnover Calibration</span>
+                <span class="font-bold text-emerald-400 text-sm block">${subject.cleaningFee}</span>
+                <span class="text-slate-400 text-[11px]">Assessed post-inventory walkthrough</span>
+              </div>
+            </div>
+
+            <!-- Value Proposition Pitch Summary -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2">
+              <span class="text-xs font-bold text-amber-400 uppercase font-mono">Sales Discovery Briefing Transferred Downstream:</span>
+              <ul class="text-xs text-slate-300 space-y-2 pl-4 list-disc">
+                <li><strong>Owner Partnership Alignment:</strong> ${subject.ownerName} confirmed at <strong>${subject.mgmtFeePercent}% level of service</strong> with hands-off operations.</li>
+                <li><strong>Sole Listing Asset Ownership:</strong> Partner acknowledges Scenic Stay creates, owns, and controls the digital listing and OTA integrations.</li>
+                <li><strong>Hardware Infrastructure:</strong> Smart deadbolt configured (${subject.smartLockModel}) paired with captive Wi-Fi guest portal.</li>
+                <li><strong>Field Operations Calibration:</strong> Cleaning fee assessed post-inventory walkthrough rather than pre-locked arbitrarily.</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-200 flex items-center justify-between">
+              <span><strong>Data Continuity Pipeline:</strong> The sales team's validated owner contact, pricing terms, and photos automatically populate Property Forge.</span>
+              <span class="text-emerald-400 font-bold font-mono">Zero Retyping</span>
+            </div>
+          </div>
+        `;
+      } else if (simActivePhase === 3) {
+        advanceBtn.innerHTML = `<span>Advance to Phase 4: Agreement SLA</span> <i class="fa-solid fa-arrow-right"></i>`;
+        
+        container.innerHTML = `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-purple-500/50 space-y-4 shadow-inner">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div>
+                <span class="text-xs font-bold text-purple-400 uppercase font-mono tracking-wider">Pipeline Phase 3: HOSt Property Forge</span>
+                <h3 class="text-lg font-bold text-white serif-font mt-0.5">Automated Digital Twin &amp; Blueprint Generation</h3>
+              </div>
+              <a href="host_property_forge.html?preset=${subject.unitId}" target="_blank" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-purple-600 hover:bg-purple-500 text-white transition flex items-center gap-1.5 cursor-pointer shadow-lg self-start sm:self-auto">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live in Property Forge &rarr;
+              </a>
+            </div>
+
+            <!-- Ingested Blueprint Specs -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]"><i class="fa-solid fa-hashtag mr-1"></i> Unit Identifier</span>
+                <span class="font-mono text-white font-bold block">${subject.unitId}</span>
+                <span class="text-slate-400 text-[10px]">Taxonomy: ${subject.market.toUpperCase()}</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]"><i class="fa-solid fa-wifi mr-1"></i> Captive Wi-Fi Portal</span>
+                <span class="font-mono text-white font-bold block">${subject.wifiSsid}</span>
+                <span class="text-slate-400 text-[10px]">${subject.wifiHeadline}</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-purple-400 font-bold block text-[11px]"><i class="fa-solid fa-key mr-1"></i> Smart Lock Hardware</span>
+                <span class="text-slate-200 font-semibold block text-[11px]">${subject.smartLockModel}</span>
+                <span class="text-emerald-400 text-[10px]">PIN Auto-cycling active</span>
+              </div>
+            </div>
+
+            <!-- JSON Blueprint Data View -->
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-300 font-mono">Generated Property Blueprint JSON:</span>
+                <span class="text-[10px] text-amber-400 font-mono">Validated Schema (Pydantic v2)</span>
+              </div>
+              <pre class="mono-font text-[11px] text-slate-300 bg-black/60 p-3 rounded-lg overflow-x-auto border border-slate-800"><code>{
+  "unit_id": "${subject.unitId}",
+  "property_title": "${subject.title}",
+  "owner_name": "${subject.ownerName}",
+  "owner_phone": "${subject.ownerPhone}",
+  "drive_folder": "${subject.driveFolder}",
+  "mgmt_fee_percent": ${subject.mgmtFeePercent},
+  "clean_fee_assessment": "${subject.cleaningFee}",
+  "wifi_ssid": "${subject.wifiSsid}",
+  "wifi_headline": "${subject.wifiHeadline}",
+  "lead_atlas_status": "COMPLIANT_VERIFIED",
+  "dispatch_engine": "reSeTR"
+}</code></pre>
+            </div>
+          </div>
+        `;
+      } else if (simActivePhase === 4) {
+        advanceBtn.innerHTML = `<span>Restart Simulation (Phase 1)</span> <i class="fa-solid fa-rotate-right"></i>`;
+        
+        const contractUrl = `contractor_agreement_generator.html?name=${encodeURIComponent(subject.ownerName)}&phone=${encodeURIComponent(subject.ownerPhone)}&property=${encodeURIComponent(subject.title)}&rate=${encodeURIComponent(subject.cleanerRate)}&payout=direct_ach&trade=cleaner`;
+
+        container.innerHTML = `
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-emerald-500/50 space-y-4 shadow-inner">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <div>
+                <span class="text-xs font-bold text-emerald-400 uppercase font-mono tracking-wider">Pipeline Phase 4: Field Contractor Agreement SLA</span>
+                <h3 class="text-lg font-bold text-white serif-font mt-0.5">Auto-Populated Service Level Agreement</h3>
+              </div>
+              <a href="${contractUrl}" target="_blank" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 cursor-pointer shadow-lg self-start sm:self-auto">
+                <i class="fa-solid fa-file-signature"></i> Open Live in Agreement SLA &rarr;
+              </a>
+            </div>
+
+            <!-- Contract Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Assigned Partner / Owner</span>
+                <span class="font-bold text-white block">${subject.ownerName}</span>
+                <span class="text-slate-400 text-[10px]">${subject.ownerPhone}</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Assigned Unit</span>
+                <span class="font-bold text-white block">${subject.title}</span>
+                <span class="text-amber-400 text-[10px] font-mono">${subject.unitId}</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Service Fee / Clean Rate</span>
+                <span class="font-bold text-emerald-400 text-base block">${subject.mgmtFeePercent}% Service Tier</span>
+                <span class="text-slate-400 text-[10px]">${subject.cleanerRate}</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+                <span class="text-slate-400 block text-[10px] uppercase font-mono">Payout Mechanism</span>
+                <span class="font-bold text-sky-400 block">Direct ACH Rail</span>
+                <span class="text-slate-400 text-[10px]">Clean monthly reconciled disbursements</span>
+              </div>
+            </div>
+
+            <!-- Agreement SLA Clauses Preview -->
+            <div class="p-4 rounded-xl bg-white text-slate-900 space-y-2 shadow-md">
+              <div class="border-b border-slate-200 pb-2 flex items-center justify-between">
+                <span class="font-bold text-xs uppercase font-mono text-[#24123a]">Contract Preview (Scenic Stay Standard SLA)</span>
+                <span class="text-[10px] font-mono text-slate-500">Auto-Generated from Sales Lead</span>
+              </div>
+              <p class="text-xs leading-relaxed">
+                <strong>Service Level &amp; Turnover Agreement:</strong> Partner <strong>${subject.ownerName}</strong> agrees to co-hosting and operational management for <strong>${subject.title}</strong> at the agreed <strong>${subject.mgmtFeePercent}% level of service</strong>. Cleaning fees are established post-inventory inspection walkthrough from source photo records (<a href="${subject.driveFolder}" target="_blank" class="text-blue-600 underline font-mono">Drive Catalog</a>). Payout authorization is processed via direct ACH rails with full itemized monthly reconciliations.
+              </p>
+            </div>
+
+            <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-200 flex items-center justify-between">
+              <span><strong>Full Pipeline Loop Complete:</strong> Sales enrichment &amp; Lead Atlas municipal checks directly created the operational blueprint and executed the partner contract.</span>
+              <span class="text-emerald-400 font-bold">100% End-to-End Functional</span>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Keyboard Arrow Navigation
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('live-pipeline-modal') && !document.getElementById('live-pipeline-modal').classList.contains('hidden')) {
+        if (e.key === 'Escape') {
+          closeLivePipelineModal();
+        }
+      } else if (currentAppMode === 'walkthrough') {
+        if (e.key === 'ArrowRight') {
+          navigateSlide(1);
+        } else if (e.key === 'ArrowLeft') {
+          navigateSlide(-1);
+        }
+      } else if (currentAppMode === 'simulator') {
+        if (e.key === 'ArrowRight') {
+          stepSimulator(1);
+        } else if (e.key === 'ArrowLeft') {
+          stepSimulator(-1);
+        }
+      }
+    });
+
+    // Initialize Presentation
+    switchTrack('boutique');
+  </script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

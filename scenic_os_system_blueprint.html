@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenic Stay: Master System Architecture &amp; Dynamic Pricing Pilot Blueprint (Company SOP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f4f1ea;
+    color: #1c1917;
+    line-height: 1.66;
+  }
+  .top-bar {
+    background: #180820;
+    color: #ffffff;
+    padding: 16px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 2px solid #e59523;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-row img {
+    height: 38px;
+    width: auto;
+  }
+  .brand-title {
+    font-weight: 800;
+    font-size: 1.02rem;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+  .brand-sub {
+    font-size: 0.75rem;
+    color: #ffbe3b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .nav-pill {
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 190, 59, 0.35);
+    transition: all 0.2s;
+  }
+  .nav-pill:hover, .nav-pill.active {
+    background: #ffbe3b;
+    color: #180820;
+  }
+  .container {
+    max-width: 1140px;
+    margin: 40px auto 80px;
+    padding: 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .hero-banner {
+    background: #180820;
+    color: #ffffff;
+    border-radius: 28px;
+    padding: 46px 52px;
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 36px;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(24, 8, 32, 0.16);
+  }
+  .hero-kicker {
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-size: 2.35rem;
+    font-weight: 800;
+    line-height: 1.13;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .hero-lead {
+    font-size: 1.05rem;
+    color: #e7e5e4;
+    line-height: 1.65;
+  }
+  .hero-emblem-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-emblem-wrap img {
+    max-width: 225px;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  }
+  .sop-section {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 38px 44px;
+    border: 1px solid rgba(28, 25, 23, 0.09);
+    box-shadow: 0 12px 32px rgba(28, 25, 23, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .section-tag {
+    align-self: flex-start;
+    background: #f5f5f4;
+    color: #7c2d12;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .sop-section h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1c1917;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .rule-card {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.1);
+    border-radius: 16px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .rule-card h3 {
+    font-size: 1.06rem;
+    font-weight: 800;
+    color: #1c1917;
+  }
+  .pipeline-card {
+    background: #180820;
+    color: #f5f5f4;
+    border-radius: 18px;
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 190, 59, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pipeline-step {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #ffbe3b;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .pipeline-card h3 {
+    font-size: 1.04rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+  .pipeline-card p {
+    font-size: 0.88rem;
+    color: #d6d3d1;
+    line-height: 1.56;
+  }
+  .pipeline-link {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #ffbe3b;
+    text-decoration: none;
+  }
+  .pipeline-link:hover {
+    text-decoration: underline;
+  }
+  .comparison-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .bad-box {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .good-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .slip-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 5px solid #d97706;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .flow-loop-card {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+    border-left: 5px solid #180820;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .flow-chain {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .flow-node {
+    background: #180820;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 190, 59, 0.4);
+  }
+  .flow-arrow {
+    color: #b45309;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+  /* Interactive Pricing Pilot Sandbox Styles */
+  .cohort-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background: #faf8f5;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(28, 25, 23, 0.1);
+  }
+  .cohort-btn {
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    border: 1px solid rgba(28, 25, 23, 0.18);
+    background: #ffffff;
+    color: #1c1917;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .cohort-btn.active, .cohort-btn:hover {
+    background: #180820;
+    color: #ffbe3b;
+    border-color: #180820;
+  }
+  .controls-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    background: #180820;
+    color: #ffffff;
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 190, 59, 0.35);
+  }
+  .control-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .control-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #e7e5e4;
+  }
+  .control-val {
+    color: #ffbe3b;
+    font-weight: 800;
+  }
+  input[type="range"] {
+    width: 100%;
+    accent-color: #ffbe3b;
+    cursor: pointer;
+  }
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .kpi-card {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .kpi-card.highlight {
+    background: #f0fdf4;
+    border: 2px solid #16a34a;
+  }
+  .kpi-label {
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #57534e;
+  }
+  .kpi-value {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #1c1917;
+  }
+  .kpi-sub {
+    font-size: 0.78rem;
+    color: #44403c;
+    font-weight: 600;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+  }
+  table.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    background: #ffffff;
+  }
+  table.comp-table th {
+    background: #180820;
+    color: #ffbe3b;
+    font-weight: 800;
+    text-align: left;
+    padding: 13px 14px;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  table.comp-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid rgba(28, 25, 23, 0.08);
+    vertical-align: middle;
+  }
+  table.comp-table tr:hover td {
+    background: #faf8f5;
+  }
+  .badge-uplift {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+  }
+  .badge-cohort {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #fef3c7;
+    color: #92400e;
+  }
+  .calendar-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  .cal-day-card {
+    border-radius: 12px;
+    padding: 11px 12px;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+    background: #faf8f5;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.78rem;
+  }
+  .cal-day-card.event-surge {
+    background: #fffbeb;
+    border: 1.5px solid #d97706;
+  }
+  .cal-day-card.orphan-gap {
+    background: #f0fdf4;
+    border: 2px solid #16a34a;
+  }
+  .cal-day-card.priority2-upsell {
+    background: #eff6ff;
+    border: 1.5px solid #2563eb;
+  }
+  @media (max-width: 920px) {
+    .hero-banner, .grid-2, .grid-3, .grid-4, .comparison-box, .controls-grid, .kpi-strip {
+      grid-template-columns: 1fr;
+    }
+    .calendar-strip-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+<link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="brand-row">
+    <img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Scenic Stay Redwood Icon">
+    <div>
+      <div class="brand-title">Scenic Stay: A Better BNB &amp; A Better Boutique</div>
+      <div class="brand-sub">Master System Architecture &amp; Dynamic Pricing Pilot Blueprint (SOP)</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero-banner">
+    <div>
+      <div class="hero-kicker">2-Tier Macro Pillar Architecture &amp; Independent Training Standard</div>
+      <h1 class="hero-title">How Everything Works Together: The 4 Operational Parent Pillars, Independent Training Hub &amp; Unit Pricing Pilot</h1>
+      <p class="hero-lead">
+        Instead of a flat wall of buttons, Scenic OS is organized into <strong>4 Overarching Parent Applications (Row 1)</strong> that drill down into <strong>Contextual Interactive Subsets (Row 2)</strong>, while <strong>Training &amp; Onboarding</strong> lives under its own completely independent header curriculum. Plus, explore our Airbnb connectivity architecture and interactive unit pricing sandbox below.
+      </p>
+    </div>
+    <div class="hero-emblem-wrap">
+      <img src="assets/brand/scenic_stay_canonical_emblem.png" alt="Scenic Stay Canonical Emblem">
+    </div>
+  </section>
+
+  <section class="sop-section" id="two-tier-architecture">
+    <span class="section-tag">Section 01 &bull; 2-Tier Parent Pillar &rarr; Child Subset Navigation + Independent Training Header</span>
+    <h2>1. The 4 Operational Parent Pillars (Row 1) &amp; Contextual Subsets (Row 2)</h2>
+    <p>
+      In daily operations, team members click one of the <strong>4 Macro Parent Pillars in Row 1</strong> (`1. Beacon Scout`, `2. Beacon Lead Command`, `3. HOSt`, `4. balanSeTR`), and Row 2 dynamically reveals that pillar's interactive child subsets. Meanwhile, clicking <strong>🎓 Training &amp; SOP Hub &#8599;</strong> switches into a completely independent Training &amp; Onboarding Header so daily operations and training never clutter each other:
+    </p>
+
+    <div class="grid-4">
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pillar 01 &bull; Discovery Engine</div>
+        <h3>1. Beacon Scout</h3>
+        <p>
+          <strong>Autonomous Background:</strong> Runs 15-minute concentric East Bay ZIP sweeps, Pass 1 header filter, Pass 2 local GLiNER scoring, and Pass 3 permit/deed checks.<br>
+          <strong>Row 2 Interactive Subset:</strong><br>
+          &bull; <code>🗺️ Atlas Explorer</code> (Concentric ZIP map, 30-to-60d longitudinal rating slippage monitor, Duffel co-host partner filter, 7-channel seeker, Sales Team call cadence).
+        </p>
+        <a class="pipeline-link" href="beacon_atlas_explorer.html">Open 1A. Atlas Explorer &rarr;</a>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pillar 02 &bull; Sales &amp; Closing CRM</div>
+        <h3>2. Beacon Lead Command</h3>
+        <p>
+          <strong>Row 2 Interactive Subsets:</strong><br>
+          &bull; <code>📊 Beacon Lead Command Pipeline</code> (4-Tab Socratic closer workstation, Sales Team discovery call attribution &amp; opt-in audit snapshots).<br>
+          &bull; <code>✍️ Owner Contract Generator</code> (Plain-language residential co-hosting &amp; 12% zero-PMS-switch boutique agreements).
+        </p>
+        <a class="pipeline-link" href="beacon_lead_command.html">Open 2A. Beacon Lead Command Pipeline &rarr;</a>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pillar 03 &bull; Hospitality OS</div>
+        <h3>3. HOSt (Hospitality OS)</h3>
+        <p>
+          <strong>Row 2 Interactive Subsets:</strong><br>
+          &bull; <code>🏛️ HOSt Forge (Property Vault)</code> (Pre-filled intake + 32nd St / Estates CapEx &amp; Avis Way copy lab)<br>
+          &bull; <code>📈 Dynamic Pricing &amp; Event Copy</code><br>
+          &bull; <code>📦 preSeTR (Supply Engine &amp; 3-Par Linen)</code><br>
+          &bull; <code>🧹 reSeTR (Field Turnovers 11AM-5PM)</code><br>
+          &bull; <code>🤝 Field Ops Partner Contract</code>
+        </p>
+        <a class="pipeline-link" href="host_property_forge.html">Open 3A. HOSt Forge &rarr;</a>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pillar 04 &bull; Bookkeeper &amp; Tax</div>
+        <h3>4. balanSeTR</h3>
+        <p>
+          <strong>Built to Replace QuickBooks Online. Row 2 Subsets:</strong><br>
+          &bull; <code>📒 Autonomous Ledger &amp; Feed</code><br>
+          &bull; <code>🏷️ Deal Seeker &amp; Expense Radar</code><br>
+          &bull; <code>📄 Monthly Owner Statements</code><br>
+          &bull; <code>🏛️ EOY Tax Center (Schedule E &amp; CPA)</code>
+        </p>
+        <a class="pipeline-link" href="scenic_ledger_bookkeeper.html">Open 4A. balanSeTR Ledger &rarr;</a>
+      </div>
+    </div>
+
+    <div class="rule-card" style="border-left:5px solid #0284c7; background:#f0f9ff;">
+      <h3 style="color:#0c4a6e;">Independent Training &amp; Onboarding Header (Completely Separated From Daily Operational Headers)</h3>
+      <p style="font-size:0.9rem; color:#1e293b;">
+        When viewing training pages, Scenic OS replaces the 4-Pillar operational bar with the dedicated <strong>🎓 Scenic Academy &amp; Training Curriculum Header</strong> (filtered by Discord Role) featuring 4 standalone subheadings:
+        <strong>(01) Universal System Overview &amp; Architecture</strong> (<code>scenic_os_system_blueprint.html</code>),
+        <strong>(02) Interactive Voice Academy Episodes 1-6</strong> (<code>scenic_academy_journey.html</code>),
+        <strong>(03) Inside Operations Deck (Watch First)</strong> (<code>operations_onboarding_deck.html</code>), and
+        <strong>(04) Company SOP &amp; Shadow Workbook</strong> (<code>scenic_company_sop_manual.html</code>), plus a 1-click <strong>🚀 Launch Scenic OS Live Workspace &#8599;</strong> button.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="sop-section">
+    <span class="section-tag">Section 02 &bull; Automated Handshakes Between Systems</span>
+    <h2>2. The Four Core Data Loops That Run Daily Operations</h2>
+    <p>
+      To see how the pieces fit together in practice, here are the four automated handshakes that connect sales, onboarding, pricing, guest messaging, cleaning turnovers, and accounting:
+    </p>
+
+    <div class="grid-2">
+      <div class="flow-loop-card">
+        <h3>Loop A: New Property Onboarding to Instant Cleaner URL</h3>
+        <p style="font-size:0.9rem; color:#44403c;">
+          When a lead closes in <strong>Beacon Lead Command</strong>, clicking <em>Draft Agreement</em> passes all property fields into the <strong>Owner Agreement Generator</strong>. Once signed, clicking <em>Open Pre-Filled Owner Intake</em> opens <strong>HOSt Property Forge</strong> with 80% of fields already populated. Saving the intake assigns a short slug (e.g., <code>32ndstreet</code>) to Supabase, which our Cloudflare Pages wildcard rule (<code>_redirects</code>) immediately serves at <code>resetr.abetterbnb.com/32ndstreet</code> without touching DNS.
+        </p>
+        <div class="flow-chain">
+          <span class="flow-node">Beacon Command</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Owner Agreement</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">HOSt Forge (?mode=owner)</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">resetr.abetterbnb.com/:slug</span>
+        </div>
+      </div>
+
+      <div class="flow-loop-card">
+        <h3>Loop B: Dynamic Pricing, Gap-Night Extensions &amp; Paid Early/Late Windows</h3>
+        <p style="font-size:0.9rem; color:#44403c;">
+          The <strong>Dynamic Pricing Engine</strong> reads reservation spacing from <strong>preSeTR</strong>. Whenever a 1-to-2 night unbooked "orphan gap" sits next to a confirmed reservation, it flags a discounted extension offer (e.g., 25% off) for the adjacent booked guest, capturing pure margin with <strong>zero additional turnover cleaning cost</strong>. Similarly, when <code>preSeTR</code> confirms a Priority 2 day (no same-day back-to-back conflict), guests can lock in a paid Guaranteed Early Check-In or Late Check-Out tier 48+ hours in advance.
+        </p>
+        <div class="flow-chain">
+          <span class="flow-node">preSeTR Spacing Check</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Gap-Night / Priority 2 Match</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Crisp Guest Offer</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">balanSeTR Revenue Split</span>
+        </div>
+      </div>
+
+      <div class="flow-loop-card">
+        <h3>Loop C: Advance Cleaner Dispatch to Proactive Guest Early Check-In</h3>
+        <p style="font-size:0.9rem; color:#44403c;">
+          <strong>preSeTR</strong> dispatches the 14-day lookahead, Sunday weekly digest, 48-hour confirmation, and 8:30 AM day-of link in each cleaning partner's preferred language, always putting <strong>Priority 1 Same-Day B2B (11:00 AM to 5:00 PM)</strong> first. When the cleaner submits Phase 2 staging photos and supply verification in <strong>reSeTR</strong> at 2:15 PM, we activate the guest's smart lock code early, send a crisp text that the unit is ready early at no extra charge, and queue a timely partner payout.
+        </p>
+        <div class="flow-chain">
+          <span class="flow-node">preSeTR 14d/7d/48h Alert</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">reSeTR Phase 1 &amp; 2 QA</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Smart Lock + Early Guest Note</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Timely Partner Payout</span>
+        </div>
+      </div>
+
+      <div class="flow-loop-card">
+        <h3>Loop D: Payouts, Extra Coordination &amp; Global Tax Readiness</h3>
+        <p style="font-size:0.9rem; color:#44403c;">
+          Every booking payout, approved turnover, out-of-scope maintenance/mailing dispatch (+20% coordination markup), post-owner-stay cleaning invoice, and 50/50 unexpended Resolution Center recovery flows into <strong>balanSeTR</strong>. Tabs 3 and 4 automatically generate plain-language monthly owner statements and year-end tax packages across domestic and international jurisdictions for both our owners and our company.
+        </p>
+        <div class="flow-chain">
+          <span class="flow-node">OTA + reSeTR Feeds</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">balanSeTR Auto-Rules</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Monthly Owner Statement</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-node">Year-End Tax Package</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="sop-section">
+    <span class="section-tag">Section 03 &bull; Implementation Schedule (Your Units First)</span>
+    <h2>3. When &amp; How We Implement the PMS &amp; Dynamic Pricing Updates</h2>
+    <p>
+      Rather than flipping on automated pricing across every partner property at once, we roll out our PMS and Revenue Expansion updates in <strong>three controlled phases starting immediately on your own units first</strong>:
+    </p>
+
+    <div class="grid-3">
+      <div class="rule-card" style="border-top: 4px solid #180820;">
+        <h3>Phase 1: Shadow &amp; Comparison Sandbox on Your Units (Starting Now / Week 1)</h3>
+        <p style="font-size:0.9rem;">
+          <strong>Zero live Airbnb prices change automatically in Phase 1.</strong> We run the Dynamic Pricing &amp; Gap-Night Engine in <em>Shadow Mode</em> across your 4 core East Bay units (<code>1545 Scenic North</code>, <code>1545 Scenic South</code>, <code>3007 Acton</code>, <code>1023 32nd St</code>) and your 3 active co-host units (<code>5540 Estates Dr</code>, <code>3146 Avis Way</code>, <code>3270 W Walsh Pl</code>). You inspect the side-by-side daily rate recommendations and orphan-night triggers in the sandbox below.
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-top: 4px solid #e59523;">
+        <h3>Phase 2: 1-Click Approved Gap-Night Offers &amp; Event Floors on Your Units (Weeks 2 to 3)</h3>
+        <p style="font-size:0.9rem;">
+          Once you like how the numbers look on your units, we activate <strong>Human-in-the-Loop Approval Mode</strong>:
+          <br>&bull; <strong>Event Compression Floors:</strong> Automatically flags Greek Theatre concerts, UC Berkeley graduation/move-in weekends, Red Rocks shows, and holidays so we never underprice peak dates.
+          <br>&bull; <strong>Orphan-Night Extension Drafts:</strong> Whenever a 1-night unbooked gap sits adjacent to a guest's stay, the system drafts a crisp 1-sentence 25%-off extension offer for your 1-click approval.
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-top: 4px solid #16a34a;">
+        <h3>Phase 3: Partner Portfolio Rollout &amp; Gate 6 Revenue Proof (Week 4+)</h3>
+        <p style="font-size:0.9rem;">
+          After measuring actual realized ADR, gap-night conversion, and paid early/late check-in capture on your units for 21 days, we roll the proven rules out to incoming homeowner and boutique hotel partners, giving our sales team verified real-world performance data from your own portfolio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="sop-section" id="pilot-sandbox">
+    <span class="section-tag">Section 04 &bull; Interactive Pilot Projections &amp; Baseline Comparisons</span>
+    <h2>4. Live Unit-by-Unit Projections &amp; Comparison Sandbox (Pilot Cohort)</h2>
+    <p>
+      Use the cohort switcher and sliders below to compare your units' <strong>Current Baseline Performance</strong> against <strong>Projected Optimized Performance</strong> across all three revenue expansion levers: (1) Event &amp; Peak Compression Pricing, (2) Discounted Gap-Night ("Orphan Night") Extensions with zero extra cleaning cost, and (3) Guaranteed Early Check-In / Late Check-Out Tiers &amp; Curated Extras on Priority 2 flexible turnover days.
+    </p>
+
+    <div class="cohort-bar">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button type="button" class="cohort-btn active" id="btn-cohort-all" onclick="setCohortFilter('ALL')">
+          All 7 Pilot Units (Core + Active Co-Host)
+        </button>
+        <button type="button" class="cohort-btn" id="btn-cohort-core" onclick="setCohortFilter('JUSTIN_CORE_UNITS')">
+          Your 4 Core East Bay Units Only (Scenic N/S, Acton, 32nd St)
+        </button>
+        <button type="button" class="cohort-btn" id="btn-cohort-cohost" onclick="setCohortFilter('ACTIVE_COHOST_PILOT')">
+          3 Active Co-Host Units (Estates, Avis, Walsh)
+        </button>
+      </div>
+      <button type="button" class="cohort-btn" onclick="resetDefaultSliders()" style="background:#f5f5f4;">
+        Reset Recommended Defaults
+      </button>
+    </div>
+
+    
+    <div class="controls-grid">
+      <div class="control-box">
+        <div class="control-label">
+          <span>Lever 1: Event &amp; Peak Compression Surge</span>
+          <span class="control-val" id="lbl-surge">+18% ADR</span>
+        </div>
+        <input type="range" id="slider-surge" min="5" max="35" step="1" value="18" oninput="updatePilotProjections()">
+        <p style="font-size:0.76rem; color:#d6d3d1;">
+          Applied only to high-compression event dates (Greek Theatre concerts, UC Berkeley Commencement/Move-In, Red Rocks, major holidays).
+        </p>
+      </div>
+
+      <div class="control-box">
+        <div class="control-label">
+          <span>Lever 2: Gap-Night Conversion (at 25% Off)</span>
+          <span class="control-val" id="lbl-orphan">32% Captured</span>
+        </div>
+        <input type="range" id="slider-orphan" min="10" max="60" step="2" value="32" oninput="updatePilotProjections()">
+        <p style="font-size:0.76rem; color:#d6d3d1;">
+          Share of 1-to-2 night unbooked orphan gaps converted by offering adjacent booked guests a 25% extension discount (<strong>$0 extra cleaning cost</strong>).
+        </p>
+      </div>
+
+      <div class="control-box">
+        <div class="control-label">
+          <span>Lever 3: Priority 2 Early/Late Fee &amp; Extras</span>
+          <span class="control-val" id="lbl-early">$45 / Window (28% Capture)</span>
+        </div>
+        <input type="range" id="slider-early" min="0" max="60" step="2" value="28" oninput="updatePilotProjections()">
+        <p style="font-size:0.76rem; color:#d6d3d1;">
+          Guaranteed early check-in (1:00 PM) or late check-out (2:00 PM) upgrades sold only when <code>preSeTR</code> confirms zero same-day B2B conflict.
+        </p>
+      </div>
+    </div>
+
+    
+    <div class="kpi-strip">
+      <div class="kpi-card">
+        <span class="kpi-label">Current Static Baseline Gross</span>
+        <span class="kpi-value" id="kpi-baseline-gross">$382,830</span>
+        <span class="kpi-sub" id="kpi-baseline-sub">Across 7 active pilot units</span>
+      </div>
+      <div class="kpi-card highlight">
+        <span class="kpi-label">Projected Optimized Annual Gross</span>
+        <span class="kpi-value" id="kpi-projected-gross" style="color:#166534;">$425,358</span>
+        <span class="kpi-sub" id="kpi-projected-sub" style="color:#166534;">+$42,528/yr (+11.1% Total Uplift)</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Recovered Orphan Gap Nights</span>
+        <span class="kpi-value" id="kpi-orphan-nights">+89 Nights/yr</span>
+        <span class="kpi-sub" id="kpi-orphan-dollars">+$14,688/yr at $0 extra cleaning cost</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Event Surge + Ancillary Extras</span>
+        <span class="kpi-value" id="kpi-event-plus-extras">+$27,840/yr</span>
+        <span class="kpi-sub" id="kpi-event-breakdown">$20,310 Event Surge + $7,530 Priority 2 Extras</span>
+      </div>
+    </div>
+
+    
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Unit &amp; reSeTR Slug</th>
+            <th>Base ADR &rarr; Blended ADR</th>
+            <th>Occupancy &amp; Nights</th>
+            <th>Baseline Annual Gross</th>
+            <th>Lever 1: Event Pricing</th>
+            <th>Lever 2: Gap Nights ($0 Clean)</th>
+            <th>Lever 3: Early/Late &amp; Extras</th>
+            <th>Projected Annual Gross</th>
+            <th>Net Annual Uplift</th>
+          </tr>
+        </thead>
+        <tbody id="pilot-comparison-tbody">
+        </tbody>
+      </table>
+    </div>
+
+    
+    <div style="margin-top:14px; background:#faf8f5; border:1px solid rgba(28,25,23,0.12); border-radius:20px; padding:24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+        <div>
+          <h3 style="font-size:1.18rem; font-weight:800; color:#1c1917;">
+            30-Day Sample Calendar Comparison: Static Rate vs. Shadow Dynamic Recommendation
+          </h3>
+          <p style="font-size:0.86rem; color:#57534e;">
+            Inspect how the engine prices individual nights, spots 1-night orphan gaps between bookings, and flags Priority 2 early/late upsell windows.
+          </p>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <label for="unit-cal-select" style="font-size:0.8rem; font-weight:800; color:#1c1917;">Inspect Unit:</label>
+          <select id="unit-cal-select" onchange="renderUnitCalendarPreview()" style="padding:8px 14px; border-radius:10px; border:1px solid #180820; font-weight:700; font-size:0.84rem; background:#ffffff; color:#180820; cursor:pointer;">
+            <option value="BER-STU-001">1545 Scenic Ave (North Garden Studio) • /scenic-north</option>
+            <option value="BER-STU-002">1545 Scenic Ave (South Hillside Studio) • /scenic-south</option>
+            <option value="BER-HOM-001">3007 Acton St (Berkeley Craftsman) • /acton</option>
+            <option value="OAK-APT-001">1023 32nd St (East Bay Urban Suite) • /32ndstreet</option>
+            <option value="OAK-HOM-002">5540 Estates Dr (5-BR Oakland Hills Home) • /estates</option>
+            <option value="PIN-HOM-001">3146 Avis Way (Bay View Residence) • /avis</option>
+            <option value="DEN-ADU-001">3270 W Walsh Pl (Southwest Denver ADU) • /walsh</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="unit-drivers-banner" style="margin-bottom:14px; padding:12px 16px; border-radius:12px; background:#180820; color:#ffffff; font-size:0.83rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      </div>
+
+      <div class="calendar-strip-grid" id="calendar-preview-grid">
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="sop-section" id="beacon-scout-graph">
+    <span class="section-tag">Section 05 &bull; Beacon Scout Active Seeker Mechanics &amp; East Bay Priority</span>
+    <h2>5. How Beacon Scout Evaluates Listings With GLiNER, Verifies They Are Above Board, and Radiates Outward From Berkeley</h2>
+    <p>
+      Does <strong>Beacon Scout</strong> have to run heavy AI across every listing in a city? <strong>No.</strong> To keep compute cost at <strong>$0.00</strong> and scan speed at <strong>4 to 8 seconds per ZIP code</strong>, Beacon Scout uses a <strong>3-Stage Sieve</strong> paired with a <strong>Concentric East Bay ZIP Schedule</strong> starting right in Berkeley where our cleaning partners already operate:
+    </p>
+
+    <div class="grid-3">
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pass 01 &bull; &lt; 2ms Metadata Sieve</div>
+        <h3>Instant Header Filter ($0 Cost)</h3>
+        <p>Checks already-listed properties at the metadata level first: filters out large commercial PM conglomerates (&gt; 5 listings) and isolates independent hosts (1 to 3 listings) that show either review friction (&lt; 4.82&starf;) or uncaptured ADR/occupancy promise. Eliminates ~75% of noise in milliseconds before GLiNER ever runs.</p>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pass 02 &bull; ~25ms Local GLiNER + Rules</div>
+        <h3>4-Dimension Multi-Criteria Scoring</h3>
+        <p>Our local <code>GLiNER</code> span extractor + deterministic rule engine evaluates surviving listings simultaneously across 4 criteria: (1) <strong>High-Value Asset Traits</strong> (0-25 pts: views, ADU/garden studio, Craftsman charm, campus/transit proximity), (2) <strong>Operational Distress</strong> (0-30 pts: check-in, cleaning, or comms slips), (3) <strong>Promise &amp; Yield Upside</strong> (0-25 pts: static pricing on Greek Theatre/Cal weekends, orphan gaps), and (4) <strong>Cleaner Coverage Proximity</strong> (0-20 pts).</p>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Pass 03 &bull; Compliance Gate</div>
+        <h3>"Above-Board" Permit &amp; Deed Check</h3>
+        <p>Before any lead enters <code>Beacon Lead Command</code>, we double-check that the already-listed property is 100% above board: verifying an active displayed municipal permit/TOT registration (such as a City of Berkeley <strong>ZCSTR</strong> permit on a hosted cottage/ADU) and matching the owner's grant deed on the Alameda or Contra Costa County Assessor roll.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:6px;">
+      <div class="rule-card" style="border-top:4px solid #16a34a;">
+        <h3>Why We Scan by ZIP Code in Concentric Rings From Berkeley (Ring 1 Cleaner Corridor First)</h3>
+        <p style="font-size:0.9rem;">
+          Searching a whole city or region at once hits OTA pagination caps (~270 listings) and wastes time on areas where we do not yet have cleaners. Scanning <strong>by ZIP code</strong> radiating outward from <code>1545 Scenic Ave</code> guarantees complete coverage where our East Bay cleaning partners can service properties immediately:
+          <br>&bull; <strong>Ring 1A (Berkeley Core):</strong> <code>94708</code> (Berkeley Hills), <code>94709</code> (Northside), <code>94705</code> (Claremont/Elmwood), <code>94703</code>, <code>94702</code> (West Berkeley / Acton).
+          <br>&bull; <strong>Ring 1B (Oakland &amp; Emeryville):</strong> <code>94618</code> (Rockridge), <code>94611</code> (Montclair / Estates Dr Hills), <code>94609</code> (Temescal), <code>94608</code> (32nd St / Emeryville).
+          <br>&bull; <strong>Ring 1C (I-80 North Corridor):</strong> <code>94706</code> (Albany), <code>94530</code> (Kensington / El Cerrito), <code>94801</code> (Point Richmond), <code>94564</code> (Pinole / Avis Way).
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-top:4px solid #e59523;">
+        <h3>Cadence &amp; Compute Cost: 1 ZIP Slice Every 15 Minutes ($0.00 Local Compute)</h3>
+        <p style="font-size:0.9rem;">
+          Because Pass 1, Pass 2 (local <code>gliner_small-v2.1</code> with RAM guard), and Pass 3 run locally on your machine without paid LLM tokens, scanning one ZIP code slice (50 to 100 listings) takes only <strong>4 to 8 seconds</strong> and costs <strong>$0.00</strong>. Running <strong>one ZIP slice every 15 minutes</strong> cycles through all 13 Ring 1 East Bay ZIPs every ~3 hours while simultaneously ingesting Claude's daily boutique &amp; destination search files and applying a <strong>+20-point boost to newly discovered, uncontacted leads</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="sop-section" id="discord-role-matrix">
+    <span class="section-tag">Section 06 &bull; Discord Role-Based Access &amp; Training (Zero Overwhelm)</span>
+    <h2>6. Role-Scoped Views: Universal Intro First, Then Only What Each Role Needs</h2>
+    <p>
+      To prevent overwhelming team members or external partners, Scenic OS maps directly to your <strong>Discord Roles</strong> (selectable anytime via the <em>Role Switcher</em> in the top header or via <code>?role=sales</code>, <code>?role=ops</code>, <code>?role=accounting</code>):
+    </p>
+
+    <div class="grid-3">
+      <div class="rule-card" style="border-left:5px solid #e59523;">
+        <h3>1. @Sales &amp; Growth (Through Handoff)</h3>
+        <p style="font-size:0.88rem;">
+          <strong>Sees:</strong> Universal System Intro + Part 1 Sales Deck + Stages 1 to 3 (<code>Beacon Lead Command CRM</code> &rarr; <code>Owner Agreement Generator</code> &rarr; <code>HOSt Property Forge Handoff</code>).
+          <br><strong>Hidden:</strong> Daily cleaner turnover queues and bookkeeping ledgers.
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-left:5px solid #16a34a;">
+        <h3>2. @Operations &amp; Admin (Handoff Onward)</h3>
+        <p style="font-size:0.88rem;">
+          <strong>Sees:</strong> Universal System Intro + Company SOP + Part 2 Inside Ops Deck + Shadow Workbook + Stages 4 to 7 (<code>HOSt Forge Onboarding &amp; Vendor Sourcing</code> &rarr; <code>preSeTR</code> &rarr; <code>reSeTR</code>).
+          <br><strong>Hidden:</strong> Cold outbound prospecting queues.
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-left:5px solid #2563eb;">
+        <h3>3. @Accounting &amp; Finance</h3>
+        <p style="font-size:0.88rem;">
+          <strong>Sees:</strong> Universal System Intro + Stage 8 (<code>balanSeTR Autonomous Bookkeeper</code>: Auto-Reconcile Feed, Deal-Seeker Radar, Monthly Owner Statements &amp; Year-End Tax Command).
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-left:5px solid #a855f7;">
+        <h3>4. @Social Media &amp; Marketing</h3>
+        <p style="font-size:0.88rem;">
+          <strong>Sees:</strong> Universal System Intro + Part 1 Brand Story &amp; 1,783-Review Proof + High-Social-Buzz Discovery Telemetry + Curated Local Experiences &amp; Welcome Add-Ons.
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-left:5px solid #78716c;">
+        <h3>5. @Partner Homeowner (?mode=owner)</h3>
+        <p style="font-size:0.88rem;">
+          <strong>Sees:</strong> Locked strictly to their own property's Plain-Language Agreement, pre-filled <code>HOSt Forge</code> household blanks, and monthly <code>balanSeTR</code> statements.
+        </p>
+      </div>
+
+      <div class="rule-card" style="border-left:5px solid #0d9488;">
+        <h3>6. @Field Partner (/slug Checklists)</h3>
+        <p style="font-size:0.88rem;">
+          <strong>Sees:</strong> Locked strictly to their assigned <code>preSeTR</code> advance schedule lookahead and <code>reSeTR</code> two-phase mobile photo &amp; supply checklist in their preferred language.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="sop-section" id="ticket-escalation-system">
+    <span class="section-tag">Section 07 &bull; 3-Level AI Feedback &amp; Ticket Triage (With Proposed Solutions)</span>
+    <h2>7. How Team &amp; Partner Feedback Is Parsed Into Levels 1, 2, and 3 With Ready-to-Approve Solutions</h2>
+    <p>
+      Clicking <strong>+ Feedback / Tickets</strong> in the top header of any page opens our 3-Level Triage Engine (<code>src/services/scenic_governance_engine.py</code>). Every ticket is automatically parsed alongside a concrete <strong>Proposed Solution</strong> so the assigned owner can either click <strong>Sign Off &amp; Execute</strong> or <strong>Work Through a Custom Solution</strong>:
+    </p>
+
+    <div class="grid-3">
+      <div class="good-box">
+        <strong style="color:#166534; display:block; margin-bottom:6px;">Level 1: Immediate Auto-Fix</strong>
+        <p style="font-size:0.88rem;">
+          <strong>Scope:</strong> Copy tweaks, checklist label updates, new local restaurant Google Maps links, or FAQ clarifications.
+          <br><strong>Action:</strong> System generates the exact update immediately for 1-click sign-off.
+        </p>
+      </div>
+
+      <div class="slip-box">
+        <strong style="color:#9a3412; display:block; margin-bottom:6px;">Level 2: Department Lead (@Operations &amp; Admin or @Accounting &amp; Finance)</strong>
+        <p style="font-size:0.88rem;">
+          <strong>Scope:</strong> Supply restocks, cleaner schedule coordination in <code>preSeTR</code>, guest early/late check-in requests, minor handyman dispatches (&lt; $200), or receipt matching in <code>balanSeTR</code>.
+          <br><strong>Action:</strong> Routed to <code>@Operations &amp; Admin</code> or <code>@Accounting &amp; Finance</code> with a pre-drafted reply or ledger match ready to approve.
+        </p>
+      </div>
+
+      <div class="bad-box">
+        <strong style="color:#991b1b; display:block; margin-bottom:6px;">Level 3: Executive Sign-Off (@All-Access Executive &amp; Operations)</strong>
+        <p style="font-size:0.88rem;">
+          <strong>Scope:</strong> Custom fee-tier or contract exceptions, major repair authorizations (&ge; $200), pricing strategy overrides, or new market expansion.
+          <br><strong>Action:</strong> Routed directly to <code>@All-Access Executive &amp; Operations</code> with side-by-side unit economics or repair quote + 20% coordination markup ready for executive sign-off.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sop-section" id="airbnb-connectivity-architecture">
+    <span class="section-tag">Section 08 &bull; How Scenic OS Plugs Into Airbnb &amp; OTAs</span>
+    <h2>8. How Scenic OS Connects to Airbnb: Comparing Our 4 Connectivity Paths</h2>
+    <p>
+      How does Scenic OS read reservations, sync guest messages, push dynamic rates, and update event-specific listing copy on Airbnb without paying $40/unit/month to bloated legacy PMS platforms? We support a <strong>4-Path Tiered Connectivity Architecture</strong> so we can operate at $0.00 to $0.50 per unit today while scaling toward direct enterprise partner certification:
+    </p>
+
+    <div class="grid-4">
+      <div class="pipeline-card">
+        <div class="pipeline-step">Path 01 &bull; $0.00 / Unit OAuth</div>
+        <h3>Hospitable Connect Free OAuth</h3>
+        <p>
+          <strong>How It Works:</strong> Partner homeowners authenticate their existing Airbnb/VRBO account via a 1-click OAuth link.<br>
+          <strong>Capabilities:</strong> Real-time reservation webhooks, guest messaging sync, calendar availability, and smart lock code triggers.<br>
+          <strong>Best For:</strong> Fast $0-cost onboarding of incoming co-host owners while keeping their existing Superhost profile intact.
+        </p>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Path 02 &bull; $0.50 / Unit API</div>
+        <h3>Channex.io White-Label API</h3>
+        <p>
+          <strong>How It Works:</strong> Certified wholesale connectivity pipe ($0.50/unit/mo) embedded invisibly behind Scenic OS.<br>
+          <strong>Capabilities:</strong> Full 2-way ARI (Availability, Rates, Inventory), automated Dynamic Pricing push, minimum-stay rule updates, and multi-OTA syndication (Airbnb, VRBO, Booking.com).<br>
+          <strong>Best For:</strong> Automated daily rate &amp; gap-night rule execution across our active portfolio at wholesale cost.
+        </p>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Path 03 &bull; $0.00 Immediate</div>
+        <h3>Zero-Cost Hybrid Bridge</h3>
+        <p>
+          <strong>How It Works:</strong> Combines 5-minute iCal calendar polling, structured Airbnb Co-Host reservation/payout email &amp; CSV ingestion, and 1-click deep links.<br>
+          <strong>Capabilities:</strong> Powers <code>preSeTR</code>, <code>reSeTR</code>, <code>balanSeTR</code> integer-cent reconciliation, and 1-click Event Copy Swapper without requiring API credentials.<br>
+          <strong>Best For:</strong> Day-1 Shadow Mode pilots and properties in pre-launch CapEx hold gates.
+        </p>
+      </div>
+
+      <div class="pipeline-card">
+        <div class="pipeline-step">Path 04 &bull; Enterprise Scale</div>
+        <h3>Direct Airbnb Partner API</h3>
+        <p>
+          <strong>How It Works:</strong> Direct Certified Software Partner integration with Airbnb's Homes &amp; Boutique APIs.<br>
+          <strong>Capabilities:</strong> Zero third-party middleware, programmatic listing creation, live photo/title/copy merchandising swaps, custom promotions, and Resolution Center webhooks.<br>
+          <strong>Best For:</strong> Long-term target once Scenic Stay + Duffel/Stays network crosses 250+ connected keys.
+        </p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Connectivity Option</th>
+            <th>Monthly Cost per Unit</th>
+            <th>Reservation &amp; Calendar Sync</th>
+            <th>Automated Dynamic Rate Push</th>
+            <th>Listing Copy &amp; Event Merchandising</th>
+            <th>Scenic OS Rollout Stage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Hospitable Connect (Free OAuth)</strong></td>
+            <td><span class="badge-uplift">$0.00 / unit</span></td>
+            <td>Real-Time Webhooks (OAuth)</td>
+            <td>Via Connected Host Rules</td>
+            <td>1-Click Copy Lab + Deep Link</td>
+            <td><strong>Active Now</strong> (Incoming Co-Host Onboarding)</td>
+          </tr>
+          <tr>
+            <td><strong>2. Channex.io White-Label API</strong></td>
+            <td><span class="badge-uplift">$0.50 / unit</span></td>
+            <td>Real-Time 2-Way Certified API</td>
+            <td>Full 2-Way Daily Rate &amp; Min-Stay Push</td>
+            <td>Content API + 1-Click Event Swapper</td>
+            <td><strong>Phase 2 Pilot</strong> (Automated Rate &amp; Gap Execution)</td>
+          </tr>
+          <tr>
+            <td><strong>3. Zero-Cost Hybrid Bridge</strong></td>
+            <td><span class="badge-uplift">$0.00 / unit</span></td>
+            <td>5-Min iCal + Co-Host Payout Feed</td>
+            <td>Shadow Mode + 1-Click Approval</td>
+            <td>1-Click Copy Lab (Avis Way / 32nd St)</td>
+            <td><strong>Active Now</strong> (Universal Fallback &amp; Shadow Sandbox)</td>
+          </tr>
+          <tr>
+            <td><strong>4. Direct Airbnb Partner API</strong></td>
+            <td><span class="badge-cohort">$0.00 Fee (Scale Gate)</span></td>
+            <td>Native Direct Webhooks</td>
+            <td>Native Price, Promo &amp; Gap Rule API</td>
+            <td>Full Programmatic Copy &amp; Photo Swap</td>
+            <td><strong>Phase 4 Scale</strong> (250+ Keys &amp; Duffel Network)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+const PILOT_UNITS = [
+  {
+    unit_id: "BER-STU-001",
+    slug: "scenic-north",
+    property_name: "1545 Scenic Ave (North Garden Studio)",
+    city: "Berkeley, CA",
+    unit_type: "Garden Studio",
+    cohort_group: "JUSTIN_CORE_UNITS",
+    cohort_badge: "Your Core Unit",
+    baseline_adr: 145,
+    baseline_occ_pct: 75.9,
+    baseline_nights: 277,
+    baseline_gross: 40165,
+    event_nights: 85,
+    orphan_gaps_available: 42,
+    priority2_turns: 46,
+    experience_base: 480,
+    drivers: [
+      "Greek Theatre Concert Season (Apr to Oct)",
+      "UC Berkeley Commencement & Move-In Weekends",
+      "Cal Football & Parents Weekend Compression"
+    ],
+    sample_events: {
+      3: "Greek Theatre Sold-Out Show",
+      4: "Greek Theatre Weekend",
+      11: "UC Berkeley Visiting Symposium",
+      12: "Cal Home Weekend Compression",
+      18: "Greek Theatre Friday",
+      19: "Greek Theatre Saturday",
+      25: "Berkeley Hills Peak Weekend",
+      26: "Berkeley Hills Peak Weekend"
+    }
+  },
+  {
+    unit_id: "BER-STU-002",
+    slug: "scenic-south",
+    property_name: "1545 Scenic Ave (South Hillside Studio)",
+    city: "Berkeley, CA",
+    unit_type: "Hillside Studio",
+    cohort_group: "JUSTIN_CORE_UNITS",
+    cohort_badge: "Your Core Unit",
+    baseline_adr: 138,
+    baseline_occ_pct: 74.0,
+    baseline_nights: 270,
+    baseline_gross: 37260,
+    event_nights: 82,
+    orphan_gaps_available: 40,
+    priority2_turns: 44,
+    experience_base: 480,
+    drivers: [
+      "Greek Theatre Concert Season (Apr to Oct)",
+      "UC Berkeley Visiting Scholars & Conferences",
+      "East Bay Hills Weekend Leisure Compression"
+    ],
+    sample_events: {
+      3: "Greek Theatre Sold-Out Show",
+      4: "Greek Theatre Weekend",
+      11: "Campus Conference Peak",
+      12: "Cal Home Weekend",
+      18: "Greek Theatre Friday",
+      19: "Greek Theatre Saturday",
+      25: "Hillside Peak Weekend",
+      26: "Hillside Peak Weekend"
+    }
+  },
+  {
+    unit_id: "BER-HOM-001",
+    slug: "acton",
+    property_name: "3007 Acton St (Berkeley Craftsman)",
+    city: "Berkeley, CA",
+    unit_type: "Residential Suite / Home",
+    cohort_group: "JUSTIN_CORE_UNITS",
+    cohort_badge: "Your Core Unit",
+    baseline_adr: 215,
+    baseline_occ_pct: 71.0,
+    baseline_nights: 259,
+    baseline_gross: 55685,
+    event_nights: 78,
+    orphan_gaps_available: 38,
+    priority2_turns: 42,
+    experience_base: 480,
+    drivers: [
+      "UC Berkeley Graduation & Parents Weekends",
+      "Fourth Street / West Berkeley Dining & Weekend Stays",
+      "Extended Visiting Faculty & Family Stays"
+    ],
+    sample_events: {
+      4: "West Berkeley Weekend Surge",
+      5: "Sunday Family Extension",
+      11: "UC Berkeley Campus Event",
+      12: "Parents Weekend Surge",
+      18: "Weekend Compression",
+      19: "Weekend Compression",
+      25: "Holiday Lead-In Surge",
+      26: "Holiday Weekend Surge"
+    }
+  },
+  {
+    unit_id: "OAK-APT-001",
+    slug: "32ndstreet",
+    property_name: "1023 32nd St (East Bay Urban Suite)",
+    city: "Oakland, CA",
+    unit_type: "Urban Apartment",
+    cohort_group: "JUSTIN_CORE_UNITS",
+    cohort_badge: "Your Core Unit",
+    baseline_adr: 155,
+    baseline_occ_pct: 72.1,
+    baseline_nights: 263,
+    baseline_gross: 40765,
+    event_nights: 74,
+    orphan_gaps_available: 41,
+    priority2_turns: 45,
+    experience_base: 480,
+    drivers: [
+      "Emeryville / Oakland Biotech & Medical Rotational Travel",
+      "Fox Theater Uptown & Bay Bridge Weekend Demand",
+      "Short-Lead 1-to-2 Night Gap Extensions"
+    ],
+    sample_events: {
+      3: "Fox Theater Show Night",
+      4: "Uptown Oakland Weekend",
+      11: "Biotech Conference Midweek",
+      12: "Bay Bridge Event Surge",
+      18: "Weekend Compression",
+      19: "Weekend Compression",
+      25: "Peak Weekend Surge",
+      26: "Peak Weekend Surge"
+    }
+  },
+  {
+    unit_id: "OAK-HOM-002",
+    slug: "estates",
+    property_name: "5540 Estates Dr (5-BR Oakland Hills Home)",
+    city: "Oakland, CA",
+    unit_type: "5-BR Executive Residence",
+    cohort_group: "ACTIVE_COHOST_PILOT",
+    cohort_badge: "Active Co-Host",
+    baseline_adr: 465,
+    baseline_occ_pct: 64.1,
+    baseline_nights: 234,
+    baseline_gross: 108810,
+    event_nights: 72,
+    orphan_gaps_available: 45,
+    priority2_turns: 38,
+    experience_base: 960,
+    drivers: [
+      "Multi-Generational Family Reunions & Holiday Buyouts",
+      "UC Berkeley Commencement Group Stays",
+      "Thursday / Monday Gap-Night Weekend Extensions"
+    ],
+    sample_events: {
+      3: "Family Reunion Weekend Buyout",
+      4: "Oakland Hills Group Surge",
+      11: "Alumni Group Weekend",
+      12: "Alumni Group Weekend",
+      18: "Executive Retreat Weekend",
+      19: "Executive Retreat Weekend",
+      25: "Holiday Family Gathering",
+      26: "Holiday Family Gathering"
+    }
+  },
+  {
+    unit_id: "PIN-HOM-001",
+    slug: "avis",
+    property_name: "3146 Avis Way (Bay View Residence)",
+    city: "Pinole, CA",
+    unit_type: "Full Family Home",
+    cohort_group: "ACTIVE_COHOST_PILOT",
+    cohort_badge: "Active Co-Host",
+    baseline_adr: 265,
+    baseline_occ_pct: 67.9,
+    baseline_nights: 248,
+    baseline_gross: 65720,
+    event_nights: 68,
+    orphan_gaps_available: 36,
+    priority2_turns: 36,
+    experience_base: 480,
+    drivers: [
+      "Napa / East Bay Corridor Family Getaways",
+      "Summer & Holiday Coastal View Compression",
+      "Adjacent Weekend Stay Extensions"
+    ],
+    sample_events: {
+      4: "Bay View Weekend Surge",
+      11: "Wine Country Corridor Weekend",
+      12: "Wine Country Corridor Weekend",
+      18: "Family Getaway Surge",
+      19: "Family Getaway Surge",
+      25: "Holiday Group Surge",
+      26: "Holiday Group Surge"
+    }
+  },
+  {
+    unit_id: "DEN-ADU-001",
+    slug: "walsh",
+    property_name: "3270 W Walsh Pl (Southwest Denver ADU)",
+    city: "Denver, CO",
+    unit_type: "Private ADU Suite",
+    cohort_group: "ACTIVE_COHOST_PILOT",
+    cohort_badge: "Active Co-Host",
+    baseline_adr: 135,
+    baseline_occ_pct: 69.9,
+    baseline_nights: 255,
+    baseline_gross: 34425,
+    event_nights: 70,
+    orphan_gaps_available: 38,
+    priority2_turns: 40,
+    experience_base: 480,
+    drivers: [
+      "Red Rocks Amphitheatre Concert Calendar",
+      "Mile High Stadium Weekends & Foothills Travel",
+      "Mid-Week Gap-Night Extensions"
+    ],
+    sample_events: {
+      3: "Red Rocks Friday Concert",
+      4: "Red Rocks Saturday Concert",
+      11: "Denver Metro Weekend Surge",
+      12: "Broncos Home Game Weekend",
+      18: "Red Rocks Show Surge",
+      19: "Red Rocks Show Surge",
+      25: "Foothills Weekend Surge",
+      26: "Foothills Weekend Surge"
+    }
+  }
+];
+
+let currentCohortFilter = "ALL";
+
+function fmtUSD(num) {
+  return "$" + Math.round(num).toLocaleString("en-US");
+}
+
+function setCohortFilter(cohort) {
+  currentCohortFilter = cohort;
+  document.getElementById("btn-cohort-all").classList.toggle("active", cohort === "ALL");
+  document.getElementById("btn-cohort-core").classList.toggle("active", cohort === "JUSTIN_CORE_UNITS");
+  document.getElementById("btn-cohort-cohost").classList.toggle("active", cohort === "ACTIVE_COHOST_PILOT");
+  updatePilotProjections();
+}
+
+function resetDefaultSliders() {
+  document.getElementById("slider-surge").value = 18;
+  document.getElementById("slider-orphan").value = 32;
+  document.getElementById("slider-early").value = 28;
+  updatePilotProjections();
+}
+
+function updatePilotProjections() {
+  const surgePct = parseFloat(document.getElementById("slider-surge").value);
+  const orphanConvPct = parseFloat(document.getElementById("slider-orphan").value);
+  const earlyCapturePct = parseFloat(document.getElementById("slider-early").value);
+  const earlyFee = 45;
+  const orphanDiscountPct = 25;
+
+  document.getElementById("lbl-surge").textContent = "+" + surgePct + "% ADR";
+  document.getElementById("lbl-orphan").textContent = orphanConvPct + "% Captured";
+  document.getElementById("lbl-early").textContent = "$" + earlyFee + " / Window (" + earlyCapturePct + "% Capture)";
+
+  const filtered = PILOT_UNITS.filter(u => currentCohortFilter === "ALL" || u.cohort_group === currentCohortFilter);
+
+  let totalBaselineGross = 0;
+  let totalProjectedGross = 0;
+  let totalOrphanNights = 0;
+  let totalLever1 = 0;
+  let totalLever2 = 0;
+  let totalLever3 = 0;
+
+  const tbody = document.getElementById("pilot-comparison-tbody");
+  tbody.innerHTML = "";
+
+  filtered.forEach(u => {
+    const surgePerNight = Math.round(u.baseline_adr * (surgePct / 100.0));
+    const lever1 = surgePerNight * u.event_nights;
+
+    const recoveredOrphans = Math.min(365 - u.baseline_nights, Math.round(u.orphan_gaps_available * (orphanConvPct / 100.0)));
+    const discountedOrphanRate = Math.round(u.baseline_adr * (1.0 - orphanDiscountPct / 100.0));
+    const lever2 = recoveredOrphans * discountedOrphanRate;
+
+    const capturedEarly = Math.round(u.priority2_turns * (earlyCapturePct / 100.0));
+    const lever3 = (capturedEarly * earlyFee) + (earlyCapturePct > 0 ? u.experience_base : 0);
+
+    const totalUplift = lever1 + lever2 + lever3;
+    const projectedGross = u.baseline_gross + totalUplift;
+    const projectedNights = u.baseline_nights + recoveredOrphans;
+    const projectedOccPct = ((projectedNights / 365.0) * 100.0).toFixed(1);
+    const blendedAdr = Math.round(projectedGross / projectedNights);
+    const upliftPct = ((totalUplift / u.baseline_gross) * 100.0).toFixed(1);
+
+    totalBaselineGross += u.baseline_gross;
+    totalProjectedGross += projectedGross;
+    totalOrphanNights += recoveredOrphans;
+    totalLever1 += lever1;
+    totalLever2 += lever2;
+    totalLever3 += lever3;
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>
+        <div style="font-weight:800; color:#1c1917;">${u.property_name}</div>
+        <div style="display:flex; gap:6px; align-items:center; margin-top:4px;">
+          <span class="badge-cohort">${u.cohort_badge}</span>
+          <a href="host_dispatch_resetr.html?unit=${u.slug}&view=checklist" style="font-size:0.75rem; color:#7c2d12; font-weight:700; text-decoration:none;">resetr.abetterbnb.com/${u.slug} &rarr;</a>
+        </div>
+      </td>
+      <td>
+        <span style="color:#57534e;">$${u.baseline_adr}</span> &rarr; <strong style="color:#1c1917;">$${blendedAdr}/nt</strong>
+      </td>
+      <td>
+        <div>${u.baseline_occ_pct}% &rarr; <strong style="color:#166534;">${projectedOccPct}%</strong></div>
+        <div style="font-size:0.75rem; color:#57534e;">${u.baseline_nights} &rarr; ${projectedNights} nts (+${recoveredOrphans} gap nts)</div>
+      </td>
+      <td style="font-weight:700; color:#44403c;">${fmtUSD(u.baseline_gross)}</td>
+      <td style="color:#b45309; font-weight:700;">+${fmtUSD(lever1)}</td>
+      <td style="color:#15803d; font-weight:700;">+${fmtUSD(lever2)} <span style="font-size:0.72rem; display:block; color:#57534e;">(+${recoveredOrphans} nts @ $${discountedOrphanRate})</span></td>
+      <td style="color:#1d4ed8; font-weight:700;">+${fmtUSD(lever3)}</td>
+      <td style="font-weight:800; font-size:0.95rem; color:#180820;">${fmtUSD(projectedGross)}</td>
+      <td>
+        <span class="badge-uplift">+${fmtUSD(totalUplift)} (+${upliftPct}%)</span>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const totalUpliftAll = totalProjectedGross - totalBaselineGross;
+  const totalUpliftPct = totalBaselineGross > 0 ? ((totalUpliftAll / totalBaselineGross) * 100.0).toFixed(1) : "0.0";
+
+  document.getElementById("kpi-baseline-gross").textContent = fmtUSD(totalBaselineGross);
+  document.getElementById("kpi-baseline-sub").textContent = "Across " + filtered.length + " selected pilot units";
+  document.getElementById("kpi-projected-gross").textContent = fmtUSD(totalProjectedGross);
+  document.getElementById("kpi-projected-sub").textContent = "+" + fmtUSD(totalUpliftAll) + "/yr (+" + totalUpliftPct + "% Total Uplift)";
+  document.getElementById("kpi-orphan-nights").textContent = "+" + totalOrphanNights + " Nights/yr";
+  document.getElementById("kpi-orphan-dollars").textContent = "+" + fmtUSD(totalLever2) + "/yr at $0 extra cleaning cost";
+  document.getElementById("kpi-event-plus-extras").textContent = "+" + fmtUSD(totalLever1 + totalLever3) + "/yr";
+  document.getElementById("kpi-event-breakdown").textContent = fmtUSD(totalLever1) + " Event Surge + " + fmtUSD(totalLever3) + " Priority 2 Extras";
+
+  renderUnitCalendarPreview();
+}
+
+function renderUnitCalendarPreview() {
+  const unitId = document.getElementById("unit-cal-select").value;
+  const unit = PILOT_UNITS.find(u => u.unit_id === unitId) || PILOT_UNITS[0];
+  const surgePct = parseFloat(document.getElementById("slider-surge").value);
+  const earlyFee = 45;
+
+  const banner = document.getElementById("unit-drivers-banner");
+  banner.innerHTML = `
+    <div>
+      <strong style="color:#ffbe3b;">${unit.property_name}:</strong>
+      <span>Local Compression Anchors: ${unit.drivers.join(" &bull; ")}</span>
+    </div>
+    <div>
+      <span style="color:#86efac; font-weight:700;">Base Static ADR: $${unit.baseline_adr}/nt</span>
+    </div>
+  `;
+
+  const grid = document.getElementById("calendar-preview-grid");
+  grid.innerHTML = "";
+
+  const orphanDays = [7, 15, 22];
+  const priority2Days = [2, 9, 16, 24];
+  const dayNames = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+
+  for (let d = 1; d <= 28; d++) {
+    const dow = dayNames[(d - 1) % 7];
+    const eventTitle = unit.sample_events[d];
+    const isOrphan = orphanDays.includes(d);
+    const isPriority2 = priority2Days.includes(d);
+
+    let cardClass = "cal-day-card";
+    let dynamicRate = unit.baseline_adr;
+    let statusTag = `<span style="color:#57534e; font-weight:600;">Standard Booked Night</span>`;
+
+    if (eventTitle) {
+      cardClass += " event-surge";
+      dynamicRate = Math.round(unit.baseline_adr * (1 + surgePct / 100.0));
+      statusTag = `<span style="color:#b45309; font-weight:800;">Event Surge (+${surgePct}%): ${eventTitle}</span>`;
+    } else if (isOrphan) {
+      cardClass += " orphan-gap";
+      dynamicRate = Math.round(unit.baseline_adr * 0.75);
+      statusTag = `<span style="color:#15803d; font-weight:800;">1-Nt Orphan Gap: 25% Off Adjacent Guest Offer ($0 Extra Clean)</span>`;
+    } else if (isPriority2) {
+      cardClass += " priority2-upsell";
+      statusTag = `<span style="color:#1d4ed8; font-weight:800;">preSeTR Priority 2 Turn: Eligible for +$${earlyFee} Early/Late Window</span>`;
+    }
+
+    const cell = document.createElement("div");
+    cell.className = cardClass;
+    cell.innerHTML = `
+      <div style="display:flex; justify-content:space-between; font-weight:800; color:#1c1917;">
+        <span>Day ${d} (${dow})</span>
+        <span>${eventTitle || isOrphan ? `<s style="color:#78716c; font-weight:500;">$${unit.baseline_adr}</s> $${dynamicRate}` : `$${dynamicRate}`}</span>
+      </div>
+      <div style="font-size:0.72rem; line-height:1.35;">${statusTag}</div>
+    `;
+    grid.appendChild(cell);
+  }
+}
+
+updatePilotProjections();
+</script>
+<script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

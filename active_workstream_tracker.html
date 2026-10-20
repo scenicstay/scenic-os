@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenic Stay: Active Workstream Tracker & Mission Control</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+    :root {
+      --brand-navy: #00162f;
+      --brand-gold: #b06b17;
+      --brand-cream: #fbf6ef;
+      --brand-charcoal: #24282d;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0b1320;
+      color: #e2e8f0;
+    }
+    h1, h2, h3, .serif-font {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+    .badge-crisis { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-revenue { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-pending { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-tech { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-roles { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .card-glass { background: #131d2e; border: 1px solid #1e2d42; }
+    .card-glass:hover { border-color: #334155; }
+    .completed-task { text-decoration: line-through; opacity: 0.5; }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
+
+  <div class="max-w-7xl mx-auto w-full space-y-6">
+
+    <!-- Top Header -->
+    <header class="card-glass rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-amber-500">
+      <div>
+        <div class="flex items-center space-x-3">
+          <div class="h-10 w-10 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center font-bold text-xl border border-amber-500/40">
+            <i class="fa-solid fa-mountain-sun"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-xl md:text-2xl font-bold text-white tracking-wide">SCENIC STAY <span class="text-xs text-amber-400 font-sans tracking-widest uppercase ml-2 px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800/80">Command Center</span></h1>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 font-sans">Two Profiles, One Company &bull; Real-Time Workstream & Execution Tracker</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Clock & Status Badge -->
+      <div class="flex flex-wrap items-center gap-3 text-xs">
+        <div class="bg-slate-900/80 border border-slate-700/80 px-3 py-2 rounded-xl flex items-center space-x-2">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span class="font-mono text-slate-300" id="live-clock">--:--:--</span>
+        </div>
+        <a href="host_property_forge.html" target="_blank" class="bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 px-3 py-2 rounded-xl font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-hammer"></i> Property Forge
+        </a>
+        <a href="host_dispatch_resetr.html" target="_blank" class="bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/50 text-emerald-300 px-3 py-2 rounded-xl font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-people-arrows"></i> reSetr Dispatch
+        </a>
+        <a href="contractor_agreement_generator.html" target="_blank" class="bg-sky-500/20 hover:bg-sky-500/30 border border-sky-500/50 text-sky-300 px-3 py-2 rounded-xl font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-file-signature"></i> SLA Generator
+        </a>
+        <button onclick="resetTasks()" class="text-slate-400 hover:text-white px-3 py-2 rounded-xl border border-slate-800 hover:bg-slate-800 transition">
+          <i class="fa-solid fa-arrows-rotate mr-1"></i> Reset Tasks
+        </button>
+      </div>
+    </header>
+
+    <!-- Key Metrics Row -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="card-glass p-4 rounded-xl">
+        <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider flex items-center justify-between">
+          <span>Boutique Leads Ready</span>
+          <i class="fa-solid fa-hotel text-emerald-400"></i>
+        </div>
+        <div class="text-2xl font-bold text-white mt-1">125</div>
+        <div class="text-[11px] text-emerald-400/90 mt-0.5">117 phone numbers &bull; Sales Queue</div>
+      </div>
+
+      <div class="card-glass p-4 rounded-xl">
+        <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider flex items-center justify-between">
+          <span>Portfolio Units Codified</span>
+          <i class="fa-solid fa-building-user text-sky-400"></i>
+        </div>
+        <div class="text-2xl font-bold text-sky-400 mt-1">11 Units</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">BKL (7), OAK (3), PIN (1), DEN (1)</div>
+      </div>
+
+      <div class="card-glass p-4 rounded-xl">
+        <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider flex items-center justify-between">
+          <span>Contractor SLA Tool</span>
+          <i class="fa-solid fa-file-contract text-amber-400"></i>
+        </div>
+        <div class="text-2xl font-bold text-amber-400 mt-1">DEPLOYED</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">Ramp ACH, W-9 & 1099 Automated</div>
+      </div>
+
+      <div class="card-glass p-4 rounded-xl">
+        <div class="text-slate-400 text-xs font-semibold uppercase tracking-wider flex items-center justify-between">
+          <span>HOSt Property Forge</span>
+          <i class="fa-solid fa-hammer text-emerald-400"></i>
+        </div>
+        <div class="text-2xl font-bold text-emerald-400 mt-1">DEPLOYED</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">Owner Intake & Blueprint Engine</div>
+      </div>
+    </div>
+
+    <!-- Quick Action & Toolbelt Dock -->
+    <div class="card-glass rounded-2xl p-4 border border-amber-500/30 bg-slate-900/90 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="h-9 w-9 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center font-bold text-lg">
+          <i class="fa-solid fa-toolbox"></i>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-white uppercase tracking-wider">Quick Action & Toolbelt Hub</div>
+          <div class="text-[11px] text-slate-400">Directly launch web tools or copy agent terminal execution commands</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <a href="abetterbnb_website.html" target="_blank" class="px-3 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold flex items-center gap-1.5 transition shadow-lg">
+          <i class="fa-solid fa-globe"></i> A Better BNB Site
+        </a>
+        <a href="host_property_forge.html" target="_blank" class="px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-hammer"></i> Property Forge
+        </a>
+        <a href="host_dispatch_resetr.html" target="_blank" class="px-3 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-people-arrows"></i> reSetr Dispatch
+        </a>
+        <a href="sales_deck_generator.html" target="_blank" class="px-3 py-2 rounded-xl bg-amber-600/20 hover:bg-amber-600/30 text-amber-300 border border-amber-500/40 font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-file-powerpoint"></i> Design Studio
+        </a>
+        <a href="contractor_agreement_generator.html" target="_blank" class="px-3 py-2 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-file-signature"></i> Contractor SLA
+        </a>
+        <a href="property_walkthrough.html" target="_blank" class="px-3 py-2 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 font-semibold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-bed"></i> Walkthrough
+        </a>
+        <button onclick="copyTregPrompt()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-semibold flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-terminal"></i> Copy Treg Setup
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+      <div class="flex flex-wrap gap-2 text-xs">
+        <button onclick="filterStreams('all')" id="btn-all" class="px-3 py-1.5 rounded-lg font-semibold bg-amber-500 text-slate-950 transition">All Workstreams</button>
+        <button onclick="filterStreams('ops')" id="btn-ops" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Field Ops & SLAs</button>
+        <button onclick="filterStreams('sales')" id="btn-sales" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Sales & Apollo</button>
+        <button onclick="filterStreams('roles')" id="btn-roles" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Roles & Discord</button>
+        <button onclick="filterStreams('onboarding')" id="btn-onboarding" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Owner Onboarding</button>
+        <button onclick="filterStreams('tech')" id="btn-tech" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Platform & Gateways</button>
+        <button onclick="filterStreams('monetization')" id="btn-monetization" class="px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Monetization & Distribution</button>
+      </div>
+
+      <div class="text-xs text-slate-400">
+        <span class="text-amber-400 font-bold">&bull;</span> Auto-saved in browser LocalStorage
+      </div>
+    </div>
+
+    <!-- JUSTIN'S IMMEDIATE EXECUTIVE ACTION QUEUE -->
+    <div class="card-glass rounded-2xl p-5 border-2 border-amber-500/60 bg-slate-950/90 shadow-2xl space-y-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-extrabold text-xs uppercase tracking-wider">Priority Action Queue</span>
+          <h2 class="text-base md:text-lg font-bold text-white">Justin's Immediate Security, Smart Lock API &amp; Property Action Checklist</h2>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <a href="property_walkthrough.html?prop=estates-5br" class="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-500/50 text-amber-300 font-bold hover:bg-amber-500/30 transition">
+            <i class="fa-solid fa-camera-retro mr-1"></i> Estates 5540 Photo &amp; FF&amp;E Audit
+          </a>
+          <a href="property_walkthrough.html?prop=avis-pinole" class="px-3 py-1.5 rounded-lg bg-sky-500/20 border border-sky-500/50 text-sky-300 font-bold hover:bg-sky-500/30 transition">
+            <i class="fa-solid fa-house-circle-check mr-1"></i> Avis Way 3146 Photo &amp; FF&amp;E Audit
+          </a>
+          <a href="owner_agreement_generator.html?preset=5540_estates" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 font-bold hover:bg-emerald-500/30 transition">
+            <i class="fa-solid fa-file-signature mr-1"></i> Estates Agreement ($450 Hold &amp; Tier Math)
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 text-xs">
+        <!-- Column 1: Smart Lock APIs & developer.internal Vault -->
+        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-sky-500/40 space-y-2">
+          <div class="font-bold text-sky-400 uppercase tracking-wider flex items-center justify-between">
+            <span><i class="fa-solid fa-key mr-1.5"></i> 1. Smart Lock APIs (<code>developer.internal</code>)</span>
+            <span class="text-[10px] bg-sky-950 text-sky-300 px-2 py-0.5 rounded border border-sky-800">3-Tier Code Pool Live</span>
+          </div>
+          <p class="text-slate-300 text-[11px] leading-relaxed">
+            Save all API keys under Password Manager entry <strong><code>developer.internal</code></strong>:
+          </p>
+          <ul class="space-y-1 text-[11px] text-slate-300">
+            <li>&bull; <strong>Schlage / Allegion API:</strong> <a href="https://developer.allegion.com/" target="_blank" class="text-sky-400 underline">developer.allegion.com</a> (100-code hardware memory; Primary + Backup + 5 Static Burn-on-Use PINs).</li>
+            <li>&bull; <strong>Yale / August Access API:</strong> <a href="https://developer.assaabloy.com/" target="_blank" class="text-sky-400 underline">developer.assaabloy.com</a></li>
+            <li>&bull; <strong>TTLock Open Platform:</strong> <a href="https://open.ttlock.com/" target="_blank" class="text-sky-400 underline">open.ttlock.com</a> (Free direct OEM API).</li>
+            <li>&bull; <strong>Seam Fallback API:</strong> <a href="https://console.seam.co/" target="_blank" class="text-sky-400 underline">console.seam.co</a></li>
+          </ul>
+          <label class="flex items-center space-x-2 text-slate-200 cursor-pointer pt-1">
+            <input type="checkbox" id="task-justin-api-vault" onchange="toggleTask('task-justin-api-vault')" class="rounded border-slate-700 text-amber-500">
+            <span>Register OEM API keys &amp; save as <code>developer.internal</code></span>
+          </label>
+        </div>
+
+        <!-- Column 2: Meg & Keen Offboarding + Password Rotation -->
+        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-rose-500/40 space-y-2">
+          <div class="font-bold text-rose-400 uppercase tracking-wider flex items-center justify-between">
+            <span><i class="fa-solid fa-user-shield mr-1.5"></i> 2. Meg &amp; Keen Offboarding + Passwords</span>
+            <span class="text-[10px] bg-rose-950 text-rose-300 px-2 py-0.5 rounded border border-rose-800">Security Ops</span>
+          </div>
+          <div class="p-2 rounded bg-slate-950 border border-slate-800 text-[11px] text-slate-300 italic">
+            "Hey team, quick update: Meg is stepping away to focus on some personal matters and won't be working with us any longer. We are so grateful for everything she has contributed and will miss her and her expertise greatly. To respect her time away and keep our active operations streamlined, we'll be removing her from active group conversations at this time. Please join me in wishing her the very best!"
+          </div>
+          <div class="space-y-1 pt-0.5">
+            <label class="flex items-center space-x-2 text-slate-200 cursor-pointer">
+              <input type="checkbox" id="task-justin-meg-msg" onchange="toggleTask('task-justin-meg-msg')" class="rounded border-slate-700 text-amber-500">
+              <span>Send farewell update for <strong>Meg</strong> in active threads</span>
+            </label>
+            <label class="flex items-center space-x-2 text-slate-200 cursor-pointer">
+              <input type="checkbox" id="task-justin-whatsapp-remove" onchange="toggleTask('task-justin-whatsapp-remove')" class="rounded border-slate-700 text-amber-500">
+              <span>Remove <strong>both Meg and Keen</strong> from all WhatsApp groups</span>
+            </label>
+            <label class="flex items-center space-x-2 text-slate-200 cursor-pointer">
+              <input type="checkbox" id="task-justin-discord-remove" onchange="toggleTask('task-justin-discord-remove')" class="rounded border-slate-700 text-amber-500">
+              <span>Remove <strong>both Meg and Keen</strong> from Discord server &amp; roles</span>
+            </label>
+            <label class="flex items-center space-x-2 text-slate-200 cursor-pointer">
+              <input type="checkbox" id="task-justin-pw-rotate" onchange="toggleTask('task-justin-pw-rotate')" class="rounded border-slate-700 text-amber-500">
+              <span>Rotate shared passwords (OTA co-host, Google, Quo, Supabase)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Column 3: Estates 5540 Hold Gate & Avis Way 3146 Pulled Into HOSt -->
+        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-emerald-500/40 space-y-2">
+          <div class="font-bold text-emerald-400 uppercase tracking-wider flex items-center justify-between">
+            <span><i class="fa-solid fa-building-circle-check mr-1.5"></i> 3. Estates 5540 &amp; Avis 3146 Status</span>
+            <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">Both Live in UI</span>
+          </div>
+          <ul class="space-y-1 text-[11px] text-slate-300">
+            <li>&bull; <strong>5540 Estates Dr (★4.40):</strong> Earned $1,774.06 at 15% (vs $2,365.41 at 20% = ~$600 unpaid cleaner coord; vs $2,956.77 at 25% = ~$1,200 unpaid full-service).</li>
+            <li>&bull; <strong>Estates Balance Due ($450):</strong> $200 duct cleaning PAID. Still owed: <strong>$350 photos + $50 cleaning diff + $50 video = $450.00</strong>.</li>
+            <li>&bull; <strong>Armando Quote ($5,494):</strong> 13 repair items (sliding doors, paint, outlets, alarms) + Tuft &amp; Needle King beds &amp; JCPenney percale sheets required before releasing updated listing or becoming Principal Owner.</li>
+            <li>&bull; <strong>3146 Avis Way (`PIN-HOM-001`, ★4.92):</strong> Pulled forward into <a href="host_property_forge.html?unit=PIN-HOM-001" class="text-emerald-400 underline font-semibold">HOSt Property Forge</a> with full photo audit &amp; FF&amp;E links.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Workstreams Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- WORKSTREAM 1: Field Ops & Contractor Agreements -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-red-500 stream-card" data-stream="ops">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-crisis text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Field Operations</span>
+            <h2 class="text-lg font-bold text-white mt-2">Field Ops, preSetr & Contractor SLAs</h2>
+            <p class="text-xs text-slate-400 mt-1">Modular contractor SLA generator deployed; automated turnover dispatch & Denver backup crew sourcing.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-broom"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold flex items-center justify-between">
+            <span>SLA Generator Live:</span>
+            <span class="text-emerald-400 font-mono">contractor_agreement_generator.html</span>
+          </div>
+          <p class="text-slate-400">&bull; <strong>Roles Supported:</strong> Cleaners, Pool/Spa, Handyman, Landscaping</p>
+          <p class="text-slate-400">&bull; <strong>Standards:</strong> Scenic on-site supplies + $50 pre-approved emergency repair cap</p>
+          <p class="text-slate-400">&bull; <strong>Denver Search:</strong> 2 backup cleaners + 1 handyman for Walsh & Estates</p>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-ops-sla" onchange="toggleTask('task-ops-sla')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Open & test Contractor SLA Generator (<code>start_agreement_generator.bat</code>)</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-ops-intake" onchange="toggleTask('task-ops-intake')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Open & test HOSt Property Dispatch Matrix (<code>start_dispatch_intake.bat</code>)</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-ops-1" onchange="toggleTask('task-ops-1')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Copy iCal (.ics) URLs for Berkeley & Denver units</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-ops-2" onchange="toggleTask('task-ops-2')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Forward-port reSetr Today's Route (PR #23 on <code>agent/forward-port-recovered-reset-workflow</code>)</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-ops-denver" onchange="toggleTask('task-ops-denver')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Post 5-question pre-screen for Denver backup cleaners</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Justin / @Field-Ops</strong></span>
+          <button onclick="copyPrompt('sla')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy SLA Template
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSTREAM 2: LeadGraph, Sales & Apollo.io -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-emerald-500 stream-card" data-stream="sales">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-revenue text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Outreach & Growth</span>
+            <h2 class="text-lg font-bold text-white mt-2">LeadGraph, Apollo & Open Stack</h2>
+            <p class="text-xs text-slate-400 mt-1">125 boutique hotels ready; Apollo 50% startup discount approved; open-source scrapers & audit tools ready.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold flex items-center justify-between">
+            <span>Growth Stack & Internal Engines:</span>
+            <span class="text-emerald-400 font-mono">5 Open Engines</span>
+          </div>
+          <p class="text-slate-400">&bull; <strong>Scrapling:</strong> Competitor & OTA review miner (extracts guest pain points & social proof)</p>
+          <p class="text-slate-400">&bull; <strong>Dify:</strong> Internal Operational Handbook Bot (ingests Knowledge Playbook & SOPs)</p>
+          <p class="text-slate-400">&bull; <strong>Open-SEO:</strong> Direct booking SEO audits for abetterbnb.com & abetterbnb.com</p>
+          <p class="text-slate-400">&bull; <strong>OpenShorts:</strong> Auto-generates Reels/TikToks for Berkeley/Denver guides & properties</p>
+          <p class="text-slate-400">&bull; <strong>Presenton:</strong> AI sales proposal generator (custom decks for boutique hotel calls)</p>
+        </div>
+
+        <!-- 1-Click Boutique Quick-Dial & WhatsApp Links -->
+        <div class="mt-3 p-2.5 rounded-lg bg-slate-950/70 border border-slate-800 text-xs space-y-1.5">
+          <div class="text-[11px] font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+            <span>Verified Independent Boutiques (1-Click Outreach):</span>
+            <span class="text-emerald-400 font-mono">5 Verified Properties</span>
+          </div>
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="text-slate-300 font-medium">Rose Garden Inn (Berkeley):</span>
+            <span class="space-x-2">
+              <a href="tel:+15105492145" class="text-sky-400 hover:underline"><i class="fa-solid fa-phone text-[10px]"></i> (510) 549-2145</a>
+              <a href="https://wa.me/15105492145" target="_blank" class="text-emerald-400 hover:underline font-bold"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="text-slate-300 font-medium">The Sens Hotel (Berkeley):</span>
+            <span class="space-x-2">
+              <a href="tel:+15105489930" class="text-sky-400 hover:underline"><i class="fa-solid fa-phone text-[10px]"></i> (510) 548-9930</a>
+              <a href="https://wa.me/15105489930" target="_blank" class="text-emerald-400 hover:underline font-bold"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="text-slate-300 font-medium">The Elmwood Inn (Berkeley):</span>
+            <span class="space-x-2">
+              <a href="tel:+15108456000" class="text-sky-400 hover:underline"><i class="fa-solid fa-phone text-[10px]"></i> (510) 845-6000</a>
+              <a href="https://wa.me/15108456000" target="_blank" class="text-emerald-400 hover:underline font-bold"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="text-slate-300 font-medium">The Washington Inn (Oakland):</span>
+            <span class="space-x-2">
+              <a href="tel:+15104521776" class="text-sky-400 hover:underline"><i class="fa-solid fa-phone text-[10px]"></i> (510) 452-1776</a>
+              <a href="https://wa.me/15104521776" target="_blank" class="text-emerald-400 hover:underline font-bold"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-apollo" onchange="toggleTask('task-sales-apollo')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Activate Apollo for Startups exclusive link for Justin + sales seats</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-treg" onchange="toggleTask('task-sales-treg')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Connect treg.to tool catalog for autonomous ad-buying & on-demand tools</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-scrapling" onchange="toggleTask('task-sales-scrapling')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Test Scrapling script to extract negative review pain points from boutique leads</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-dify" onchange="toggleTask('task-sales-dify')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Ingest Scenic Stay Knowledge Playbook into Dify for company handbook bot</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-presenton" onchange="toggleTask('task-sales-presenton')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Generate dynamic sales deck template in Presenton for discovery calls</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-commit" onchange="toggleTask('task-sales-commit')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Commit Claude Code WhatsApp changes on <code>agent/leads-alpha-first-screen</code></span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-sales-2" onchange="toggleTask('task-sales-2')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Distribute boutique hotel queue to @Sales-Rep in Discord</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Justin / @Sales-Rep</strong></span>
+          <button onclick="copyPrompt('sales')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy Claude Prompt
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSTREAM 3: Organizational Roles & Discord Shepherding -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-purple-500 stream-card" data-stream="roles">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-roles text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Process & Governance</span>
+            <h2 class="text-lg font-bold text-white mt-2">Roles & Discord Shepherding</h2>
+            <p class="text-xs text-slate-400 mt-1">Four canonical roles, segmented Discord channels, and automated "Process Shepherd" relay handoffs.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold flex items-center justify-between">
+            <span>SOP Blueprint:</span>
+            <span class="text-purple-400 font-mono">SOP-2026-DISCORD-ROLES-01</span>
+          </div>
+          <p class="text-slate-400">&bull; <strong>Channels:</strong> #role-sales, #role-field-ops, #role-guest-services, #process-handoffs</p>
+          <p class="text-slate-400">&bull; <strong>Owner Success:</strong> 100% Justin-owned; staff never message owners unmediated</p>
+          <p class="text-slate-400">&bull; <strong>Access Control:</strong> Dynamic Discord guild role resolution (no code redeploys)</p>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-discord-channels" onchange="toggleTask('task-discord-channels')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Create 4 role channels in Discord (#role-sales, #role-field-ops, etc.)</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-discord-handoff" onchange="toggleTask('task-discord-handoff')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Pin Shepherding Handoff SOP in #process-handoffs</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-discord-perms" onchange="toggleTask('task-discord-perms')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Verify role-directory worker mapping in DISCORD_ROLE_MAP</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Justin</strong></span>
+          <button onclick="copyPrompt('roles')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy Discord Blueprint
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSTREAM 4: Owner Intake & HOSt Agreement -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-amber-500 stream-card" data-stream="onboarding">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-pending text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Owner Success</span>
+            <h2 class="text-lg font-bold text-white mt-2">Owner Intake & HOSt Agreement</h2>
+            <p class="text-xs text-slate-400 mt-1">Standardized digital contract under "A Better BNB" + frictionless onboarding questionnaire for closed properties.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold">5-Point Master Agreement Requirements:</div>
+          <p class="text-slate-400">&bull; <strong>Brand:</strong> "A Better BNB (division of Scenic Stay)" co-hosting partner</p>
+          <p class="text-slate-400">&bull; <strong>Fee:</strong> 20-25% gross lodging fee; direct owner payout</p>
+          <p class="text-slate-400">&bull; <strong>Exit:</strong> 30-day no-penalty cancellation (competitive advantage)</p>
+          <p class="text-slate-400">&bull; <strong>Repair:</strong> $250 owner-preapproved emergency threshold</p>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-host-1" onchange="toggleTask('task-host-1')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Verify 5 clauses in Google Drive contract template</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-host-2" onchange="toggleTask('task-host-2')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Create Owner Intake Form (WiFi, Smart Locks, Lockoffs, Tax ID)</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Antigravity / Justin</strong></span>
+          <button onclick="copyPrompt('host')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy Agreement Spec
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSTREAM 5: Micro-Gateways & Captive Portal Isolation -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-sky-500 stream-card" data-stream="tech">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-tech text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">In-House Hardware</span>
+            <h2 class="text-lg font-bold text-white mt-2">Captive Gateway & Owner VLAN</h2>
+            <p class="text-xs text-slate-400 mt-1">UniFi / GL.iNet micro-gateway captures guest emails; owner private network completely unaffected on VLAN 10.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-wifi"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold">VLAN Network Architecture:</div>
+          <p class="text-slate-400">&bull; <strong>VLAN 10 (Owner Private):</strong> Unthrottled, zero captive portal, full LAN access</p>
+          <p class="text-slate-400">&bull; <strong>VLAN 20 (Guest Wi-Fi):</strong> Captive splash (wifi.abetterbnb.com), client isolation</p>
+          <p class="text-slate-400">&bull; <strong>VLAN 30 (Property IoT):</strong> Schlage locks, Minut noise monitors, security cameras</p>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-gateway-branding" onchange="toggleTask('task-gateway-branding')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Spec fun, culture-forward Wi-Fi SSIDs & captive splash UI with prominent logo</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-gateway-home" onchange="toggleTask('task-gateway-home')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Pilot UniFi / GL.iNet micro-gateway on Justin's 3 Berkeley units</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-gateway-guide" onchange="toggleTask('task-gateway-guide')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Review & update Berkeley digital guidebook before physical deploy</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Justin / Antigravity</strong></span>
+          <button onclick="copyPrompt('gateway')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy Gateway Spec
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSTREAM 6: MCP Server & StayGraph PR #29 -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-indigo-500 stream-card" data-stream="tech">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-tech text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Platform & Ecosystem</span>
+            <h2 class="text-lg font-bold text-white mt-2">MCP Server Listing & StayGraph</h2>
+            <p class="text-xs text-slate-400 mt-1">Submit server to Glama for automated badge; resolve remaining 6 review defects on StayGraph decision kernel.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-code-merge"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold">GitHub & Directory Anchors:</div>
+          <p class="text-slate-400">&bull; <strong>MCP Server Repo:</strong> <code>https://github.com/Scenic-Stay/lodging-decision-mcp</code></p>
+          <p class="text-slate-400">&bull; <strong>PR Target:</strong> <code>punkpeye/awesome-mcp-servers#12261</code></p>
+          <p class="text-slate-400">&bull; <strong>Pricing Engine:</strong> <code>staygraph/scripts/pricing_engine_v1.py</code> (15.5% fee floor)</p>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-mcp-1" onchange="toggleTask('task-mcp-1')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Paste lodging-decision-mcp URL into glama.ai/mcp/servers</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-mcp-2" onchange="toggleTask('task-mcp-2')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Post Glama Server Quality badge to PR #12261</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-mcp-3" onchange="toggleTask('task-mcp-3')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Fix 6 review comments on StayGraph PR #29</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Justin (Glama) / Codex (PR #29)</strong></span>
+          <button onclick="copyPrompt('glama')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy Glama URL
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKSTREAM 7: Platform Monetization & Distribution (Duffel vs. Stayker / 1Stay & Direct Booking) -->
+      <div class="card-glass rounded-xl p-5 border-t-2 border-t-emerald-400 stream-card" data-stream="monetization">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="badge-revenue text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Monetization & Distribution</span>
+            <h2 class="text-lg font-bold text-white mt-2">Distribution Architecture & Direct Monetization</h2>
+            <p class="text-xs text-slate-400 mt-1">Duffel API vs. Stayker/1Stay network analysis; direct guest checkout on abetterbnb.com vs. Ramp contractor disbursements.</p>
+          </div>
+          <div class="h-9 w-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-coins"></i>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-xs space-y-1">
+          <div class="text-slate-300 font-semibold flex items-center justify-between">
+            <span>Payment Rails & Protocol Architecture:</span>
+            <span class="text-emerald-400 font-mono">Dual-Engine Split</span>
+          </div>
+          <p class="text-slate-400">&bull; <strong>1Stay / Stayker:</strong> MCP-native network (250k+ hotels). Hotel is Merchant of Record (zero tax/chargeback liability); Scenic collects 3 - 5% platform fee via Stripe Connect.</p>
+          <p class="text-slate-400">&bull; <strong>Duffel API:</strong> Traditional GDS/OTA split (5 - 10% commission), but strict 1,500:1 search-to-book ratio penalty limits high-frequency AI querying.</p>
+          <p class="text-slate-400">&bull; <strong>Ramp vs. Stripe:</strong> Ramp ACH executes outbound contractor/cleaner payouts from SF Fire FCU (auto W-9/1099); Stripe Connect deferred until direct booking or Stayker agent booking goes live.</p>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <div class="font-semibold text-slate-300 text-[11px] uppercase tracking-wider">Interactive Tasks:</div>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-monetize-duffel" onchange="toggleTask('task-monetize-duffel')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Audit Duffel search-to-book ratio restrictions vs Stayker MCP endpoint</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-monetize-stripe" onchange="toggleTask('task-monetize-stripe')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Keep Stripe Connect standby ($0/mo) until direct booking on abetterbnb.com</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-monetize-ramp" onchange="toggleTask('task-monetize-ramp')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Route all cleaner & handyman payouts via Ramp ACH linked to SF Fire FCU</span>
+          </label>
+          <label class="flex items-center space-x-2 text-slate-300 cursor-pointer p-1.5 rounded hover:bg-slate-800/50">
+            <input type="checkbox" id="task-monetize-airdna" onchange="toggleTask('task-monetize-airdna')" class="rounded border-slate-700 text-amber-500 focus:ring-0">
+            <span>Sep 23 Checkpoint: Export Oakland & Berkeley CSVs & cancel AirDNA trial</span>
+          </label>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <span class="text-slate-500">Assigned: <strong class="text-slate-300">Justin / StayGraph</strong></span>
+          <button onclick="copyPrompt('monetization')" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            <i class="fa-regular fa-copy"></i> Copy Monetization Spec
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Agent Concurrency Status Board -->
+    <div class="card-glass rounded-xl p-5 border-t-2 border-t-purple-500">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-microchip text-purple-400"></i> Active Multi-Agent Concurrency Board
+          </h3>
+          <p class="text-xs text-slate-400 mt-0.5">Strict separation of duties to prevent compute waste, context confusion, and git collisions.</p>
+        </div>
+        <span class="text-xs bg-purple-950/60 border border-purple-800/80 text-purple-300 px-2.5 py-1 rounded-full font-semibold">3 Agents Coordinated</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+          <div class="flex items-center justify-between font-bold text-slate-200">
+            <span>Antigravity (Mission Control)</span>
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          </div>
+          <p class="text-slate-400 mt-1">SLA Generator tool, Discord role SOP, Gateway VLAN specs & growth tool synthesis.</p>
+          <div class="mt-2 text-[11px] text-slate-500">Focus: High-level architecture & tooling</div>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+          <div class="flex items-center justify-between font-bold text-slate-200">
+            <span>Claude Code (Terminal)</span>
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          </div>
+          <p class="text-slate-400 mt-1">LeadGraph UI, WhatsApp button & phone normalization in <code>staygraph-leadgraph-wt</code>.</p>
+          <div class="mt-2 text-[11px] text-slate-500">Focus: Local Next.js & Worker commits</div>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-800">
+          <div class="flex items-center justify-between font-bold text-slate-200">
+            <span>Codex (Automated Tasks)</span>
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          </div>
+          <p class="text-slate-400 mt-1">Extracted 125 boutique leads; ready for Apollo contact scraping & PR #29 fixes.</p>
+          <div class="mt-2 text-[11px] text-slate-500">Focus: Unattended batch workflows</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed bottom-6 right-6 bg-slate-800 border border-slate-700 text-white px-5 py-3 rounded-xl shadow-2xl z-50 flex items-center space-x-3 text-xs">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="toast-text">Action copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Live Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('live-clock').textContent = now.toLocaleTimeString();
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Stream Filters
+    function filterStreams(stream) {
+      const cards = document.querySelectorAll('.stream-card');
+      const buttons = ['all', 'ops', 'sales', 'roles', 'onboarding', 'tech', 'monetization'];
+      buttons.forEach(b => {
+        const btn = document.getElementById('btn-' + b);
+        if (btn) {
+          if (b === stream) {
+            btn.className = 'px-3 py-1.5 rounded-lg font-semibold bg-amber-500 text-slate-950 transition';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-lg font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition';
+          }
+        }
+      });
+
+      cards.forEach(card => {
+        if (stream === 'all' || card.getAttribute('data-stream') === stream) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Local Storage Task Persistence
+    const taskIds = [
+      'task-ops-sla', 'task-ops-intake', 'task-ops-1', 'task-ops-2', 'task-ops-denver',
+      'task-sales-apollo', 'task-sales-treg', 'task-sales-scrapling', 'task-sales-dify', 'task-sales-presenton', 'task-sales-commit', 'task-sales-2',
+      'task-discord-channels', 'task-discord-handoff', 'task-discord-perms',
+      'task-host-1', 'task-host-2',
+      'task-gateway-branding', 'task-gateway-home', 'task-gateway-guide',
+      'task-mcp-1', 'task-mcp-2', 'task-mcp-3',
+      'task-monetize-duffel', 'task-monetize-stripe', 'task-monetize-ramp', 'task-monetize-airdna'
+    ];
+
+    function loadTasks() {
+      taskIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const val = localStorage.getItem(id);
+          if (val === 'true') {
+            el.checked = true;
+            el.parentElement.classList.add('completed-task');
+          }
+        }
+      });
+    }
+
+    function toggleTask(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        localStorage.setItem(id, el.checked);
+        if (el.checked) {
+          el.parentElement.classList.add('completed-task');
+          showToast('Task marked complete!');
+        } else {
+          el.parentElement.classList.remove('completed-task');
+        }
+      }
+    }
+
+    function resetTasks() {
+      if (confirm('Reset all interactive task checkmarks?')) {
+        taskIds.forEach(id => {
+          localStorage.removeItem(id);
+          const el = document.getElementById(id);
+          if (el) {
+            el.checked = false;
+            el.parentElement.classList.remove('completed-task');
+          }
+        });
+        showToast('All tasks reset.');
+      }
+    }
+
+    // Copy Prompt Toasts
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    function copyPrompt(type) {
+      let text = '';
+      if (type === 'sla') {
+        text = `SCENIC STAY CONTRACTOR SLA GENERATOR:\nFile available at: contractor_agreement_generator.html (or launch start_agreement_generator.bat)\nToggles: Turnover Cleaners, Pool/Spa, Handyman, Landscaping.\nFeatures: Scenic on-site supplies standard, $50 pre-approved repair ceiling, photo verification.`;
+      } else if (type === 'sales') {
+        text = `Yes, please commit the 4 modified files for the LeadGraph WhatsApp button on branch 'agent/leads-alpha-first-screen'.\n\nAlso, ensure that Santa Rosa filtering removes any non-STR alternate offer, keeping focus strictly on Boutique Hotels and hosted STRs (<30 days).`;
+      } else if (type === 'roles') {
+        text = `DISCORD ROLE CHANNELS BLUEPRINT:\n1. #role-sales (Boutique hotel calling, lead notes, WhatsApp logs)\n2. #role-field-ops (Contractor onboarding, cleaner exceptions, supplies)\n3. #role-guest-services (In-stay inquiries, access codes, Minut alerts)\n4. #role-owner-success (Justin-only, contract intake, financial statements)\n5. #process-handoffs (Cross-role shepherded baton relay feed)`;
+      } else if (type === 'host') {
+        text = `SCENIC STAY CO-HOSTING 5-POINT AGREEMENT:\n1. Brand: A Better BNB (division of Scenic Stay) as co-hosting partner.\n2. Fee: 20-25% gross lodging revenue; direct owner payout.\n3. Exit: 30-day written cancellation with no penalties.\n4. Repairs: Emergency threshold $250 without prior written consent.\n5. Compliance: Local STR permit representation & stewardship.`;
+      } else if (type === 'gateway') {
+        text = `GATEWAY VLAN ISOLATION SPEC:\n- VLAN 10 (Owner Private): Direct gigabit WAN, zero captive portal, full private LAN.\n- VLAN 20 (Guest Wi-Fi): Captive portal splash (wifi.abetterbnb.com), client isolation.\n- VLAN 30 (Property IoT): Smart deadbolts (Schlage), noise monitors (Minut), cameras.`;
+      } else if (type === 'glama') {
+        text = `https://github.com/Scenic-Stay/lodging-decision-mcp`;
+      } else if (type === 'monetization') {
+        text = `MONETIZATION & DISTRIBUTION SPEC:\n1. 1Stay / Stayker: MCP-native hotel network (250,000+ properties). Hotel acts as Merchant of Record (eliminating lodging tax/chargeback liability for Scenic). Scenic captures 3-5% markup via Stripe Connect.\n2. Duffel: Traditional GDS/OTA split (5-10% commission), but strict 1,500:1 search-to-book ratio penalty makes it unsuited for frequent AI agent search.\n3. Stripe Connect vs Ramp: Stripe Connect is deferred until direct booking or Stayker launches ($0/mo cost). Ramp ACH executes all contractor/cleaner payouts from SF Fire FCU with auto W-9 and 1099-NEC filing.\n4. Direct Booking: Direct guest checkout on abetterbnb.com using Stripe Elements.`;
+      }
+      navigator.clipboard.writeText(text);
+      showToast('Copied to clipboard!');
+    }
+
+    function copyTregPrompt() {
+      const text = `set up treg - https://treg.to/llms.txt`;
+      navigator.clipboard.writeText(text);
+      showToast('treg.to setup command copied to clipboard!');
+    }
+
+    window.onload = loadTasks;
+  </script>
+</body>
+</html>

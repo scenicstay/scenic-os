@@ -1,0 +1,86 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:A Better BNB reSeTR Turnover Calendar Maria Gonzalez EN
+X-WR-CALNAME:reSeTR Turns (Maria Gonzalez)
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VEVENT
+UID:turn_BKL-ADU-001_2026-10-31@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261031T180000Z
+DTEND:20261031T240000Z
+SUMMARY:Flexible Cleaning: 3007 Acton St (Downstairs Suite)
+DESCRIPTION:Aviso de Limpieza: Hola Maria Gonzalez, limpieza programada para 3007 Acton St (Downstairs Suite) el 2026-10-31 (Limpieza Flexible: Sin entrada hoy; proximo huesped llega el 2027-02-12). Horario: 11:00 AM a 5:00 PM. Direccion: 3007 Acton St (Downstairs Unit), Berkeley, CA 94702. Como entrar: Camino frontal hacia la entrada de la suite de abajo. Ingresa el codigo de limpieza en el teclado de la puerta inferior.
+LOCATION:3007 Acton St (Downstairs Unit), Berkeley, CA 94702
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3007 Acton St (Downstairs Unit), Berkeley, CA 94702 on 2026-10-31
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3007 Acton St (Downstairs Unit), Berkeley, CA 94702
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-ADU-002_2026-11-14@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261114T180000Z
+DTEND:20261114T240000Z
+SUMMARY:Flexible Cleaning: 3007 Acton St (Upstairs Suite)
+DESCRIPTION:Aviso de Limpieza: Hola Maria Gonzalez, limpieza programada para 3007 Acton St (Upstairs Suite) el 2026-11-14 (Limpieza Flexible: Sin entrada hoy; proximo huesped llega el 2027-02-27). Horario: 11:00 AM a 5:00 PM. Direccion: 3007 Acton St (Upstairs Unit), Berkeley, CA 94702. Como entrar: Escaleras exteriores hacia la entrada de la suite de arriba. Ingresa el codigo de limpieza en el teclado de la puerta superior.
+LOCATION:3007 Acton St (Upstairs Unit), Berkeley, CA 94702
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3007 Acton St (Upstairs Unit), Berkeley, CA 94702 on 2026-11-14
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3007 Acton St (Upstairs Unit), Berkeley, CA 94702
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-ADU-002_2027-03-14@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20270314T180000Z
+DTEND:20270314T240000Z
+SUMMARY:Flexible Cleaning: 3007 Acton St (Upstairs Suite)
+DESCRIPTION:Aviso de Limpieza: Hola Maria Gonzalez, limpieza programada para 3007 Acton St (Upstairs Suite) el 2027-03-14 (Limpieza Flexible: Sin entrada de huesped hoy). Horario: 11:00 AM a 5:00 PM. Direccion: 3007 Acton St (Upstairs Unit), Berkeley, CA 94702. Como entrar: Escaleras exteriores hacia la entrada de la suite de arriba. Ingresa el codigo de limpieza en el teclado de la puerta superior.
+LOCATION:3007 Acton St (Upstairs Unit), Berkeley, CA 94702
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3007 Acton St (Upstairs Unit), Berkeley, CA 94702 on 2027-03-14
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3007 Acton St (Upstairs Unit), Berkeley, CA 94702
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-ADU-001_2027-08-31@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20270831T180000Z
+DTEND:20270831T240000Z
+SUMMARY:Flexible Cleaning: 3007 Acton St (Downstairs Suite)
+DESCRIPTION:Aviso de Limpieza: Hola Maria Gonzalez, limpieza programada para 3007 Acton St (Downstairs Suite) el 2027-08-31 (Limpieza Flexible: Sin entrada de huesped hoy). Horario: 11:00 AM a 5:00 PM. Direccion: 3007 Acton St (Downstairs Unit), Berkeley, CA 94702. Como entrar: Camino frontal hacia la entrada de la suite de abajo. Ingresa el codigo de limpieza en el teclado de la puerta inferior.
+LOCATION:3007 Acton St (Downstairs Unit), Berkeley, CA 94702
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3007 Acton St (Downstairs Unit), Berkeley, CA 94702 on 2027-08-31
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3007 Acton St (Downstairs Unit), Berkeley, CA 94702
+END:VALARM
+END:VEVENT
+END:VCALENDAR

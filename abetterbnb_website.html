@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Better BNB | Elite Short-Term Rental Co-Hosting & Agentic Distribution</title>
+    <meta name="description" content="A Better BNB maximizes net lodging yield for property owners through autonomous agentic distribution, proprietary operations, and 10+ years of operational stewardship.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            DEFAULT: '#00162F',
+                            light: '#07244C',
+                            dark: '#000E20',
+                            surface: '#0d1d33',
+                            card: '#13243d'
+                        },
+                        gold: {
+                            DEFAULT: '#B06B17',
+                            light: '#D48827',
+                            dark: '#8C520E',
+                            surface: '#3b2507'
+                        },
+                        cream: {
+                            DEFAULT: '#FBF6EF',
+                            dark: '#EDE4D6',
+                            surface: '#F4ECE1'
+                        },
+                        charcoal: '#24282D'
+                    },
+                    fontFamily: {
+                        serif: ['"Libre Baskerville"', 'Georgia', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #00162F;
+            color: #FBF6EF;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        .serif-heading {
+            font-family: 'Libre Baskerville', Georgia, serif;
+        }
+        .glass-panel {
+            background: rgba(19, 36, 61, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(176, 107, 23, 0.25);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(176, 107, 23, 0.6);
+            transform: translateY(-2px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FBF6EF 0%, #D48827 50%, #B06B17 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @media print {
+            body { background: #FFFFFF; color: #000000; }
+            .no-print { display: none !important; }
+            .glass-panel { background: #FFFFFF; border: 1px solid #CCCCCC; box-shadow: none; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-navy-dark via-gold-surface to-navy-dark border-b border-gold/30 px-4 py-2 text-xs text-center font-medium tracking-wide text-cream/90 flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>AGENTIC OTA DISTRIBUTION ACTIVE &bull; Now Distributing Inventory Directly into 1Stay, Stayker, Duffel, and Google Vacation Rentals</span>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-navy/90 backdrop-blur-md border-b border-navy-light/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-light to-gold flex items-center justify-center shadow-lg shadow-gold/20">
+                    <i data-lucide="home" class="w-5 h-5 text-navy font-bold"></i>
+                </div>
+                <div>
+                    <span class="serif-heading text-xl sm:text-2xl font-bold tracking-tight text-cream block leading-tight">A Better BNB</span>
+                    <span class="text-[10px] tracking-widest text-gold uppercase font-semibold">Hospitality &bull; Intelligence &bull; Distribution</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-cream/80">
+                <a href="#calculator" class="hover:text-gold transition-colors">Yield Calculator</a>
+                <a href="#agentic" class="hover:text-gold transition-colors">The Agentic Edge</a>
+                <a href="#cohost-wedge" class="hover:text-gold transition-colors">Co-Host Gateway</a>
+                <a href="#portfolio" class="hover:text-gold transition-colors">Portfolio</a>
+                <a href="#standards" class="hover:text-gold transition-colors">Protection Standards</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-gold to-gold-light hover:from-gold-light hover:to-gold text-navy font-semibold text-xs sm:text-sm tracking-wide transition shadow-lg shadow-gold/20 flex items-center gap-2">
+                    <span>Free Portfolio Audit</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-16 pb-24 overflow-hidden">
+        <!-- Ambient lighting glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gold/10 blur-[140px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-card border border-gold/40 text-gold text-xs font-semibold uppercase tracking-wider mb-6">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-gold"></i>
+                    <span>10+ Years Bay Area Operational Stewardship</span>
+                </div>
+
+                <h1 class="serif-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-cream mb-6">
+                    Maximizing Net Lodging Yield for Discerning Owners.
+                </h1>
+
+                <p class="text-lg sm:text-xl text-cream/75 leading-relaxed font-normal mb-10">
+                    We combine bespoke luxury management with autonomous AI agent distribution across the East Bay and San Francisco. Lower commission leakage, 100% operational transparency, and proprietary guest retention.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gold hover:bg-gold-light text-navy font-bold text-sm tracking-wider uppercase transition shadow-xl shadow-gold/25 flex items-center justify-center gap-2">
+                        <span>Calculate Your Net Yield Lift</span>
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-navy-card hover:bg-navy-light text-cream font-semibold text-sm tracking-wide border border-gold/40 transition flex items-center justify-center gap-2">
+                        <span>Request Property Audit</span>
+                        <i data-lucide="file-text" class="w-4 h-4 text-gold"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3 METRIC PILLARS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+                <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center text-gold mb-4">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-cream mb-1">+28.4%</div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gold mb-2">Average Net Yield Lift</h3>
+                    <p class="text-xs text-cream/70 leading-relaxed">
+                        Algorithmic dynamic pricing paired with our anti-OTA direct guest capture engine eliminates platform commissions and maximizes RevPAR.
+                    </p>
+                </div>
+
+                <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center text-gold mb-4">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-cream mb-1">4x Channels</div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gold mb-2">Autonomous Agentic OTAs</h3>
+                    <p class="text-xs text-cream/70 leading-relaxed">
+                        While competitors only list on Airbnb and VRBO, we push live inventory into autonomous AI bookers: 1Stay, Stayker, Duffel Stays, and Google VR.
+                    </p>
+                </div>
+
+                <div class="glass-panel glass-panel-hover p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center text-gold mb-4">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-cream mb-1">0% Premises Risk</div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gold mb-2">Hardened Infrastructure</h3>
+                    <p class="text-xs text-cream/70 leading-relaxed">
+                        Schlage Encode time-bounded PIN access, UniFi isolated guest VLANs, and Minut decibel monitors installed at owner direction with 24/7 cloud oversight.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE NET YIELD CALCULATOR -->
+    <section id="calculator" class="py-20 bg-navy-dark/70 border-t border-b border-navy-light/60 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="serif-heading text-3xl sm:text-4xl font-bold text-cream mb-3">How Much Revenue Are You Leaving on the Table?</h2>
+                <p class="text-sm text-cream/70">Compare traditional legacy property management against A Better BNB's high-yield agentic distribution framework.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Controls -->
+                <div class="lg:col-span-6 glass-panel p-8 rounded-2xl">
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label class="text-cream">Monthly Gross Lodging Revenue</label>
+                                <span id="grossValDisplay" class="text-gold font-bold font-mono">$12,000 / mo</span>
+                            </div>
+                            <input type="range" id="grossSlider" min="4000" max="35000" step="500" value="12000" class="w-full accent-gold bg-navy-light h-2 rounded-lg cursor-pointer">
+                            <div class="flex justify-between text-[11px] text-cream/40 mt-1 font-mono">
+                                <span>$4,000</span>
+                                <span>$35,000</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label class="text-cream">Current Management Fee</label>
+                                <span id="feeValDisplay" class="text-gold font-bold font-mono">25%</span>
+                            </div>
+                            <input type="range" id="feeSlider" min="15" max="35" step="1" value="25" class="w-full accent-gold bg-navy-light h-2 rounded-lg cursor-pointer">
+                            <div class="flex justify-between text-[11px] text-cream/40 mt-1 font-mono">
+                                <span>15%</span>
+                                <span>35%</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <label class="text-cream">Average OTA Commission Take-Rate</label>
+                                <span class="text-cream/80 font-mono text-xs">15.5% (Standard Airbnb/VRBO)</span>
+                            </div>
+                            <p class="text-xs text-cream/50">Traditional managers force 100% of your bookings through OTAs, burning 15% to 18% in fees before you ever get paid.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Output Card -->
+                <div class="lg:col-span-6 bg-gradient-to-br from-navy-card to-navy-surface border-2 border-gold/60 p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gold text-navy font-bold text-[10px] tracking-widest uppercase px-4 py-1 rounded-bl-xl">
+                        Annualized Projection
+                    </div>
+
+                    <h3 class="serif-heading text-xl font-bold text-cream mb-6">Your Net Annual Owner Payout</h3>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center py-2 border-b border-navy-light/40">
+                            <span class="text-xs text-cream/60">Traditional Property Manager:</span>
+                            <span id="legacyAnnualPayout" class="font-mono font-bold text-cream/80">$72,360 / yr</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-gold/30 bg-gold/5 px-2 rounded-lg">
+                            <span class="text-xs font-semibold text-gold">A Better BNB Model:</span>
+                            <span id="abbAnnualPayout" class="font-mono font-bold text-2xl text-gold-light">$96,768 / yr</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-dark/90 p-4 rounded-xl border border-emerald-500/40 mb-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wide">Estimated Annual Gain</span>
+                            <span id="annualDifference" class="font-mono font-bold text-emerald-400 text-xl">+$24,408 / yr</span>
+                        </div>
+                        <p class="text-[11px] text-cream/60 mt-1">
+                            Achieved via direct re-booking rails, 3-5% agentic OTA takes, and dynamic RevPAR yield optimization.
+                        </p>
+                    </div>
+
+                    <a href="#contact" class="block w-full py-3.5 text-center rounded-xl bg-gold hover:bg-gold-light text-navy font-bold text-xs uppercase tracking-widest transition shadow-lg">
+                        Claim Your Property Audit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE AGENTIC ADVANTAGE SECTION -->
+    <section id="agentic" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-bold uppercase tracking-wider mb-4">
+                The Next Generation of Booking
+            </div>
+            <h2 class="serif-heading text-3xl sm:text-4xl font-bold text-cream mb-4">
+                Why Relying Solely on Airbnb is Costing You Tens of Thousands.
+            </h2>
+            <p class="text-cream/70 text-sm sm:text-base leading-relaxed">
+                The lodging industry is rapidly bifurcating. Traditional guests still use Airbnb, but high-value travelers, executive travel coordinators, and enterprise bookers are shifting to autonomous AI booking agents. We capture both.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-panel p-6 rounded-2xl border border-navy-light/80">
+                <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center text-gold font-bold mb-4">1S</div>
+                <h3 class="text-base font-bold text-cream mb-2">1Stay / Stayker</h3>
+                <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                    MCP-native AI booker discovery. When travelers prompt ChatGPT, Claude, or Gemini to find curated East Bay lodging, our units are surfaced natively with instant direct booking.
+                </p>
+                <div class="text-[11px] font-mono text-emerald-400 font-semibold">Commission: 3% &bull; Zero OTA markup</div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border border-navy-light/80">
+                <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center text-gold font-bold mb-4">DF</div>
+                <h3 class="text-base font-bold text-cream mb-2">Duffel Stays API</h3>
+                <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                    Global travel distribution engine connecting directly into fintech corporate expense programs (Brex, Ramp) and enterprise business travel management portals.
+                </p>
+                <div class="text-[11px] font-mono text-emerald-400 font-semibold">Commission: 5% &bull; High-budget corporate</div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border border-navy-light/80">
+                <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center text-gold font-bold mb-4">GV</div>
+                <h3 class="text-base font-bold text-cream mb-2">Google Vacation Rentals</h3>
+                <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                    Zero-commission direct listing sync inside Google Maps and Google Search results, driving travelers straight to direct booking without platform middleman cuts.
+                </p>
+                <div class="text-[11px] font-mono text-emerald-400 font-semibold">Commission: 0% Direct &bull; Max RevPAR</div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border border-navy-light/80">
+                <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center text-gold font-bold mb-4">RE</div>
+                <h3 class="text-base font-bold text-cream mb-2">Direct Re-Booking Rails</h3>
+                <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                    Proprietary in-stay micro-gateways provide seamless Wi-Fi onboarding while seamlessly converting OTA guests into direct bookers for their subsequent stays.
+                </p>
+                <div class="text-[11px] font-mono text-emerald-400 font-semibold">Repeat Guest Capture: 100% Direct</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE CO-HOST GATEWAY WEDGE -->
+    <section id="cohost-wedge" class="py-20 bg-navy-card/40 border-t border-b border-navy-light/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy border border-gold/40 text-gold text-xs font-semibold mb-4">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        <span>Partner Program for Operators</span>
+                    </div>
+                    <h2 class="serif-heading text-3xl sm:text-4xl font-bold text-cream mb-4">
+                        Already Have a Local Co-Host? Plug Them into Our Agentic Distribution Gateway.
+                    </h2>
+                    <p class="text-sm sm:text-base text-cream/75 leading-relaxed mb-6">
+                        We don't believe in scorched-earth competition. If you have a trusted friend, cleaner, or on-site co-host handling physical operations, we don't replace them. Instead, we act as their exclusive <strong class="text-gold">Autonomous Agentic Distribution Gateway</strong> for a modest 10% gross fee.
+                    </p>
+
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span class="text-xs sm:text-sm text-cream/80"><strong>Higher Net Margin:</strong> Airbnb takes 15.5% to 17.2%. Our agentic channels charge only 3-5%. Even after our 10% gateway fee, the co-host and owner net more cash.</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span class="text-xs sm:text-sm text-cream/80"><strong>Zero Physical Burden:</strong> Your local co-host keeps all physical keys, walkthroughs, and cleaner coordination while we syndicate calendar feeds and dispatch via preSetr/reSetr.</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span class="text-xs sm:text-sm text-cream/80"><strong>Instant Sync:</strong> 2-way iCal live bridging prevents double bookings with zero complex PMS migration.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 glass-panel p-8 rounded-2xl border border-gold/40">
+                    <div class="text-center mb-6">
+                        <span class="text-xs uppercase tracking-widest text-gold font-bold">The 10% Gateway Split</span>
+                        <div class="text-4xl font-bold text-cream font-mono mt-2">10% Flat</div>
+                        <div class="text-xs text-cream/60 mt-1">Per completed agentic booking &bull; Zero monthly SaaS</div>
+                    </div>
+
+                    <div class="space-y-3 text-xs text-cream/80 mb-6">
+                        <div class="flex justify-between py-2 border-b border-navy-light/40">
+                            <span>1Stay / Stayker Distribution</span>
+                            <span class="text-emerald-400 font-bold">Included</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-navy-light/40">
+                            <span>Duffel Corporate Network</span>
+                            <span class="text-emerald-400 font-bold">Included</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-navy-light/40">
+                            <span>Google Vacation Rentals Direct</span>
+                            <span class="text-emerald-400 font-bold">Included</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-navy-light/40">
+                            <span>preSetr Automated Schedule Feeds</span>
+                            <span class="text-emerald-400 font-bold">Included</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="block w-full py-3 text-center rounded-xl bg-gold hover:bg-gold-light text-navy font-bold text-xs uppercase tracking-widest transition shadow-lg">
+                        Inquire as Operator / Co-Host
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10-PROPERTY PORTFOLIO SHOWCASE -->
+    <section id="portfolio" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-bold uppercase tracking-wider mb-4">
+                Live Operational Proof
+            </div>
+            <h2 class="serif-heading text-3xl sm:text-4xl font-bold text-cream mb-4">
+                Managed with Precision Across the Bay Area.
+            </h2>
+            <p class="text-cream/70 text-sm sm:text-base leading-relaxed">
+                A small sampling of our portfolio properties actively running our proprietary preSetr turnover engine, UniFi isolated network gateways, and agentic distribution rails.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="glass-panel rounded-2xl overflow-hidden glass-panel-hover flex flex-col">
+                <div class="h-48 bg-gradient-to-tr from-navy-card via-navy-light to-gold/20 relative flex items-center justify-center p-6 text-center">
+                    <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                        Superhost &bull; 4.96 ★
+                    </div>
+                    <i data-lucide="home" class="w-12 h-12 text-gold/60"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="text-[11px] font-mono text-gold uppercase tracking-wider mb-1">Berkeley Foothills</div>
+                        <h3 class="text-lg font-bold text-cream mb-2">Panoramic Bay View Studio Retreat</h3>
+                        <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                            Private studio with sweeping Golden Gate Bridge views, dedicated workspace, 1 Gbps fiber Wi-Fi, and automated keypad access.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-navy-light/60 flex items-center justify-between text-xs">
+                        <span class="text-cream/60">Turn Window: 11am - 3pm</span>
+                        <span class="text-gold font-bold">Live Synced</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-panel rounded-2xl overflow-hidden glass-panel-hover flex flex-col">
+                <div class="h-48 bg-gradient-to-tr from-navy-card via-navy-light to-gold/20 relative flex items-center justify-center p-6 text-center">
+                    <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                        Superhost &bull; 4.98 ★
+                    </div>
+                    <i data-lucide="castle" class="w-12 h-12 text-gold/60"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="text-[11px] font-mono text-gold uppercase tracking-wider mb-1">Oakland Hills</div>
+                        <h3 class="text-lg font-bold text-cream mb-2">Secluded Redwood Estate & Main Home</h3>
+                        <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                            Multi-bedroom executive sanctuary surrounded by redwoods. Dual-zone smart climate control, EV charging, and private chef kitchen.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-navy-light/60 flex items-center justify-between text-xs">
+                        <span class="text-cream/60">Turn Window: 11am - 3pm</span>
+                        <span class="text-gold font-bold">Live Synced</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-panel rounded-2xl overflow-hidden glass-panel-hover flex flex-col">
+                <div class="h-48 bg-gradient-to-tr from-navy-card via-navy-light to-gold/20 relative flex items-center justify-center p-6 text-center">
+                    <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                        Superhost &bull; 4.94 ★
+                    </div>
+                    <i data-lucide="layers" class="w-12 h-12 text-gold/60"></i>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="text-[11px] font-mono text-gold uppercase tracking-wider mb-1">Berkeley Flats</div>
+                        <h3 class="text-lg font-bold text-cream mb-2">Architectural Garden ADU Oasis</h3>
+                        <p class="text-xs text-cream/70 leading-relaxed mb-4">
+                            High-ceiling detached modern ADU with private landscaped courtyard, custom soundproofing, and seamless contact-free arrival.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-navy-light/60 flex items-center justify-between text-xs">
+                        <span class="text-cream/60">Turn Window: 11am - 3pm</span>
+                        <span class="text-gold font-bold">Live Synced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HARDWARE & PROPERTY PROTECTION STANDARDS -->
+    <section id="standards" class="py-20 bg-navy-dark/90 border-t border-navy-light/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="serif-heading text-3xl sm:text-4xl font-bold text-cream mb-4">
+                    10+ Years of Asset Stewardship: Zero Compromise.
+                </h2>
+                <p class="text-cream/70 text-sm sm:text-base leading-relaxed">
+                    We protect your real estate as if it were our own. We recommend and standardize on battle-tested commercial hardware installed at owner direction with 24/7 cloud health verification.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center text-gold mb-6">
+                        <i data-lucide="key-round" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cream mb-3">Schlage Encode Smart Locks</h3>
+                    <p class="text-xs sm:text-sm text-cream/70 leading-relaxed mb-4">
+                        Never share a physical key again. Our software issues unique, time-bounded 4-digit codes that activate precisely at 3:00 PM check-in and revoke automatically at 11:00 AM check-out.
+                    </p>
+                    <div class="text-[11px] font-semibold text-gold">&bull; Cleaners receive dedicated rolling PINs</div>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center text-gold mb-6">
+                        <i data-lucide="wifi" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cream mb-3">UniFi Isolated VLAN Micro-Gateways</h3>
+                    <p class="text-xs sm:text-sm text-cream/70 leading-relaxed mb-4">
+                        We reject vulnerable consumer routers. UniFi gateways isolate guest traffic on an independent subnet (VLAN 20), locking your smart TVs, thermostats, and locks away from guest access.
+                    </p>
+                    <div class="text-[11px] font-semibold text-gold">&bull; Client isolation & 100% captive safety</div>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center text-gold mb-6">
+                        <i data-lucide="volume-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-cream mb-3">Minut Decibel & Smoke Sensor</h3>
+                    <p class="text-xs sm:text-sm text-cream/70 leading-relaxed mb-4">
+                        100% privacy-compliant noise monitoring. Zero audio recording or cameras inside the home. Real-time alerts if sustained decibels exceed neighbor-friendly thresholds.
+                    </p>
+                    <div class="text-[11px] font-semibold text-gold">&bull; Immediate automated guest text warning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OWNER INTAKE & VALUATION AUDIT FORM -->
+    <section id="contact" class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border-2 border-gold/50 shadow-2xl relative">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold text-gold tracking-widest uppercase">Get Started Today</span>
+                <h2 class="serif-heading text-3xl sm:text-4xl font-bold text-cream mt-2 mb-3">
+                    Request Your Confidential Property Revenue Audit
+                </h2>
+                <p class="text-xs sm:text-sm text-cream/70">
+                    Receive a comprehensive, data-driven yield analysis and an agentic distribution proposal within 24 business hours.
+                </p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Thank you! Your property yield audit request has been transmitted to Justin and the A Better BNB team.');" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Property Address / Area</label>
+                        <input type="text" required placeholder="e.g. 1244 Spruce St, Berkeley, CA" class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Bedrooms & Bathrooms</label>
+                        <input type="text" required placeholder="e.g. 2 Bed / 1 Bath Studio" class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Current Property Status</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream focus:border-gold focus:outline-none text-sm">
+                            <option>Active on Airbnb / VRBO (Looking to Optimize)</option>
+                            <option>Long-Term Rental (Transitioning to STR)</option>
+                            <option>New Purchase / Investment Property</option>
+                            <option>Existing Co-Host / Operator seeking Distribution Gateway</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Target Monthly Revenue</label>
+                        <input type="text" placeholder="e.g. $8,000 - $12,000 / mo" class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Your Name</label>
+                        <input type="text" required placeholder="Justin S." class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Email Address</label>
+                        <input type="email" required placeholder="owner@domain.com" class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Phone Number</label>
+                        <input type="tel" required placeholder="(510) 555-0199" class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-cream/80 mb-2">Additional Notes or Existing Listing Link</label>
+                    <textarea rows="3" placeholder="Tell us about your property goals, current headaches, or share your Airbnb listing link..." class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-navy-light text-cream placeholder-cream/30 focus:border-gold focus:outline-none text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold to-gold-light hover:from-gold-light hover:to-gold text-navy font-bold text-sm uppercase tracking-widest transition shadow-xl shadow-gold/25">
+                    Submit for Confidential Revenue Audit
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark border-t border-navy-light/40 py-12 text-xs text-cream/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+                <span class="serif-heading text-lg font-bold text-cream">A Better BNB</span>
+                <p class="text-cream/40 mt-1">Elite Short-Term Rental Co-Hosting & Agentic Distribution &bull; San Francisco & East Bay</p>
+                <p class="text-cream/30 mt-1 text-[11px]">All operations powered by proprietary preSetr & reSetr engines. Commercial rails via SF Fire FCU & Ramp.</p>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="#calculator" class="hover:text-gold transition">Yield Analysis</a>
+                <a href="#agentic" class="hover:text-gold transition">Agentic OTA</a>
+                <a href="#cohost-wedge" class="hover:text-gold transition">Co-Host Gateway</a>
+                <a href="#standards" class="hover:text-gold transition">Security Standards</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-navy-light/20 text-center text-[11px] text-cream/40">
+            &copy; 2026 A Better BNB LLC. All rights reserved. Strictly confidential owner-facing documentation.
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPT -->
+    <script>
+        lucide.createIcons();
+
+        // Calculator Logic
+        const grossSlider = document.getElementById('grossSlider');
+        const feeSlider = document.getElementById('feeSlider');
+        const grossValDisplay = document.getElementById('grossValDisplay');
+        const feeValDisplay = document.getElementById('feeValDisplay');
+        const legacyAnnualPayout = document.getElementById('legacyAnnualPayout');
+        const abbAnnualPayout = document.getElementById('abbAnnualPayout');
+        const annualDifference = document.getElementById('annualDifference');
+
+        function updateCalculator() {
+            const gross = parseFloat(grossSlider.value);
+            const legacyFeePct = parseFloat(feeSlider.value) / 100;
+            const otaFeePct = 0.155; // 15.5% Airbnb take
+            const abbRevParLift = 1.12; // 12% RevPAR lift from dynamic yield + agentic capture
+            const abbAgenticFeePct = 0.20; // 20% transparent co-host fee
+            const abbBlendedOtaPct = 0.05; // 5% blended take via direct/agentic
+
+            // Format gross
+            grossValDisplay.textContent = '$' + gross.toLocaleString() + ' / mo';
+            feeValDisplay.textContent = Math.round(legacyFeePct * 100) + '%';
+
+            // Traditional Annual Payout:
+            // Net = Gross * (1 - OTA Take) * (1 - Legacy Fee) * 12
+            const legacyAnnual = (gross * (1 - otaFeePct) * (1 - legacyFeePct)) * 12;
+
+            // A Better BNB Annual Payout:
+            // Lifted Gross = gross * 1.12
+            // Net = Lifted Gross * (1 - abbBlendedOtaPct) * (1 - abbAgenticFeePct) * 12
+            const abbAnnual = (gross * abbRevParLift * (1 - abbBlendedOtaPct) * (1 - abbAgenticFeePct)) * 12;
+            const diff = abbAnnual - legacyAnnual;
+
+            legacyAnnualPayout.textContent = '$' + Math.round(legacyAnnual).toLocaleString() + ' / yr';
+            abbAnnualPayout.textContent = '$' + Math.round(abbAnnual).toLocaleString() + ' / yr';
+            annualDifference.textContent = '+$' + Math.round(diff).toLocaleString() + ' / yr';
+        }
+
+        grossSlider.addEventListener('input', updateCalculator);
+        feeSlider.addEventListener('input', updateCalculator);
+        updateCalculator();
+    </script>
+</body>
+</html>

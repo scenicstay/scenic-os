@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scenic Stay: Navy vs Purple Brand Color Comparison</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #020A14;
+      color: #E2E8F0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 40px 24px;
+      line-height: 1.6;
+    }
+    .container { max-width: 1240px; margin: 0 auto; }
+    header {
+      border-bottom: 1px solid rgba(255, 174, 38, 0.25);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 174, 38, 0.15);
+      color: #FFAE26;
+      border: 1px solid rgba(255, 174, 38, 0.4);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      color: #FFFFFF;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .subtitle { color: #94A3B8; font-size: 15px; }
+
+    /* Interactive Switcher */
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .btn-toggle {
+      background: #0F172A;
+      color: #94A3B8;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-toggle:hover {
+      background: #1E293B;
+      color: #FFFFFF;
+    }
+    .btn-toggle.active {
+      background: rgba(255, 174, 38, 0.15);
+      color: #FFAE26;
+      border-color: #FFAE26;
+      box-shadow: 0 0 16px rgba(255, 174, 38, 0.2);
+    }
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Live Display */
+    .preview-card {
+      background: #060E18;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 36px;
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .preview-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .preview-meta {
+      font-size: 13px;
+      font-family: monospace;
+      color: #FFAE26;
+      background: rgba(255, 174, 38, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 174, 38, 0.25);
+    }
+    .banner-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+      display: block;
+    }
+
+    /* Mobile Venmo Simulation */
+    .venmo-sim-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .venmo-phone {
+      width: 380px;
+      background: #000000;
+      border: 2px solid #334155;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+    .phone-notch {
+      height: 24px;
+      background: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .notch-bar { width: 100px; height: 4px; background: #1E293B; border-radius: 2px; }
+    .venmo-banner-sim {
+      width: 100%;
+      height: 126px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .venmo-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 3px solid #000000;
+      position: absolute;
+      bottom: -34px;
+      left: 20px;
+      background: #06121E;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .venmo-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .venmo-body {
+      padding: 44px 20px 24px 20px;
+      background: #090E17;
+    }
+    .venmo-name { font-size: 17px; font-weight: 700; color: #FFFFFF; }
+    .venmo-handle { font-size: 13px; color: #008CFF; margin-bottom: 12px; }
+    .venmo-badge-cat {
+      display: inline-block;
+      font-size: 11px;
+      background: rgba(255,255,255,0.08);
+      color: #94A3B8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .venmo-bio {
+      font-size: 12px;
+      color: #CBD5E1;
+      line-height: 1.5;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
+    }
+
+    /* Comparison Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 36px;
+    }
+    @media(max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+    .card {
+      background: #060E18;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .card-desc { font-size: 13px; color: #94A3B8; margin-bottom: 14px; }
+    .card-img { width: 100%; border-radius: 6px; display: block; border: 1px solid rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Brand Color Exploration</div>
+      <h1>Scenic Stay: Background Color Comparison</h1>
+      <p class="subtitle">Evaluating the classic Deep Midnight Navy against the Sunset Sky Purples before updating permanent brand standards.</p>
+    </header>
+
+    
+    <div class="controls">
+      <button class="btn-toggle active" onclick="switchColor('navy', this)">
+        <span class="dot" style="background:#06121E;"></span>
+        1. Deep Midnight Navy (#06121E)
+      </button>
+      <button class="btn-toggle" onclick="switchColor('deep_plum', this)">
+        <span class="dot" style="background:#180820;"></span>
+        2. Deep Midnight Plum (#180820)
+      </button>
+      <button class="btn-toggle" onclick="switchColor('royal_aubergine', this)">
+        <span class="dot" style="background:#220C30;"></span>
+        3. Royal Aubergine (#220C30)
+      </button>
+      <button class="btn-toggle" onclick="switchColor('twilight_violet', this)">
+        <span class="dot" style="background:#140C2A;"></span>
+        4. Twilight Indigo-Violet (#140C2A)
+      </button>
+    </div>
+
+    
+    <div class="preview-card">
+      <div class="preview-header">
+        <div>
+          <div class="preview-title" id="active-title">Option 1: Deep Midnight Navy</div>
+          <p class="subtitle" id="active-desc" style="font-size:13px; margin-top:4px;">The timeless corporate luxury standard. High contrast, authoritative, elegant.</p>
+        </div>
+        <div class="preview-meta" id="active-hex">RGB: (6, 18, 30) | Hex: #06121E</div>
+      </div>
+      <img src="test_banner_navy.jpg" id="active-banner-img" class="banner-img" alt="Banner Preview">
+    </div>
+
+    
+    <div class="preview-card">
+      <div class="preview-header">
+        <div class="preview-title">Venmo Mobile App Profile Simulation</div>
+        <div class="preview-meta">Live UI Preview (@scenicstay)</div>
+      </div>
+      <p class="subtitle" style="font-size:13px; margin-bottom:16px;">How your profile banner appears behind your avatar and business bio on iOS/Android devices:</p>
+      
+      <div class="venmo-sim-wrap">
+        <div class="venmo-phone">
+          <div class="phone-notch"><div class="notch-bar"></div></div>
+          <div class="venmo-banner-sim" id="sim-banner" style="background-image: url('test_banner_navy.jpg');">
+            <div class="venmo-avatar">
+              <img src="scenic_stay_canonical_emblem.png" alt="Avatar">
+            </div>
+          </div>
+          <div class="venmo-body">
+            <div class="venmo-name">Scenic Stay</div>
+            <div class="venmo-handle">@scenicstay</div>
+            <div class="venmo-badge-cat">Lodging: Hotels & Central Reservations</div>
+            <div class="venmo-bio">
+              Short-term rental and boutique hotel hospitality. We co-host for property owners with full booking management and guest support at abetterbnb.com.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <h2 style="font-size:20px; font-weight:700; color:#FFAE26; margin-bottom:16px;">Side-by-Side Static Evaluation</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Option 1: Deep Midnight Navy (#06121E)</div>
+        <div class="card-desc">The baseline luxury standard. Very crisp white text, traditional maritime authority.</div>
+        <img class="card-img" src="test_banner_navy.jpg" alt="Navy">
+      </div>
+      <div class="card">
+        <div class="card-title">Option 2: Deep Midnight Plum (#180820)</div>
+        <div class="card-desc">Subtle velvet undertone. The complementary purple depth makes the gold tree glow 3x warmer.</div>
+        <img class="card-img" src="test_banner_deep_plum.jpg" alt="Deep Plum">
+      </div>
+      <div class="card">
+        <div class="card-title">Option 3: Royal Aubergine (#220C30)</div>
+        <div class="card-desc">Directly echoes the twilight sunset sky in the logo illustration. Distinctive boutique hospitality.</div>
+        <img class="card-img" src="test_banner_royal_aubergine.jpg" alt="Royal Aubergine">
+      </div>
+      <div class="card">
+        <div class="card-title">Option 4: Twilight Indigo-Violet (#140C2A)</div>
+        <div class="card-desc">The bridge between navy and purple. Keeps navy depth with an evening violet wavelength.</div>
+        <img class="card-img" src="test_banner_twilight_violet.jpg" alt="Twilight Violet">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      navy: {
+        title: 'Option 1: Deep Midnight Navy',
+        desc: 'The timeless corporate luxury standard. High contrast, authoritative, elegant.',
+        hex: 'RGB: (6, 18, 30) | Hex: #06121E',
+        img: 'test_banner_navy.jpg'
+      },
+      deep_plum: {
+        title: 'Option 2: Deep Midnight Plum',
+        desc: 'Subtle velvet darkness. Reads almost as deep black-plum, giving the California sunset gold maximum luminescence.',
+        hex: 'RGB: (24, 8, 32) | Hex: #180820',
+        img: 'test_banner_deep_plum.jpg'
+      },
+      royal_aubergine: {
+        title: 'Option 3: Royal Aubergine',
+        desc: 'Vibrant sunset atmosphere. Directly samples the upper twilight sky from the Berkeley Hills master mark.',
+        hex: 'RGB: (34, 12, 48) | Hex: #220C30',
+        img: 'test_banner_royal_aubergine.jpg'
+      },
+      twilight_violet: {
+        title: 'Option 4: Twilight Indigo-Violet',
+        desc: 'The harmonic balance. Retains the blue anchor of navy while adopting the rich violet twilight spectrum.',
+        hex: 'RGB: (20, 12, 42) | Hex: #140C2A',
+        img: 'test_banner_twilight_violet.jpg'
+      }
+    };
+
+    function switchColor(key, btn) {
+      document.querySelectorAll('.btn-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const item = data[key];
+      document.getElementById('active-title').innerText = item.title;
+      document.getElementById('active-desc').innerText = item.desc;
+      document.getElementById('active-hex').innerText = item.hex;
+      document.getElementById('active-banner-img').src = item.img;
+      document.getElementById('sim-banner').style.backgroundImage = 'url(' + item.img + ')';
+    }
+  </script>
+</body>
+</html>

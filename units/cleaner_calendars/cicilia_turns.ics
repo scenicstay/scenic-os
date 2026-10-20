@@ -1,0 +1,226 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:A Better BNB reSeTR Turnover Calendar Cicilia Barbosa EN
+X-WR-CALNAME:reSeTR Turns (Cicilia Barbosa)
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2026-10-18@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261018T180000Z
+DTEND:20261018T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2026-10-18 (PRIORIDADE 1: Novo hospede entra hoje mesmo as 5:00 PM). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2026-10-18
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-002_2026-10-18@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261018T180000Z
+DTEND:20261018T240000Z
+SUMMARY:Flexible Cleaning: 5540 Estates Dr (5-BR Entire Home)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 5540 Estates Dr (5-BR Entire Home) em 2026-10-18 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2026-11-21). Horario: 11:00 AM as 5:00 PM. Endereco: 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618. Como entrar: Entrada principal pela garagem e nivel inferior. Digite a senha de limpeza no teclado inteligente da porta da frente.
+LOCATION:5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618 on 2026-10-18
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2026-10-21@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261021T180000Z
+DTEND:20261021T240000Z
+SUMMARY:Flexible Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2026-10-21 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2026-10-23). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2026-10-21
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2026-10-25@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261025T180000Z
+DTEND:20261025T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2026-10-25 (PRIORIDADE 1: Novo hospede entra hoje mesmo as 5:00 PM). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2026-10-25
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2026-11-01@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261101T180000Z
+DTEND:20261101T240000Z
+SUMMARY:Flexible Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2026-11-01 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2026-11-19). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2026-11-01
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2026-11-22@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261122T180000Z
+DTEND:20261122T240000Z
+SUMMARY:Flexible Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2026-11-22 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2026-11-25). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2026-11-22
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-003_2026-11-27@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261127T180000Z
+DTEND:20261127T240000Z
+SUMMARY:Flexible Cleaning: 5540 Estates Dr (3-BR Upstairs Unit)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 5540 Estates Dr (3-BR Upstairs Unit) em 2026-11-27 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2026-12-23). Horario: 11:00 AM as 5:00 PM. Endereco: 5540 Estates Dr (3-BR Upstairs Unit), Oakland, CA 94618. Como entrar: Escada frontal ate a porta de entrada principal superior. Digite a senha de limpeza no teclado inteligente da porta superior.
+LOCATION:5540 Estates Dr (3-BR Upstairs Unit), Oakland, CA 94618
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 5540 Estates Dr (3-BR Upstairs Unit), Oakland, CA 94618 on 2026-11-27
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 5540 Estates Dr (3-BR Upstairs Unit), Oakland, CA 94618
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2026-11-30@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261130T180000Z
+DTEND:20261130T240000Z
+SUMMARY:Flexible Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2026-11-30 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2027-04-02). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2026-11-30
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-002_2026-12-28@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20261228T180000Z
+DTEND:20261228T240000Z
+SUMMARY:Flexible Cleaning: 5540 Estates Dr (5-BR Entire Home)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 5540 Estates Dr (5-BR Entire Home) em 2026-12-28 (Limpeza Flexivel: Sem check-in hoje; proximo hospede entra em 2027-05-13). Horario: 11:00 AM as 5:00 PM. Endereco: 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618. Como entrar: Entrada principal pela garagem e nivel inferior. Digite a senha de limpeza no teclado inteligente da porta da frente.
+LOCATION:5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618 on 2026-12-28
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-001_2027-04-05@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20270405T180000Z
+DTEND:20270405T240000Z
+SUMMARY:Flexible Cleaning: 1023 32nd St (Private Level)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 1023 32nd St (Private Level) em 2027-04-05 (Limpeza Flexivel: Sem check-in no mesmo dia). Horario: 11:00 AM as 5:00 PM. Endereco: 1023 32nd St, Oakland, CA 94608. Como entrar: Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.
+LOCATION:1023 32nd St, Oakland, CA 94608
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1023 32nd St, Oakland, CA 94608 on 2027-04-05
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1023 32nd St, Oakland, CA 94608
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_OAK-HOM-002_2027-05-17@abetterbnb.com
+DTSTAMP:20261018T013327Z
+SEQUENCE:6
+DTSTART:20270517T180000Z
+DTEND:20270517T240000Z
+SUMMARY:Flexible Cleaning: 5540 Estates Dr (5-BR Entire Home)
+DESCRIPTION:Aviso de Limpeza: Ola Cicilia Barbosa, limpeza agendada para 5540 Estates Dr (5-BR Entire Home) em 2027-05-17 (Limpeza Flexivel: Sem check-in no mesmo dia). Horario: 11:00 AM as 5:00 PM. Endereco: 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618. Como entrar: Entrada principal pela garagem e nivel inferior. Digite a senha de limpeza no teclado inteligente da porta da frente.
+LOCATION:5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618 on 2027-05-17
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>preSeTR &amp; reSeTR Command: Advance Cleaner Schedule, Interactive Room-by-Room Turnover QA &amp; Partner Roster | Scenic Stay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0b1320;
+      color: #e2e8f0;
+    }
+    h1, h2, h3, .serif-font {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+    .card-glass { background: #131d2e; border: 1px solid #1e2d42; }
+    .card-glass:hover { border-color: #334155; }
+    .input-dark {
+      background-color: #0d1524;
+      border: 1px solid #1e2d42;
+      color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .input-dark:focus {
+      outline: none;
+      border-color: #f59e0b;
+    }
+    .tab-btn-active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(16, 185, 129, 0.16));
+      border-color: #f59e0b;
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15);
+    }
+    .tab-btn-inactive {
+      background: #0d1524;
+      border-color: #1e2d42;
+      color: #94a3b8;
+    }
+    .tab-btn-inactive:hover {
+      border-color: #475569;
+      color: #f8fafc;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
+
+  <div class="max-w-7xl mx-auto w-full space-y-6">
+
+    <header class="card-glass rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-amber-500">
+      <div class="flex items-center space-x-3.5">
+        <div class="h-12 w-12 bg-[#00162F] rounded-xl flex items-center justify-center border border-amber-500/50 shadow-inner flex-shrink-0 text-amber-400 text-2xl ring-1 ring-amber-500/20">
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </div>
+        <div>
+          <h1 class="text-xl md:text-2xl font-bold tracking-wide serif-font">
+            <span class="text-sky-400">pre</span><span class="text-amber-400 font-bold">S</span><span class="text-white">e</span><span class="text-amber-400 font-bold">TR</span>
+            <span class="text-slate-500 font-sans text-base mx-1">+</span>
+            <span class="text-white">re</span><span class="text-amber-400 font-bold">S</span><span class="text-white">e</span><span class="text-amber-400 font-bold">TR</span>
+            <span class="text-white">Field Operations Command</span>
+          </h1>
+          <div class="mt-1 flex flex-wrap items-center gap-2">
+            <span class="text-[11px] text-amber-300 font-sans tracking-widest uppercase px-2.5 py-0.5 rounded bg-amber-950/70 border border-amber-700/80 font-bold">14-Day &amp; 48-Hr Advance Cleaner Radar</span>
+            <span class="text-[11px] text-emerald-300 font-sans tracking-widest uppercase px-2.5 py-0.5 rounded bg-emerald-950/70 border border-emerald-700/80 font-bold">Room-by-Room Photo QA &amp; Early Check-In Release</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-1.5 font-sans">Live Airbnb .ics Advance Dispatch &bull; Priority Back-to-Back vs. Flexible Window Routing &bull; Separate Cleaner Service Access vs. Guest Arrival &bull; Next-Day Payouts</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <button onclick="launchAgreementGenerator()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow-lg flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-file-signature"></i> Generate Agreement
+        </button>
+        <button onclick="openVendorTransitionModal()" class="px-3.5 py-2 bg-rose-950/80 hover:bg-rose-900 text-rose-300 font-semibold rounded-xl border border-rose-500/40 flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-arrows-rotate"></i> Vendor Transition
+        </button>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <button type="button" id="tab-btn-presetr" onclick="switchCommandTab('presetr')" class="tab-btn-active border-2 rounded-2xl p-4 text-left transition cursor-pointer flex items-start gap-3.5">
+        <div class="h-10 w-10 rounded-xl bg-amber-500/20 border border-amber-400/50 text-amber-300 flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+          <i class="fa-solid fa-bell"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-rose-600 text-white font-bold">TAB 1 &bull; PRIORITY LIVE</span>
+            <span class="text-[11px] font-mono text-amber-300">preSeTR Radar</span>
+          </div>
+          <div class="font-bold text-sm text-white mt-1">1. preSeTR: Urgent Cleaner Advance-Notice &amp; Live Schedule Radar</div>
+          <p class="text-[11px] text-slate-300 mt-0.5">Oakland Primary Partner Barbosa Oakland Lifeline (Oct 18 Double-Header + 6-Wk Lookahead), WhatsApp PT-BR 1-Click Dispatch &amp; Portfolio Queue</p>
+        </div>
+      </button>
+
+      <button type="button" id="tab-btn-resetr" onclick="switchCommandTab('resetr')" class="tab-btn-inactive border-2 rounded-2xl p-4 text-left transition cursor-pointer flex items-start gap-3.5">
+        <div class="h-10 w-10 rounded-xl bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+          <i class="fa-solid fa-camera-retro"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold">TAB 2 &bull; PROD VIEW</span>
+            <span class="text-[11px] font-mono text-emerald-400">reSeTR Console</span>
+          </div>
+          <div class="font-bold text-sm text-white mt-1">2. reSeTR: Room-by-Room Turnover Checklist &amp; Two-Phase Photo QA</div>
+          <p class="text-[11px] text-slate-300 mt-0.5"><code class="text-emerald-300">resetr.abetterbnb.com/&lt;slug&gt;</code> Routing, Off-White 3-Par Linen Protocol, Property Supplies Restock &amp; Preferred Payout Method Payout Release</p>
+        </div>
+      </button>
+
+      <button type="button" id="tab-btn-roster" onclick="switchCommandTab('roster')" class="tab-btn-inactive border-2 rounded-2xl p-4 text-left transition cursor-pointer flex items-start gap-3.5">
+        <div class="h-10 w-10 rounded-xl bg-sky-500/20 border border-sky-400/50 text-sky-300 flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+          <i class="fa-solid fa-users-gear"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 font-bold">TAB 3 &bull; ADMIN &amp; SLA</span>
+            <span class="text-[11px] font-mono text-sky-400">Partner Roster</span>
+          </div>
+          <div class="font-bold text-sm text-white mt-1">3. Partner Roster, Timely Partner Payout &amp; Preferred Payout Method Rails</div>
+          <p class="text-[11px] text-slate-300 mt-0.5">Dedicated Cleaning Payout Account Zelle + Partner Payouts, Zero Tax-Form Friction for Cleaners, Unit Rate Matrix &amp; SLA Generator</p>
+        </div>
+      </button>
+    </div>
+
+    <div id="panel-presetr" class="space-y-6">
+
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-amber-950/60 via-[#131d2e] to-rose-950/40 border-2 border-amber-500/80 shadow-2xl space-y-5">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-amber-500/30 pb-4">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white font-extrabold text-[11px] uppercase tracking-wider animate-pulse">
+                <i class="fa-solid fa-triangle-exclamation mr-1"></i> URGENT PRIORITY DISPATCH
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 font-mono text-[11px] font-bold">
+                CICILIA BARBOSA ADVANCE-NOTICE LIFELINE (OAKLAND PORTFOLIO)
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 font-mono text-[11px]">
+                Português (BR) + English Ready
+              </span>
+            </div>
+            <h2 class="text-lg md:text-xl font-bold text-white serif-font pt-1">
+              Oakland Primary Partner Barbosa: Tomorrow's Oakland Double-Header (Sunday, Oct 18, 2026) &amp; 6-Week Verified Schedule
+            </h2>
+            <p class="text-xs text-slate-300">
+              Pulled directly from the live Airbnb <code class="text-amber-300 font-mono">.ics</code> feeds for <strong>1023 32nd St</strong> and <strong>5540 Estates Dr</strong>. Smart priority routing separates tomorrow's hard Back-to-Back turnover from tomorrow's flexible checkout so Oakland Primary Partner is never overwhelmed or notified late.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 flex-shrink-0">
+            <button type="button" onclick="copyOaklandPrimaryPartnerWhatsapp('pt')" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-lg flex items-center gap-2 transition cursor-pointer">
+              <i class="fa-brands fa-whatsapp text-base"></i> Copy / Send WhatsApp to Oakland Primary Partner (Português BR)
+            </button>
+            <button type="button" onclick="copyOaklandPrimaryPartnerWhatsapp('en')" class="px-3.5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg flex items-center gap-1.5 transition cursor-pointer">
+              <i class="fa-regular fa-copy"></i> Copy English Version
+            </button>
+            <button type="button" onclick="copyOaklandPrimaryPartnerIcsLink()" class="px-3.5 py-2.5 rounded-xl bg-sky-950 hover:bg-sky-900 text-sky-300 border border-sky-500/50 font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer">
+              <i class="fa-solid fa-calendar-check"></i> Copy Oakland Primary Partner's Auto-Sync .ics Link
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl bg-slate-950/90 border-2 border-rose-500/70 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-lg bg-rose-600/30 text-rose-300 border border-rose-500/60 font-extrabold text-[11px] uppercase tracking-wider">
+                <i class="fa-solid fa-bolt mr-1"></i> PRIORITY 1 (DO FIRST: SAME-DAY BACK-TO-BACK)
+              </span>
+              <span class="text-sm font-extrabold text-amber-400 font-mono">$160.00 Timely Partner Payout</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <h3 class="text-base font-bold text-white">1023 32nd St (Private Lower Level), Oakland</h3>
+              <span class="text-xs font-mono text-slate-400">OAK-HOM-001</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Outgoing Guest Checkout:</span>
+                <span class="text-white font-bold">Tomorrow, Sun Oct 18 &bull; 11:00 AM</span>
+              </div>
+              <div>
+                <span class="text-rose-300 block text-[10px] uppercase font-bold">Incoming Guest Check-In:</span>
+                <span class="text-rose-300 font-extrabold">Tomorrow, Sun Oct 18 &bull; 5:00 PM</span>
+              </div>
+            </div>
+            <div class="text-xs space-y-1.5 text-slate-300">
+              <div><strong class="text-amber-300">Hard Turnover Window:</strong> <strong>11:00 AM to 5:00 PM</strong> on Sunday, Oct 18. Complete this unit first so we can activate the incoming guest's smart lock code on time (or early!).</div>
+              <div><strong class="text-sky-300">Cleaner Service Access (Not Guest Info):</strong> Ground-level private entrance at 1023 32nd St. Enter Oakland Primary Partner's cleaner master PIN on the front keypad. Off-white room-matching linens (3 sets per bed + matching duvet covers), bath towels, and property supplies &amp; consumables restock inventory are in the hallway supply closet.</div>
+            </div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-[11px] text-emerald-400 font-mono"><i class="fa-solid fa-link mr-1"></i> Clean URL: resetr.abetterbnb.com/32ndstreet</span>
+              <button type="button" onclick="selectPropertySlug('32ndstreet', true)" class="px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold cursor-pointer transition">
+                Open /32ndstreet Checklist &rarr;
+              </button>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-950/90 border-2 border-emerald-500/60 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-600/30 text-emerald-300 border border-emerald-500/60 font-extrabold text-[11px] uppercase tracking-wider">
+                <i class="fa-solid fa-clock mr-1"></i> PRIORITY 2 (FLEXIBLE WINDOW: NO SAME-DAY CHECK-IN)
+              </span>
+              <span class="text-sm font-extrabold text-amber-400 font-mono">$200.00 Timely Partner Payout</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <h3 class="text-base font-bold text-white">5540 Estates Dr (5-BR Entire Home), Oakland</h3>
+              <span class="text-xs font-mono text-slate-400">OAK-HOM-002</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Outgoing Guest Checkout:</span>
+                <span class="text-white font-bold">Tomorrow, Sun Oct 18 &bull; 11:00 AM</span>
+              </div>
+              <div>
+                <span class="text-emerald-300 block text-[10px] uppercase font-bold">Next Guest Arrival:</span>
+                <span class="text-emerald-300 font-extrabold">No Check-In Oct 18 (Next: Nov 21)</span>
+              </div>
+            </div>
+            <div class="text-xs space-y-1.5 text-slate-300">
+              <div><strong class="text-emerald-300">Zero-Stress Flexible Scheduling:</strong> Because there is <strong>no incoming guest checking in tomorrow</strong> at 5540 Estates Dr, Oakland Primary Partner can finish <strong>1023 32nd St</strong> first and either start Estates Dr later Sunday afternoon or finish Estates Dr on <strong>Monday, Oct 19</strong>!</div>
+              <div><strong class="text-sky-300">Cleaner Service Access (Not Guest Info):</strong> Park in the driveway at 5540 Estates Dr; enter cleaner master PIN at both the lower garage entry and upper main front door. Linen backstock and vacuum are in the main utility closet.</div>
+            </div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-[11px] text-emerald-400 font-mono"><i class="fa-solid fa-check-double mr-1"></i> Verified from Airbnb .ics (UID: turn_OAK-HOM-002_2026-10-18)</span>
+              <button type="button" onclick="openTurnInResetr('OAK-HOM-002', 'pt-BR')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold cursor-pointer transition">
+                Open Estates 5-BR Checklist &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+          <div class="lg:col-span-7 bg-slate-950/90 border border-slate-800 rounded-2xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-2">
+                <i class="fa-solid fa-calendar-days"></i> Oakland Primary Partner's Complete 6-Week Verified Schedule (Oct 18 to Nov 30, 2026)
+              </span>
+              <span class="text-[10px] font-mono text-slate-400">7 Confirmed Oakland Turnovers &bull; $1,200 Total Scheduled</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-800 text-slate-400 text-[10px] uppercase">
+                    <th class="py-2 pr-2">Date</th>
+                    <th class="py-2 px-2">Property &amp; Unit</th>
+                    <th class="py-2 px-2">Turn Priority &amp; Window</th>
+                    <th class="py-2 px-2">Advance Status</th>
+                    <th class="py-2 pl-2 text-right">Rate</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/70">
+                  <tr class="bg-rose-950/20">
+                    <td class="py-2 pr-2 font-mono font-bold text-white">Sun, Oct 18</td>
+                    <td class="py-2 px-2 font-semibold text-white">1023 32nd St (OAK-HOM-001)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-rose-600/30 text-rose-300 border border-rose-500/50 font-bold text-[10px]">PRIORITY 1: SAME-DAY B2B (11am to 5pm)</span></td>
+                    <td class="py-2 px-2 text-amber-300 font-semibold">Send Today (T-24h Urgent)</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$160</td>
+                  </tr>
+                  <tr class="bg-emerald-950/20">
+                    <td class="py-2 pr-2 font-mono font-bold text-white">Sun, Oct 18</td>
+                    <td class="py-2 px-2 font-semibold text-white">5540 Estates Dr 5-BR (OAK-HOM-002)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-emerald-600/30 text-emerald-300 border border-emerald-500/50 font-bold text-[10px]">PRIORITY 2: FLEXIBLE (Sun PM or Mon Oct 19)</span></td>
+                    <td class="py-2 px-2 text-emerald-300 font-semibold">Included in Today's Note</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$200</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-2 font-mono font-bold text-slate-200">Wed, Oct 21</td>
+                    <td class="py-2 px-2 font-semibold text-slate-200">1023 32nd St (OAK-HOM-001)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 text-[10px]">OPEN NIGHT (Next Guest Oct 22)</span></td>
+                    <td class="py-2 px-2 text-sky-300">4-Day Advance Included</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$160</td>
+                  </tr>
+                  <tr class="bg-rose-950/10">
+                    <td class="py-2 pr-2 font-mono font-bold text-white">Sun, Oct 25</td>
+                    <td class="py-2 px-2 font-semibold text-white">1023 32nd St (OAK-HOM-001)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-rose-600/30 text-rose-300 border border-rose-500/50 font-bold text-[10px]">SAME-DAY B2B (11am to 5pm)</span></td>
+                    <td class="py-2 px-2 text-emerald-300">8-Day Advance Included</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$160</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-2 font-mono font-bold text-slate-200">Sun, Nov 01</td>
+                    <td class="py-2 px-2 font-semibold text-slate-200">1023 32nd St (OAK-HOM-001)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 text-[10px]">STANDARD TURN (11am to 5pm)</span></td>
+                    <td class="py-2 px-2 text-emerald-300">15-Day Advance Included</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$160</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-2 font-mono font-bold text-slate-200">Sun, Nov 22</td>
+                    <td class="py-2 px-2 font-semibold text-slate-200">1023 32nd St (OAK-HOM-001)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 text-[10px]">STANDARD TURN (11am to 5pm)</span></td>
+                    <td class="py-2 px-2 text-slate-400">Auto-Queued (T-14d Nov 8)</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$160</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-2 font-mono font-bold text-slate-200">Fri, Nov 27</td>
+                    <td class="py-2 px-2 font-semibold text-slate-200">5540 Estates Dr (OAK-HOM-002/003)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 text-[10px]">THANKSGIVING TURN (11am to 5pm)</span></td>
+                    <td class="py-2 px-2 text-slate-400">Auto-Queued (T-14d Nov 13)</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$200</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 pr-2 font-mono font-bold text-slate-200">Mon, Nov 30</td>
+                    <td class="py-2 px-2 font-semibold text-slate-200">1023 32nd St (OAK-HOM-001)</td>
+                    <td class="py-2 px-2"><span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 text-[10px]">STANDARD TURN (11am to 5pm)</span></td>
+                    <td class="py-2 px-2 text-slate-400">Auto-Queued (T-14d Nov 16)</td>
+                    <td class="py-2 pl-2 text-right font-mono font-bold text-amber-400">$160</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-slate-950/90 border border-emerald-500/40 rounded-2xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+                <i class="fa-brands fa-whatsapp text-emerald-400"></i> Ready-to-Send WhatsApp Advance Message to Oakland Primary Partner
+              </span>
+              <div class="flex items-center gap-1">
+                <button type="button" onclick="setOaklandPrimaryPartnerMsgLang('pt')" id="cicilia-msg-pt-btn" class="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-bold text-[10px] cursor-pointer">PT-BR</button>
+                <button type="button" onclick="setOaklandPrimaryPartnerMsgLang('en')" id="cicilia-msg-en-btn" class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold text-[10px] cursor-pointer">EN</button>
+              </div>
+            </div>
+            <textarea id="cicilia-whatsapp-box" rows="9" class="input-dark font-mono text-[11px] leading-relaxed text-slate-100"></textarea>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <button type="button" onclick="copyOaklandPrimaryPartnerTextbox()" class="px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs flex items-center gap-1.5 cursor-pointer transition">
+                <i class="fa-regular fa-copy"></i> Copy Message Text
+              </button>
+              <a id="cicilia-wa-direct-link" href="https://wa.me/15105550182" target="_blank" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-emerald-500/40 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition">
+                <i class="fa-brands fa-whatsapp"></i> Open WhatsApp Chat &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-6 space-y-4 border-l-4 border-l-sky-500">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white serif-font flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-sky-400"></i> Automated preSeTR Advance-Notice Cadence (Zero Late Surprises)
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Every cleaner automatically receives 4 structured advance notifications per booking plus a live auto-updating phone calendar feed (<code class="text-sky-300">.ics</code>).
+            </p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono text-xs font-bold">
+            <i class="fa-solid fa-circle-check mr-1"></i> CADENCE ENGINE ACTIVE
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+          <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-700 font-mono font-bold text-[10px]">STAGE 1: T-14 DAYS</span>
+              <input type="checkbox" checked class="rounded border-slate-700 text-sky-500">
+            </div>
+            <div class="font-bold text-white">2-Week Rolling Calendar Lookahead</div>
+            <p class="text-[11px] text-slate-400">Sent automatically 14 days before checkout (and immediately on any new short-lead booking) so Oakland Primary Partner, Pinole Primary Partner, and Backup Turnover Partner can block their personal calendars early.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-700 font-mono font-bold text-[10px]">STAGE 2: T-7 DAYS</span>
+              <input type="checkbox" checked class="rounded border-slate-700 text-amber-500">
+            </div>
+            <div class="font-bold text-white">Sunday Weekly Digest (7:00 PM)</div>
+            <p class="text-[11px] text-slate-400">Every Sunday evening, sends each cleaner their full Mon to Sun turnover list in Português, Español, or English, flagging Same-Day Back-to-Backs vs. Open Nights.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-700 font-mono font-bold text-[10px]">STAGE 3: T-48 HOURS</span>
+              <input type="checkbox" checked class="rounded border-slate-700 text-purple-500">
+            </div>
+            <div class="font-bold text-white">48-Hour Confirmation &amp; Priority Order</div>
+            <p class="text-[11px] text-slate-400">Sent 2 days prior at 9:00 AM. Confirms whether a double-header has a Priority 1 Same-Day B2B and verifies off-white 3-par linen and property supply readiness.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono font-bold text-[10px]">STAGE 4: T-0 (8:30 AM)</span>
+              <input type="checkbox" checked class="rounded border-slate-700 text-emerald-500">
+            </div>
+            <div class="font-bold text-white">Morning Dispatch + reSeTR Slug Link</div>
+            <p class="text-[11px] text-slate-400">Delivers the Cleaner Service Access keypad code, supply closet map, and 1-tap <code class="text-emerald-300">resetr.abetterbnb.com/&lt;slug&gt;</code> photo QA link for next-day Preferred Payout Method payout.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-6 space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white serif-font flex items-center gap-2">
+              <i class="fa-solid fa-table-list text-amber-400"></i> Full Portfolio Live Turnover Queue (Cleaner Service Access vs. Guest Arrival Separated)
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Filter by cleaner to inspect upcoming turnovers across Oakland, Berkeley, and Pinole. Notice how <strong>Cleaner Service Access</strong> is strictly separated from <strong>Guest Arrival Info</strong>.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5 text-xs">
+            <button type="button" onclick="filterScheduleTable('all')" id="flt-all" class="px-3 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-bold cursor-pointer transition">All Cleaners</button>
+            <button type="button" onclick="filterScheduleTable('cicilia')" id="flt-cicilia" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-semibold cursor-pointer transition">Oakland Primary Partner (Oakland &bull; PT)</button>
+            <button type="button" onclick="filterScheduleTable('fili')" id="flt-fili" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-semibold cursor-pointer transition">Pinole Primary Partner (Pinole &bull; ES)</button>
+            <button type="button" onclick="filterScheduleTable('maria')" id="flt-maria" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-semibold cursor-pointer transition">Backup Turnover Partner (Acton &bull; ES)</button>
+            <button type="button" onclick="filterScheduleTable('justin')" id="flt-justin" class="px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-semibold cursor-pointer transition">Justin (1545 Scenic &bull; EN)</button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 text-[10px] uppercase">
+                <th class="py-2.5 pr-3">Date &amp; Window</th>
+                <th class="py-2.5 px-3">Property &amp; Priority</th>
+                <th class="py-2.5 px-3">Assigned Cleaner</th>
+                <th class="py-2.5 px-3">Cleaner Service Access &amp; Supply Closet (Sent to Cleaner)</th>
+                <th class="py-2.5 px-3">Guest Arrival Info (Sent to Guest Only)</th>
+                <th class="py-2.5 pl-3 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="portfolio-schedule-tbody" class="divide-y divide-slate-800/80">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="panel-resetr" class="hidden space-y-6">
+
+      <div class="rounded-2xl p-4 bg-gradient-to-r from-emerald-950/80 via-[#131d2e] to-sky-950/70 border-2 border-emerald-500/70 shadow-xl space-y-3">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-mono text-[11px] font-extrabold uppercase tracking-wider">
+              <i class="fa-solid fa-globe mr-1"></i> Internal Subdomain Slug Router Live
+            </span>
+            <code id="resetr-canonical-url-badge" class="px-3 py-1 rounded-xl bg-slate-950 border border-emerald-400/60 text-emerald-300 font-mono text-xs md:text-sm font-extrabold">
+              resetr.abetterbnb.com/32ndstreet
+            </code>
+            <button type="button" onclick="copyCleanPropertySlugUrl()" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-400/50 text-xs font-bold cursor-pointer transition flex items-center gap-1.5">
+              <i class="fa-regular fa-copy"></i> Copy Clean URL
+            </button>
+          </div>
+          <div class="text-[11px] text-slate-300 font-mono">
+            Works across Cloudflare Pages (<code class="text-amber-300">_redirects</code>), Vercel (<code class="text-amber-300">vercel.json</code>), path slugs &amp; <code class="text-sky-300">?unit=</code>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold mr-1">1-Click Property Slug Switcher (Test w/ Devido):</span>
+          <button type="button" data-slug-pill="32ndstreet" onclick="selectPropertySlug('32ndstreet', true)" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-mono font-bold text-[11px] cursor-pointer transition">/32ndstreet</button>
+          <button type="button" data-slug-pill="estates" onclick="selectPropertySlug('estates', true)" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition">/estates</button>
+          <button type="button" data-slug-pill="acton" onclick="selectPropertySlug('acton', true)" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition">/acton</button>
+          <button type="button" data-slug-pill="avis" onclick="selectPropertySlug('avis', true)" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition">/avis</button>
+          <button type="button" data-slug-pill="scenic-north" onclick="selectPropertySlug('scenic-north', true)" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition">/scenic-north</button>
+          <button type="button" data-slug-pill="scenic-south" onclick="selectPropertySlug('scenic-south', true)" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition">/scenic-south</button>
+          <button type="button" data-slug-pill="walsh" onclick="selectPropertySlug('walsh', true)" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition">/walsh</button>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-6 border-l-4 border-l-emerald-500 space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono text-[10px] font-bold uppercase">reSeTR Interactive Prod View</span>
+              <span class="text-xs text-slate-400 font-mono">11:00 AM to 5:00 PM Hospitality Turnover Standard</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-bold text-white serif-font mt-1">
+              Interactive Room-by-Room Turnover Packet, Property Supplies Restock &amp; Two-Phase Photo QA
+            </h2>
+            <p class="text-xs text-slate-300 mt-0.5">
+              Preview the exact bilingual checklist and photo verification flow that cleaners open via <code class="text-emerald-300">resetr.abetterbnb.com/&lt;property-slug&gt;</code> for next-day Timely Partner Payout or Venmo payout and early guest lock activation.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <div>
+              <label class="block text-[10px] uppercase text-slate-400 font-bold mb-1">Active Property Turnover:</label>
+              <select id="resetr-unit-select" onchange="renderResetrUnitPacket()" class="bg-slate-900 border border-emerald-500/50 text-white font-bold rounded-xl px-3 py-2 cursor-pointer">
+                <option value="OAK-HOM-001" selected>1023 32nd St, Oakland (/32ndstreet &bull; Oakland Primary Partner &bull; $160 Venmo)</option>
+                <option value="OAK-HOM-002">5540 Estates Dr 5-BR, Oakland (/estates &bull; Oakland Primary Partner &bull; $200 Venmo)</option>
+                <option value="BKL-ADU-001">3007 Acton St Suites, Berkeley (/acton &bull; Backup Turnover Partner &bull; $130 Zelle Dedicated Cleaning Payout Account)</option>
+                <option value="PIN-HOM-001">3146 Avis Way, Pinole (/avis &bull; Pinole Primary Partner &bull; $195 Venmo)</option>
+                <option value="BKL-STU-001">1545 Scenic Ave North Studio (/scenic-north &bull; Justin/Backup Turnover Partner &bull; $50)</option>
+                <option value="BKL-STU-002">1545 Scenic Ave South Garden Studio (/scenic-south &bull; Justin/Backup Turnover Partner &bull; $50)</option>
+                <option value="DEN-ADU-001">3270 W Walsh Pl ADU, Denver (/walsh &bull; Sarah &bull; $120 Venmo)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10px] uppercase text-slate-400 font-bold mb-1">Cleaner Language View:</label>
+              <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-xl p-1">
+                <button type="button" id="resetr-lang-pt" onclick="setResetrLang('pt-BR')" class="px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs cursor-pointer">Português (BR)</button>
+                <button type="button" id="resetr-lang-es" onclick="setResetrLang('es')" class="px-2.5 py-1 rounded-lg text-slate-300 hover:text-white font-semibold text-xs cursor-pointer">Español</button>
+                <button type="button" id="resetr-lang-en" onclick="setResetrLang('en')" class="px-2.5 py-1 rounded-lg text-slate-300 hover:text-white font-semibold text-xs cursor-pointer">English</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-7 space-y-5">
+
+            <div class="p-5 rounded-2xl bg-slate-950/90 border border-sky-500/40 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400 flex items-center gap-2">
+                  <i class="fa-solid fa-key"></i> Stage A: Cleaner Service Arrival &amp; Supply Closet Access (Not Guest Info)
+                </span>
+                <span id="resetr-priority-pill" class="px-2.5 py-0.5 rounded bg-rose-600/30 text-rose-300 border border-rose-500/50 font-mono text-[10px] font-bold">SAME-DAY B2B: 11:00 AM to 5:00 PM</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                <div class="p-3.5 rounded-xl bg-slate-900 border border-sky-500/30 space-y-1.5">
+                  <div class="font-bold text-sky-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-door-open"></i> Cleaner Service Entry &amp; Master Keypad:
+                  </div>
+                  <p id="resetr-cleaner-access" class="text-slate-200 leading-relaxed"></p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-900 border border-amber-500/30 space-y-1.5">
+                  <div class="font-bold text-amber-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-boxes-stacked"></i> Supply Closet, Off-White 3-Par Linens &amp; Inventory:
+                  </div>
+                  <p id="resetr-supply-location" class="text-slate-200 leading-relaxed"></p>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400 flex items-start gap-2">
+                <i class="fa-solid fa-shield-halved text-emerald-400 mt-0.5"></i>
+                <div>
+                  <strong class="text-slate-200">Why This Is Separated From Guest Arrival Info:</strong>
+                  <span id="resetr-guest-diff-note"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-950/90 border border-amber-500/40 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                  <i class="fa-solid fa-camera"></i> Stage B: Phase 1 Pre-Clean Arrival Damage &amp; Stain Walkthrough
+                </span>
+                <span class="text-[10px] font-mono text-amber-300">BEFORE TOUCHING ROOM</span>
+              </div>
+              <p id="resetr-phase1-desc" class="text-xs text-slate-300"></p>
+              <div class="flex flex-wrap items-center gap-2 pt-1">
+                <label class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 cursor-pointer text-xs font-semibold text-white">
+                  <input type="checkbox" id="chk-phase1-clear" checked onchange="updateResetrProgress()" class="rounded border-slate-700 text-emerald-500">
+                  <span id="resetr-phase1-chk-label">Arrival Walkthrough Complete: No Guest Damage or Smoking Odor Found</span>
+                </label>
+                <button type="button" onclick="triggerAirCoverDamageLog()" class="px-3.5 py-2 rounded-xl bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-500/50 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition">
+                  <i class="fa-solid fa-triangle-exclamation"></i> Flag Pre-Clean Guest Damage / Stain / Odor (Timestamp for AirCover)
+                </button>
+              </div>
+              <div id="aircover-incident-banner" class="hidden p-3 rounded-xl bg-rose-950/60 border border-rose-500 text-xs text-rose-200 space-y-1">
+                <div class="font-bold text-rose-300"><i class="fa-solid fa-file-shield mr-1"></i> AirCover Pre-Clean Evidence Packet Timestamped (Oct 18, 2026 &bull; 11:14 AM PT)</div>
+                <p>Photo slot unlocked and routed to <code class="font-mono">#fieldops-photos</code> and @Operations & Admin Inbox before cleaning started. Cleaner is 100% protected from blame.</p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-950/90 border border-emerald-500/40 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                  <i class="fa-solid fa-bed"></i> Stage C: Room-by-Room Five-Star Reset &amp; Off-White 3-Par Linen Protocol
+                </span>
+                <span id="resetr-progress-badge" class="px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono text-xs font-bold">8 / 8 Verified (100%)</span>
+              </div>
+              <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-slate-800">
+                <div id="resetr-progress-bar" class="bg-emerald-500 h-2.5 transition-all duration-300" style="width: 100%"></div>
+              </div>
+
+              <div id="resetr-checklist-container" class="space-y-2.5 text-xs">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="lg:col-span-5 space-y-5">
+
+            <div class="p-5 rounded-2xl bg-slate-950/90 border border-purple-500/40 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-purple-300 flex items-center gap-2">
+                  <i class="fa-solid fa-boxes-packing"></i> Stage D1: Property Supplies &amp; Consumables Restock Inventory
+                </span>
+                <span class="text-[10px] font-mono text-purple-300">Auto-Alerts Operations</span>
+              </div>
+              <p class="text-xs text-slate-300">
+                Cleaners never pay out of pocket for property supplies or consumables. Tap any category below that is running low in the supply closet (bathroom supplies, paper goods, kitchen supplies, soaps, off-white 3-par linens, or unit hospitality items) so Operations can restock before the next turn:
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs" id="supply-pills-container">
+                <button type="button" onclick="toggleSupplyPill(this, 'Bathroom Supplies & Paper Goods (TP / Paper Towels)')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition">
+                  <i class="fa-solid fa-toilet-paper mr-1 text-sky-400"></i> Bathroom &amp; Paper Goods Low
+                </button>
+                <button type="button" onclick="toggleSupplyPill(this, 'Shower Toiletries & Hand Soaps (Shampoo / Conditioner / Body Wash)')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition">
+                  <i class="fa-solid fa-pump-soap mr-1 text-purple-400"></i> Toiletries &amp; Soaps Low
+                </button>
+                <button type="button" onclick="toggleSupplyPill(this, 'Kitchen Supplies (Dish Soap / Sponges / Trash Liners / Eco Spray)')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition">
+                  <i class="fa-solid fa-spray-can-sparkles mr-1 text-emerald-400"></i> Kitchen &amp; Cleaning Supplies Low
+                </button>
+                <button type="button" onclick="toggleSupplyPill(this, 'Off-White Room-Matching Linen Set / Matching Duvet Cover (3-Par Rotation)')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition">
+                  <i class="fa-solid fa-mattress-pillow mr-1 text-rose-400"></i> Off-White 3-Par Linen / Duvet Set Needed
+                </button>
+                <button type="button" onclick="toggleSupplyPill(this, 'Unit Hospitality Welcome Bar (Coffee / Tea / Oatmeal / Filters)')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition">
+                  <i class="fa-solid fa-mug-saucer mr-1 text-amber-400"></i> Welcome Bar Consumables Low
+                </button>
+                <button type="button" onclick="toggleSupplyPill(this, 'Lightbulbs / Smart Lock AA Batteries')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition">
+                  <i class="fa-solid fa-lightbulb mr-1 text-yellow-400"></i> Lightbulbs / Lock Batteries
+                </button>
+              </div>
+              <div id="supply-restock-log" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-mono text-emerald-300">
+                Property Supplies &amp; Consumables Status: Bathroom supplies, paper goods, kitchen supplies, soaps, off-white 3-par linens + matching duvet covers, and welcome consumables stocked above par.
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-950/90 border border-emerald-500/50 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                  <i class="fa-solid fa-images"></i> Phase 2 Staging Photo QA &amp; 1-Click Payout Release
+                </span>
+                <span id="resetr-payout-badge" class="px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono text-xs font-bold">$160.00 Timely Payout</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2.5 text-xs">
+                <div class="p-3 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-1">
+                  <div class="flex items-center justify-between text-[10px] font-mono text-emerald-400">
+                    <span><i class="fa-solid fa-camera-check mr-1"></i> PHOTO SLOT 1</span>
+                    <span>VERIFIED</span>
+                  </div>
+                  <div class="font-bold text-white">Bed Reset: Off-White Linens &amp; Matching Duvet</div>
+                  <p class="text-[10px] text-slate-400">Off-white room-matching sheets (3-par rotation, never stain-prone all-white), matching duvet cover, zero stray hairs.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-1">
+                  <div class="flex items-center justify-between text-[10px] font-mono text-emerald-400">
+                    <span><i class="fa-solid fa-camera-check mr-1"></i> PHOTO SLOT 2</span>
+                    <span>VERIFIED</span>
+                  </div>
+                  <div class="font-bold text-white">Bathroom Glass, Drain &amp; Folded Towels</div>
+                  <p class="text-[10px] text-slate-400">Streak-free mirror, clear shower drain, full soap &amp; toiletry dispensers.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-1">
+                  <div class="flex items-center justify-between text-[10px] font-mono text-emerald-400">
+                    <span><i class="fa-solid fa-camera-check mr-1"></i> PHOTO SLOT 3</span>
+                    <span>VERIFIED</span>
+                  </div>
+                  <div class="font-bold text-white">Kitchen Supplies &amp; Hospitality Welcome Bar</div>
+                  <p class="text-[10px] text-slate-400">Spotless appliances, fresh dish sponge/soap, paper goods, and unit hospitality welcome bar.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-1">
+                  <div class="flex items-center justify-between text-[10px] font-mono text-emerald-400">
+                    <span><i class="fa-solid fa-camera-check mr-1"></i> PHOTO SLOT 4</span>
+                    <span>VERIFIED</span>
+                  </div>
+                  <div class="font-bold text-white">Entry Path, Patio &amp; Smart Lock Secured</div>
+                  <p class="text-[10px] text-slate-400">Swept entry steps, thermostat at 68F, keypad locked.</p>
+                </div>
+              </div>
+
+              <button type="button" onclick="approveTurnoverAndReleasePayout()" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-xl flex items-center justify-center gap-2 cursor-pointer transition">
+                <i class="fa-solid fa-bolt"></i> Approve Photo QA &bull; Queue Next-Day Payout &bull; Activate Guest Early Check-In
+              </button>
+
+              <div id="resetr-approval-result" class="p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/60 text-xs text-emerald-200 space-y-1.5">
+                <div class="font-bold text-emerald-300 flex items-center justify-between">
+                  <span><i class="fa-solid fa-circle-check mr-1"></i> Unit Status: READY FOR EARLY GUEST CHECK-IN</span>
+                  <span class="font-mono text-[10px]">Smart Lock Active</span>
+                </div>
+                <p id="resetr-early-checkin-msg" class="text-[11px] text-slate-200 font-mono leading-relaxed">
+                  Auto-Drafted Guest Early Check-In Note: "Great news! Oakland Primary Partner just finished preparing 1023 32nd St early and it is spotless. We have activated your front door keypad code now so you are welcome to head in and drop your bags anytime you arrive, at no extra charge!"
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="panel-roster" class="hidden space-y-6">
+
+      <div class="p-4 bg-slate-900/90 border border-emerald-500/40 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/40 flex-shrink-0">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+          <div>
+            <span class="font-bold text-emerald-300 uppercase tracking-wider block">Zero-Pressure Cleaner Payouts: Dedicated Cleaning Payout Account (Preferred Payout Method Cleaning Account) + Operating Commission Account</span>
+            <span class="text-slate-300">
+              We use the payment rails our cleaners already trust (<strong>Zelle via Dedicated Cleaning Payout Account</strong> for Acton cleaners, <strong>Venmo</strong> for Oakland Primary Partner &amp; Pinole Primary Partner) with <strong>zero invasive W-9 / SSN interrogation</strong>. Cleaning fee pass-throughs route through Dedicated Cleaning Payout Account, while co-host commissions route to <strong>Operating Commission Account</strong> for higher interest yield.
+            </span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button onclick="copyShareablePartnerLink()" class="px-3 py-1.5 bg-sky-950/80 hover:bg-sky-900 text-sky-300 font-semibold rounded-xl border border-sky-500/40 flex items-center gap-1.5 transition cursor-pointer">
+            <i class="fa-solid fa-share-nodes"></i> Copy Partner Link
+          </button>
+          <button onclick="exportPartnerJson()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 flex items-center gap-1.5 transition cursor-pointer">
+            <i class="fa-solid fa-download"></i> Export JSON
+          </button>
+          <a href="https://discord.com/app" target="_blank" class="px-3 py-1.5 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/50 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+            <i class="fa-brands fa-discord"></i> Join Scenic Ops Discord
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <div class="lg:col-span-8 space-y-6">
+
+          <div class="card-glass p-6 rounded-2xl space-y-4 border-l-4 border-l-amber-500">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+              <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+                <i class="fa-solid fa-id-card"></i> 1. Partner Demographics &amp; Identity
+              </h2>
+              <div class="flex flex-wrap items-center gap-2 text-xs">
+                <div class="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded-lg p-1">
+                  <button type="button" id="top-lang-en" onclick="setLanguage('en')" class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500 text-slate-950 transition">EN</button>
+                  <button type="button" id="top-lang-es" onclick="setLanguage('es')" class="px-2 py-0.5 rounded text-[11px] font-semibold text-slate-300 hover:text-white transition">ES</button>
+                  <button type="button" id="top-lang-pt" onclick="setLanguage('pt-BR')" class="px-2 py-0.5 rounded text-[11px] font-semibold text-slate-300 hover:text-white transition">PT</button>
+                </div>
+                <span class="text-slate-400 font-semibold ml-1">Preset:</span>
+                <select id="partner-preset" onchange="loadPartnerPreset(this.value)" class="bg-slate-900 border border-amber-500/40 text-amber-300 font-semibold rounded-lg px-2.5 py-1 focus:ring-1 focus:ring-amber-500 cursor-pointer">
+                  <option value="justin">Justin (Owner / Primary Cleaner &bull; Berkeley Studios &bull; English)</option>
+                  <option value="fili">Pinole Primary Partner (Cleaning Partner &bull; Avis Way &bull; Español &bull; Venmo)</option>
+                  <option value="cicilia" selected>Oakland Primary Partner Barbosa (Cleaning Partner &bull; 32nd St &amp; Estates &bull; Português BR &bull; Venmo)</option>
+                  <option value="maria">Backup Turnover Partner Gonzalez (Acton Cleaners &bull; 3007 Acton St &bull; Español &bull; Zelle Dedicated Cleaning Payout Account)</option>
+                  <option value="denver">Mile High Turnover Pros (Denver Cleaning Partner &bull; 3270 Walsh &bull; English)</option>
+                  <option value="dave">Dave Miller (Handyman &amp; Maintenance &bull; Berkeley &bull; English)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Partner / Contact Name:</label>
+                <input type="text" id="partner-name" value="Oakland Primary Partner Barbosa" oninput="updatePreview()" class="input-dark font-semibold text-white">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Business / DBA Legal Name:</label>
+                <input type="text" id="partner-dba" value="Barbosa Turnover & Cleaning" oninput="updatePreview()" class="input-dark">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Primary Trade Role:</label>
+                <select id="partner-trade" onchange="updatePreview()" class="input-dark font-semibold text-amber-400">
+                  <option value="cleaner" selected>Cleaning Partner / Specialist</option>
+                  <option value="handyman">Maintenance &amp; Handyman</option>
+                  <option value="pool_tech">Pool &amp; Spa Specialist</option>
+                  <option value="landscaping">Landscaping &amp; Grounds</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Phone Number (SMS / WhatsApp / Zelle):</label>
+                <input type="tel" id="partner-phone" value="+1 (510) 847-2982" oninput="updatePreview()" class="input-dark font-mono">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Email Address (Schedule &amp; Dispatch):</label>
+                <input type="email" id="partner-email" value="cicilia@barbosaclean.com" oninput="updatePreview()" class="input-dark">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+              <div class="md:col-span-2">
+                <label class="block text-slate-400 mb-1 font-semibold">Mailing Address (Optional / Internal Records Only):</label>
+                <input type="text" id="partner-address" value="2418 San Pablo Ave" oninput="updatePreview()" class="input-dark">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">City / State / ZIP:</label>
+                <input type="text" id="partner-city-state" value="Berkeley, CA 94702" oninput="updatePreview()" class="input-dark">
+              </div>
+              <div>
+                <label class="block text-emerald-300 mb-1 font-bold">Tax Form / Onboarding Posture:</label>
+                <select id="partner-tax-status" onchange="updatePreview()" class="input-dark text-emerald-300 font-bold border-emerald-500/50">
+                  <option value="zero_tax_interrogation" selected>Zero Tax-Form Interrogation (Pay via Existing Cleaner Rail: Preferred Payout Method)</option>
+                  <option value="ein_llc">Commercial Vendor EIN on File (Handyman / LLC)</option>
+                  <option value="w9_on_file">Voluntary W-9 On File (Standard Partner Setup)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-glass p-6 rounded-2xl space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+                <i class="fa-solid fa-comments"></i> 2. Communication Channel &amp; Language Preference
+              </h2>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-slate-400 font-semibold">Language:</span>
+                <button type="button" id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold transition">English</button>
+                <button type="button" id="btn-lang-es" onclick="setLanguage('es')" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white font-semibold transition">Español</button>
+                <button type="button" id="btn-lang-pt" onclick="setLanguage('pt-BR')" class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white font-semibold transition">Português (BR)</button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-4 bg-slate-950/80 border border-slate-800 rounded-xl space-y-2">
+                <div class="font-bold text-white flex items-center gap-2">
+                  <i class="fa-brands fa-discord text-indigo-400"></i> Discord Server Role Onboarding (Default)
+                </div>
+                <p class="text-[11px] text-slate-400">
+                  New partners receive an onboarding invite to the Scenic Stay Discord server. Auto-assigned to dedicated channels:
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1 font-mono text-[10px]">
+                  <span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">#role-field-ops</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">#partner-[name]</span>
+                  <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800">#fieldops-photos</span>
+                  <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-700">#company-receipts</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">#resetr-dispatch</span>
+                </div>
+              </div>
+
+              <div class="p-4 bg-slate-950/80 border border-slate-800 rounded-xl space-y-2">
+                <div class="font-bold text-white flex items-center gap-2">
+                  <i class="fa-brands fa-whatsapp text-emerald-400"></i> Grandfathered WhatsApp Mode
+                </div>
+                <p class="text-[11px] text-slate-400">
+                  For established cleaners who already communicate via WhatsApp DM.
+                </p>
+                <label class="flex items-center gap-2 cursor-pointer pt-1">
+                  <input type="checkbox" id="check-whatsapp" checked onchange="updatePreview()" class="rounded border-slate-700 text-emerald-500">
+                  <span class="text-xs text-slate-200 font-semibold">Enable WhatsApp Fallback Direct Messaging</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="p-4 bg-slate-950/90 border border-slate-800 rounded-xl space-y-2">
+              <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+                <span><i class="fa-solid fa-mobile-screen mr-1.5 text-sky-400"></i> Automated Dispatch Notification Preview:</span>
+                <span id="preview-lang-tag" class="text-[10px] text-amber-400 font-mono">Português (BR)</span>
+              </div>
+              <div id="dispatch-msg-preview" class="p-3 bg-slate-900 rounded-lg text-xs font-mono text-slate-200 border border-slate-800 leading-relaxed">
+              </div>
+            </div>
+          </div>
+
+          <div class="card-glass p-6 rounded-2xl space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2 font-sans">
+                <i class="fa-solid fa-money-check-dollar"></i> 3. Payout Setup &amp; Two-Bank Architecture (Dedicated Cleaning Payout Account Preferred Payout Method + SF Fire)
+              </h2>
+              <span class="text-[10px] text-emerald-400 font-mono">PREFERRED PARTNER PAYOUTS &bull; EXISTING CLEANER RAILS</span>
+            </div>
+
+            <div class="p-4 bg-slate-950/90 border border-emerald-500/40 rounded-xl text-xs space-y-1.5">
+              <div class="flex items-center justify-between font-bold text-slate-300">
+                <span class="flex items-center gap-2 text-emerald-400">
+                  <i class="fa-solid fa-building-columns"></i> Two-Account Banking Split (Cleaning Fees vs. Co-Host Commissions):
+                </span>
+                <span class="text-[10px] font-mono text-emerald-300">Dedicated Cleaning Payout Account + SF Fire CU</span>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                <strong>1) Dedicated Cleaning Payout Account (Cleaning Fee Pass-Through Account):</strong> Receives guest-paid cleaning fees and sends approved turnover payouts directly via <strong>Zelle</strong> (e.g., 3007 Acton St cleaners) or <strong>Venmo</strong> (e.g., Oakland Primary Partner, Pinole Primary Partner) without Ramp W-9 interrogation.
+                <br><strong>2) Operating Commission Account (High-Yield Co-Host Commission Account):</strong> Receives Scenic Stay's co-hosting management commissions (15% to 35%) to earn SF Fire's higher interest rate.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label class="block text-purple-300 mb-1 font-bold flex items-center gap-1.5">
+                  <i class="fa-solid fa-bolt text-purple-400"></i> Zelle (via Dedicated Cleaning Payout Account Cleaning Fee Account):
+                </label>
+                <input type="text" id="partner-zelle-handle" value="" oninput="updatePreview()" class="input-dark font-mono text-purple-300 border-purple-500/40" placeholder="Zelle mobile phone or email (e.g. Acton cleaners)">
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1 font-semibold flex items-center gap-1.5">
+                  <i class="fa-brands fa-vimeo text-sky-400"></i> Venmo (@handle or Phone):
+                </label>
+                <input type="text" id="partner-venmo-handle" value="@Oakland Primary Partner-Barbosa-Clean" oninput="updatePreview()" class="input-dark font-mono text-sky-400" placeholder="@username or mobile phone">
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1 font-semibold flex items-center gap-1.5">
+                  <i class="fa-brands fa-paypal text-blue-400"></i> PayPal (Email or @handle):
+                </label>
+                <input type="text" id="partner-paypal-handle" value="cicilia@barbosaclean.com" oninput="updatePreview()" class="input-dark font-mono text-blue-400" placeholder="paypal@example.com">
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1 font-semibold flex items-center gap-1.5">
+                  <i class="fa-solid fa-building-columns text-emerald-400"></i> Direct Deposit / Bank ACH (Dedicated Cleaning Payout Account / SF Fire):
+                </label>
+                <input type="text" id="partner-ach-details" value="Dedicated Cleaning Payout Account Cleaning Pass-Through Account" oninput="updatePreview()" class="input-dark font-mono text-emerald-400" placeholder="Bank transfer details">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pt-1">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Primary Preferred Rail:</label>
+                <select id="partner-payout-rail" onchange="updatePreview()" class="input-dark font-bold text-emerald-400">
+                  <option value="zelle">Zelle Direct (Dedicated Cleaning Payout Account Cleaning Account)</option>
+                  <option value="venmo" selected>Venmo Direct (Dedicated Cleaning Payout Account Cleaning Account)</option>
+                  <option value="paypal">PayPal Direct</option>
+                  <option value="ach">Direct Deposit (ACH)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Payment Frequency:</label>
+                <select id="partner-pay-freq" class="input-dark text-slate-200">
+                  <option value="per_turn" selected>Net-Next-Day (Per Approved Turn)</option>
+                  <option value="weekly">Weekly Friday Settlement</option>
+                  <option value="biweekly">Bi-Weekly</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Emergency / Callout Hourly ($):</label>
+                <input type="text" id="partner-emergency-rate" value="$45.00 / hr" oninput="updatePreview()" class="input-dark">
+              </div>
+            </div>
+          </div>
+
+          <div class="card-glass p-6 rounded-2xl space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-sans">
+                <i class="fa-solid fa-list-check"></i> 4. Assigned Units &amp; Agreed Turnover Rates
+              </h2>
+              <span class="text-[10px] text-slate-400">Canonical Property Portfolio</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pb-1 text-xs">
+              <button type="button" onclick="selectAllInRegion('east-bay')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-white font-semibold transition cursor-pointer">
+                Select All East Bay
+              </button>
+              <button type="button" onclick="selectAllInRegion('west-coco')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-white font-semibold transition cursor-pointer">
+                Select All West Contra Costa
+              </button>
+              <button type="button" onclick="selectAllInRegion('denver')" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-300 hover:text-white font-semibold transition cursor-pointer">
+                Select Denver Metro
+              </button>
+              <button type="button" onclick="clearAllUnits()" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:border-rose-500/50 text-slate-400 hover:text-rose-300 font-semibold transition cursor-pointer ml-auto">
+                Clear All
+              </button>
+            </div>
+
+            <div class="space-y-4 text-xs">
+
+              <div class="border border-slate-800 rounded-xl p-3.5 bg-slate-950/60 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-bold text-[10px] uppercase tracking-wider border border-amber-800/60">East Bay</span>
+                    <span class="text-slate-300 font-semibold">Berkeley &amp; Oakland Properties</span>
+                  </div>
+                  <button type="button" onclick="toggleRegionDetails('east-bay-group')" class="text-slate-400 hover:text-amber-300 text-[11px] font-mono cursor-pointer">
+                    Toggle Details <i class="fa-solid fa-chevron-down ml-1"></i>
+                  </button>
+                </div>
+
+                <div id="east-bay-group" class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="BKL-STU-001" data-region="east-bay" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Modern Retro Private Studio</span>
+                          <span class="px-1.5 py-0.2 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800 text-[9px] font-mono">Vac On-Site</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">BKL-STU-001 &bull; 1545 Scenic Ave, Berkeley</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-BKL-STU-001" value="$50.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="BKL-STU-002" data-region="east-bay" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Spacious Private Studio</span>
+                          <span class="px-1.5 py-0.2 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800 text-[9px] font-mono">Vac On-Site</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">BKL-STU-002 &bull; 1545 Scenic Ave, Berkeley</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-BKL-STU-002" value="$50.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="BKL-STU-003" data-region="east-bay" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Two Private Studios Combined</span>
+                          <span class="px-1.5 py-0.2 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800 text-[9px] font-mono">Vac On-Site</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">BKL-STU-003 &bull; 1545 Scenic Ave, Berkeley</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-BKL-STU-003" value="$100.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="BKL-ADU-001" data-region="east-bay" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Acton Garden Suite Downstairs</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">BKL-ADU-001 &bull; 3007 Acton St, Berkeley</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-BKL-ADU-001" value="$130.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="BKL-ADU-002" data-region="east-bay" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Acton Upper Suite Upstairs</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">BKL-ADU-002 &bull; 3007 Acton St, Berkeley</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-BKL-ADU-002" value="$130.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="BKL-ADU-003" data-region="east-bay" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Acton Whole House Dual</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">BKL-ADU-003 &bull; 3007 Acton St, Berkeley</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-BKL-ADU-003" value="$240.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="OAK-HOM-001" data-region="east-bay" checked onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>32nd Street Private Level</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">OAK-HOM-001 &bull; 1023 32nd St, Oakland</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-OAK-HOM-001" value="$160.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="OAK-HOM-002" data-region="east-bay" checked onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Estates 5-BR Whole House</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">OAK-HOM-002 &bull; 5540 Estates Dr, Oakland</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-OAK-HOM-002" value="$200.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="OAK-HOM-003" data-region="east-bay" checked onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Estates 3-BR Whole House / Suite</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">OAK-HOM-003 &bull; 5540 Estates Dr, Oakland</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-OAK-HOM-003" value="$160.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+                </div>
+              </div>
+
+              <div class="border border-slate-800 rounded-xl p-3.5 bg-slate-950/60 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-bold text-[10px] uppercase tracking-wider border border-emerald-800/60">West Contra Costa</span>
+                    <span class="text-slate-300 font-semibold">Pinole Properties</span>
+                  </div>
+                  <button type="button" onclick="toggleRegionDetails('west-coco-group')" class="text-slate-400 hover:text-emerald-300 text-[11px] font-mono cursor-pointer">
+                    Toggle Details <i class="fa-solid fa-chevron-down ml-1"></i>
+                  </button>
+                </div>
+
+                <div id="west-coco-group" class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="PIN-HOM-001" data-region="west-coco" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>Avis Way Residential Home</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">PIN-HOM-001 &bull; 3146 Avis Way, Pinole</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-PIN-HOM-001" value="$195.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+                </div>
+              </div>
+
+              <div class="border border-slate-800 rounded-xl p-3.5 bg-slate-950/60 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 font-bold text-[10px] uppercase tracking-wider border border-sky-800/60">Denver Metro</span>
+                    <span class="text-slate-300 font-semibold">Colorado Portfolio</span>
+                  </div>
+                  <button type="button" onclick="toggleRegionDetails('denver-group')" class="text-slate-400 hover:text-sky-300 text-[11px] font-mono cursor-pointer">
+                    Toggle Details <i class="fa-solid fa-chevron-down ml-1"></i>
+                  </button>
+                </div>
+
+                <div id="denver-group" class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <label class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between cursor-pointer hover:border-slate-700">
+                    <div class="flex items-center gap-2">
+                      <input type="checkbox" name="unit-assign" value="DEN-ADU-001" data-region="denver" onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                      <div>
+                        <div class="font-bold text-white flex items-center gap-1.5">
+                          <span>3270 W Walsh Pl ADU Suite</span>
+                          <span class="px-1.5 py-0.2 rounded bg-slate-900 text-slate-400 border border-slate-700 text-[9px] font-mono">Partner Vac</span>
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">DEN-ADU-001 &bull; 3270 W Walsh Pl, Denver, CO</div>
+                      </div>
+                    </div>
+                    <input type="text" id="rate-DEN-ADU-001" value="$120.00" oninput="updatePreview()" class="w-20 px-2 py-1 bg-slate-900 border border-slate-700 rounded text-right font-bold text-amber-400">
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card-glass p-6 rounded-2xl space-y-4 text-xs">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div class="font-bold text-amber-400 flex items-center gap-2 font-sans uppercase tracking-wider text-xs">
+                <i class="fa-solid fa-clipboard-check"></i> 5. Standard Operating Nuance &amp; Protocols
+              </div>
+              <span class="text-[10px] font-mono text-emerald-400">TWO-PHASE PHOTO INSPECTION</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+              <div class="p-3.5 bg-slate-950/80 border border-amber-500/40 rounded-xl space-y-1.5">
+                <div class="flex items-center gap-2 font-bold text-amber-300">
+                  <i class="fa-solid fa-camera"></i> Phase 1: Arrival Damage &amp; Supplies Walkthrough
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">
+                  Take arrival photos &amp; log any pre-existing guest damage, heavy stains, or smoking odors <em>before</em> touching or cleaning the unit. Protects both cleaner and host.
+                </p>
+                <label class="flex items-center gap-2 cursor-pointer pt-1">
+                  <input type="checkbox" id="check-presetr-arrival" checked onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                  <span class="text-[11px] text-slate-200 font-semibold">Acknowledge Phase 1 Arrival Walkthrough</span>
+                </label>
+              </div>
+
+              <div class="p-3.5 bg-slate-950/80 border border-emerald-500/40 rounded-xl space-y-1.5">
+                <div class="flex items-center gap-2 font-bold text-emerald-300">
+                  <i class="fa-solid fa-circle-check"></i> Phase 2: Complete Property Staging QA &amp; Payout Release
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">
+                  Take complete staging photos of all areas of the property (every bedroom, bathroom, kitchen, living spaces, and exterior/amenities) upon completion before leaving. Every room must have clear visual proof for automatic next-day payout approval.
+                </p>
+                <label class="flex items-center gap-2 cursor-pointer pt-1">
+                  <input type="checkbox" id="check-resetr-staging" checked onchange="updatePreview()" class="rounded border-slate-700 text-emerald-500">
+                  <span class="text-[11px] text-slate-200 font-semibold">Acknowledge Complete Property Staging Photo QA</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+              <div class="space-y-1">
+                <label class="block text-slate-400 font-semibold">Cleaner Preferred Commercial Cleaning Agents:</label>
+                <input type="text" id="partner-cleaning-agents" value="Method / Seventh Generation Eco Surface Cleansers, Microfiber cloths, Wood floor safe spray" oninput="updatePreview()" class="input-dark text-slate-200">
+                <span class="text-[10px] text-slate-500">Adhering to Scenic safe-surface &amp; low-fragrance guidelines.</span>
+              </div>
+
+              <div class="space-y-2 pt-1">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" id="check-cordless-vac" checked onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                  <span class="font-semibold text-white">Vacuum cleaner on site</span>
+                </label>
+
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" id="check-supplies-onsite" checked onchange="updatePreview()" class="rounded border-slate-700 text-amber-500">
+                  <span class="font-semibold text-white">Cleaning supplies on site</span>
+                </label>
+
+                <label class="flex items-start gap-2 cursor-pointer">
+                  <input type="checkbox" id="check-consumables-restock" checked onchange="updatePreview()" class="mt-0.5 rounded border-slate-700 text-amber-500">
+                  <div>
+                    <div class="font-semibold text-white">Property Supplies &amp; Consumables Restock Inventory</div>
+                    <div class="text-[10px] text-slate-400">Cleaners log low supplies (bathroom supplies, paper goods, kitchen supplies, soaps, off-white 3-par linens, or unit hospitality items) in reSeTR / Discord; Scenic/owner replenishes stock.</div>
+                  </div>
+                </label>
+
+                <label class="flex items-start gap-2 cursor-pointer">
+                  <input type="checkbox" id="check-repair-ceiling" checked onchange="updatePreview()" class="mt-0.5 rounded border-slate-700 text-amber-500">
+                  <div>
+                    <div class="font-semibold text-white">$50 Pre-Approved Maintenance Cap</div>
+                    <div class="text-[10px] text-slate-400">Minor fixes up to $50 executed immediately; higher expenses require text sign-off.</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="lg:col-span-4 space-y-6">
+
+          <div class="card-glass p-6 rounded-2xl space-y-4 border-t-2 border-t-emerald-500">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400 font-sans">
+                <i class="fa-solid fa-file-contract mr-1.5"></i> 1-Click Master Agreement
+              </h3>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono">SYNCED</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Ready to formalize this partner? Click below to launch the <strong>Contractor SLA Generator</strong> pre-populated with this partner's demographics, agreed rates, assigned units, and direct payout preferences.
+            </p>
+
+            <button onclick="launchAgreementGenerator()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg flex items-center justify-center gap-2 transition cursor-pointer">
+              <i class="fa-solid fa-file-signature"></i> Launch Pre-Filled Agreement
+            </button>
+          </div>
+
+          <div class="card-glass p-5 rounded-2xl space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-code text-emerald-400"></i> reSeTR Dispatch JSON
+              </span>
+              <span class="text-[10px] text-slate-500 font-mono">Live Generator</span>
+            </div>
+            <textarea id="dispatch-json-preview" readonly class="w-full h-80 bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-[10px] text-slate-300 focus:outline-none resize-none"></textarea>
+            <div class="flex items-center justify-between text-[11px] pt-1">
+              <button onclick="copyDispatchJson()" class="text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer">
+                <i class="fa-regular fa-copy"></i> Copy JSON
+              </button>
+              <span class="text-[10px] text-slate-500">scenic.dispatch-partner/v1</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="vendor-transition-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#0f172a] border border-amber-500/40 rounded-2xl max-w-2xl w-full p-6 space-y-5 shadow-2xl overflow-y-auto max-h-[90vh]">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="h-9 w-9 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/40">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Cleaning Partner Transition Workflow</h3>
+            <p class="text-xs text-slate-400">Classy partner offboarding &amp; seamless turnover reassignment</p>
+          </div>
+        </div>
+        <button onclick="closeVendorTransitionModal()" class="text-slate-400 hover:text-white text-lg cursor-pointer">&times;</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Target Property / Unit</label>
+          <select id="trans-unit" class="input-dark" onchange="onTransitionUnitChange()">
+            <option value="OAK-HOM-001">1023 32nd St (OAK-HOM-001)</option>
+            <option value="OAK-HOM-002">5540 Estates Dr (OAK-HOM-002)</option>
+            <option value="OAK-HOM-003">5540 Estates Dr Suite (OAK-HOM-003)</option>
+            <option value="BKL-ADU-001">3007 Acton St ADU (BKL-ADU-001)</option>
+            <option value="PIN-HOM-001">3146 Avis Way (PIN-HOM-001)</option>
+            <option value="DEN-ADU-001">3270 W Walsh Pl (DEN-ADU-001)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Effective Transition Date</label>
+          <input type="date" id="trans-date" class="input-dark" value="2026-10-25" onchange="updateTransitionScripts()">
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Outgoing Partner (To Offboard)</label>
+          <select id="trans-outgoing" class="input-dark" onchange="updateTransitionScripts()">
+            <option value="cicilia">Oakland Primary Partner Barbosa (Barbosa Turnover)</option>
+            <option value="maria">Backup Turnover Partner Gonzalez (Apex Turnover)</option>
+            <option value="fili">Pinole Primary Partner (Pinole Primary Partner Cleaning Services)</option>
+            <option value="other">Other / Independent</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Incoming Partner (To Assign)</label>
+          <select id="trans-incoming" class="input-dark">
+            <option value="maria">Backup Turnover Partner Gonzalez (Apex Turnover)</option>
+            <option value="cicilia">Oakland Primary Partner Barbosa (Barbosa Turnover)</option>
+            <option value="fili">Pinole Primary Partner (Pinole Primary Partner Cleaning Services)</option>
+            <option value="justin">Justin / Scenic Ops</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-2 text-xs">
+        <span class="font-bold text-amber-300 block uppercase tracking-wider text-[11px]">Procedural Etiquette &amp; Security Checklist</span>
+        <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+          <input type="checkbox" id="chk-call-completed" class="rounded border-slate-700 text-amber-500" checked>
+          <span>Step 1: Direct phone call to outgoing partner lead (classy, respectful, appreciative)</span>
+        </label>
+        <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+          <input type="checkbox" id="chk-payout-cleared" class="rounded border-slate-700 text-amber-500" checked>
+          <span>Step 2: Immediate settlement of all pending Venmo / Ramp ACH turnover payouts</span>
+        </label>
+        <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+          <input type="checkbox" id="chk-lock-rotated" class="rounded border-slate-700 text-amber-500" checked>
+          <span>Step 3: Rotate smart lock master PIN and physical key lockbox code</span>
+        </label>
+      </div>
+
+      <div class="space-y-2 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-300 uppercase tracking-wider text-[11px]">Direct Phone Call Script (High-Touch First Touch)</span>
+          <button onclick="copyPhoneScript()" class="text-amber-400 hover:text-amber-300 font-semibold cursor-pointer">Copy Script</button>
+        </div>
+        <textarea id="trans-phone-script" rows="3" readonly class="input-dark text-slate-300 font-mono text-[11px]"></textarea>
+      </div>
+
+      <div class="space-y-2 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-slate-300 uppercase tracking-wider text-[11px]">Backup Text Message (If Unreachable by Phone)</span>
+          <button onclick="copyBackupText()" class="text-amber-400 hover:text-amber-300 font-semibold cursor-pointer">Copy Text</button>
+        </div>
+        <textarea id="trans-sms-script" rows="3" readonly class="input-dark text-slate-300 font-mono text-[11px]"></textarea>
+      </div>
+
+      <div class="flex items-center justify-end gap-3 pt-2 border-t border-slate-800">
+        <button onclick="closeVendorTransitionModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-xs cursor-pointer">Cancel</button>
+        <button onclick="executeVendorTransition()" class="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs shadow-lg flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-check"></i> Execute Transition &amp; Reassign Unit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentLang = 'pt-BR';
+    let resetrLang = 'pt-BR';
+    let ciciliaMsgLang = 'pt';
+    const activeSupplyPills = new Set();
+
+    const PROPERTY_SLUG_MAP = {
+      '32ndstreet': 'OAK-HOM-001',
+      '1023-32nd': 'OAK-HOM-001',
+      'oak-hom-001': 'OAK-HOM-001',
+      'estates': 'OAK-HOM-002',
+      '5540-estates': 'OAK-HOM-002',
+      'oak-hom-002': 'OAK-HOM-002',
+      'oak-hom-003': 'OAK-HOM-002',
+      'acton': 'BKL-ADU-001',
+      '3007-acton': 'BKL-ADU-001',
+      'bkl-adu-001': 'BKL-ADU-001',
+      'bkl-adu-002': 'BKL-ADU-001',
+      'bkl-adu-003': 'BKL-ADU-001',
+      'avis': 'PIN-HOM-001',
+      '3146-avis': 'PIN-HOM-001',
+      'pin-hom-001': 'PIN-HOM-001',
+      'scenic-north': 'BKL-STU-001',
+      'scenic': 'BKL-STU-001',
+      'bkl-stu-001': 'BKL-STU-001',
+      'bkl-stu-003': 'BKL-STU-001',
+      'scenic-south': 'BKL-STU-002',
+      'bkl-stu-002': 'BKL-STU-002',
+      'walsh': 'DEN-ADU-001',
+      '3270-walsh': 'DEN-ADU-001',
+      'den-adu-001': 'DEN-ADU-001'
+    };
+
+    const UNIT_TO_CANONICAL_SLUG = {
+      'OAK-HOM-001': '32ndstreet',
+      'OAK-HOM-002': 'estates',
+      'BKL-ADU-001': 'acton',
+      'PIN-HOM-001': 'avis',
+      'BKL-STU-001': 'scenic-north',
+      'BKL-STU-002': 'scenic-south',
+      'DEN-ADU-001': 'walsh'
+    };
+
+    const CICILIA_MESSAGES = {
+      pt: `Olá Oakland Primary Partner! Aqui é o Justin da Scenic Stay. Peço desculpas por avisar em cima da hora recentemente. Acabamos de ativar nosso sistema preSeTR para enviar sua agenda sempre com 2 semanas de antecedência!\n\n📌 AMANHÃ (Domingo, 18 de Outubro):\n1) PRIORIDADE 1 (Hóspede sai às 11:00 AM e novo hóspede entra às 5:00 PM): 1023 32nd St, Oakland ($160). Link do checklist: https://resetr.abetterbnb.com/32ndstreet . Por favor, faça a 32nd St primeiro entre 11:00 AM e 5:00 PM.\n2) PRIORIDADE 2 (JANELA FLEXÍVEL / Sem check-in amanhã): 5540 Estates Dr 5-BR, Oakland ($200). Link do checklist: https://resetr.abetterbnb.com/estates . O hóspede sai às 11:00 AM, mas NÃO há novo hóspede entrando amanhã! Você pode fazer depois da 32nd St ou na segunda-feira (19/Out) com calma.\n\n📅 SUA AGENDA CONFIRMADA (Outubro e Novembro):\n• Qua, 21/Out: 1023 32nd St ($160, sem check-in no mesmo dia)\n• Dom, 25/Out: 1023 32nd St ($160, Back-to-Back 11am as 5pm)\n• Dom, 01/Nov: 1023 32nd St ($160)\n• Dom, 22/Nov: 1023 32nd St ($160)\n• Sex, 27/Nov: 5540 Estates Dr ($200)\n• Seg, 30/Nov: 1023 32nd St ($160)\n\nMuito obrigado pelo seu cuidado impecável de sempre! Me avise se esse plano para amanhã (32nd St primeiro, Estates depois/segunda) funciona bem para você.`,
+      en: `Hi Oakland Primary Partner! Justin here from Scenic Stay. I am so sorry for giving you late heads-up on cleanings recently. We just launched our preSeTR advance schedule system so you always have your dates at least 2 weeks ahead of time!\n\n📌 TOMORROW (Sunday, Oct 18, 2026):\n1) PRIORITY 1 (SAME-DAY BACK-TO-BACK, 11:00 AM to 5:00 PM): 1023 32nd St, Oakland ($160). Checklist link: https://resetr.abetterbnb.com/32ndstreet . Outgoing guest checks out at 11:00 AM and a new guest checks in at 5:00 PM. Please do 32nd St first!\n2) PRIORITY 2 (FLEXIBLE WINDOW / No check-in tomorrow): 5540 Estates Dr 5-BR, Oakland ($200). Checklist link: https://resetr.abetterbnb.com/estates . Guest checks out at 11:00 AM tomorrow, but NO guest checks in tomorrow! Feel free to do Estates after 32nd St or on Monday, Oct 19.\n\n📅 YOUR UPCOMING VERIFIED SCHEDULE (Oct & Nov):\n• Wed, Oct 21: 1023 32nd St ($160, Open Night)\n• Sun, Oct 25: 1023 32nd St ($160, Same-Day Back-to-Back 11am to 5pm)\n• Sun, Nov 01: 1023 32nd St ($160)\n• Sun, Nov 22: 1023 32nd St ($160)\n• Fri, Nov 27: 5540 Estates Dr ($200)\n• Mon, Nov 30: 1023 32nd St ($160)\n\nThank you so much for everything you do! Let me know if doing 32nd St first tomorrow and Estates second/Monday works smoothly for you.`
+    };
+
+    const PORTFOLIO_QUEUE = [
+      {
+        cleanerKey: 'cicilia',
+        cleanerName: 'Oakland Primary Partner Barbosa',
+        langTag: 'Português (BR)',
+        dateStr: 'Sun, Oct 18, 2026',
+        windowStr: '11:00 AM to 5:00 PM',
+        unitCode: 'OAK-HOM-001',
+        unitName: '1023 32nd St (Private Level), Oakland',
+        priorityType: 'b2b',
+        priorityLabel: 'PRIORITY 1: SAME-DAY B2B (Check-in 5pm)',
+        rate: '$160.00 Timely Payout',
+        cleanerAccess: 'Private lower-level entrance at 1023 32nd St. Enter cleaner master PIN on keypad. Off-white room-matching linens (3 sets per bed + matching duvet covers), vacuum, and property supplies in hallway closet.',
+        guestArrival: 'Street parking on 32nd St; guest time-bound smart lock PIN activates at 5:00 PM (or early upon reSeTR QA approval).'
+      },
+      {
+        cleanerKey: 'cicilia',
+        cleanerName: 'Oakland Primary Partner Barbosa',
+        langTag: 'Português (BR)',
+        dateStr: 'Sun, Oct 18, 2026',
+        windowStr: 'Flexible (Sun PM or Mon Oct 19)',
+        unitCode: 'OAK-HOM-002',
+        unitName: '5540 Estates Dr (5-BR Entire Home), Oakland',
+        priorityType: 'flex',
+        priorityLabel: 'PRIORITY 2: FLEXIBLE (No Check-In Oct 18)',
+        rate: '$200.00 Timely Payout',
+        cleanerAccess: 'Park in driveway at 5540 Estates Dr. Enter cleaner master PIN at lower garage door & upper main entrance. Utility closet holds off-white 3-par linens, matching duvet covers, property supplies & vacuum.',
+        guestArrival: 'Upper stairs or lower entry per booking; guest digital guidebook & dynamic PIN active only during stay dates.'
+      },
+      {
+        cleanerKey: 'justin',
+        cleanerName: 'Justin (Scenic Ops)',
+        langTag: 'English',
+        dateStr: 'Sun, Oct 18, 2026',
+        windowStr: '11:00 AM to 5:00 PM',
+        unitCode: 'BKL-STU-001',
+        unitName: '1545 Scenic Ave (North & South Studios), Berkeley',
+        priorityType: 'b2b',
+        priorityLabel: 'SAME-DAY B2B (Check-in 5pm)',
+        rate: '$100.00',
+        cleanerAccess: 'Ground-level North Studio next to garage + South Studio 2 steps down right of driveway. On-site cordless vacuum, off-white 3-par linens, matching duvet covers, and property consumables in storage.',
+        guestArrival: 'Free street parking (2-hr M-F daytime limit; do not park in driveway; visitor passes reserved for guests who specifically ask/need daytime M-F parking). Use phone flashlight at night for 2 steps down.'
+      },
+      {
+        cleanerKey: 'fili',
+        cleanerName: 'Pinole Primary Partner',
+        langTag: 'Español',
+        dateStr: 'Mon, Oct 19, 2026',
+        windowStr: '11:00 AM to 5:00 PM',
+        unitCode: 'PIN-HOM-001',
+        unitName: '3146 Avis Way (Pinole Residential Home)',
+        priorityType: 'flex',
+        priorityLabel: 'STANDARD TURN (Next Check-In Oct 23)',
+        rate: '$195.00 Timely Payout',
+        cleanerAccess: 'Driveway parking for cleaner load-in; Schlage front smart lock + Yale interior doors with cleaner master code. Off-white 3-par linens, matching duvet covers & property supplies in hallway closet.',
+        guestArrival: 'Front porch Schlage keypad with guest 4-digit phone-tail PIN; quiet residential neighborhood rules.'
+      },
+      {
+        cleanerKey: 'maria',
+        cleanerName: 'Backup Turnover Partner Gonzalez (Acton Cleaners)',
+        langTag: 'Español',
+        dateStr: 'Mon, Oct 19, 2026',
+        windowStr: '11:00 AM to 5:00 PM',
+        unitCode: 'BKL-ADU-001',
+        unitName: '3007 Acton St (Upstairs & Downstairs Suites), Berkeley',
+        priorityType: 'b2b',
+        priorityLabel: 'SAME-DAY B2B (Check-in 5pm)',
+        rate: '$130.00 Timely Partner Payout',
+        cleanerAccess: 'Exterior staircase to upper suite or garden path to lower suite at 3007 Acton St; enter cleaner master keypad PIN. Partner brings commercial vacuum; off-white 3-par linens & property supplies in suite cabinet.',
+        guestArrival: 'Berkeley street parking; private suite path and time-bound guest keypad code.'
+      },
+      {
+        cleanerKey: 'cicilia',
+        cleanerName: 'Oakland Primary Partner Barbosa',
+        langTag: 'Português (BR)',
+        dateStr: 'Wed, Oct 21, 2026',
+        windowStr: '11:00 AM to 5:00 PM',
+        unitCode: 'OAK-HOM-001',
+        unitName: '1023 32nd St (Private Level), Oakland',
+        priorityType: 'flex',
+        priorityLabel: 'OPEN NIGHT (Next Guest Oct 22)',
+        rate: '$160.00 Timely Payout',
+        cleanerAccess: 'Private lower-level entrance at 1023 32nd St. Cleaner master PIN on front keypad; supply closet holds off-white 3-par linens, matching duvet covers & property supplies.',
+        guestArrival: 'Street parking on 32nd St; guest smart lock PIN activates at 5:00 PM on check-in day.'
+      },
+      {
+        cleanerKey: 'cicilia',
+        cleanerName: 'Oakland Primary Partner Barbosa',
+        langTag: 'Português (BR)',
+        dateStr: 'Sun, Oct 25, 2026',
+        windowStr: '11:00 AM to 5:00 PM',
+        unitCode: 'OAK-HOM-001',
+        unitName: '1023 32nd St (Private Level), Oakland',
+        priorityType: 'b2b',
+        priorityLabel: 'SAME-DAY B2B (Check-in 5pm)',
+        rate: '$160.00 Timely Payout',
+        cleanerAccess: 'Private lower-level entrance at 1023 32nd St. Cleaner master PIN on front keypad; supply closet holds off-white 3-par linens, matching duvet covers & property supplies.',
+        guestArrival: 'Street parking on 32nd St; guest smart lock PIN activates early as soon as Oakland Primary Partner completes reSeTR photo QA.'
+      }
+    ];
+
+    const RESETR_UNIT_PACKETS = {
+      'OAK-HOM-001': {
+        slug: '32ndstreet',
+        title: '1023 32nd St (Private Level), Oakland',
+        cleaner: 'Oakland Primary Partner Barbosa',
+        defaultLang: 'pt-BR',
+        rate: '$160.00 Timely Partner Payout',
+        priority: 'PRIORITY 1: SAME-DAY B2B (Sun Oct 18, 11:00 AM to 5:00 PM)',
+        cleanerAccess: {
+          'pt-BR': 'Entrada exclusiva do andar inferior na 1023 32nd St. Digite sua senha mestre de limpeza no teclado inteligente da porta da frente. Você pode parar na frente para descarregar materiais.',
+          es: 'Entrada del nivel inferior privado en 1023 32nd St. Ingresa tu código maestro de limpieza en el teclado inteligente de la puerta.',
+          en: 'Private lower-level entrance at 1023 32nd St. Enter your cleaner master PIN on the front smart keypad. Unload supplies directly at the front gate.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Armário de suprimentos no corredor interno: 3 jogos de lençóis off-white que combinam com o quarto (nunca lençóis totalmente brancos que mancham fácil), capas de edredom combinando, toalhas de banho, papel higiênico, sabonetes e itens de hospitalidade.',
+          es: 'Armario de suministros en el pasillo: 3 juegos de sábanas off-white que combinan con la habitación, fundas de edredón a juego, toallas, papel higiénico, jabones y suministros de la propiedad.',
+          en: 'Interior hallway supply closet: off-white linens that match the room (3 full sets per bed in 3-par rotation, never stain-prone all-white linens), matching duvet covers, bath towels, bathroom/kitchen supplies, paper goods, and welcome consumables.'
+        },
+        guestDiff: 'Guests receive street parking instructions and a temporary stay-only PIN. Cleaners receive the master service PIN, supply closet code, and Priority 1 B2B vs. Priority 2 flexible routing.',
+        earlyMsg: 'Great news! Oakland Primary Partner just finished preparing 1023 32nd St early and it is spotless. We have activated your front door keypad code now so you are welcome to head in and drop your bags anytime you arrive, at no extra charge!'
+      },
+      'OAK-HOM-002': {
+        slug: 'estates',
+        title: '5540 Estates Dr (5-BR Entire Home), Oakland',
+        cleaner: 'Oakland Primary Partner Barbosa',
+        defaultLang: 'pt-BR',
+        rate: '$200.00 Timely Partner Payout',
+        priority: 'PRIORITY 2: FLEXIBLE WINDOW (No Guest Check-In on Oct 18)',
+        cleanerAccess: {
+          'pt-BR': 'Estacione na garagem externa (driveway) da 5540 Estates Dr. Use sua senha mestre de limpeza tanto na porta inferior ao lado da garagem quanto na entrada principal superior.',
+          es: 'Estaciona en la entrada de autos en 5540 Estates Dr. Usa el código maestro de limpieza en la puerta inferior y superior.',
+          en: 'Park directly in the driveway at 5540 Estates Dr. Use your cleaner master PIN on both the lower garage-level entry and the upper main front door.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Armário principal de utilidades (andar térreo e superior): 3 jogos de cama off-white por cama + capas de edredom combinando para os 5 quartos, toalhas, produtos Method Eco e suprimentos de banheiro e cozinha.',
+          es: 'Armario principal de utilidades: 3 juegos de sábanas off-white por cama + fundas de edredón a juego para las 5 habitaciones, toallas y suministros generales de baño y cocina.',
+          en: 'Main utility & linen closets (lower and upper levels): off-white room-matching linen sets (3 sets per bed + matching duvet covers) for all 5 bedrooms, bath towels, Method Eco sprays, and full kitchen/bathroom supply inventory.'
+        },
+        guestDiff: 'Guests booking the 3-BR upper unit vs. 5-BR whole house receive different floor access rules. Cleaners receive full-house master access and flexible scheduling notice when no same-day check-in exists.',
+        earlyMsg: 'Wonderful news! Oakland Primary Partner has completed the full 5-bedroom turnover at 5540 Estates Dr and verified every room. Your smart lock codes are active early so you can check in whenever you arrive!'
+      },
+      'BKL-ADU-001': {
+        slug: 'acton',
+        title: '3007 Acton St (Garden & Upper Suites), Berkeley',
+        cleaner: 'Backup Turnover Partner Gonzalez (Acton Cleaners)',
+        defaultLang: 'es',
+        rate: '$130.00 Timely Partner Payout',
+        priority: 'SAME-DAY B2B: 11:00 AM to 5:00 PM Window',
+        cleanerAccess: {
+          'pt-BR': 'Portão lateral para o Garden Suite térreo ou escada externa para o Upper Suite na 3007 Acton St. Senha mestre de limpeza ativa no teclado.',
+          es: 'Camino frontal hacia la suite de abajo o escaleras exteriores hacia la suite de arriba en 3007 Acton St. Ingresa tu código maestro de limpieza en el teclado.',
+          en: 'Front path to Downstairs Garden Suite or exterior stairs to Upstairs Suite at 3007 Acton St. Enter cleaner master PIN on the door keypad.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Gabinete de suprimentos da suíte: 3 jogos de cama off-white combinando com o quarto + capas de edredom combinando, toalhas e suprimentos gerais de banheiro, cozinha e hospitalidade.',
+          es: 'Gabinete de suministros de la suite: 3 juegos de sábanas off-white que combinan con la habitación + fundas de edredón a juego, toallas y suministros de baño, papel y cocina.',
+          en: 'Suite supply cabinet: off-white room-matching linens (3 sets per bed + matching duvet covers), bath towels, bathroom toiletries, paper goods, and kitchen supply inventory. Disbursed via Preferred Payout Method from Dedicated Cleaning Payout Account on a timely basis.'
+        },
+        guestDiff: 'Guests receive suite-specific entry path instructions so Upstairs and Downstairs guests never disturb each other; Acton cleaners receive master turnover access and direct Zelle payout via Dedicated Cleaning Payout Account.',
+        earlyMsg: 'Great news! Our team just finished preparing your suite at 3007 Acton St early. Your smart lock code is active now so you can check in whenever you arrive!'
+      },
+      'PIN-HOM-001': {
+        slug: 'avis',
+        title: '3146 Avis Way (Pinole Residential Home)',
+        cleaner: 'Pinole Primary Partner',
+        defaultLang: 'es',
+        rate: '$195.00 Timely Partner Payout',
+        priority: 'STANDARD TURNOVER: 11:00 AM to 5:00 PM Window',
+        cleanerAccess: {
+          'pt-BR': 'Estacione na entrada da 3146 Avis Way. Fechadura inteligente Schlage na porta principal + portas internas Yale com senha mestre de limpeza.',
+          es: 'Estaciona en la entrada de 3146 Avis Way. Cerradura inteligente Schlage en la puerta principal y puertas interiores Yale con tu código maestro de limpieza.',
+          en: 'Park in the driveway at 3146 Avis Way. Schlage front smart lock and Yale interior locks unlock with Pinole Primary Partner\'s cleaner master code.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Armário do corredor principal: 3 jogos de lençóis off-white por cama + capas de edredom combinando, toalhas, sabonetes e suprimentos de cozinha e banheiro.',
+          es: 'Armario del pasillo principal: 3 juegos de sábanas off-white por cama + fundas de edredón a juego, toallas limpias, jabones y suministros de cocina y baño.',
+          en: 'Main hallway linen closet: off-white room-matching sheet sets (3 sets per bed + matching duvet covers), bath towels, toiletries, paper goods, and kitchen consumables.'
+        },
+        guestDiff: 'Guests receive front-door Schlage PIN access and residential quiet-hour guidelines; Pinole Primary Partner receives full interior supply closet access and Spanish-language dispatch alerts.',
+        earlyMsg: 'Great news! Pinole Primary Partner just finished preparing 3146 Avis Way early. Your front door Schlage code is active now, so feel free to check in anytime!'
+      },
+      'BKL-STU-001': {
+        slug: 'scenic-north',
+        title: '1545 Scenic Ave (North Studio), Berkeley',
+        cleaner: 'Justin / Backup Turnover Partner',
+        defaultLang: 'en',
+        rate: '$50.00 / Studio ($100 Dual)',
+        priority: 'SAME-DAY B2B: 11:00 AM to 5:00 PM Window',
+        cleanerAccess: {
+          'pt-BR': 'North Studio fica no nível térreo ao lado da garagem na 1545 Scenic Ave. Digite a senha mestre de limpeza no teclado inteligente.',
+          es: 'North Studio junto al garaje en 1545 Scenic Ave. Usa el código maestro de limpieza en el teclado.',
+          en: 'Ground-level North Studio next to the garage at 1545 Scenic Ave. Enter cleaner master PIN on keypad; cordless vacuum is on-site.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Armário de estoque local na 1545 Scenic Ave: aspirador sem fio no local, 3 jogos de cama off-white que combinam com o estúdio + capas de edredom combinando, toalhas e suprimentos gerais.',
+          es: 'Almacén en 1545 Scenic Ave: aspiradora inalámbrica en el lugar, 3 juegos de sábanas off-white que combinan con el estudio + fundas de edredón a juego, toallas y suministros.',
+          en: 'On-site supply closet at 1545 Scenic Ave: cordless vacuum on-site, signature comfortable King/Queen off-white linens that match the room (3 sets per bed + matching duvet covers), bathroom supplies, paper goods, and welcome bar stock.'
+        },
+        guestDiff: 'Guests park on Scenic Ave (never in the driveway); visitor passes are scarce (60/yr limit) and provided only when a guest specifically asks or needs weekday daytime parking. Cleaners stage supplies directly from the on-site closet.',
+        earlyMsg: 'Hi there! Your North Studio at 1545 Scenic Ave is spotless and ready early! We just activated your smart lock code so you can head in or drop your bags anytime now at no extra charge.'
+      },
+      'BKL-STU-002': {
+        slug: 'scenic-south',
+        title: '1545 Scenic Ave (South Garden Studio), Berkeley',
+        cleaner: 'Justin / Backup Turnover Partner',
+        defaultLang: 'en',
+        rate: '$50.00 / Studio ($100 Dual)',
+        priority: 'SAME-DAY B2B: 11:00 AM to 5:00 PM Window',
+        cleanerAccess: {
+          'pt-BR': 'South Garden Studio fica à direita da rampa (dois degraus abaixo) na 1545 Scenic Ave. Digite a senha mestre de limpeza no teclado.',
+          es: 'South Garden Studio a la derecha de la entrada (dos escalones abajo) en 1545 Scenic Ave. Usa el código maestro de limpieza.',
+          en: 'South Garden Studio to the right of the driveway (two steps down) at 1545 Scenic Ave. Enter cleaner master PIN on keypad; cordless vacuum is on-site.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Armário de estoque local na 1545 Scenic Ave: aspirador sem fio no local, 3 jogos de cama off-white que combinam com o estúdio + capas de edredom combinando, toalhas e suprimentos.',
+          es: 'Almacén en 1545 Scenic Ave: aspiradora inalámbrica en el lugar, 3 juegos de sábanas off-white + fundas de edredón a juego, toallas y suministros.',
+          en: 'On-site supply closet at 1545 Scenic Ave: cordless vacuum on-site, off-white room-matching linens (3 sets per bed + matching duvet covers), bath towels, toiletries, paper goods, and welcome bar consumables.'
+        },
+        guestDiff: 'Guests park on Scenic Ave (never in driveway) and use a phone flashlight at night for the 2 steps down from the driveway. Visitor passes (60/yr cap) are issued only if a guest specifically asks.',
+        earlyMsg: 'Hi there! Your South Garden Studio at 1545 Scenic Ave is spotless and ready early! We just activated your smart lock code so you can head in or drop your bags anytime now at no extra charge.'
+      },
+      'DEN-ADU-001': {
+        slug: 'walsh',
+        title: '3270 W Walsh Pl (ADU Suite), Denver, CO',
+        cleaner: 'Sarah Jenkins (Mile High Turnover Pros)',
+        defaultLang: 'en',
+        rate: '$120.00 Timely Partner Payout',
+        priority: 'STANDARD TURNOVER: 11:00 AM to 5:00 PM Window',
+        cleanerAccess: {
+          'pt-BR': 'Entrada privativa da suíte ADU na 3270 W Walsh Pl, Denver. Digite a senha mestre de limpeza no teclado inteligente.',
+          es: 'Entrada privada de la suite ADU en 3270 W Walsh Pl, Denver. Ingresa el código maestro de limpieza en el teclado.',
+          en: 'Private side pathway to the ADU Suite at 3270 W Walsh Pl, Denver. Enter cleaner master PIN on the smart lock keypad.'
+        },
+        supplyLocation: {
+          'pt-BR': 'Armário de suprimentos da ADU: 3 jogos de lençóis off-white + capas de edredom combinando, toalhas e suprimentos de banheiro e cozinha.',
+          es: 'Armario de suministros del ADU: 3 juegos de sábanas off-white + fundas de edredón a juego, toallas y suministros de baño y cocina.',
+          en: 'ADU interior supply closet: off-white room-matching linens (3 sets per bed + matching duvet covers), plush towels, bathroom toiletries, paper goods, and kitchen supply inventory.'
+        },
+        guestDiff: 'Guests receive private ADU pathway directions and stay-only smart lock PINs; cleaners receive master service access and supply closet inventory.',
+        earlyMsg: 'Great news! Sarah just finished preparing the ADU suite at 3270 W Walsh Pl early. Your smart lock code is active now so you can check in whenever you arrive!'
+      }
+    };
+
+    const RESETR_CHECKLIST_ITEMS = [
+      {
+        id: 'bed-linens',
+        icon: 'fa-bed',
+        pt: '1. Cama Padrão 5 Estrelas ("Super Comfortable Bed"): Lençóis off-white que combinam com o quarto (rotação de 3 jogos por cama, nunca totalmente brancos que mancham fácil), capa de edredom combinando, 4 travesseiros afofados e rolo adesivo (zero fios de cabelo).',
+        es: '1. Cama Estándar 5 Estrellas ("Super Comfortable Bed"): Sábanas off-white que combinan con la habitación (rotación de 3 juegos por cama, nunca blancas puras que se manchan fácil), funda de edredón a juego, 4 almohadas mullidas y rodillo quitapelusas (cero cabellos).',
+        en: '1. Five-Star Signature Comfortable Bed Reset: Off-white linens that match the room (3 full sets per bed in 3-par rotation, never stain-prone all-white linens), matching duvet cover, 4 plumped pillows, and full lint-roller hair inspection (zero stray hairs).'
+      },
+      {
+        id: 'bath-spa',
+        icon: 'fa-shower',
+        pt: '2. Banheiro Impecável: Box de vidro e espelho sem manchas, ralo do chuveiro limpo e desobstruído, vaso sanitário higienizado e toalhas de banho dobradas em três.',
+        es: '2. Baño Impecable: Vidrio de ducha y espejo sin manchas, desagüe limpio sin cabellos, inodoro desinfectado y toallas de baño dobladas.',
+        en: '2. Bathroom Spa Reset: Streak-free glass and mirror, shower drain cleared of hair, sanitized toilet/sink, and fresh bath towels neatly tri-folded.'
+      },
+      {
+        id: 'bath-toiletries',
+        icon: 'fa-pump-soap',
+        pt: '3. Suprimentos de Banheiro e Papel: Dispenser de xampu, condicionador, sabonete líquido cheios + pelo menos 3 rolos novos de papel higiênico.',
+        es: '3. Suministros de Baño y Papel: Dispensadores de champú, acondicionador y jabón llenos + mínimo 3 rollos nuevos de papel higiénico.',
+        en: '3. Bathroom Supplies & Paper Goods: Shampoo, conditioner, body wash, and hand soap dispensers topped off + at least 3 fresh rolls of toilet paper stocked.'
+      },
+      {
+        id: 'kitchen-coffee',
+        icon: 'fa-boxes-packing',
+        pt: '4. Suprimentos da Propriedade e Boas-Vindas: Verificar papel toalha, detergente, esponja nova, sacos de lixo e repor itens de hospitalidade da unidade (café, chá e aveia onde aplicável).',
+        es: '4. Suministros de Propiedad y Bienvenida: Verificar toallas de papel, jabón de platos, esponja nueva, bolsas de basura y reponer artículos de bienvenida de la unidad (café, té y avena donde aplique).',
+        en: '4. Property Supplies, Consumables & Welcome Bar: Verify paper towels, dish soap, fresh sponge, trash liners, and restock unit hospitality items (coffee, tea assortment, and oatmeal where applicable).'
+      },
+      {
+        id: 'kitchen-appliances',
+        icon: 'fa-kitchen-set',
+        pt: '5. Cozinha e Geladeira: Interior da geladeira e micro-ondas 100% limpos (sem comida de hóspede anterior), pia seca e bancadas higienizadas.',
+        es: '5. Cocina y Refrigerador: Interior del refrigerador y microondas 100% limpios (sin restos de huéspedes), fregadero seco y encimeras limpias.',
+        en: '5. Kitchen & Appliances Reset: Fridge and microwave interior 100% wiped clean (no leftover guest food), sink polished dry, and counters sanitized.'
+      },
+      {
+        id: 'floors-surfaces',
+        icon: 'fa-broom',
+        pt: '6. Pisos, Tapetes e Superfícies: Aspirar todos os cantos (incluindo embaixo da cama/sofá) e passar pano úmido com produto seguro para madeira.',
+        es: '6. Pisos, Alfombras y Superficies: Aspirar todos los rincones (incluso debajo de las camas/sofás) y trapear con limpiador seguro para madera.',
+        en: '6. Floors, Rugs & Dusting: Vacuum all floors and rugs (including under bed edges and sofa cushions) and damp-mop hard floors with wood-safe eco cleanser.'
+      },
+      {
+        id: 'climate-lights',
+        icon: 'fa-temperature-half',
+        pt: '7. Conforto Térmico, Luzes e Wi-Fi: Termostato/aquecedor ajustado em 68°F (20°C), testar todas as lâmpadas e verificar janelas destravadas/fechadas.',
+        es: '7. Clima, Luces y Ventanas: Termostato ajustado a 68°F (20°C), verificar que todas las bombillas funcionen y cerrar ventanas.',
+        en: '7. Climate, Lighting & Windows Check: Set thermostat/heater to comfortable 68°F baseline, verify all lamps/bulbs work, and secure all windows.'
+      },
+      {
+        id: 'entry-lock',
+        icon: 'fa-lock',
+        pt: '8. Entrada, Degraus Externos e Fechadura Inteligente: Varrer folhas dos degraus de entrada, enviar as 4 fotos finais de confirmação e trancar a porta pelo teclado.',
+        es: '8. Entrada, Escalones Exteriores y Cerradura: Barrer hojas de los escalones de entrada, subir las 4 fotos finales y cerrar con llave el teclado inteligente.',
+        en: '8. Entryway Steps, Patio & Final Lock Check: Sweep leaves from entry steps/porch, upload the 4 final staging photos, and lock the smart keypad upon departure.'
+      }
+    ];
+
+    function resolvePropertySlugFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const querySlug = (params.get('unit') || params.get('slug') || '').toLowerCase().trim().replace(/^\/+|\/+$/g, '');
+      if (querySlug && PROPERTY_SLUG_MAP[querySlug]) {
+        return { unitCode: PROPERTY_SLUG_MAP[querySlug], matchedSlug: querySlug };
+      }
+
+      const pathSegments = (window.location.pathname || '')
+        .toLowerCase()
+        .split('/')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      for (let i = pathSegments.length - 1; i >= 0; i -= 1) {
+        const seg = pathSegments[i].replace(/\.html$/, '');
+        if (PROPERTY_SLUG_MAP[seg]) {
+          return { unitCode: PROPERTY_SLUG_MAP[seg], matchedSlug: seg };
+        }
+      }
+
+      return null;
+    }
+
+    function updateCanonicalSlugUi(unitCode) {
+      const slug = UNIT_TO_CANONICAL_SLUG[unitCode] || '32ndstreet';
+      const badge = document.getElementById('resetr-canonical-url-badge');
+      if (badge) {
+        badge.textContent = `resetr.abetterbnb.com/${slug}`;
+      }
+      document.querySelectorAll('[data-slug-pill]').forEach(btn => {
+        const pillSlug = btn.getAttribute('data-slug-pill');
+        if (pillSlug === slug) {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-mono font-bold text-[11px] cursor-pointer transition';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-emerald-400 font-mono text-[11px] cursor-pointer transition';
+        }
+      });
+    }
+
+    function selectPropertySlug(slug, pushUrl) {
+      const cleanSlug = (slug || '').toLowerCase().trim().replace(/^\/+|\/+$/g, '');
+      const unitCode = PROPERTY_SLUG_MAP[cleanSlug] || 'OAK-HOM-001';
+      const pkt = RESETR_UNIT_PACKETS[unitCode] || RESETR_UNIT_PACKETS['OAK-HOM-001'];
+      const sel = document.getElementById('resetr-unit-select');
+      if (sel) sel.value = unitCode;
+      if (pkt.defaultLang) {
+        setResetrLang(pkt.defaultLang);
+      }
+      renderResetrUnitPacket();
+      switchCommandTab('resetr');
+      if (pushUrl && window.history && window.history.replaceState) {
+        try {
+          const canonicalSlug = UNIT_TO_CANONICAL_SLUG[unitCode] || cleanSlug;
+          const nextUrl = `${window.location.pathname}?unit=${encodeURIComponent(canonicalSlug)}&view=checklist`;
+          window.history.replaceState({ unitCode, slug: canonicalSlug }, '', nextUrl);
+        } catch (err) {}
+      }
+    }
+
+    function copyCleanPropertySlugUrl() {
+      const unitCode = document.getElementById('resetr-unit-select').value || 'OAK-HOM-001';
+      const slug = UNIT_TO_CANONICAL_SLUG[unitCode] || '32ndstreet';
+      const cleanUrl = `https://resetr.abetterbnb.com/${slug}`;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cleanUrl).then(() => {
+          alert(`Copied Clean Property Checklist URL:\n${cleanUrl}\n\nReady to share with Devido or your cleaning partner!`);
+        });
+      }
+    }
+
+    function switchCommandTab(tab) {
+      const panels = {
+        presetr: document.getElementById('panel-presetr'),
+        resetr: document.getElementById('panel-resetr'),
+        roster: document.getElementById('panel-roster')
+      };
+      const btns = {
+        presetr: document.getElementById('tab-btn-presetr'),
+        resetr: document.getElementById('tab-btn-resetr'),
+        roster: document.getElementById('tab-btn-roster')
+      };
+
+      Object.keys(panels).forEach(k => {
+        if (k === tab) {
+          panels[k].classList.remove('hidden');
+          btns[k].className = 'tab-btn-active border-2 rounded-2xl p-4 text-left transition cursor-pointer flex items-start gap-3.5';
+        } else {
+          panels[k].classList.add('hidden');
+          btns[k].className = 'tab-btn-inactive border-2 rounded-2xl p-4 text-left transition cursor-pointer flex items-start gap-3.5';
+        }
+      });
+    }
+
+    function setOaklandPrimaryPartnerMsgLang(lang) {
+      ciciliaMsgLang = lang;
+      const box = document.getElementById('cicilia-whatsapp-box');
+      const ptBtn = document.getElementById('cicilia-msg-pt-btn');
+      const enBtn = document.getElementById('cicilia-msg-en-btn');
+      if (box) box.value = CICILIA_MESSAGES[lang] || CICILIA_MESSAGES.pt;
+
+      if (lang === 'pt') {
+        ptBtn.className = 'px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-bold text-[10px] cursor-pointer';
+        enBtn.className = 'px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold text-[10px] cursor-pointer';
+      } else {
+        enBtn.className = 'px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-bold text-[10px] cursor-pointer';
+        ptBtn.className = 'px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold text-[10px] cursor-pointer';
+      }
+      const waLink = document.getElementById('cicilia-wa-direct-link');
+      if (waLink && box) {
+        waLink.href = `https://wa.me/15105550182?text=${encodeURIComponent(box.value)}`;
+      }
+    }
+
+    function copyOaklandPrimaryPartnerWhatsapp(lang) {
+      setOaklandPrimaryPartnerMsgLang(lang);
+      const text = document.getElementById('cicilia-whatsapp-box').value;
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`Copied Oakland Primary Partner's Advance Schedule (${lang === 'pt' ? 'Português BR' : 'English'}) to clipboard!\n\nReady to paste into WhatsApp right now.`);
+      });
+    }
+
+    function copyOaklandPrimaryPartnerTextbox() {
+      const text = document.getElementById('cicilia-whatsapp-box').value;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied Oakland Primary Partner WhatsApp message to clipboard!');
+      });
+    }
+
+    function copyOaklandPrimaryPartnerIcsLink() {
+      const url = `${window.location.origin}/units/cleaner_calendars/cicilia_turns.ics`;
+      navigator.clipboard.writeText(url).then(() => {
+        alert(`Copied Oakland Primary Partner's Auto-Updating Phone Calendar Link (.ics):\n${url}`);
+      });
+    }
+
+    function filterScheduleTable(cleanerFilter) {
+      ['all', 'cicilia', 'fili', 'maria', 'justin'].forEach(k => {
+        const b = document.getElementById(`flt-${k}`);
+        if (b) {
+          b.className = (k === cleanerFilter)
+            ? 'px-3 py-1.5 rounded-xl bg-amber-500 text-slate-950 font-bold cursor-pointer transition'
+            : 'px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-semibold cursor-pointer transition';
+        }
+      });
+
+      const tbody = document.getElementById('portfolio-schedule-tbody');
+      if (!tbody) return;
+
+      const rows = PORTFOLIO_QUEUE.filter(item => cleanerFilter === 'all' || item.cleanerKey === cleanerFilter);
+      tbody.innerHTML = rows.map(item => {
+        const badgeClass = item.priorityType === 'b2b'
+          ? 'bg-rose-600/30 text-rose-300 border-rose-500/50'
+          : 'bg-emerald-600/30 text-emerald-300 border-emerald-500/50';
+        const rowLang = item.cleanerKey === 'cicilia' ? 'pt-BR' : (item.cleanerKey === 'justin' ? 'en' : 'es');
+        const slug = UNIT_TO_CANONICAL_SLUG[item.unitCode] || '32ndstreet';
+        return `
+          <tr class="hover:bg-slate-900/60 transition">
+            <td class="py-3 pr-3 align-top">
+              <div class="font-bold text-white font-mono">${item.dateStr}</div>
+              <div class="text-[11px] text-amber-300 font-semibold">${item.windowStr}</div>
+            </td>
+            <td class="py-3 px-3 align-top">
+              <div class="font-bold text-white">${item.unitName}</div>
+              <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                <span class="px-2 py-0.5 rounded border text-[10px] font-bold ${badgeClass}">${item.priorityLabel}</span>
+                <span class="font-mono text-amber-400 font-bold">${item.rate}</span>
+                <code class="text-[10px] font-mono text-emerald-300 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-700/60">/${slug}</code>
+              </div>
+            </td>
+            <td class="py-3 px-3 align-top">
+              <div class="font-bold text-white">${item.cleanerName}</div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-sky-300 border border-slate-700">${item.langTag}</span>
+            </td>
+            <td class="py-3 px-3 align-top max-w-xs">
+              <div class="p-2.5 rounded-xl bg-sky-950/30 border border-sky-500/30 text-[11px] text-slate-200 leading-relaxed">
+                <strong class="text-sky-300 block text-[10px] uppercase">Cleaner Service Access:</strong>
+                ${item.cleanerAccess}
+              </div>
+            </td>
+            <td class="py-3 px-3 align-top max-w-xs">
+              <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
+                <strong class="text-slate-300 block text-[10px] uppercase">Guest Arrival Only:</strong>
+                ${item.guestArrival}
+              </div>
+            </td>
+            <td class="py-3 pl-3 align-top text-right">
+              <button type="button" onclick="openTurnInResetr('${item.unitCode}', '${rowLang}')" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-bold text-[11px] cursor-pointer transition">
+                Open /${slug} QA &rarr;
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openTurnInResetr(unitCode, lang) {
+      const sel = document.getElementById('resetr-unit-select');
+      if (sel) sel.value = unitCode;
+      if (lang) setResetrLang(lang);
+      renderResetrUnitPacket();
+      switchCommandTab('resetr');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setResetrLang(lang) {
+      resetrLang = lang;
+      const btnPt = document.getElementById('resetr-lang-pt');
+      const btnEs = document.getElementById('resetr-lang-es');
+      const btnEn = document.getElementById('resetr-lang-en');
+      [btnPt, btnEs, btnEn].forEach(b => {
+        if (b) b.className = 'px-2.5 py-1 rounded-lg text-slate-300 hover:text-white font-semibold text-xs cursor-pointer';
+      });
+      if (lang === 'pt-BR' && btnPt) btnPt.className = 'px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs cursor-pointer';
+      if (lang === 'es' && btnEs) btnEs.className = 'px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs cursor-pointer';
+      if (lang === 'en' && btnEn) btnEn.className = 'px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs cursor-pointer';
+      renderResetrUnitPacket();
+    }
+
+    function renderResetrUnitPacket() {
+      const unitCode = document.getElementById('resetr-unit-select').value || 'OAK-HOM-001';
+      const pkt = RESETR_UNIT_PACKETS[unitCode] || RESETR_UNIT_PACKETS['OAK-HOM-001'];
+
+      updateCanonicalSlugUi(unitCode);
+
+      document.getElementById('resetr-priority-pill').textContent = pkt.priority;
+      document.getElementById('resetr-cleaner-access').textContent = pkt.cleanerAccess[resetrLang] || pkt.cleanerAccess.en;
+      document.getElementById('resetr-supply-location').textContent = pkt.supplyLocation[resetrLang] || pkt.supplyLocation.en;
+      document.getElementById('resetr-guest-diff-note').textContent = pkt.guestDiff;
+      document.getElementById('resetr-payout-badge').textContent = pkt.rate;
+      document.getElementById('resetr-early-checkin-msg').textContent = `Auto-Drafted Guest Early Check-In Note: "${pkt.earlyMsg}"`;
+
+      const phase1Desc = {
+        'pt-BR': 'Tire fotos na chegada e registre qualquer dano deixado pelo hóspede, manchas fortes ou cheiro de cigarro ANTES de começar a limpar. Isso protege você e garante o reembolso via AirCover.',
+        es: 'Toma fotos al llegar y registra cualquier daño del huésped, manchas difíciles u olor a humo ANTES de empezar a limpiar. Esto protege tu trabajo.',
+        en: 'Take arrival photos and log any pre-existing guest damage, heavy stains, or smoking odors BEFORE touching or cleaning the room. This protects both cleaner and host for AirCover reimbursement.'
+      };
+      const phase1Chk = {
+        'pt-BR': 'Inspeção de Chegada Concluída: Sem danos de hóspedes ou odor de cigarro',
+        es: 'Inspección de Llegada Completada: Sin daños de huéspedes ni olor a humo',
+        en: 'Arrival Walkthrough Complete: No Guest Damage or Smoking Odor Found'
+      };
+      document.getElementById('resetr-phase1-desc').textContent = phase1Desc[resetrLang] || phase1Desc.en;
+      document.getElementById('resetr-phase1-chk-label').textContent = phase1Chk[resetrLang] || phase1Chk.en;
+
+      const langShort = resetrLang === 'pt-BR' ? 'pt' : (resetrLang === 'es' ? 'es' : 'en');
+      const container = document.getElementById('resetr-checklist-container');
+      container.innerHTML = RESETR_CHECKLIST_ITEMS.map(item => `
+        <label class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 flex items-start gap-3 cursor-pointer transition">
+          <input type="checkbox" class="resetr-room-chk mt-1 rounded border-slate-700 text-emerald-500" checked onchange="updateResetrProgress()">
+          <div class="flex-1">
+            <span class="text-slate-100 font-medium leading-relaxed"><i class="fa-solid ${item.icon} text-amber-400 mr-1.5"></i> ${item[langShort]}</span>
+          </div>
+        </label>
+      `).join('');
+      updateResetrProgress();
+    }
+
+    function updateResetrProgress() {
+      const checks = document.querySelectorAll('.resetr-room-chk');
+      const total = checks.length;
+      let done = 0;
+      checks.forEach(c => { if (c.checked) done += 1; });
+      const pct = total > 0 ? Math.round((done / total) * 100) : 100;
+      const badge = document.getElementById('resetr-progress-badge');
+      const bar = document.getElementById('resetr-progress-bar');
+      if (badge) badge.textContent = `${done} / ${total} Verified (${pct}%)`;
+      if (bar) bar.style.width = `${pct}%`;
+    }
+
+    function triggerAirCoverDamageLog() {
+      const banner = document.getElementById('aircover-incident-banner');
+      if (banner) banner.classList.toggle('hidden');
+    }
+
+    function toggleSupplyPill(btn, itemName) {
+      if (activeSupplyPills.has(itemName)) {
+        activeSupplyPills.delete(itemName);
+        btn.className = 'px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:border-amber-400 font-semibold cursor-pointer transition';
+      } else {
+        activeSupplyPills.add(itemName);
+        btn.className = 'px-3 py-1.5 rounded-xl bg-amber-500/20 border-2 border-amber-400 text-amber-200 font-bold cursor-pointer transition';
+      }
+      const logEl = document.getElementById('supply-restock-log');
+      if (activeSupplyPills.size === 0) {
+        logEl.textContent = 'Property Supplies & Consumables Status: Bathroom supplies, paper goods, kitchen supplies, soaps, off-white 3-par linens + matching duvet covers, and welcome consumables stocked above par.';
+        logEl.className = 'p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-mono text-emerald-300';
+      } else {
+        const items = Array.from(activeSupplyPills).join(', ');
+        logEl.textContent = `Restock Ticket Queued for Operations (#fieldops-photos): Replenish [${items}] before next guest turnover.`;
+        logEl.className = 'p-3 rounded-xl bg-amber-950/60 border border-amber-500/60 text-[11px] font-mono text-amber-200';
+      }
+    }
+
+    function approveTurnoverAndReleasePayout() {
+      const unitCode = document.getElementById('resetr-unit-select').value || 'OAK-HOM-001';
+      const pkt = RESETR_UNIT_PACKETS[unitCode] || RESETR_UNIT_PACKETS['OAK-HOM-001'];
+      alert(`reSeTR Turnover QA Approved!\n\nProperty: ${pkt.title}\nCleaner: ${pkt.cleaner}\nNext-Day Payout Released (Dedicated Cleaning Payout Account): ${pkt.rate}\nSmart Lock Status: Guest code activated early!\n\nEarly Check-In Notification ready to send to guest.`);
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const btnEn = document.getElementById('btn-lang-en');
+      const btnEs = document.getElementById('btn-lang-es');
+      const btnPt = document.getElementById('btn-lang-pt');
+      const topEn = document.getElementById('top-lang-en');
+      const topEs = document.getElementById('top-lang-es');
+      const topPt = document.getElementById('top-lang-pt');
+
+      const tag = document.getElementById('preview-lang-tag');
+      const preview = document.getElementById('dispatch-msg-preview');
+      const name = document.getElementById('partner-name').value || 'Partner';
+
+      [btnEn, btnEs, btnPt].forEach(b => {
+        if (b) b.className = 'px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white font-semibold transition';
+      });
+      [topEn, topEs, topPt].forEach(b => {
+        if (b) b.className = 'px-2 py-0.5 rounded text-[11px] font-semibold text-slate-300 hover:text-white transition';
+      });
+
+      if (lang === 'es') {
+        if (btnEs) btnEs.className = 'px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold transition';
+        if (topEs) topEs.className = 'px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500 text-slate-950 transition';
+        tag.textContent = 'Español';
+        preview.textContent = `Aviso de Limpieza: ¡Hola ${name}! Limpieza programada para 3007 Acton St, Berkeley (Nuevo huésped entra hoy mismo a las 5:00 PM). Horario: 11:00 AM a 5:00 PM. Checklist: https://resetr.abetterbnb.com/acton . Pago directo vía método de pago preferido (Dedicated Cleaning Payout Account) al aprobar las fotos.`;
+      } else if (lang === 'pt-BR') {
+        if (btnPt) btnPt.className = 'px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold transition';
+        if (topPt) topPt.className = 'px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500 text-slate-950 transition';
+        tag.textContent = 'Português (BR)';
+        preview.textContent = `Aviso de Limpeza: Olá ${name}! Limpeza agendada para 1023 32nd St em Domingo, 18/Out (PRIORIDADE 1: Novo hóspede entra às 5:00 PM, link: https://resetr.abetterbnb.com/32ndstreet ). E 5540 Estates Dr (PRIORIDADE 2: Sem check-in hoje, janela flexível, link: https://resetr.abetterbnb.com/estates ).`;
+      } else {
+        if (btnEn) btnEn.className = 'px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold transition';
+        if (topEn) topEn.className = 'px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500 text-slate-950 transition';
+        tag.textContent = 'English';
+        preview.textContent = `Cleaning Announcement: Hi ${name}! Turnover cleaning scheduled for North Studio (1545 Scenic Ave) (Back-to-Back Guest Check-in Today at 5:00 PM). Checklist: https://resetr.abetterbnb.com/scenic-north . Off-white 3-par linens, matching duvet covers, and property supplies are stocked in the on-site supply closet.`;
+      }
+      updatePreview();
+    }
+
+    function selectAllInRegion(region) {
+      document.querySelectorAll(`input[name="unit-assign"][data-region="${region}"]`).forEach(cb => {
+        cb.checked = true;
+      });
+      updatePreview();
+    }
+
+    function clearAllUnits() {
+      document.querySelectorAll('input[name="unit-assign"]').forEach(cb => {
+        cb.checked = false;
+      });
+      updatePreview();
+    }
+
+    function toggleRegionDetails(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.classList.toggle('hidden');
+      }
+    }
+
+    function updatePreview() {
+      const assignedUnits = [];
+      const checkboxes = document.querySelectorAll('input[name="unit-assign"]:checked');
+      checkboxes.forEach(cb => {
+        const unitId = cb.value;
+        const rateInput = document.getElementById(`rate-${unitId}`);
+        assignedUnits.push({
+          unit_id: unitId,
+          clean_url: `https://resetr.abetterbnb.com/${UNIT_TO_CANONICAL_SLUG[unitId] || '32ndstreet'}`,
+          agreed_rate: rateInput ? rateInput.value : "$0.00"
+        });
+      });
+
+      const partnerData = {
+        schema: "scenic.dispatch-partner/v2",
+        demographics: {
+          contact_name: document.getElementById('partner-name').value,
+          business_name: document.getElementById('partner-dba').value,
+          trade: document.getElementById('partner-trade').value,
+          phone: document.getElementById('partner-phone').value,
+          email: document.getElementById('partner-email').value,
+          mailing_address: document.getElementById('partner-address').value,
+          city_state_zip: document.getElementById('partner-city-state').value,
+          tax_onboarding_posture: document.getElementById('partner-tax-status').value
+        },
+        communication: {
+          primary_platform: "discord",
+          discord_channel: "#resetr-dispatch",
+          dedicated_channel: `#partner-${(document.getElementById('partner-name').value || 'cleaner').toLowerCase().replace(/\s+/g, '-')}`,
+          receipts_channel: "#company-receipts",
+          whatsapp_fallback_enabled: document.getElementById('check-whatsapp').checked,
+          language_preference: currentLang,
+          advance_notice_cadence: ["T-14d_2wk_lookahead", "T-7d_sunday_digest", "T-48h_priority_confirm", "T-0_morning_packet"]
+        },
+        banking_and_payout: {
+          cleaning_fee_bank: "Dedicated Cleaning Payout Account (Preferred Payout Method Pass-Through Account)",
+          cohost_commission_bank: "Operating Commission Account (High-Yield Operating Account)",
+          preferred_rail: document.getElementById('partner-payout-rail').value,
+          zelle_handle: document.getElementById('partner-zelle-handle') ? document.getElementById('partner-zelle-handle').value : null,
+          venmo_handle: document.getElementById('partner-venmo-handle') ? document.getElementById('partner-venmo-handle').value : null,
+          paypal_handle: document.getElementById('partner-paypal-handle') ? document.getElementById('partner-paypal-handle').value : null,
+          ach_details: document.getElementById('partner-ach-details') ? document.getElementById('partner-ach-details').value : null,
+          frequency: document.getElementById('partner-pay-freq').value,
+          emergency_callout_rate: document.getElementById('partner-emergency-rate').value,
+          disbursement_timing: "Automatic next-day payout via Dedicated Cleaning Payout Account (Preferred Payout Method) upon approved turnover completion"
+        },
+        unit_assignments: assignedUnits,
+        standards: {
+          linen_standard: "Off-white linens that match the room (3 full sets per bed in 3-par rotation + matching duvet covers; never all-white linens)",
+          two_phase_inspection: {
+            presetr_arrival_damage_check: document.getElementById('check-presetr-arrival').checked,
+            resetr_complete_property_staging_qa: document.getElementById('check-resetr-staging').checked
+          },
+          cordless_vacuum_rule_acknowledged: document.getElementById('check-cordless-vac').checked,
+          cleaner_supplies_agents: document.getElementById('partner-cleaning-agents').value,
+          property_supplies_restock_logging: document.getElementById('check-consumables-restock').checked,
+          repair_cap_usd: document.getElementById('check-repair-ceiling').checked ? 50.00 : 0.00
+        }
+      };
+
+      const previewEl = document.getElementById('dispatch-json-preview');
+      if (previewEl) {
+        previewEl.value = JSON.stringify(partnerData, null, 2);
+      }
+    }
+
+    function copyShareablePartnerLink() {
+      const name = encodeURIComponent(document.getElementById('partner-name').value);
+      const dba = encodeURIComponent(document.getElementById('partner-dba').value);
+      const trade = encodeURIComponent(document.getElementById('partner-trade').value);
+      const phone = encodeURIComponent(document.getElementById('partner-phone').value);
+      const email = encodeURIComponent(document.getElementById('partner-email').value);
+      const lang = encodeURIComponent(currentLang);
+      const payout = encodeURIComponent(document.getElementById('partner-payout-rail').value);
+
+      const checkedUnits = [];
+      document.querySelectorAll('input[name="unit-assign"]:checked').forEach(cb => {
+        const r = document.getElementById(`rate-${cb.value}`);
+        checkedUnits.push(`${cb.value}:${r ? r.value.replace('$', '').trim() : '0'}`);
+      });
+      const unitsParam = encodeURIComponent(checkedUnits.join(','));
+
+      const url = `${window.location.origin}${window.location.pathname}?name=${name}&dba=${dba}&trade=${trade}&phone=${phone}&email=${email}&lang=${lang}&payout=${payout}&units=${unitsParam}`;
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Shareable Pre-Filled Partner Link copied to clipboard!\n\n' + url);
+      }).catch(() => {
+        prompt('Copy your shareable partner link:', url);
+      });
+    }
+
+    function launchAgreementGenerator() {
+      const name = encodeURIComponent(document.getElementById('partner-name').value);
+      const dba = encodeURIComponent(document.getElementById('partner-dba').value);
+      const phone = encodeURIComponent(document.getElementById('partner-phone').value);
+      const email = encodeURIComponent(document.getElementById('partner-email').value);
+      const address = encodeURIComponent(document.getElementById('partner-address').value);
+      const cityState = encodeURIComponent(document.getElementById('partner-city-state').value);
+      const payout = encodeURIComponent(document.getElementById('partner-payout-rail').value);
+      const trade = encodeURIComponent(document.getElementById('partner-trade').value);
+
+      const checkedUnits = [];
+      document.querySelectorAll('input[name="unit-assign"]:checked').forEach(cb => {
+        const r = document.getElementById(`rate-${cb.value}`);
+        checkedUnits.push(`${cb.value}:${r ? r.value.replace('$', '').trim() : '0'}`);
+      });
+      const unitsParam = encodeURIComponent(checkedUnits.join(','));
+
+      const vacuum = document.getElementById('check-cordless-vac') ? document.getElementById('check-cordless-vac').checked : true;
+      const supplies = document.getElementById('check-supplies-onsite') ? document.getElementById('check-supplies-onsite').checked : true;
+
+      const targetUrl = `contractor_agreement_generator.html?name=${name}&dba=${dba}&phone=${phone}&email=${email}&address=${address}&cityState=${cityState}&payout=${payout}&trade=${trade}&units=${unitsParam}&vacuum=${vacuum}&supplies=${supplies}`;
+      window.open(targetUrl, '_blank');
+    }
+
+    function copyDispatchJson() {
+      const text = document.getElementById('dispatch-json-preview').value;
+      navigator.clipboard.writeText(text);
+      alert('reSeTR Dispatch Partner JSON copied to clipboard!');
+    }
+
+    function exportPartnerJson() {
+      const text = document.getElementById('dispatch-json-preview').value;
+      const name = (document.getElementById('partner-name').value || 'partner').toLowerCase().replace(/\s+/g, '_');
+      const blob = new Blob([text], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `resetr_partner_${name}.json`;
+      a.click();
+    }
+
+    const partnerPresets = {
+      justin: {
+        name: "Justin",
+        dba: "Scenic Stay Operations",
+        trade: "cleaner",
+        phone: "4156900337",
+        email: "justin@abetterbnb.com",
+        address: "1545 Scenic Ave",
+        cityState: "Berkeley, CA 94708",
+        lang: "en",
+        taxStatus: "zero_tax_interrogation",
+        payoutRail: "ach",
+        zelle: "",
+        venmo: "",
+        paypal: "",
+        ach: "Operating Commission Account / Dedicated Cleaning Payout Account Internal Transfer",
+        units: ["BKL-STU-001", "BKL-STU-002", "BKL-STU-003"]
+      },
+      fili: {
+        name: "Pinole Primary Partner",
+        dba: "Pinole Primary Partner Cleaning Services",
+        trade: "cleaner",
+        phone: "+1 (510) 847-2977",
+        email: "fili@cleaningops.com",
+        address: "3146 Avis Way",
+        cityState: "Pinole, CA 94564",
+        lang: "es",
+        taxStatus: "zero_tax_interrogation",
+        payoutRail: "venmo",
+        zelle: "",
+        venmo: "@Pinole Primary Partner-Clean-Pinole",
+        paypal: "",
+        ach: "Dedicated Cleaning Payout Account Cleaning Pass-Through Account",
+        units: ["PIN-HOM-001"]
+      },
+      cicilia: {
+        name: "Oakland Primary Partner Barbosa",
+        dba: "Barbosa Turnover & Cleaning",
+        trade: "cleaner",
+        phone: "+1 (510) 847-2982",
+        email: "cicilia@barbosaclean.com",
+        address: "2418 San Pablo Ave",
+        cityState: "Berkeley, CA 94702",
+        lang: "pt-BR",
+        taxStatus: "zero_tax_interrogation",
+        payoutRail: "venmo",
+        zelle: "+1 (510) 847-2982",
+        venmo: "@Oakland Primary Partner-Barbosa-Clean",
+        paypal: "cicilia@barbosaclean.com",
+        ach: "Dedicated Cleaning Payout Account (Preferred Partner Method)",
+        units: ["OAK-HOM-001", "OAK-HOM-002", "OAK-HOM-003"]
+      },
+      maria: {
+        name: "Backup Turnover Partner Gonzalez",
+        dba: "Acton Suite Turnover Team",
+        trade: "cleaner",
+        phone: "+1 (510) 847-2944",
+        email: "maria@apexturnover.com",
+        address: "1284 8th Street",
+        cityState: "Berkeley, CA 94710",
+        lang: "es",
+        taxStatus: "zero_tax_interrogation",
+        payoutRail: "zelle",
+        zelle: "+1 (510) 847-2944 (Zelle via Dedicated Cleaning Payout Account)",
+        venmo: "@Backup Turnover Partner-ApexTurnover",
+        paypal: "",
+        ach: "Dedicated Cleaning Payout Account Partner Payout (Timely Settlement)",
+        units: ["BKL-ADU-001", "BKL-ADU-002", "BKL-ADU-003"]
+      },
+      denver: {
+        name: "Sarah Jenkins",
+        dba: "Mile High Turnover Pros",
+        trade: "cleaner",
+        phone: "+1 (303) 847-2968",
+        email: "sarah@milehighturnover.com",
+        address: "3270 W Walsh Pl",
+        cityState: "Denver, CO 80219",
+        lang: "en",
+        taxStatus: "zero_tax_interrogation",
+        payoutRail: "venmo",
+        zelle: "+1 (303) 847-2968",
+        venmo: "@Sarah-MileHighClean",
+        paypal: "sarah@milehighturnover.com",
+        ach: "Dedicated Cleaning Payout Account Cleaning Pass-Through Account",
+        units: ["DEN-ADU-001"]
+      },
+      dave: {
+        name: "Dave Miller",
+        dba: "Dave Miller Repairs & Handyman",
+        trade: "handyman",
+        phone: "+1 (510) 847-2910",
+        email: "dave@millerrepairs.com",
+        address: "1940 Addison St",
+        cityState: "Berkeley, CA 94704",
+        lang: "en",
+        taxStatus: "ein_llc",
+        payoutRail: "ach",
+        zelle: "+1 (510) 847-2910",
+        venmo: "",
+        paypal: "",
+        ach: "Direct Bank ACH",
+        units: []
+      }
+    };
+
+    function loadPartnerPreset(key) {
+      const p = partnerPresets[key];
+      if (!p) return;
+      document.getElementById('partner-name').value = p.name || '';
+      document.getElementById('partner-dba').value = p.dba || '';
+      document.getElementById('partner-trade').value = p.trade || 'cleaner';
+      document.getElementById('partner-phone').value = p.phone || '';
+      document.getElementById('partner-email').value = p.email || '';
+      document.getElementById('partner-address').value = p.address || '';
+      document.getElementById('partner-city-state').value = p.cityState || '';
+      document.getElementById('partner-payout-rail').value = p.payoutRail || 'venmo';
+      const taxEl = document.getElementById('partner-tax-status');
+      if (taxEl) taxEl.value = p.taxStatus || 'zero_tax_interrogation';
+
+      const zelleEl = document.getElementById('partner-zelle-handle');
+      if (zelleEl) zelleEl.value = p.zelle !== undefined ? p.zelle : '';
+      const venmoEl = document.getElementById('partner-venmo-handle');
+      if (venmoEl) venmoEl.value = p.venmo !== undefined ? p.venmo : '';
+      const paypalEl = document.getElementById('partner-paypal-handle');
+      if (paypalEl) paypalEl.value = p.paypal !== undefined ? p.paypal : '';
+      const achEl = document.getElementById('partner-ach-details');
+      if (achEl) achEl.value = p.ach !== undefined ? p.ach : '';
+
+      if (p.units) {
+        document.querySelectorAll('input[name="unit-assign"]').forEach(cb => {
+          cb.checked = p.units.includes(cb.value);
+        });
+      }
+
+      setLanguage(p.lang || 'en');
+      updatePreview();
+    }
+
+    window.onload = () => {
+      setOaklandPrimaryPartnerMsgLang('pt');
+      filterScheduleTable('all');
+      renderResetrUnitPacket();
+
+      const params = new URLSearchParams(window.location.search);
+      const slugMatch = resolvePropertySlugFromUrl();
+      if (slugMatch) {
+        const sel = document.getElementById('resetr-unit-select');
+        if (sel) sel.value = slugMatch.unitCode;
+        const pkt = RESETR_UNIT_PACKETS[slugMatch.unitCode];
+        if (pkt && pkt.defaultLang) {
+          setResetrLang(pkt.defaultLang);
+        }
+        renderResetrUnitPacket();
+        switchCommandTab('resetr');
+      } else if (params.get('view') === 'checklist' || params.get('tab') === 'resetr') {
+        switchCommandTab('resetr');
+      } else if (params.has('tab')) {
+        switchCommandTab(params.get('tab'));
+      }
+
+      if (params.has('name') || params.has('units') || params.has('preset')) {
+        if (params.has('preset')) {
+          loadPartnerPreset(params.get('preset'));
+        }
+        if (params.has('name')) document.getElementById('partner-name').value = params.get('name');
+        if (params.has('dba')) document.getElementById('partner-dba').value = params.get('dba');
+        if (params.has('trade')) document.getElementById('partner-trade').value = params.get('trade');
+        if (params.has('phone')) document.getElementById('partner-phone').value = params.get('phone');
+        if (params.has('email')) document.getElementById('partner-email').value = params.get('email');
+        if (params.has('payout')) document.getElementById('partner-payout-rail').value = params.get('payout');
+        if (params.has('lang')) setLanguage(params.get('lang'));
+
+        if (params.has('units')) {
+          const unitsList = params.get('units').split(',');
+          const unitMap = {};
+          unitsList.forEach(item => {
+            const [u, r] = item.split(':');
+            if (u) unitMap[u.trim()] = r ? `$${r.trim()}` : null;
+          });
+          document.querySelectorAll('input[name="unit-assign"]').forEach(cb => {
+            if (Object.prototype.hasOwnProperty.call(unitMap, cb.value)) {
+              cb.checked = true;
+              if (unitMap[cb.value]) {
+                const rInput = document.getElementById(`rate-${cb.value}`);
+                if (rInput) rInput.value = unitMap[cb.value];
+              }
+            } else {
+              cb.checked = false;
+            }
+          });
+        }
+        updatePreview();
+      } else {
+        loadPartnerPreset('cicilia');
+      }
+    };
+
+    function openVendorTransitionModal() {
+      document.getElementById('vendor-transition-modal').classList.remove('hidden');
+      updateTransitionScripts();
+    }
+
+    function closeVendorTransitionModal() {
+      document.getElementById('vendor-transition-modal').classList.add('hidden');
+    }
+
+    function updateTransitionScripts() {
+      const unit = document.getElementById('trans-unit').value;
+      const date = document.getElementById('trans-date').value || 'tomorrow';
+      const outgoing = document.getElementById('trans-outgoing').options[document.getElementById('trans-outgoing').selectedIndex].text.split(' (')[0];
+
+      const phoneScript = `Hi ${outgoing}, Justin here with Scenic Stay. I wanted to call you directly to connect regarding ${unit}. We are restructuring our field turnover schedule at this property starting on ${date}. I wanted to personally thank you for all your hard work and care here. We will ensure all completed cleanings and outstanding invoices are paid out immediately today. Thank you so much for your partnership.`;
+      const smsScript = `Hi ${outgoing}, Justin from Scenic Stay. I just tried calling you directly. We are transitioning the turnover schedule at ${unit} starting on ${date}. We sincerely appreciate your dedication and quality on this property. All pending payouts have been processed today. Wishing you the absolute best.`;
+
+      document.getElementById('trans-phone-script').value = phoneScript;
+      document.getElementById('trans-sms-script').value = smsScript;
+    }
+
+    function onTransitionUnitChange() {
+      updateTransitionScripts();
+    }
+
+    function copyPhoneScript() {
+      const text = document.getElementById('trans-phone-script').value;
+      navigator.clipboard.writeText(text);
+      alert('Phone script copied to clipboard!');
+    }
+
+    function copyBackupText() {
+      const text = document.getElementById('trans-sms-script').value;
+      navigator.clipboard.writeText(text);
+      alert('Backup SMS text copied to clipboard!');
+    }
+
+    function executeVendorTransition() {
+      const unit = document.getElementById('trans-unit').value;
+      const incomingKey = document.getElementById('trans-incoming').value;
+      const outgoingText = document.getElementById('trans-outgoing').options[document.getElementById('trans-outgoing').selectedIndex].text;
+      const incomingText = document.getElementById('trans-incoming').options[document.getElementById('trans-incoming').selectedIndex].text;
+
+      loadPartnerPreset(incomingKey);
+      const cb = document.querySelector(`input[name="unit-assign"][value="${unit}"]`);
+      if (cb) cb.checked = true;
+
+      updatePreview();
+      closeVendorTransitionModal();
+
+      alert(`Vendor Transition Executed Successfully!\n\nUnit: ${unit}\nOutgoing: ${outgoingText}\nIncoming: ${incomingText}\n\nAssigned to ${incomingText}. Smart lock code rotation required before next guest arrival.`);
+    }
+  </script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>
