@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenic OS | Team Launchpad & Role-Based Entry Portal (abetterbnb.com)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+  <style>
+    :root {
+      --bg-obsidian: #0f0a19;
+      --bg-elevated: #161026;
+      --bg-card: #1f1635;
+      --border-plum: #2d224c;
+      --accent-gold: #f59e0b;
+      --accent-emerald: #10b981;
+      --accent-sky: #38bdf8;
+      --accent-rose: #f43f5e;
+      --accent-purple: #a855f7;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 18% 0%, rgba(168, 85, 247, 0.14), transparent 42%),
+                  radial-gradient(circle at 85% 8%, rgba(245, 158, 11, 0.12), transparent 38%),
+                  var(--bg-obsidian);
+      color: #f8fafc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .launchpad-container {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 28px 24px 72px;
+    }
+    .hero-shell {
+      position: relative;
+      background: linear-gradient(135deg, rgba(31, 22, 53, 0.94) 0%, rgba(22, 16, 38, 0.97) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.32);
+      border-radius: 20px;
+      padding: 32px 34px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+    .hero-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fde68a;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .active-role-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.42);
+      color: #a7f3d0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .hero-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      margin: 0 0 12px;
+      color: #ffffff;
+      line-height: 1.22;
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 1060px;
+      margin: 0 0 22px;
+    }
+    .pipeline-flow-ribbon {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(15, 10, 25, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .pipeline-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 11px;
+      border-radius: 8px;
+      background: rgba(31, 22, 53, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      color: #f8fafc;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .pipeline-step:hover {
+      border-color: #f59e0b;
+      transform: translateY(-1px);
+    }
+    .pipeline-arrow {
+      color: #f59e0b;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: 21px;
+      font-weight: 800;
+      margin: 0;
+      color: #f8fafc;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+      margin: 4px 0 0;
+    }
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      gap: 18px;
+      margin-bottom: 42px;
+    }
+    .role-card {
+      background: linear-gradient(180deg, rgba(31, 22, 53, 0.92) 0%, rgba(22, 16, 38, 0.96) 100%);
+      border: 1px solid var(--border-plum);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.18s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .role-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(245, 158, 11, 0.6);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42);
+    }
+    .role-card.active-role-card {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.35), 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .role-card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 6px;
+    }
+    .role-pillar-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #fcd34d;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .role-mission {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin: 0 0 14px;
+    }
+    .role-workflow-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .role-workflow-list li {
+      font-size: 12px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .role-workflow-list li span.step-dot {
+      color: #f59e0b;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+    .role-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .btn-primary-launch {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #0f0a19;
+      background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-primary-launch:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+    .btn-secondary-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .btn-chip-link {
+      flex: 1 1 auto;
+      text-align: center;
+      padding: 6px 9px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #e2e8f0;
+      background: rgba(15, 10, 25, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .btn-chip-link:hover {
+      border-color: #38bdf8;
+      color: #ffffff;
+      background: rgba(56, 189, 248, 0.14);
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 1180px) {
+      .pillars-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 680px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pillar-col-card {
+      background: rgba(22, 16, 38, 0.95);
+      border: 1px solid var(--border-plum);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pillar-col-header {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+      padding-bottom: 12px;
+    }
+    .pillar-num-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .pillar-col-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: #ffffff;
+    }
+    .pillar-col-desc {
+      font-size: 12px;
+      color: #94a3b8;
+      margin: 0;
+    }
+    .subset-item-card {
+      display: block;
+      padding: 12px 13px;
+      border-radius: 12px;
+      background: rgba(31, 22, 53, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      text-decoration: none;
+      color: #f8fafc;
+      transition: all 0.15s ease;
+    }
+    .subset-item-card:hover {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateY(-1px);
+    }
+    .subset-top-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .subset-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .subset-status-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.16);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      white-space: nowrap;
+    }
+    .subset-flow-note {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .training-hub-banner {
+      background: linear-gradient(135deg, rgba(31, 22, 53, 0.92) 0%, rgba(15, 10, 25, 0.96) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 22px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .training-hub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .training-link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      background: rgba(56, 189, 248, 0.13);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      color: #e0f2fe;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+    .training-link-pill:hover {
+      background: rgba(56, 189, 248, 0.24);
+      border-color: #38bdf8;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <main class="launchpad-container" aria-label="Scenic OS Team Launchpad and Role-Based Entry Portal">
+    <!-- HERO BANNER -->
+    <section class="hero-shell" aria-labelledby="launchpad-hero-heading">
+      <div class="hero-top-row">
+        <span class="hero-eyebrow">🏰 SCENIC OS // ABETTERBNB.COM EXECUTIVE PORTAL</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;">
+          <div class="active-role-banner" id="launchpad-active-role-indicator" aria-live="polite">
+            <span id="launchpad-active-role-label">Active Discord Session: @All-Access Executive &amp; Operations (Auto-Detected from Discord Invite Link)</span>
+          </div>
+          <label for="launchpad-scope-switcher" style="font-size:11px;color:#cbd5e1;font-family:'JetBrains Mono',monospace;display:inline-flex;align-items:center;gap:6px;">
+            <span>Switch View Scope:</span>
+            <select id="launchpad-scope-switcher" aria-label="Switch View Scope" onchange="activateLaunchpadRole(this.value, false)" style="background:#161026;color:#fde68a;border:1px solid rgba(245,158,11,0.5);border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;">
+              <option value="ALL_ACCESS">@All-Access Executive &amp; Operations</option>
+              <option value="SALES_AND_GROWTH">@Sales &amp; Growth</option>
+              <option value="OPERATIONS_ADMIN">@Operations &amp; Admin</option>
+              <option value="ACCOUNTING_FINANCE">@Accounting &amp; Finance</option>
+              <option value="SOCIAL_MARKETING">@Social Media &amp; Marketing</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <h1 id="launchpad-hero-heading" class="hero-title">
+        Welcome to Scenic OS (<code>abetterbnb.com</code>): Your Active Discord Role Workspace &amp; 4 Operational Pillars
+      </h1>
+      <p class="hero-subtitle" id="launchpad-active-role-summary">
+        Your Discord invite link automatically scopes your workspace and training modules. Every Scenic Stay tool is organized into <strong>4 Top-Level Operational Pillars</strong> (with instant Row 2 subset navigation) plus an independent <strong>Academy &amp; SOPs</strong> training library. All-Access executives and admins can also use the discreet <strong>Switch View Scope</strong> control above to preview any functional team lens.
+      </p>
+
+      <!-- DATA HANDSHAKE PIPELINE RIBBON -->
+      <div class="pipeline-flow-ribbon" aria-label="End-to-End Scenic OS Data Flow">
+        <span class="font-mono-code" style="font-size:11px;color:#fcd34d;font-weight:700;text-transform:uppercase;margin-right:4px;">Live Handshake Flow:</span>
+        <a href="beacon_atlas_explorer.html" class="pipeline-step">🗺️ 1A. Beacon Atlas Explorer</a>
+        <span class="pipeline-arrow">-&gt;</span>
+        <a href="beacon_lead_command.html" class="pipeline-step">🎯 1B. Beacon Lead Command</a>
+        <span class="pipeline-arrow">-&gt;</span>
+        <a href="owner_agreement_generator.html" class="pipeline-step">📝 1C. Owner Contract Generator</a>
+        <span class="pipeline-arrow">-&gt;</span>
+        <a href="host_property_forge.html" class="pipeline-step">🛠️ 2A. Host Property Forge (13-Station)</a>
+        <span class="pipeline-arrow">-&gt;</span>
+        <a href="dynamic_pricing_command.html" class="pipeline-step">📈 3A. Dynamic Pricing &amp; 3B. Ledger</a>
+        <span class="pipeline-arrow">-&gt;</span>
+        <a href="presetr_supply_engine.html" class="pipeline-step">📦 4A. PreSetr &amp; 4B. ReSetr Logistics</a>
+      </div>
+    </section>
+
+    <!-- 5 ORGANIZATIONAL DISCORD ROLE WORKSPACE CARDS -->
+    <section aria-labelledby="role-selector-heading">
+      <div class="section-header">
+        <div>
+          <h2 id="role-selector-heading" class="section-title">1. Organizational Discord Role Workspaces &amp; Training Scopes</h2>
+          <p class="section-subtitle">Your active Discord role session is highlighted automatically below from your Discord link (<code>?role=...</code>). Click any workspace button to launch directly into your assigned tools.</p>
+        </div>
+      </div>
+
+      <div class="roles-grid">
+        <!-- ROLE 1: @All-Access Executive & Operations -->
+        <article class="role-card" data-role-card="ALL_ACCESS" tabindex="0" role="button" aria-label="All-Access Executive and Operations Workspace Scope" onclick="activateLaunchpadRole('ALL_ACCESS', false)">
+          <div>
+            <span class="role-badge" style="background:rgba(245,158,11,0.18);color:#fde68a;border:1px solid rgba(245,158,11,0.45);">👑 @All-Access Executive &amp; Operations</span>
+            <h3 class="role-card-title">@All-Access Executive &amp; Operations</h3>
+            <span class="role-pillar-tag">Full System &amp; Training Access: For Founder, Operations Director, and All-Access Team Links</span>
+            <p class="role-mission">Unrestricted command across all 4 Operational Pillars, full Training &amp; SOP curriculum, Dynamic Pricing &amp; Yield Command, Trust Ledger reconciliation, and Level 3 Executive Sign-Offs.</p>
+            <ul class="role-workflow-list">
+              <li><span class="step-dot">01</span><span><strong>All 4 Pillars Unlocked:</strong> Beacon Scout, Beacon Lead Command, HOSt &amp; balanSeTR</span></li>
+              <li><span class="step-dot">02</span><span><strong>Dynamic Pricing Command:</strong> Event Surge &amp; Midweek Compression</span></li>
+              <li><span class="step-dot">03</span><span><strong>Executive Presentation:</strong> Thursday Team All-Hands Deck &amp; L3 Sign-Offs</span></li>
+            </ul>
+          </div>
+          <div class="role-actions" onclick="event.stopPropagation()">
+            <a href="beacon_lead_command.html?role=ALL_ACCESS" class="btn-primary-launch" onclick="activateLaunchpadRole('ALL_ACCESS', false)">
+              <span>Launch Beacon Lead Command</span>
+              <span>↗</span>
+            </a>
+            <div class="btn-secondary-links">
+              <a href="dynamic_pricing_command.html?role=ALL_ACCESS" class="btn-chip-link" onclick="activateLaunchpadRole('ALL_ACCESS', false)">📈 Pricing Command</a>
+              <a href="thursday_team_presentation.html?role=ALL_ACCESS" class="btn-chip-link" onclick="activateLaunchpadRole('ALL_ACCESS', false)">🎤 Executive Deck</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROLE 2: @Sales & Growth -->
+        <article class="role-card" data-role-card="SALES_AND_GROWTH" tabindex="0" role="button" aria-label="Sales and Growth Workspace Scope" onclick="activateLaunchpadRole('SALES_AND_GROWTH', false)">
+          <div>
+            <span class="role-badge" style="background:rgba(16,185,129,0.16);color:#6ee7b7;border:1px solid rgba(16,185,129,0.4);">🎯 @Sales &amp; Growth</span>
+            <h3 class="role-card-title">@Sales &amp; Growth</h3>
+            <span class="role-pillar-tag">Universal Intro + Beacon Scout -&gt; Beacon Lead Command -&gt; Owner Contract -&gt; HOSt Handoff</span>
+            <p class="role-mission">Source verified deed owners in Beacon Scout Atlas, push leads into the Beacon Lead Command 4-Tab Closer Queue, run Sales Team discovery calls, and generate 12% / 15% / 20% Owner Partnership Agreements through HOSt Handoff.</p>
+            <ul class="role-workflow-list">
+              <li><span class="step-dot">01</span><span><strong>Beacon Scout Atlas:</strong> Market Discovery &amp; 1-Click Push to Beacon Lead Command</span></li>
+              <li><span class="step-dot">02</span><span><strong>Beacon Lead Command:</strong> Outreach &amp; 4-Tab Closer Queue</span></li>
+              <li><span class="step-dot">03</span><span><strong>Owner Contract -&gt; HOSt Handoff:</strong> 12% / 15% / 20% Partnership Agreements</span></li>
+            </ul>
+          </div>
+          <div class="role-actions" onclick="event.stopPropagation()">
+            <a href="beacon_lead_command.html?role=SALES_AND_GROWTH" class="btn-primary-launch" onclick="activateLaunchpadRole('SALES_AND_GROWTH', false)">
+              <span>Open Beacon Lead Command Pipeline</span>
+              <span>↗</span>
+            </a>
+            <div class="btn-secondary-links">
+              <a href="beacon_atlas_explorer.html?role=SALES_AND_GROWTH" class="btn-chip-link" onclick="activateLaunchpadRole('SALES_AND_GROWTH', false)">🗺️ Atlas Explorer</a>
+              <a href="owner_agreement_generator.html?role=SALES_AND_GROWTH" class="btn-chip-link" onclick="activateLaunchpadRole('SALES_AND_GROWTH', false)">📝 Owner Contracts</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROLE 3: @Operations & Admin -->
+        <article class="role-card" data-role-card="OPERATIONS_ADMIN" tabindex="0" role="button" aria-label="Operations and Admin Workspace Scope" onclick="activateLaunchpadRole('OPERATIONS_ADMIN', false)">
+          <div>
+            <span class="role-badge" style="background:rgba(56,189,248,0.16);color:#7dd3fc;border:1px solid rgba(56,189,248,0.4);">🛠️ @Operations &amp; Admin</span>
+            <h3 class="role-card-title">@Operations &amp; Admin</h3>
+            <span class="role-pillar-tag">Universal Intro + From HOSt Handoff Onward: HOSt Forge, Dynamic Pricing, preSeTR, reSeTR, Field Ops Contract, Inside Ops Deck, Company SOP</span>
+            <p class="role-mission">Execute from HOSt Handoff onward: 13-Station HOSt Forge property onboarding, Dynamic Pricing, 7-day predictive linen/consumable pars in preSeTR, photo QA turnovers in reSeTR, Field Ops Partner Contracts, Inside Ops Deck, and Company SOP.</p>
+            <ul class="role-workflow-list">
+              <li><span class="step-dot">01</span><span><strong>HOSt Forge &amp; Dynamic Pricing:</strong> 13-Station Onboarding Blueprint &amp; Event Yield</span></li>
+              <li><span class="step-dot">02</span><span><strong>preSeTR &amp; reSeTR:</strong> 3-Par Linen Staging, Turnovers &amp; Field Ops Contract</span></li>
+              <li><span class="step-dot">03</span><span><strong>Inside Ops Deck &amp; Company SOP:</strong> Watch-First Operations &amp; Shadow Workbook</span></li>
+            </ul>
+          </div>
+          <div class="role-actions" onclick="event.stopPropagation()">
+            <a href="host_property_forge.html?role=OPERATIONS_ADMIN" class="btn-primary-launch" onclick="activateLaunchpadRole('OPERATIONS_ADMIN', false)">
+              <span>Launch HOSt Property Forge</span>
+              <span>↗</span>
+            </a>
+            <div class="btn-secondary-links">
+              <a href="presetr_supply_engine.html?role=OPERATIONS_ADMIN" class="btn-chip-link" onclick="activateLaunchpadRole('OPERATIONS_ADMIN', false)">📦 preSeTR Supply</a>
+              <a href="resetr_turnover_app.html?role=OPERATIONS_ADMIN" class="btn-chip-link" onclick="activateLaunchpadRole('OPERATIONS_ADMIN', false)">🧹 reSeTR App</a>
+              <a href="contractor_agreement_generator.html?role=OPERATIONS_ADMIN" class="btn-chip-link" onclick="activateLaunchpadRole('OPERATIONS_ADMIN', false)">🤝 Field Ops Contract</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROLE 4: @Accounting & Finance -->
+        <article class="role-card" data-role-card="ACCOUNTING_FINANCE" tabindex="0" role="button" aria-label="Accounting and Finance Workspace Scope" onclick="activateLaunchpadRole('ACCOUNTING_FINANCE', false)">
+          <div>
+            <span class="role-badge" style="background:rgba(244,63,94,0.16);color:#fda4af;border:1px solid rgba(244,63,94,0.4);">📒 @Accounting &amp; Finance</span>
+            <h3 class="role-card-title">@Accounting &amp; Finance</h3>
+            <span class="role-pillar-tag">Universal Intro + balanSeTR Ledger, Deal Seeker, Monthly Owner Statements &amp; EOY Tax Center</span>
+            <p class="role-mission">Manage double-entry trust accounting in balanSeTR Ledger, run Deal Seeker &amp; Expense Radar, audit Monthly Owner Statements with 100% pass-through cleaning and transparent coordination rules, and prepare EOY Tax Center filings.</p>
+            <ul class="role-workflow-list">
+              <li><span class="step-dot">01</span><span><strong>balanSeTR Ledger:</strong> Double-Entry Trust Accounting &amp; Payout Feed</span></li>
+              <li><span class="step-dot">02</span><span><strong>Deal Seeker &amp; Monthly Owner Statements:</strong> Receipt Matching &amp; Owner Payouts</span></li>
+              <li><span class="step-dot">03</span><span><strong>EOY Tax Center:</strong> IRS Schedule E, 1099-MISC/NEC &amp; TOT Filings</span></li>
+            </ul>
+          </div>
+          <div class="role-actions" onclick="event.stopPropagation()">
+            <a href="scenic_ledger_bookkeeper.html?role=ACCOUNTING_FINANCE" class="btn-primary-launch" onclick="activateLaunchpadRole('ACCOUNTING_FINANCE', false)">
+              <span>Launch balanSeTR Ledger &amp; Tax Center</span>
+              <span>↗</span>
+            </a>
+            <div class="btn-secondary-links">
+              <a href="scenic_ledger_bookkeeper.html?role=ACCOUNTING_FINANCE#tab-deal-seeker" class="btn-chip-link" onclick="activateLaunchpadRole('ACCOUNTING_FINANCE', false)">🏷️ Deal Seeker</a>
+              <a href="scenic_ledger_bookkeeper.html?role=ACCOUNTING_FINANCE#tab-owner-statements" class="btn-chip-link" onclick="activateLaunchpadRole('ACCOUNTING_FINANCE', false)">📄 Owner Statements</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROLE 5: @Social Media & Marketing -->
+        <article class="role-card" data-role-card="SOCIAL_MARKETING" tabindex="0" role="button" aria-label="Social Media and Marketing Workspace Scope" onclick="activateLaunchpadRole('SOCIAL_MARKETING', false)">
+          <div>
+            <span class="role-badge" style="background:rgba(168,85,247,0.18);color:#d8b4fe;border:1px solid rgba(168,85,247,0.42);">📣 @Social Media &amp; Marketing</span>
+            <h3 class="role-card-title">@Social Media &amp; Marketing</h3>
+            <span class="role-pillar-tag">Universal Intro + Brand Voice Academy, High-Buzz Discovery &amp; Guest Add-On Merchandising</span>
+            <p class="role-mission">Master the Brand Voice Academy, surface high-buzz regional discovery hooks in Beacon Atlas, and deploy event-driven listing copy and guest add-on merchandising across our properties.</p>
+            <ul class="role-workflow-list">
+              <li><span class="step-dot">01</span><span><strong>Brand Voice Academy:</strong> Interactive Voice-Guided Storytelling Standards</span></li>
+              <li><span class="step-dot">02</span><span><strong>High-Buzz Discovery:</strong> Local Experiential &amp; Visual Hooks in Beacon Atlas</span></li>
+              <li><span class="step-dot">03</span><span><strong>Guest Add-On Merchandising:</strong> Event Copy Swapper &amp; Upsell Packages</span></li>
+            </ul>
+          </div>
+          <div class="role-actions" onclick="event.stopPropagation()">
+            <a href="beacon_atlas_explorer.html?role=SOCIAL_MARKETING" class="btn-primary-launch" onclick="activateLaunchpadRole('SOCIAL_MARKETING', false)">
+              <span>Launch Beacon Atlas Explorer</span>
+              <span>↗</span>
+            </a>
+            <div class="btn-secondary-links">
+              <a href="scenic_academy_journey.html?role=SOCIAL_MARKETING" class="btn-chip-link" onclick="activateLaunchpadRole('SOCIAL_MARKETING', false)">🎓 Brand Voice Academy</a>
+              <a href="dynamic_pricing_command.html?role=SOCIAL_MARKETING" class="btn-chip-link" onclick="activateLaunchpadRole('SOCIAL_MARKETING', false)">📈 Event Merchandising</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- VISUAL MAP OF THE 4 OPERATIONAL PILLARS & SUBSETS -->
+    <section aria-labelledby="pillars-map-heading">
+      <div class="section-header">
+        <div>
+          <h2 id="pillars-map-heading" class="section-title">2. Visual Map of the 4 Operational Pillars &amp; Child Subsets</h2>
+          <p class="section-subtitle">Hover or click any Parent Pillar in the top global bar to switch workspaces, or launch any Child Subset directly from this 4-column architecture matrix.</p>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <!-- PILLAR 1 -->
+        <div class="pillar-col-card">
+          <div class="pillar-col-header">
+            <span class="pillar-num-badge" style="background:rgba(16,185,129,0.16);color:#6ee7b7;border:1px solid rgba(16,185,129,0.35);">PILLAR 01 &amp; 02 // SALES &amp; GROWTH</span>
+            <h3 class="pillar-col-title">🎯 1. Beacon Scout &amp; 2. Beacon Lead Command</h3>
+            <p class="pillar-col-desc">End-to-end owner discovery, 4-tab closer telemetry, and automated partnership contracts.</p>
+          </div>
+
+          <a href="beacon_atlas_explorer.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">🗺️ Beacon Atlas Explorer</span>
+              <span class="subset-status-pill">LIVE // 16 DOSSIERS</span>
+            </div>
+            <p class="subset-flow-note">Market Discovery &amp; Geographic Dossiers. Pushes verified leads directly into Beacon Lead Command via 1-click handshake.</p>
+          </a>
+
+          <a href="beacon_lead_command.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">🎯 Beacon Lead Command</span>
+              <span class="subset-status-pill">LIVE // 48 STRICT YES</span>
+            </div>
+            <p class="subset-flow-note">Active Outreach CRM, 4-Tab Closer Intelligence Drawer, and 1-click dispatch to Owner Contract Generator.</p>
+          </a>
+
+          <a href="owner_agreement_generator.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">📝 Owner Contract Generator</span>
+              <span class="subset-status-pill">LIVE // AUTO-PREFILL</span>
+            </div>
+            <p class="subset-flow-note">Pre-fills 20+ property &amp; owner parameters from Beacon Lead Command to draft 12% Boutique, 15% Co-Host, or 20% Full-Service agreements.</p>
+          </a>
+        </div>
+
+        <!-- PILLAR 2 -->
+        <div class="pillar-col-card">
+          <div class="pillar-col-header">
+            <span class="pillar-num-badge" style="background:rgba(56,189,248,0.16);color:#7dd3fc;border:1px solid rgba(56,189,248,0.35);">PILLAR 03 // ONBOARDING</span>
+            <h3 class="pillar-col-title">🛠️ 3A. Property Onboarding (HOSt Forge)</h3>
+            <p class="pillar-col-desc">Convert signed owner contracts into live, smart-lock-equipped, multi-OTA properties.</p>
+          </div>
+
+          <a href="host_property_forge.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">🛠️ Host Property Forge</span>
+              <span class="subset-status-pill">LIVE // 13 STATIONS</span>
+            </div>
+            <p class="subset-flow-note">13-Station Property Onboarding &amp; Asset Blueprinting from signed contract to PMS &amp; smart lock deployment.</p>
+          </a>
+
+          <a href="contractor_agreement_generator.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">🤝 Field Ops Partner Contracts</span>
+              <span class="subset-status-pill">LIVE // W-9 + SLA</span>
+            </div>
+            <p class="subset-flow-note">1099 Contractor, Turnover Specialist &amp; Maintenance Vendor Service Level Agreements with 0% markup compliance.</p>
+          </a>
+        </div>
+
+        <!-- PILLAR 3 -->
+        <div class="pillar-col-card">
+          <div class="pillar-col-header">
+            <span class="pillar-num-badge" style="background:rgba(245,158,11,0.16);color:#fde68a;border:1px solid rgba(245,158,11,0.35);">PILLAR 03B &amp; 04 // REVENUE &amp; TRUST</span>
+            <h3 class="pillar-col-title">📈 3B. Dynamic Pricing &amp; 4. balanSeTR</h3>
+            <p class="pillar-col-desc">Algorithmic ADR yield management paired with transparent owner trust accounting.</p>
+          </div>
+
+          <a href="dynamic_pricing_command.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">📈 Dynamic Pricing Command</span>
+              <span class="subset-status-pill">LIVE // REVPAR ENGINE</span>
+            </div>
+            <p class="subset-flow-note">ADR Yield Engine, Event Surge Multipliers, and Midweek Corporate Compression Rules across all doors.</p>
+          </a>
+
+          <a href="scenic_ledger_bookkeeper.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">📒 balanSeTR Autonomous Bookkeeper</span>
+              <span class="subset-status-pill">LIVE // 0% MARKUP</span>
+            </div>
+            <p class="subset-flow-note">Owner Trust Accounting, 12% / 15% / 20% Fee Reconciliation, Deal Seeker, Monthly Owner Statements, and EOY Tax Center.</p>
+          </a>
+        </div>
+
+        <!-- PILLAR 4 -->
+        <div class="pillar-col-card">
+          <div class="pillar-col-header">
+            <span class="pillar-num-badge" style="background:rgba(168,85,247,0.16);color:#d8b4fe;border:1px solid rgba(168,85,247,0.35);">PILLAR 03C &amp; 03D // FIELD OPS</span>
+            <h3 class="pillar-col-title">📦 3C. preSeTR &amp; 3D. reSeTR Logistics</h3>
+            <p class="pillar-col-desc">Predictive linen/consumable staging and photo-verified field turnover execution.</p>
+          </div>
+
+          <a href="presetr_supply_engine.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">📦 preSeTR Supply Engine</span>
+              <span class="subset-status-pill">LIVE // 7-DAY PAR</span>
+            </div>
+            <p class="subset-flow-note">Predictive 7-Day Linen, Amenity &amp; Consumable Par Staging synced with upcoming reservation check-ins.</p>
+          </a>
+
+          <a href="resetr_turnover_app.html" class="subset-item-card">
+            <div class="subset-top-line">
+              <span class="subset-name">🧹 reSeTR Turnover App</span>
+              <span class="subset-status-pill">LIVE // PHOTO QA</span>
+            </div>
+            <p class="subset-flow-note">Field Cleaner Dispatch, Room-by-Room Photo QA Checklists, and Real-Time Readiness Telemetry.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- INDEPENDENT TRAINING HUB (ACADEMY & SOPS) -->
+      <div class="training-hub-banner" aria-label="Scenic Academy and SOP Training Library">
+        <div>
+          <span class="font-mono-code" style="font-size:11px;color:#38bdf8;font-weight:700;text-transform:uppercase;">🎓 INDEPENDENT TRAINING HUB // ACADEMY &amp; SOPS</span>
+          <h3 style="margin:4px 0 4px;font-size:18px;font-weight:800;color:#ffffff;">Universal Intro, Brand Voice Academy, Inside Operations Deck &amp; Company SOP Manual</h3>
+          <p style="margin:0;font-size:13px;color:#cbd5e1;">Role-scoped training modules, 5-minute guest messaging SLAs, and the Thursday Executive Team Presentation.</p>
+        </div>
+        <div class="training-hub-links">
+          <a href="scenic_os_system_blueprint.html" class="training-link-pill">🏛️ Universal Intro &amp; System Blueprint</a>
+          <a href="scenic_academy_journey.html" class="training-link-pill">🎓 Brand Voice Academy</a>
+          <a href="operations_onboarding_deck.html" class="training-link-pill">🧭 Inside Operations Deck</a>
+          <a href="scenic_company_sop_manual.html" class="training-link-pill">📘 Company SOP Manual</a>
+          <a href="thursday_team_presentation.html" class="training-link-pill">🎤 Executive Presentation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/scenic_global_shell.js" defer></script>
+  <script>
+    const LAUNCHPAD_ROLE_NAMES = {
+      ALL_ACCESS: '@All-Access Executive & Operations',
+      SALES_AND_GROWTH: '@Sales & Growth',
+      OPERATIONS_ADMIN: '@Operations & Admin',
+      ACCOUNTING_FINANCE: '@Accounting & Finance',
+      SOCIAL_MARKETING: '@Social Media & Marketing'
+    };
+
+    const LAUNCHPAD_ROLE_SUMMARIES = {
+      ALL_ACCESS: 'Full system & training access: for Founder, Operations Director, and All-Access team links.',
+      SALES_AND_GROWTH: 'Universal Intro + Beacon Scout -> Beacon Lead Command -> Owner Contract -> HOSt Handoff.',
+      OPERATIONS_ADMIN: 'Universal Intro + From HOSt Handoff Onward: HOSt Forge, Dynamic Pricing, preSeTR, reSeTR, Field Ops Contract, Inside Ops Deck, Company SOP.',
+      ACCOUNTING_FINANCE: 'Universal Intro + balanSeTR Ledger, Deal Seeker, Monthly Owner Statements & EOY Tax Center.',
+      SOCIAL_MARKETING: 'Universal Intro + Brand Voice Academy, High-Buzz Discovery & Guest Add-On Merchandising.'
+    };
+
+    function resolveLaunchpadRole(rawKey) {
+      const clean = String(rawKey || '').trim().toUpperCase();
+      const aliasMap = {
+        ALL_ACCESS: 'ALL_ACCESS',
+        FOUNDER_JUSTIN: 'ALL_ACCESS',
+        FOUNDER: 'ALL_ACCESS',
+        SALES_AND_GROWTH: 'SALES_AND_GROWTH',
+        SALES_TEAM: 'SALES_AND_GROWTH',
+        SALES: 'SALES_AND_GROWTH',
+        OPERATIONS_ADMIN: 'OPERATIONS_ADMIN',
+        OPS_AND_ADMIN: 'OPERATIONS_ADMIN',
+        OPS: 'OPERATIONS_ADMIN',
+        ACCOUNTING_FINANCE: 'ACCOUNTING_FINANCE',
+        ACCOUNTING: 'ACCOUNTING_FINANCE',
+        FINANCE: 'ACCOUNTING_FINANCE',
+        SOCIAL_MARKETING: 'SOCIAL_MARKETING',
+        SOCIAL_AND_MARKETING: 'SOCIAL_MARKETING',
+        SOCIAL: 'SOCIAL_MARKETING'
+      };
+      return aliasMap[clean] || 'ALL_ACCESS';
+    }
+
+    function activateLaunchpadRole(roleKey, navigatePrimary) {
+      const canonical = resolveLaunchpadRole(roleKey);
+      if (!LAUNCHPAD_ROLE_NAMES[canonical]) return;
+      try {
+        localStorage.setItem('scenic_active_discord_role', canonical);
+      } catch (e) {}
+      if (typeof window.setScenicDiscordRole === 'function') {
+        window.setScenicDiscordRole(canonical);
+      }
+      syncLaunchpadRoleUI();
+    }
+
+    function syncLaunchpadRoleUI() {
+      const params = new URLSearchParams(window.location.search);
+      const urlRole = params.get('role');
+      let currentRole = 'ALL_ACCESS';
+      if (urlRole) {
+        currentRole = resolveLaunchpadRole(urlRole);
+        try {
+          localStorage.setItem('scenic_active_discord_role', currentRole);
+        } catch (e) {}
+      } else {
+        try {
+          const stored = localStorage.getItem('scenic_active_discord_role');
+          if (stored) {
+            currentRole = resolveLaunchpadRole(stored);
+          }
+        } catch (e) {}
+      }
+
+      const roleTag = LAUNCHPAD_ROLE_NAMES[currentRole] || LAUNCHPAD_ROLE_NAMES.ALL_ACCESS;
+      const labelEl = document.getElementById('launchpad-active-role-label');
+      if (labelEl) {
+        labelEl.textContent = 'Active Discord Session: ' + roleTag + ' (Auto-Detected from Discord Invite Link)';
+      }
+
+      const summaryEl = document.getElementById('launchpad-active-role-summary');
+      if (summaryEl) {
+        summaryEl.innerHTML = '<strong>Active Scope (' + roleTag + '):</strong> ' + (LAUNCHPAD_ROLE_SUMMARIES[currentRole] || LAUNCHPAD_ROLE_SUMMARIES.ALL_ACCESS) + ' Use the discreet <strong>Switch View Scope</strong> control above to preview another organizational role.';
+      }
+
+      const selectEl = document.getElementById('launchpad-scope-switcher');
+      if (selectEl && selectEl.value !== currentRole) {
+        selectEl.value = currentRole;
+      }
+
+      document.querySelectorAll('[data-role-card]').forEach(card => {
+        const cardRole = card.getAttribute('data-role-card');
+        if (cardRole === currentRole) {
+          card.classList.add('active-role-card');
+        } else {
+          card.classList.remove('active-role-card');
+        }
+      });
+    }
+
+    window.onScenicRoleChanged = function () {
+      syncLaunchpadRoleUI();
+    };
+
+    window.addEventListener('scenic:role-changed', () => {
+      syncLaunchpadRoleUI();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncLaunchpadRoleUI();
+      document.querySelectorAll('[data-role-card]').forEach(card => {
+        card.addEventListener('keydown', (ev) => {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            const roleKey = card.getAttribute('data-role-card');
+            activateLaunchpadRole(roleKey, false);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Arrival Manual &amp; Curated Insider Guide • A Better BNB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0F0514;
+      color: #F1F5F9;
+    }
+    .serif-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    .glass-card {
+      background: rgba(30, 12, 40, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(216, 180, 254, 0.12);
+    }
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(251, 191, 36, 0.4);
+      transform: translateY(-2px);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFE89E 0%, #FFBE3B 50%, #D97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .purple-glow {
+      box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950 pb-16">
+
+  <!-- Top Announcement Bar -->
+  <header class="bg-gradient-to-r from-purple-950/80 via-slate-950 to-purple-950/80 border-b border-purple-900/40 text-xs py-2 px-4">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-slate-300 font-medium text-[11px]">Digital Arrival Guide &bull; 24/7 Guest Concierge Active</span>
+      </div>
+      <div class="flex items-center gap-3 text-slate-400 text-[11px]">
+        <span>Powered by <strong class="text-amber-300 font-semibold">A Better BNB</strong></span>
+        <a href="#partner-section" class="text-amber-400 hover:text-amber-300 transition flex items-center gap-1">
+          <i class="fa-solid fa-crown text-[10px]"></i> Partner With Us
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header Section -->
+  <section class="relative overflow-hidden pt-12 pb-16 px-4 border-b border-purple-900/30 bg-gradient-to-b from-purple-950/40 via-[#0F0514] to-[#0F0514]">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d8b4fe_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10 space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-700/60 text-purple-300 text-xs font-mono">
+        <i class="fa-solid fa-location-dot text-amber-400"></i>
+        <span id="manual-neighborhood">Montclair &bull; Piedmont Pines, Oakland</span>
+      </div>
+
+      <div class="space-y-2">
+        <h1 id="manual-property-name" class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white serif-title">
+          Estates 5-BR Canyon Sanctuary
+        </h1>
+        <p id="manual-property-headline" class="text-base sm:text-lg text-slate-300 max-w-2xl font-light">
+          Your private architectural retreat nestled in the Oakland hills. Panoramic canyon breezes, chef kitchen, and curated modern spaces.
+        </p>
+      </div>
+
+      <!-- Quick Action Buttons Hub -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+        <!-- Wi-Fi Button -->
+        <button onclick="openModal('modal-wifi')" class="glass-card glass-card-hover p-4 rounded-2xl flex flex-col items-start justify-between text-left group">
+          <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 mb-3 group-hover:scale-110 transition">
+            <i class="fa-solid fa-wifi"></i>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400 block font-medium">High-Speed Wi-Fi</span>
+            <strong class="text-sm font-bold text-white group-hover:text-amber-300 transition">Connect Fast</strong>
+          </div>
+        </button>
+
+        <!-- Access PIN Button -->
+        <button onclick="openModal('modal-pin')" class="glass-card glass-card-hover p-4 rounded-2xl flex flex-col items-start justify-between text-left group">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-3 group-hover:scale-110 transition">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400 block font-medium">Smart Lock PIN</span>
+            <strong class="text-sm font-bold text-white group-hover:text-amber-300 transition">Door Code</strong>
+          </div>
+        </button>
+
+        <!-- Parking & Access -->
+        <button onclick="openModal('modal-parking')" class="glass-card glass-card-hover p-4 rounded-2xl flex flex-col items-start justify-between text-left group">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-3 group-hover:scale-110 transition">
+            <i class="fa-solid fa-square-parking"></i>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400 block font-medium">Parking &amp; Entry</span>
+            <strong class="text-sm font-bold text-white group-hover:text-amber-300 transition">Directions</strong>
+          </div>
+        </button>
+
+        <!-- 24/7 Concierge -->
+        <button onclick="openModal('modal-concierge')" class="glass-card glass-card-hover p-4 rounded-2xl flex flex-col items-start justify-between text-left group">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-3 group-hover:scale-110 transition">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div>
+            <span class="text-xs text-slate-400 block font-medium">Guest Support</span>
+            <strong class="text-sm font-bold text-white group-hover:text-amber-300 transition">24/7 Team</strong>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <main class="max-w-5xl mx-auto px-4 py-10 space-y-12">
+
+    <!-- Section 1: Welcome & Stay Essentials -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-white serif-title tracking-wide flex items-center gap-2.5">
+          <i class="fa-solid fa-house-chimney-window text-amber-400 text-lg"></i>
+          Stay Essentials &amp; Rituals
+        </h2>
+        <span class="text-xs font-mono text-purple-300 bg-purple-950/80 px-2.5 py-1 rounded-lg border border-purple-800">
+          Check-In: 5:00 PM &bull; Check-Out: 11:00 AM
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Wi-Fi Card -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider text-sky-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-wifi"></i> Gigabit Fiber Wi-Fi
+            </span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800">Air-Gapped</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs text-slate-400 block">Network SSID:</span>
+            <strong id="manual-wifi-ssid" class="text-base font-mono font-bold text-white block">EstatesCanyon &bull; Guest</strong>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs text-slate-400 block">Wi-Fi Password:</span>
+            <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950/80 border border-slate-800 font-mono text-sm">
+              <strong id="manual-wifi-pass" class="text-amber-300">Sanctuary2026</strong>
+              <button onclick="copyToClipboard('manual-wifi-pass')" class="text-xs text-slate-400 hover:text-white transition">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400">Ultra-fast dual-band mesh coverage reaches all bedrooms and the exterior deck terrace.</p>
+        </div>
+
+        <!-- Lock & Keyless Entry -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-key"></i> Keyless Smart Lock
+            </span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">Auto-Scoped</span>
+          </div>
+          <div class="space-y-1">
+            <span class="text-xs text-slate-400 block">Your Keypad Code:</span>
+            <div class="flex items-center justify-between p-2 rounded-lg bg-slate-950/80 border border-slate-800 font-mono text-base font-black text-amber-300 tracking-wider">
+              <span id="manual-pin-code">Last 4 Digits of Mobile</span>
+              <i class="fa-solid fa-lock text-slate-500 text-xs"></i>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400">
+            To unlock: Enter your 4-digit code on the keypad, then press the checkmark or Schlage logo. To lock upon leaving: Close door firmly and press the center logo.
+          </p>
+        </div>
+
+        <!-- Climate & Comfort -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-temperature-three-quarters"></i> Smart Climate
+            </span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">Nest System</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Main level thermostat is located in the central hallway. Tap and turn dial to adjust target temperature. Recommended comfort band: 68&deg;F to 72&deg;F.
+          </p>
+          <div class="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400">
+            <strong class="text-slate-200 block mb-0.5"><i class="fa-solid fa-wind text-sky-400 mr-1"></i> Evening Canyon Breeze:</strong>
+            Opening upper deck sliding glass doors in the late afternoon brings natural coastal cooling through the house.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: House Guidelines & Amenities -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-white serif-title tracking-wide flex items-center gap-2.5">
+        <i class="fa-solid fa-sliders text-amber-400 text-lg"></i>
+        Amenity Guides &amp; Quiet Curfew
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <!-- Trash & Recycling -->
+        <div class="glass-card p-5 rounded-2xl space-y-2.5">
+          <div class="font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-trash-can text-amber-400"></i> Trash, Recycling &amp; Compost
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Color-coded bins are located down the driveway inside the designated enclosure:
+          </p>
+          <div class="grid grid-cols-3 gap-2 text-[11px] pt-1">
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-center">
+              <strong class="text-blue-400 block font-mono">Blue</strong>
+              <span class="text-slate-400 text-[10px]">Clean Recycling</span>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-center">
+              <strong class="text-emerald-400 block font-mono">Green</strong>
+              <span class="text-slate-400 text-[10px]">Food &amp; Compost</span>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-center">
+              <strong class="text-slate-300 block font-mono">Gray</strong>
+              <span class="text-slate-400 text-[10px]">General Landfill</span>
+            </div>
+          </div>
+          <span class="text-[10px] text-slate-500 block pt-1">Curbside collection occurs early Tuesday morning.</span>
+        </div>
+
+        <!-- Neighborhood Curfew & Sound -->
+        <div class="glass-card p-5 rounded-2xl space-y-2.5">
+          <div class="font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-volume-xmark text-amber-400"></i> Quiet Hours &amp; Canyon Acoustics
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Sound travels clearly across the canyon. The neighborhood observes strict quiet hours from <strong>10:00 PM to 8:00 AM</strong>.
+          </p>
+          <div class="p-2.5 rounded-lg bg-amber-950/30 border border-amber-800/40 text-[11px] text-amber-200">
+            <i class="fa-solid fa-moon mr-1.5 text-amber-400"></i>
+            Please move all conversations indoors and turn off outdoor deck audio after 10:00 PM. We appreciate your partnership in respecting our residential community.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: The Host Insider Guide (Local Curation) -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-white serif-title tracking-wide flex items-center gap-2.5">
+          <i class="fa-solid fa-compass text-amber-400 text-lg"></i>
+          The Host Insider Guide: Montclair &amp; Oakland Hills
+        </h2>
+        <span class="text-xs text-slate-400">Hand-picked by local hosts</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <!-- Morning Coffee & Bakeries -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-mug-hot"></i> Coffee &amp; Morning Rituals
+          </div>
+          <div class="space-y-3 text-[11px]">
+            <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="flex items-center justify-between">
+                <strong class="text-white text-xs">Thornhill Coffeehouse</strong>
+                <span class="text-[10px] text-amber-400 font-mono">3 min drive</span>
+              </div>
+              <p class="text-slate-400 mt-1">Local neighborhood favorite for artisanal pour-overs, matcha lattes, and fresh almond croissants.</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="flex items-center justify-between">
+                <strong class="text-white text-xs">Aunt Mary's Cafe</strong>
+                <span class="text-[10px] text-amber-400 font-mono">6 min drive</span>
+              </div>
+              <p class="text-slate-400 mt-1">Southern comfort brunch: buttermilk biscuits, bourbon French toast, and organic local eggs.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dinner & Dining -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-utensils"></i> Dinner &amp; Cocktails
+          </div>
+          <div class="space-y-3 text-[11px]">
+            <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="flex items-center justify-between">
+                <strong class="text-white text-xs">Perle Wine Bar</strong>
+                <span class="text-[10px] text-amber-400 font-mono">Montclair Village</span>
+              </div>
+              <p class="text-slate-400 mt-1">Cal-French bistro with an exceptional European wine cellar, steak frites, and wood-roasted oysters.</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="flex items-center justify-between">
+                <strong class="text-white text-xs">Commis (2 Michelin Stars)</strong>
+                <span class="text-[10px] text-amber-400 font-mono">10 min drive</span>
+              </div>
+              <p class="text-slate-400 mt-1">Chef James Syhabout open kitchen tasting menu on Piedmont Ave. Reserve weeks in advance.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenic Vistas & Nature -->
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+            <i class="fa-solid fa-mountain-sun"></i> Vistas &amp; Redwoods
+          </div>
+          <div class="space-y-3 text-[11px]">
+            <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="flex items-center justify-between">
+                <strong class="text-white text-xs">Redwood Regional Park</strong>
+                <span class="text-[10px] text-amber-400 font-mono">4 min away</span>
+              </div>
+              <p class="text-slate-400 mt-1">Enter via Skyline Blvd. Hike among 100-foot second-growth coastal redwoods along the Stream Trail.</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="flex items-center justify-between">
+                <strong class="text-white text-xs">Grizzly Peak Sunset Vista</strong>
+                <span class="text-[10px] text-amber-400 font-mono">Skyline Blvd</span>
+              </div>
+              <p class="text-slate-400 mt-1">The most breathtaking panoramic overlook in Northern California: SF skyline, Golden Gate, and Bay Bridge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Checkout Ritual -->
+    <section class="glass-card p-6 rounded-3xl border-purple-800/40 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <h2 class="text-xl font-bold text-white serif-title tracking-wide flex items-center gap-2">
+          <i class="fa-solid fa-calendar-check text-amber-400"></i>
+          Effortless Departure Ritual (Check-Out: 11:00 AM)
+        </h2>
+        <span class="text-xs text-slate-400">Leave the heavy lifting to our turnover team</span>
+      </div>
+      <p class="text-xs text-slate-300">
+        We believe vacations should end without stress. Please complete only these three simple steps before departing:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div class="p-3 bg-slate-950/70 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-amber-400 font-bold block">1. Kitchen Dishes</span>
+          <span class="text-slate-400 text-[11px]">Load used dishes into the dishwasher and press Start. Our cleaners will unload.</span>
+        </div>
+        <div class="p-3 bg-slate-950/70 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-sky-400 font-bold block">2. Windows &amp; Deck</span>
+          <span class="text-slate-400 text-[11px]">Close all exterior sliding doors and ensure the outdoor fire pit valve is switched off.</span>
+        </div>
+        <div class="p-3 bg-slate-950/70 rounded-xl border border-slate-800 space-y-1">
+          <span class="text-emerald-400 font-bold block">3. One-Touch Lock</span>
+          <span class="text-slate-400 text-[11px]">Close the front door firmly and press the center keypad button. Safe travels home!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: The Inbound Owner Acquisition Engine (Growth Flywheel) -->
+    <section id="partner-section" class="relative overflow-hidden rounded-3xl p-8 sm:p-10 border border-amber-500/40 bg-gradient-to-r from-purple-950/90 via-[#180820] to-purple-950/90 purple-glow">
+      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-3 max-w-xl text-center md:text-left">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono font-semibold">
+            <i class="fa-solid fa-gem text-amber-400"></i> The A Better BNB Collection
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white serif-title leading-tight">
+            Enamored with your stay? <br>
+            <span class="gold-gradient-text">Own a distinctive home or boutique hotel?</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+            We operate the most discerning short-term rental and boutique hotel residences across Northern California, Arizona, and Colorado. From keyless access and white-glove turnover to dynamic revenue management, we generate industry-leading net cash distributions for property owners with zero operational friction.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <a href="https://abetterbnb.com" target="_blank" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs tracking-wide transition shadow-lg flex items-center gap-2">
+              <span>Partner With Us</span>
+              <i class="fa-solid fa-arrow-right text-[11px]"></i>
+            </a>
+            <span class="text-xs text-slate-400 font-mono">abetterbnb.com &bull; abetterboutique.com</span>
+          </div>
+        </div>
+
+        <!-- QR Code Card -->
+        <div class="flex-shrink-0 p-5 rounded-2xl bg-white text-slate-950 text-center space-y-2 shadow-2xl">
+          <!-- Real SVG QR Code representation -->
+          <div class="w-32 h-32 mx-auto bg-slate-100 p-2 rounded-xl flex items-center justify-center border border-slate-200">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-slate-950" fill="currentColor">
+              <!-- QR Patterns -->
+              <rect x="0" y="0" width="30" height="30" rx="4"/>
+              <rect x="5" y="5" width="20" height="20" fill="white"/>
+              <rect x="10" y="10" width="10" height="10"/>
+              
+              <rect x="70" y="0" width="30" height="30" rx="4"/>
+              <rect x="75" y="5" width="20" height="20" fill="white"/>
+              <rect x="80" y="10" width="10" height="10"/>
+              
+              <rect x="0" y="70" width="30" height="30" rx="4"/>
+              <rect x="5" y="75" width="20" height="20" fill="white"/>
+              <rect x="10" y="80" width="10" height="10"/>
+
+              <rect x="36" y="10" width="8" height="8"/>
+              <rect x="50" y="14" width="6" height="6"/>
+              <rect x="38" y="38" width="24" height="24" rx="2" fill="#D97706"/>
+              <rect x="14" y="44" width="8" height="8"/>
+              <rect x="70" y="44" width="12" height="6"/>
+              <rect x="44" y="72" width="10" height="10"/>
+              <rect x="68" y="72" width="14" height="8"/>
+              <rect x="86" y="84" width="8" height="8"/>
+            </svg>
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider block text-slate-800">Scan to Partner</span>
+          <span class="text-[9px] text-slate-500 font-mono block">Zero-Friction Management</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modals -->
+  <!-- Wi-Fi Modal -->
+  <div id="modal-wifi" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-3xl border-purple-700/50 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-wifi text-sky-400"></i> Fast Wi-Fi Access
+        </h3>
+        <button onclick="closeModal('modal-wifi')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3 text-xs">
+        <div>
+          <span class="text-slate-400 block text-[11px]">Network (SSID):</span>
+          <strong class="text-base font-mono text-white" id="modal-wifi-name">EstatesCanyon &bull; Guest</strong>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-[11px]">Password:</span>
+          <strong class="text-base font-mono text-amber-300" id="modal-wifi-secret">Sanctuary2026</strong>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Point your mobile camera at your screen to connect automatically, or select the network in settings and enter the password above.
+      </p>
+      <button onclick="closeModal('modal-wifi')" class="w-full py-2.5 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-xl text-xs transition">
+        Done
+      </button>
+    </div>
+  </div>
+
+  <!-- Smart Lock PIN Modal -->
+  <div id="modal-pin" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-3xl border-purple-700/50 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-key text-amber-400"></i> Door Lock PIN
+        </h3>
+        <button onclick="closeModal('modal-pin')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2 text-xs text-center">
+        <span class="text-slate-400 block text-[11px]">Your 4-Digit Door Code:</span>
+        <strong class="text-2xl font-mono text-amber-300 tracking-widest block py-1">Last 4 Digits of Mobile</strong>
+        <span class="text-[10px] text-slate-500 font-mono block">Active from 5:00 PM Arrival to 11:00 AM Departure</span>
+      </div>
+      <div class="text-xs text-slate-300 space-y-2">
+        <p><strong>To Unlock:</strong> Enter your 4-digit code on the touchscreen deadbolt, then press the center logo or checkmark.</p>
+        <p><strong>To Lock:</strong> Pull the door firmly closed and press the center logo button once.</p>
+      </div>
+      <button onclick="closeModal('modal-pin')" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs transition">
+        Understood
+      </button>
+    </div>
+  </div>
+
+  <!-- Parking Modal -->
+  <div id="modal-parking" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-3xl border-purple-700/50 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-parking text-emerald-400"></i> Parking &amp; Entry
+        </h3>
+        <button onclick="closeModal('modal-parking')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+        <p><strong>Designated Parking:</strong> Up to 3 vehicles may park in the private upper driveway directly in front of the garage.</p>
+        <p><strong>Street Parking:</strong> Please do not block neighboring driveways along Estates Drive. Mountain roads require cars to be parked fully off the road shoulder.</p>
+      </div>
+      <button onclick="closeModal('modal-parking')" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold rounded-xl text-xs transition">
+        Got It
+      </button>
+    </div>
+  </div>
+
+  <!-- Concierge Modal -->
+  <div id="modal-concierge" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-3xl border-purple-700/50 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-headset text-purple-400"></i> 24/7 Guest Concierge
+        </h3>
+        <button onclick="closeModal('modal-concierge')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Our guest experience team is available 24 hours a day to assist with any questions, extra linens, or local recommendations.
+      </p>
+      <div class="space-y-2 pt-1">
+        <a href="tel:+15105550192" class="w-full py-2.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition">
+          <i class="fa-solid fa-phone"></i> Call Guest Support
+        </a>
+        <a href="sms:+15105550192" class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 transition">
+          <i class="fa-solid fa-message"></i> Text Guest Support
+        </a>
+      </div>
+      <button onclick="closeModal('modal-concierge')" class="w-full py-2 text-slate-400 hover:text-white text-xs">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('hidden');
+        el.classList.add('flex');
+      }
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('flex');
+        el.classList.add('hidden');
+      }
+    }
+
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard: ' + text);
+      });
+    }
+
+    // Ingest URL parameters to dynamically customize unit
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const unitId = params.get('unit_id');
+      if (unitId && unitId.startsWith('BKL-')) {
+        document.getElementById('manual-property-name').innerText = 'Modern Retro Private Studio';
+        document.getElementById('manual-neighborhood').innerText = 'North Berkeley Hills &bull; Panoramic Bay Views';
+        document.getElementById('manual-property-headline').innerText = 'Private au-pair studio with private garden entry, kitchenette, and sunset views over the Golden Gate.';
+        document.getElementById('manual-wifi-ssid').innerText = 'ScenicStay &bull; RetroStudio';
+        document.getElementById('manual-wifi-pass').innerText = 'RetroScenic2026';
+        document.getElementById('modal-wifi-name').innerText = 'ScenicStay &bull; RetroStudio';
+        document.getElementById('modal-wifi-secret').innerText = 'RetroScenic2026';
+      }
+    };
+  </script>
+</body>
+</html>

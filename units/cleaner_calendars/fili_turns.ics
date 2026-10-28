@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:A Better BNB reSeTR Turnover Calendar Fili EN
+X-WR-CALNAME:reSeTR Turns (Fili)
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VEVENT
+UID:turn_PIN-HOM-001_2026-10-30@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261030T180000Z
+DTEND:20261030T240000Z
+SUMMARY:Flexible Cleaning: 3146 Avis Way (Pinole Home)
+DESCRIPTION:Aviso de Limpieza: Hola Fili, limpieza programada para 3146 Avis Way (Pinole Home) el 2026-10-30 (Limpieza Flexible: Sin entrada hoy; proximo huesped llega el 2026-11-24). Horario: 11:00 AM a 5:00 PM. Direccion: 3146 Avis Way, Pinole, CA 94564. Como entrar: Puerta principal con cerradura inteligente Schlage y puertas interiores Yale. Ingresa el codigo de limpieza en el teclado de la puerta principal.
+LOCATION:3146 Avis Way, Pinole, CA 94564
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3146 Avis Way, Pinole, CA 94564 on 2026-10-30
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3146 Avis Way, Pinole, CA 94564
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_PIN-HOM-001_2026-12-01@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261201T180000Z
+DTEND:20261201T240000Z
+SUMMARY:Flexible Cleaning: 3146 Avis Way (Pinole Home)
+DESCRIPTION:Aviso de Limpieza: Hola Fili, limpieza programada para 3146 Avis Way (Pinole Home) el 2026-12-01 (Limpieza Flexible: Sin entrada hoy; proximo huesped llega el 2026-12-17). Horario: 11:00 AM a 5:00 PM. Direccion: 3146 Avis Way, Pinole, CA 94564. Como entrar: Puerta principal con cerradura inteligente Schlage y puertas interiores Yale. Ingresa el codigo de limpieza en el teclado de la puerta principal.
+LOCATION:3146 Avis Way, Pinole, CA 94564
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3146 Avis Way, Pinole, CA 94564 on 2026-12-01
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3146 Avis Way, Pinole, CA 94564
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_PIN-HOM-001_2026-12-22@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261222T180000Z
+DTEND:20261222T240000Z
+SUMMARY:Flexible Cleaning: 3146 Avis Way (Pinole Home)
+DESCRIPTION:Aviso de Limpieza: Hola Fili, limpieza programada para 3146 Avis Way (Pinole Home) el 2026-12-22 (Limpieza Flexible: Sin entrada de huesped hoy). Horario: 11:00 AM a 5:00 PM. Direccion: 3146 Avis Way, Pinole, CA 94564. Como entrar: Puerta principal con cerradura inteligente Schlage y puertas interiores Yale. Ingresa el codigo de limpieza en el teclado de la puerta principal.
+LOCATION:3146 Avis Way, Pinole, CA 94564
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 3146 Avis Way, Pinole, CA 94564 on 2026-12-22
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 3146 Avis Way, Pinole, CA 94564
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,8 @@
+{
+  "gist_id": "e72effda8853a2813908c441ed4da25f",
+  "url": "https://gist.githubusercontent.com/scenicstay/e72effda8853a2813908c441ed4da25f/raw/calendar.ics",
+  "generated_at": "20261022T055108Z",
+  "event_count": 9,
+  "source": "live Airbnb feeds",
+  "refresh": "Run scripts/publish_cicilia_calendar.py; no scheduled refresh installed"
+}

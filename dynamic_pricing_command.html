@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenic OS | Dynamic Pricing &amp; Yield Command (Pillar 3A)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+  <style>
+    body {
+      margin: 0;
+      background: #0f0a19;
+      color: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+    }
+    .pricing-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 24px 64px;
+    }
+    .pricing-hero {
+      background: linear-gradient(135deg, #1f1635 0%, #161026 100%);
+      border: 1px solid #2d224c;
+      border-radius: 18px;
+      padding: 26px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: #161026;
+      border: 1px solid #2d224c;
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    .kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .kpi-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 6px;
+      color: #f8fafc;
+    }
+    .matrix-card {
+      background: #161026;
+      border: 1px solid #2d224c;
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+    th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      background: rgba(15, 10, 25, 0.6);
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .pill-emerald {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(16, 185, 129, 0.16);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.38);
+    }
+    .pill-gold {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(245, 158, 11, 0.16);
+      color: #fde68a;
+      border: 1px solid rgba(245, 158, 11, 0.38);
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      background: rgba(245, 158, 11, 0.16);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: #fde68a;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-action:hover {
+      background: rgba(245, 158, 11, 0.28);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <main class="pricing-wrap" aria-label="Dynamic Pricing and Yield Command">
+    <section class="pricing-hero">
+      <div>
+        <div class="mono" style="font-size:11px;color:#f59e0b;font-weight:700;text-transform:uppercase;">📈 PILLAR 03 // SUBSET 3A: DYNAMIC PRICING &amp; YIELD COMMAND</div>
+        <h1 style="margin:6px 0 6px;font-size:28px;font-family:'Plus Jakarta Sans',sans-serif;">Algorithmic ADR Yield, Event Surge &amp; Midweek Compression</h1>
+        <p style="margin:0;color:#cbd5e1;font-size:14px;max-width:880px;">
+          Live RevPAR optimization across Scenic Stay Residential Co-Host (15%) and Boutique Hospitality (12%) portfolios. Syncs verified gross booking yield directly into <strong>3B. Scenic Ledger &amp; Bookkeeper</strong>.
+        </p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="scenic_ledger_bookkeeper.html" class="btn-action">📒 Sync Yield to Trust Ledger ↗</a>
+        <a href="beacon_lead_command.html" class="btn-action" style="background:rgba(56,189,248,0.14);border-color:rgba(56,189,248,0.4);color:#7dd3fc;">🎯 View Pipeline Pro-Formas ↗</a>
+      </div>
+    </section>
+
+    <section class="kpi-grid" aria-label="Portfolio Yield Telemetry">
+      <div class="kpi-card">
+        <div class="kpi-label">Portfolio Blended RevPAR Lift</div>
+        <div class="kpi-val" style="color:#10b981;">+24.6% YoY</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Verified across active residential &amp; boutique keys</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Midweek Corporate Fill (Tue-Thu)</div>
+        <div class="kpi-val" style="color:#38bdf8;">68.4% Occ</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px;">+19.2 pts vs unoptimized self-managed calendars</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Event Surge Capture Multiplier</div>
+        <div class="kpi-val" style="color:#f59e0b;">1.85x - 2.40x</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px;">SEC Game Weekends, Crystal Bridges, Wine Harvest</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Orphan Gap-Night Recovery</div>
+        <div class="kpi-val" style="color:#a855f7;">+$18,450 / door</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Automated length-of-stay relaxation rules</div>
+      </div>
+    </section>
+
+    <section class="matrix-card" aria-labelledby="active-rate-rules-heading">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
+        <div>
+          <h2 id="active-rate-rules-heading" style="margin:0;font-size:18px;font-family:'Plus Jakarta Sans',sans-serif;">Active Market Yield &amp; Compression Rules Matrix</h2>
+          <p style="margin:4px 0 0;font-size:12.5px;color:#94a3b8;">Deterministic pricing guardrails pushed to Guesty / Hostaway / Cloudbeds without overriding owner floor rates.</p>
+        </div>
+        <span class="pill-emerald">ZERO-PMS-SWITCH RATE SYNC: ACTIVE</span>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Market / Corridor</th>
+              <th>Target Asset Cohort</th>
+              <th>Base ADR Floor</th>
+              <th>Midweek Compression (Tue-Thu)</th>
+              <th>Peak Event Surge Rule</th>
+              <th>Projected Net Owner Lift</th>
+              <th>Ledger Tier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fayetteville &amp; Bentonville, AR</strong></td>
+              <td>Boutique Inn &amp; Dickson St Lofts</td>
+              <td class="mono">$235 / nt</td>
+              <td>Corporate Relocation &amp; Vendor Block (-12% 3+ nt)</td>
+              <td class="mono" style="color:#f59e0b;">2.35x Razorback SEC &amp; Bike Fest</td>
+              <td class="mono" style="color:#10b981;">+$34,200 / yr</td>
+              <td><span class="pill-gold">12% Boutique / 15% Co-Host</span></td>
+            </tr>
+            <tr>
+              <td><strong>Paso Robles, CA</strong></td>
+              <td>Vineyard Estates &amp; Boutique Suites</td>
+              <td class="mono">$395 / nt</td>
+              <td>Midweek Vintner Tasting Package (+2 Night Min)</td>
+              <td class="mono" style="color:#f59e0b;">2.10x Harvest Wine Weekend</td>
+              <td class="mono" style="color:#10b981;">+$48,900 / yr</td>
+              <td><span class="pill-gold">12% Boutique / 15% Co-Host</span></td>
+            </tr>
+            <tr>
+              <td><strong>Fredericksburg &amp; Hill Country, TX</strong></td>
+              <td>Historic Sunday Houses &amp; Compounds</td>
+              <td class="mono">$310 / nt</td>
+              <td>Auto Gap-Fill 48h Last-Minute Rule (-10%)</td>
+              <td class="mono" style="color:#f59e0b;">1.95x Wine Road 290 Events</td>
+              <td class="mono" style="color:#10b981;">+$29,600 / yr</td>
+              <td><span class="pill-emerald">15% Turnkey Co-Host</span></td>
+            </tr>
+            <tr>
+              <td><strong>Broken Bow / Hochatown, OK</strong></td>
+              <td>Luxury Timber Cabins (4-6 Beds)</td>
+              <td class="mono">$465 / nt</td>
+              <td>Sunday-Wednesday Remote Executive Work Cation</td>
+              <td class="mono" style="color:#f59e0b;">2.20x Holiday &amp; School Break Surge</td>
+              <td class="mono" style="color:#10b981;">+$41,500 / yr</td>
+              <td><span class="pill-emerald">15% Turnkey Co-Host</span></td>
+            </tr>
+            <tr>
+              <td><strong>Taos, NM &amp; Traverse City, MI</strong></td>
+              <td>Commercial Boutique Lodges (8-24 Doors)</td>
+              <td class="mono">$275 / nt</td>
+              <td>Full-Property Corporate Retreat Buyout Layer</td>
+              <td class="mono" style="color:#f59e0b;">2.05x Ski / Cherry Festival Surge</td>
+              <td class="mono" style="color:#10b981;">+$62,800 / yr</td>
+              <td><span class="pill-gold">12% Boutique Buyout</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

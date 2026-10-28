@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenic Stay: Watch First, Draft Test Runs, Then Step In When Ready (Hospitality Workbook)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f4f1ea;
+    color: #1c1917;
+    line-height: 1.68;
+  }
+  .top-bar {
+    background: #180820;
+    color: #ffffff;
+    padding: 16px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 2px solid #e59523;
+  }
+  .brand-row { display: flex; align-items: center; gap: 14px; }
+  .brand-row img { height: 38px; width: auto; }
+  .brand-title { font-weight: 800; font-size: 1.02rem; color: #ffffff; }
+  .brand-sub { font-size: 0.75rem; color: #ffbe3b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .nav-pill {
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 190, 59, 0.35);
+    transition: all 0.2s;
+  }
+  .nav-pill:hover { background: #ffbe3b; color: #180820; }
+  .container {
+    max-width: 1080px;
+    margin: 40px auto 80px;
+    padding: 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .hero-card {
+    background: #a97886;
+    color: #181316;
+    border-radius: 28px;
+    padding: 46px 52px;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 36px;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(28, 25, 23, 0.1);
+  }
+  .hero-card h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin: 10px 0 14px;
+  }
+  .workbook-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 42px;
+    border: 1px solid rgba(28, 25, 23, 0.09);
+    box-shadow: 0 12px 32px rgba(28, 25, 23, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .step-badge {
+    align-self: flex-start;
+    background: #180820;
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 13px;
+    border-radius: 999px;
+  }
+  .scenario-box {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.12);
+    border-radius: 18px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .guest-prompt {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.12rem;
+    font-style: italic;
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border-left: 4px solid #7c9082;
+  }
+  textarea.practice-input {
+    width: 100%;
+    min-height: 110px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #d6d3d1;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .action-btn {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    background: #1c1917;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .action-btn.secondary {
+    background: #f5f5f4;
+    color: #1c1917;
+    border: 1px solid #d6d3d1;
+  }
+  .model-answer {
+    display: none;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 0.94rem;
+  }
+  .model-answer.open { display: block; }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #faf8f5;
+    border-radius: 12px;
+    border: 1px solid rgba(28, 25, 23, 0.08);
+    cursor: pointer;
+  }
+  .checklist-item input { margin-top: 5px; transform: scale(1.2); }
+  @media (max-width: 860px) { .hero-card { grid-template-columns: 1fr; } }
+</style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="brand-row">
+    <img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Scenic Stay Redwood Icon">
+    <div>
+      <div class="brand-title">Watch First, Draft Test Runs, Then Step In When Ready</div>
+      <div class="brand-sub">Participative Hospitality &amp; Inside Operations Workbook</div>
+    </div>
+  </div>
+  <nav class="nav-links">
+    <a class="nav-pill" href="hospitality_communications_rulebook.html">Company SOP Rulebook</a>
+    <a class="nav-pill" href="scenic_academy_journey.html">Sales &amp; Philosophy Deck</a>
+    <a class="nav-pill" href="scenic_operations_academy.html">Inside Operations Deck</a>
+    <a class="nav-pill" href="host_dispatch_resetr.html">preSeTR + reSeTR Command</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero-card">
+    <div>
+      <div style="font-weight:800; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em;">Watch First &bull; Draft Test Runs &bull; Step In When Ready</div>
+      <h1>Observe Live Hospitality First, Practice Test Runs, and Step In at Your Own Pace</h1>
+      <p style="font-size:1.06rem; line-height:1.62;">
+        Whether you are focusing primarily on Sales &amp; Growth while learning how our guest operations work, or onboarding an experienced hospitality specialist (such as a team member with Airbnb support experience in the Philippines) to run Inside Operations, nobody jumps into live threads cold. First, watch live guest communications on the Scenic Stay profile. Next, draft test-run replies right here for review before messaging guests directly. Tactful, selective homeowner communications come later, once day-to-day guest and cleaner coordination feel effortless.
+      </p>
+    </div>
+    <div style="background:#ffffff; padding:18px; border-radius:24px; text-align:center;">
+      <img src="assets/airbnb_screenshots/clean_justin_host_profile.png" alt="Scenic Stay Host Profile" style="width:100%; border-radius:14px;">
+      <div style="font-size:0.8rem; font-weight:700; margin-top:8px; color:#44403c;">1,783 Reviews &bull; 4.94 Rating &bull; 10 Years Hosting</div>
+    </div>
+  </section>
+
+  <section class="workbook-card">
+    <span class="step-badge">Phase 1 &bull; Participative Guest Communication Exercises</span>
+    <h2>Practice Drafting Test-Run Guest Replies (Review Before Sending Live)</h2>
+    <p>Read each real guest scenario below, type how you would reply in your own crisp, friendly voice (keeping it brief unless they ask a specific question, and always including short Google Maps links when recommending spots), and click <strong>"Copy Draft for Review"</strong> or compare against our Scenic Stay coaching notes.</p>
+
+    <div class="scenario-box">
+      <h3>Scenario 1: Greek Theatre Show + Asking Where to Eat Before the Concert</h3>
+      <div class="guest-prompt">
+        Guest Message: "Hi! Coming in this Friday for a show at the Greek. Where's a good place to eat before the show, and any tips on arriving after the concert?"
+      </div>
+      <textarea class="practice-input" id="draft-1" placeholder="Write your test-run reply here... (Keep it crisp and friendly! Acknowledge the Greek briefly, share Euclid and downtown dining spots with short Google Maps links, and include evening parking + the 2 steps down from the driveway at night without proactively offering one of our 60/yr visitor passes.)"></textarea>
+      <div class="btn-row">
+        <button class="action-btn" onclick="copyDraft(1, 'Greek Theatre Show & Dining')">Copy Draft for Review</button>
+        <button class="action-btn secondary" onclick="toggleModel(1)">Compare With Scenic Stay Coaching Note</button>
+      </div>
+      <div class="model-answer" id="model-1">
+        <strong>Coaching Key Points to Check in Your Draft:</strong>
+        <ul style="margin-top:8px; padding-left:20px;">
+          <li><strong>Keep It Crisp &amp; Friendly (Never Talk Their Ear Off):</strong> If a guest only says "Coming for a show at the Greek," our reply is simply: <em>"The Greek is such a great venue. Welcome! Let me know if there's anything we can do to help during your visit."</em> Because this guest specifically asked where to eat before the show, that is when we dig in!</li>
+          <li><strong>Dig In With Short Google Maps Links:</strong> Mention a couple casual spots right near the venue off Euclid like <a href="https://maps.app.goo.gl/LaValsEuclid" target="_blank" rel="noopener">La Val's Pizza</a> and <a href="https://maps.app.goo.gl/LaBurritaEuclid" target="_blank" rel="noopener">La Burrita</a>, and recommend hitting up <a href="https://maps.app.goo.gl/BerkeleySocialClub" target="_blank" rel="noopener">Berkeley Social Club</a>, <a href="https://maps.app.goo.gl/EastBaySpiceCo" target="_blank" rel="noopener">East Bay Spice Co.</a>, or <a href="https://maps.app.goo.gl/JupiterBerkeley" target="_blank" rel="noopener">Jupiter</a> downtown (always including the short Google Maps links!). Never tell them they will walk past the Rose Garden on the way to the Greek.</li>
+          <li><strong>Parking &amp; Nighttime Step Safety (Never Offer Visitor Passes Proactively):</strong> Let them know street parking is free and unrestricted after 7:00 PM (keeping the driveway clear), and remind them to use their phone flashlight after the show because there are two steps down from the driveway. Never proactively offer our limited 60/yr Berkeley visitor parking passes unless a guest specifically asks about all-day weekday parking.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scenario-box">
+      <h3>Scenario 2: Early Arrival &amp; Luggage Drop Inquiry</h3>
+      <div class="guest-prompt">
+        Guest Message: "Hello! Our flight into OAK lands at 12:30 PM tomorrow and we're coming straight to Berkeley to visit our daughter for Cal graduation weekend. Is there any chance we could check in early around 1:30 PM?"
+      </div>
+      <textarea class="practice-input" id="draft-2" placeholder="Write your test-run reply here... (Think: Congratulate them on their daughter's graduation at Cal, explain our 11:00 AM to 5:00 PM turnover window honestly, and promise our proactive lock code update the moment the studio is clean!)"></textarea>
+      <div class="btn-row">
+        <button class="action-btn" onclick="copyDraft(2, 'Cal Graduation Early Arrival')">Copy Draft for Review</button>
+        <button class="action-btn secondary" onclick="toggleModel(2)">Compare With Scenic Stay Coaching Note</button>
+      </div>
+      <div class="model-answer" id="model-2">
+        <strong>Coaching Key Points to Check in Your Draft:</strong>
+        <ul style="margin-top:8px; padding-left:20px;">
+          <li><strong>Celebrate Their Milestone Briefly:</strong> Congratulate them warmly on their daughter's graduation from Cal!</li>
+          <li><strong>Clear Boundary + Proactive Promise:</strong> Explain that our previous guests check out at 11:00 AM and our cleaning window runs from 11:00 AM to 5:00 PM, but we will prioritize their turnover and the very moment the studio is spotless, we will activate their door code early and message them right away.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scenario-box">
+      <h3>Scenario 3: Sudden Family Emergency on a Dual-Studio Booking</h3>
+      <div class="guest-prompt">
+        Guest Message: "Hi, we booked both the North and South Studios for our family trip this weekend, but my brother-in-law just had a medical emergency and their couple can no longer travel. We still need one studio for ourselves, is there anything we can do about the second studio?"
+      </div>
+      <textarea class="practice-input" id="draft-3" placeholder="Write your test-run reply here... (Think: Express genuine empathy for their brother-in-law first, and propose a fair, compassionate path forward.)"></textarea>
+      <div class="btn-row">
+        <button class="action-btn" onclick="copyDraft(3, 'Family Emergency Dual Studio')">Copy Draft for Review</button>
+        <button class="action-btn secondary" onclick="toggleModel(3)">Compare With Scenic Stay Coaching Note</button>
+      </div>
+      <div class="model-answer" id="model-3">
+        <strong>Coaching Key Points to Check in Your Draft:</strong>
+        <ul style="margin-top:8px; padding-left:20px;">
+          <li><strong>Lead With Empathy:</strong> Express sincere care and hope that their brother-in-law recovers quickly.</li>
+          <li><strong>Fair, Sensible Solution:</strong> Reassure them that we want to work out a solution that is fair for everyone (such as transitioning their reservation to the single studio they need and opening the second studio's calendar so we can try to re-book those nights and refund/credit them fairly).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="workbook-card">
+    <span class="step-badge">Phase 2 &bull; Watch First, Draft Test Runs, Then Step In Checklist</span>
+    <h2>Step-by-Step Progression Path (For Sales Leadership or Inside Operations Specialists)</h2>
+    <p>Check off each milestone as you observe, draft test runs, and step in when ready. Progress saves automatically in your browser:</p>
+    <label class="checklist-item"><input type="checkbox" onchange="saveCheck(this)" id="chk-1"> <span><strong>Milestone 1 (Foundation):</strong> Complete the Sales &amp; Philosophy Academy Deck and the Inside Operations Academy Deck.</span></label>
+    <label class="checklist-item"><input type="checkbox" onchange="saveCheck(this)" id="chk-2"> <span><strong>Milestone 2 (Watch First):</strong> Observe live guest threads on the Scenic Stay Airbnb profile to see our crisp, friendly welcome cadence, how we answer with short Google Maps links when asked, and how we protect our 60/year Berkeley visitor parking pass allocation.</span></label>
+    <label class="checklist-item"><input type="checkbox" onchange="saveCheck(this)" id="chk-3"> <span><strong>Milestone 3 (Draft Test Runs):</strong> Draft 5 test-run guest replies for review before sending messages directly to guests.</span></label>
+    <label class="checklist-item"><input type="checkbox" onchange="saveCheck(this)" id="chk-4"> <span><strong>Milestone 4 (Cleaner &amp; Supply Coordination):</strong> Practice a new-city vendor sourcing search in HOSt Property Forge and review advance cleaner schedules, recommended off-white 3-par linen rotation, general property supplies, and timely partner payouts in <code>preSeTR + reSeTR</code> (<code>resetr.abetterbnb.com/&lt;property-slug&gt;</code>).</span></label>
+    <label class="checklist-item"><input type="checkbox" onchange="saveCheck(this)" id="chk-5"> <span><strong>Milestone 5 (Tactful, Selective Owner Engagement):</strong> Once guest and cleaner coordination feel second nature, observe how we shield owners from day-to-day operational noise and engage them warmly, transparently, and selectively when real decisions arise.</span></label>
+  </section>
+</main>
+
+<script>
+function toggleModel(idx) {
+  const el = document.getElementById(`model-${idx}`);
+  if (el) el.classList.toggle("open");
+}
+
+function copyDraft(idx, label) {
+  const val = document.getElementById(`draft-${idx}`).value.trim();
+  localStorage.setItem(`scenic_shadow_draft_${idx}`, val);
+  const payload = `[Test-Run Guest Reply · ${label}]\n${val}`;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(payload).then(() => {
+      alert("Saved and copied to clipboard! Paste this test-run reply directly to Justin.");
+    });
+  }
+}
+
+function saveCheck(cb) {
+  localStorage.setItem(`scenic_shadow_${cb.id}`, cb.checked ? "1" : "0");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  [1, 2, 3].forEach(i => {
+    const el = document.getElementById(`draft-${i}`);
+    if (el) el.value = localStorage.getItem(`scenic_shadow_draft_${i}`) || "";
+  });
+  [1, 2, 3, 4, 5].forEach(i => {
+    const cb = document.getElementById(`chk-${i}`);
+    if (cb) cb.checked = localStorage.getItem(`scenic_shadow_chk-${i}`) === "1";
+  });
+});
+</script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

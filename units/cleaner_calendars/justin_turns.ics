@@ -1,0 +1,526 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:A Better BNB reSeTR Turnover Calendar Justin EN
+X-WR-CALNAME:reSeTR Turns (Justin)
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-10-21@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261021T180000Z
+DTEND:20261021T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-10-21 (Flexible Turnover: No same-day check-in; next guest arrives 2026-10-22). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-10-21
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2026-10-23@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261023T180000Z
+DTEND:20261023T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2026-10-23 (PRIORITY 1: Same-Day Guest Check-in Today at 5:00 PM). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2026-10-23
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-10-23@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261023T180000Z
+DTEND:20261023T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-10-23 (PRIORITY 1: Same-Day Guest Check-in Today at 5:00 PM). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-10-23
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2026-10-25@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261025T180000Z
+DTEND:20261025T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2026-10-25 (PRIORITY 1: Same-Day Guest Check-in Today at 5:00 PM). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2026-10-25
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-10-26@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261026T180000Z
+DTEND:20261026T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-10-26 (Flexible Turnover: No same-day check-in; next guest arrives 2026-10-28). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-10-26
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2026-11-01@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261101T180000Z
+DTEND:20261101T240000Z
+SUMMARY:Flexible Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2026-11-01 (Flexible Turnover: No same-day check-in; next guest arrives 2026-11-03). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2026-11-01
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-11-01@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261101T180000Z
+DTEND:20261101T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-11-01 (Flexible Turnover: No same-day check-in; next guest arrives 2026-11-10). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-11-01
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2026-11-06@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261106T180000Z
+DTEND:20261106T240000Z
+SUMMARY:Flexible Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2026-11-06 (Flexible Turnover: No same-day check-in; next guest arrives 2026-11-11). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2026-11-06
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-11-12@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261112T180000Z
+DTEND:20261112T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-11-12 (Flexible Turnover: No same-day check-in; next guest arrives 2026-11-20). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-11-12
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2026-11-14@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261114T180000Z
+DTEND:20261114T240000Z
+SUMMARY:Flexible Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2026-11-14 (Flexible Turnover: No same-day check-in; next guest arrives 2026-11-20). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2026-11-14
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2026-11-22@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261122T180000Z
+DTEND:20261122T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2026-11-22 (PRIORITY 1: Same-Day Guest Check-in Today at 5:00 PM). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2026-11-22
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2026-11-28@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261128T180000Z
+DTEND:20261128T240000Z
+SUMMARY:Flexible Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2026-11-28 (Flexible Turnover: No same-day check-in; next guest arrives 2026-11-29). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2026-11-28
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-12-01@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261201T180000Z
+DTEND:20261201T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-12-01 (Flexible Turnover: No same-day check-in; next guest arrives 2026-12-05). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-12-01
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-12-07@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261207T180000Z
+DTEND:20261207T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-12-07 (PRIORITY 1: Same-Day Guest Check-in Today at 5:00 PM). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-12-07
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-12-11@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261211T180000Z
+DTEND:20261211T240000Z
+SUMMARY:PRIORITY 1 Back-to-Back Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-12-11 (PRIORITY 1: Same-Day Guest Check-in Today at 5:00 PM). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-12-11
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2026-12-14@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261214T180000Z
+DTEND:20261214T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2026-12-14 (Flexible Turnover: No same-day check-in; next guest arrives 2026-12-18). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2026-12-14
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2026-12-20@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261220T180000Z
+DTEND:20261220T240000Z
+SUMMARY:Flexible Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2026-12-20 (Flexible Turnover: No same-day check-in; next guest arrives 2026-12-23). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2026-12-20
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2026-12-27@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20261227T180000Z
+DTEND:20261227T240000Z
+SUMMARY:Flexible Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2026-12-27 (Flexible Turnover: No same-day check-in; next guest arrives 2026-12-30). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2026-12-27
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2027-01-05@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270105T180000Z
+DTEND:20270105T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2027-01-05 (Flexible Turnover: No same-day check-in; next guest arrives 2027-02-07). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2027-01-05
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2027-01-11@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270111T180000Z
+DTEND:20270111T240000Z
+SUMMARY:Flexible Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2027-01-11 (Flexible Turnover: No same-day check-in; next guest arrives 2027-02-07). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2027-01-11
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2027-02-13@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270213T180000Z
+DTEND:20270213T240000Z
+SUMMARY:Flexible Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2027-02-13 (Flexible Turnover: No same-day check-in; next guest arrives 2027-03-09). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2027-02-13
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2027-03-11@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270311T180000Z
+DTEND:20270311T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2027-03-11 (Flexible Turnover: No same-day check-in; next guest arrives 2027-05-14). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2027-03-11
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2027-04-03@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270403T180000Z
+DTEND:20270403T240000Z
+SUMMARY:Flexible Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2027-04-03 (Flexible Turnover: No same-day check-in; next guest arrives 2027-05-14). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2027-04-03
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-001_2027-05-16@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270516T180000Z
+DTEND:20270516T240000Z
+SUMMARY:Flexible Cleaning: North Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for North Studio (1545 Scenic Ave) on 2027-05-16 (Flexible Turnover: No same-day check-in; next guest arrives 2027-08-11). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Ground-level North Studio entrance next to the garage at 1545 Scenic Ave. Enter cleaner master code on keypad; vacuum, linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (North Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North Studio), Berkeley, CA 94708 on 2027-05-16
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-002_2027-05-22@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270522T180000Z
+DTEND:20270522T240000Z
+SUMMARY:Flexible Cleaning: South Garden Studio (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for South Garden Studio (1545 Scenic Ave) on 2027-05-22 (Flexible Turnover: No same-day check-in; next guest arrives 2027-08-11). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (South Studio), Berkeley, CA 94708. How to get in: Cleaner Service Access: Entrance to the right of the driveway (two steps down) at 1545 Scenic Ave South Studio. Enter cleaner master code on keypad; vacuum, king linens, and coffee/oatmeal restock supplies are in on-site storage.
+LOCATION:1545 Scenic Ave (South Studio), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (South Studio), Berkeley, CA 94708 on 2027-05-22
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (South Studio), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:turn_BKL-STU-003_2027-08-13@abetterbnb.com
+DTSTAMP:20261022T024332Z
+SEQUENCE:6
+DTSTART:20270813T180000Z
+DTEND:20270813T240000Z
+SUMMARY:Flexible Cleaning: Both Studios: North & South (1545 Scenic Ave)
+DESCRIPTION:Cleaning Announcement: Hi Justin, turnover cleaning scheduled for Both Studios: North & South (1545 Scenic Ave) on 2027-08-13 (Flexible Turnover: No same-day guest check-in). Window: 11:00 AM to 5:00 PM. Address: 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708. How to get in: Cleaner Service Access: Both ground-level studios at 1545 Scenic Ave (North Studio next to garage + South Studio two steps down to the right of driveway). Enter cleaner master code on both keypads and restock coffee/oatmeal in both units.
+LOCATION:1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+BEGIN:VALARM
+TRIGGER:-PT48H
+ACTION:DISPLAY
+DESCRIPTION:48h Advance Reminder: Cleaning at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708 on 2027-08-13
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Upcoming Cleaning at 11:00 AM at 1545 Scenic Ave (North & South Studios), Berkeley, CA 94708
+END:VALARM
+END:VEVENT
+END:VCALENDAR

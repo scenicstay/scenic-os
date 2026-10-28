@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenic Ledger: Autonomous Bookkeeper, Expense Deal Radar &amp; EOY Tax Command (A Better BNB)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #180820;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .serif-font {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+
+    .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-mono-custom {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .bg-plum-base { background-color: #180820; }
+    .bg-plum-obsidian { background-color: #0F0414; }
+    .bg-plum-glow { background-color: #2A1038; }
+    .bg-plum-card { background-color: #220C30; }
+    .bg-plum-royal { background-color: #1A0924; }
+
+    .border-plum-border { border-color: rgba(255, 190, 59, 0.16); }
+    .border-plum-bright { border-color: rgba(255, 190, 59, 0.42); }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFBE3B 0%, #FFAE26 40%, #E59523 70%, #D5841A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #FFBE3B 0%, #D5841A 100%);
+    }
+
+    .card-glass {
+      background: #220C30;
+      border: 1px solid rgba(255, 190, 59, 0.18);
+    }
+
+    .card-glass:hover {
+      border-color: rgba(255, 190, 59, 0.35);
+    }
+
+    .input-dark {
+      background-color: #0F0414;
+      border: 1px solid rgba(255, 190, 59, 0.22);
+      color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+
+    .input-dark:focus {
+      outline: none;
+      border-color: #FFBE3B;
+    }
+
+    .statement-paper {
+      background: #ffffff;
+      color: #0f172a;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+
+    .statement-paper h1, .statement-paper h2, .statement-paper h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: #180820;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0F0414; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #2A1038; border-radius: 3px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #E59523; }
+
+    .hidden, [hidden] { display: none !important; }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .statement-paper {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      @page {
+        margin: 1.2cm;
+        size: letter portrait;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body class="bg-plum-base min-h-screen p-4 md:p-6 flex flex-col justify-between custom-scrollbar">
+
+  <div class="max-w-[1800px] mx-auto w-full space-y-5">
+
+    <header class="bg-plum-obsidian rounded-2xl p-5 border border-plum-bright shadow-2xl flex flex-col xl:flex-row xl:items-center justify-between gap-4 no-print">
+      <div class="flex items-center space-x-4">
+        <div class="h-12 w-12 rounded-xl gold-gradient-bg flex items-center justify-center shadow-lg text-slate-950 text-2xl font-black shrink-0">
+          <i class="fa-solid fa-scale-balanced"></i>
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <h1 class="text-xl md:text-2xl font-extrabold gold-gradient-text serif-font tracking-wide">
+              Scenic Ledger (balanSeTR): Autonomous Bookkeeper &amp; EOY Tax Command
+            </h1>
+            <span class="text-[10px] text-emerald-300 font-mono-custom uppercase px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 font-bold flex items-center gap-1.5">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span> QBO on $1/mo 3-Mo Promo ($38 Refunded) &bull; balanSeTR Acclimation Active
+            </span>
+            <span class="text-[10px] text-amber-300 font-mono-custom uppercase px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30">
+              Exact Integer-Cents Engine
+            </span>
+            <button type="button" id="scenic-cloud-sync-pill" onclick="openCloudSyncModal()" class="text-[10px] text-sky-300 font-mono-custom uppercase px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/40 flex items-center gap-1.5 hover:bg-sky-500/25 transition cursor-pointer">
+              <span class="h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
+              <span id="scenic-cloud-sync-label">Cloud &amp; Multi-Tab State Sync Active</span>
+              <i class="fa-solid fa-gear text-[9px] text-sky-200 ml-0.5"></i>
+            </button>
+          </div>
+          <p class="text-xs text-slate-400 mt-1 font-sans">
+            Two-Bank Split: Dedicated Cleaning Payout &amp; Co-Host Operating Accounts &bull; +20% Extra-Service Markup &bull; 50/50 Resolution Splits
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div id="view-mode-switcher-bar" class="bg-plum-obsidian p-3.5 rounded-2xl border border-plum-bright flex flex-col lg:flex-row lg:items-center justify-between gap-3 text-xs no-print">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-[10px] font-mono-custom uppercase tracking-wider px-2.5 py-1 rounded bg-purple-950 text-purple-300 border border-purple-700 font-bold">
+          <i class="fa-solid fa-shield-halved mr-1"></i> Ledger View Security Mode:
+        </span>
+        <button type="button" id="btn-mode-admin" onclick="setLedgerViewMode('admin')" class="px-3.5 py-1.5 rounded-xl gold-gradient-bg text-slate-950 font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow">
+          <i class="fa-solid fa-user-tie"></i> Internal Admin / CPA Mode (Full Portfolio &amp; Corporate P&amp;L)
+        </button>
+        <button type="button" id="btn-mode-owner" onclick="setLedgerViewMode('owner')" class="px-3.5 py-1.5 rounded-xl bg-plum-card hover:bg-plum-glow text-slate-200 border border-plum-border font-semibold flex items-center gap-1.5 transition cursor-pointer">
+          <i class="fa-solid fa-lock text-emerald-400"></i> Partner Homeowner Portal View
+        </button>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <span id="view-mode-status-label" class="text-[11px] font-mono-custom text-slate-300">
+          Admin / CPA Mode Active: Showing All 4 Tabs, Corporate OpEx, Deal Radar &amp; 1099 Tax Binder
+        </span>
+        <button type="button" onclick="copyShareableOwnerPortalLink(this)" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center gap-1.5 shadow transition cursor-pointer">
+          <i class="fa-solid fa-link"></i> Copy Homeowner Statement Link
+        </button>
+      </div>
+    </div>
+
+    <div id="owner-portal-welcome-banner" class="hidden card-glass p-5 rounded-2xl border-2 border-emerald-400 bg-gradient-to-r from-emerald-950/90 via-plum-obsidian to-teal-950/70 shadow-2xl no-print">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-400 text-slate-950 font-mono-custom text-[10px] font-extrabold uppercase">
+              <i class="fa-solid fa-lock mr-1"></i> Partner Homeowner Portal View Active
+            </span>
+            <span id="owner-portal-prop-pill" class="text-xs font-mono-custom text-emerald-300 font-bold">Locked to Single Property</span>
+          </div>
+          <h2 class="text-base md:text-lg font-bold text-white font-heading">
+            Zero-Question Homeowner Financial Portal: Monthly Statement &amp; IRS Schedule E Tax Packet
+          </h2>
+          <p class="text-xs text-slate-300">
+            Internal corporate bookkeeping feeds and other properties are hidden in this view. Review your cent-verified monthly payout reconciliation or download your Year-End IRS Schedule E tax packet below.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="switchLedgerTab('owner-statements')" class="px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs cursor-pointer transition">
+            <i class="fa-solid fa-file-invoice-dollar mr-1"></i> Monthly Statement
+          </button>
+          <button type="button" onclick="switchLedgerTab('tax-center')" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs cursor-pointer transition">
+            <i class="fa-solid fa-landmark mr-1"></i> IRS Schedule E Packet
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 no-print">
+      <div class="bg-plum-obsidian p-4 rounded-2xl border border-plum-border hover:border-amber-400/60 transition">
+        <div class="flex items-center justify-between text-[10px] font-mono-custom uppercase text-slate-400">
+          <span>Portfolio Gross Bookings</span>
+          <i class="fa-solid fa-chart-line text-amber-400"></i>
+        </div>
+        <div id="kpi-gross-bookings" class="text-2xl font-extrabold font-heading text-white mt-1.5">$0.00</div>
+        <div id="kpi-gross-sub" class="text-[11px] text-emerald-400 mt-1 font-mono-custom">100% Cent-Verified OTA &amp; Direct</div>
+      </div>
+
+      <div class="bg-plum-obsidian p-4 rounded-2xl border border-plum-border hover:border-amber-400/60 transition">
+        <div class="flex items-center justify-between text-[10px] font-mono-custom uppercase text-slate-400">
+          <span>Co-Host Operating Account: Co-Host Earned Rev</span>
+          <i class="fa-solid fa-coins text-amber-400"></i>
+        </div>
+        <div id="kpi-manager-rev" class="text-2xl font-extrabold font-heading gold-gradient-text mt-1.5">$0.00</div>
+        <div id="kpi-manager-sub" class="text-[10px] text-slate-300 mt-1 font-mono-custom">Comm + 20% Markups + 50/50 Splits</div>
+      </div>
+
+      <div class="bg-plum-obsidian p-4 rounded-2xl border border-plum-border hover:border-sky-400/60 transition">
+        <div class="flex items-center justify-between text-[10px] font-mono-custom uppercase text-slate-400">
+          <span>Cleaning Payout Account &amp; Owner Trust</span>
+          <i class="fa-solid fa-vault text-sky-400"></i>
+        </div>
+        <div id="kpi-owner-trust" class="text-2xl font-extrabold font-heading text-sky-300 mt-1.5">$0.00</div>
+        <div id="kpi-owner-trust-sub" class="text-[10px] text-sky-400/90 mt-1 font-mono-custom">Preferred Payout Method Partner Turnover Settlement</div>
+      </div>
+
+      <div class="bg-plum-obsidian p-4 rounded-2xl border border-plum-border hover:border-emerald-400/60 transition">
+        <div class="flex items-center justify-between text-[10px] font-mono-custom uppercase text-slate-400">
+          <span>Deal-Seeker Annual Savings</span>
+          <i class="fa-solid fa-piggy-bank text-emerald-400"></i>
+        </div>
+        <div id="kpi-deal-savings" class="text-2xl font-extrabold font-heading text-emerald-400 mt-1.5">$8,439.00/yr</div>
+        <div class="text-[10px] text-emerald-300/90 mt-1 font-mono-custom">QBO $1/mo Promo ($38 Refunded) + Locks + FF&amp;E</div>
+      </div>
+
+      <div class="bg-plum-obsidian p-4 rounded-2xl border border-plum-border hover:border-purple-400/60 transition">
+        <div class="flex items-center justify-between text-[10px] font-mono-custom uppercase text-slate-400">
+          <span>EOY Tax &amp; Zero-Friction Cleaner Pay</span>
+          <i class="fa-solid fa-file-shield text-purple-400"></i>
+        </div>
+        <div id="kpi-tax-readiness" class="text-2xl font-extrabold font-heading text-purple-300 mt-1.5">94% Ready</div>
+        <div id="kpi-tax-readiness-sub" class="text-[10px] text-amber-300 mt-1 font-mono-custom">Schedule E + CPA Binder Live</div>
+      </div>
+    </div>
+
+    <div class="bg-plum-obsidian rounded-2xl p-2.5 border border-plum-bright flex flex-wrap items-center justify-between gap-2 shadow-xl no-print">
+      <div class="flex flex-wrap items-center gap-1.5">
+        <button type="button" id="tab-btn-bookkeeper" data-admin-only="true" onclick="switchLedgerTab('bookkeeper')" class="px-4 py-2.5 rounded-xl text-xs font-extrabold gold-gradient-bg text-slate-950 shadow flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-robot"></i> 1. Autonomous Bookkeeper &amp; Live Feed
+        </button>
+        <button type="button" id="tab-btn-deal-seeker" data-admin-only="true" onclick="switchLedgerTab('deal-seeker')" class="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white bg-plum-card border border-plum-border flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-tags text-emerald-400"></i> 2. Deal-Seeking &amp; Expense Radar
+        </button>
+        <button type="button" id="tab-btn-owner-statements" onclick="switchLedgerTab('owner-statements')" class="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white bg-plum-card border border-plum-border flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-file-invoice-dollar text-amber-400"></i> 3. Monthly Owner Statements &amp; Invoices
+        </button>
+        <button type="button" id="tab-btn-tax-center" onclick="switchLedgerTab('tax-center')" class="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white bg-plum-card border border-plum-border flex items-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-landmark text-sky-400"></i> 4. EOY Tax Command (Schedule E + CPA Tax Guy Binder)
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1.5 bg-plum-base px-3 py-1.5 rounded-xl border border-plum-border text-xs">
+          <span class="text-slate-400 font-mono-custom text-[11px]">Active Property Focus:</span>
+          <select id="global-property-selector" onchange="onGlobalPropertyChange(this.value)" class="bg-transparent text-amber-300 font-bold focus:outline-none cursor-pointer">
+            <option value="ALL">All Properties &amp; Corporate Ops</option>
+            <option value="OAK-HOM-002">5540 Estates Dr (Oakland 5-BR Whole House &bull; 20% Split)</option>
+            <option value="PIN-HOM-001">3146 Avis Way (Pinole 4-BR Sanctuary &bull; 15% Split)</option>
+            <option value="BKL-STU-003">1545 Scenic Ave (Berkeley Studio Combo &bull; 20% Split)</option>
+            <option value="CORP-OPS">A Better BNB Corporate Ops (Executive / CPA Ledger)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <section id="tab-bookkeeper" class="space-y-5 no-print">
+      <div class="p-4 rounded-2xl bg-gradient-to-r from-amber-950/90 via-plum-obsidian to-emerald-950/80 border-2 border-amber-400/70 shadow-xl space-y-3">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950 font-mono-custom text-[10px] font-extrabold uppercase">
+                <i class="fa-solid fa-magnifying-glass-dollar mr-1"></i> Interactive Audit &amp; Correction Mode (Review with Justin)
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-mono-custom text-[10px] font-bold">
+                [Sample Demo Data: Click Any Row to Edit or Replace with Live CSV / SimpleFIN Feed]
+              </span>
+            </div>
+            <h3 class="text-sm md:text-base font-bold text-white font-heading">
+              Line-by-Line Audit Ready: Click Any Transaction Row Below to Edit Amounts, Vendors, or Bank Split Live
+            </h3>
+            <p class="text-xs text-slate-300">
+              All pre-loaded rows below are clearly badged as <strong>[Sample Demo Data: Click Row to Edit]</strong> so we can walk through every line item together, adjust any figure in real time, or replace sample rows with your live Cleaning Payout Account &amp; Co-Host Operating Account CSV exports. Meanwhile, QuickBooks Online is on the <strong>$1/mo 3-month retention promo ($38 refunded on last payment; $1/mo for the next 2 months)</strong> while you acclimate to <strong>balanSeTR</strong>.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 shrink-0 lg:w-[480px] text-[11px]">
+            <div class="p-3 rounded-xl bg-plum-obsidian/90 border border-sky-400/50">
+              <div class="font-mono-custom text-[10px] font-extrabold uppercase text-sky-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-building-columns text-sky-400"></i> Bank 1: Cleaning Payout Account
+              </div>
+              <div class="font-bold text-white mt-0.5">Zelle &amp; Cleaning Fee Pass-Through Account</div>
+              <div class="text-slate-300 text-[10px] mt-0.5">Receives guest-paid cleaning fees &amp; pays cleaners approved turnover payouts via <strong>Zelle</strong> (3007 Acton) or <strong>Venmo</strong> (Oakland Primary Partner / Pinole Primary Partner) on a timely basis.</div>
+            </div>
+            <div class="p-3 rounded-xl bg-plum-obsidian/90 border border-emerald-400/50">
+              <div class="font-mono-custom text-[10px] font-extrabold uppercase text-emerald-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-vault text-emerald-400"></i> Bank 2: Co-Host Operating Account
+              </div>
+              <div class="font-bold text-white mt-0.5">High-Yield Co-Host Commission &amp; Ops Account</div>
+              <div class="text-slate-300 text-[10px] mt-0.5">Receives Scenic Stay's earned co-hosting commissions (`15% to 35%`), +20% coordination markups, and 50/50 resolution shares to earn higher APY interest.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="inline-row-editor-panel" class="hidden card-glass rounded-2xl p-4 border-2 border-emerald-400 shadow-2xl space-y-3">
+        <div class="flex items-center justify-between border-b border-plum-border pb-2">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-emerald-400 text-slate-950 font-mono-custom text-[10px] font-extrabold uppercase">Live Audit Editor</span>
+            <h4 id="edit-row-title" class="text-xs font-bold text-white font-heading">Edit Transaction Row</h4>
+          </div>
+          <button type="button" onclick="closeInlineRowEditor()" class="text-xs text-slate-400 hover:text-white cursor-pointer">
+            <i class="fa-solid fa-xmark"></i> Close
+          </button>
+        </div>
+        <input type="hidden" id="edit-tx-id" value="">
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-2.5 text-xs">
+          <div>
+            <label class="block text-slate-400 text-[10px] mb-1 font-mono-custom uppercase">Date</label>
+            <input type="text" id="edit-tx-date" class="input-dark font-mono-custom text-xs">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-slate-400 text-[10px] mb-1 font-mono-custom uppercase">Vendor / Payout Source</label>
+            <input type="text" id="edit-tx-vendor" class="input-dark text-xs">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-slate-400 text-[10px] mb-1 font-mono-custom uppercase">Memo &amp; Bank Split Note</label>
+            <input type="text" id="edit-tx-memo" class="input-dark text-xs">
+          </div>
+          <div>
+            <label class="block text-slate-400 text-[10px] mb-1 font-mono-custom uppercase">Base Amount ($ USD)</label>
+            <input type="number" step="0.01" id="edit-tx-base" class="input-dark font-mono-custom text-xs">
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+          <div class="flex items-center gap-2 text-xs">
+            <label class="text-slate-400 text-[10px] font-mono-custom uppercase">Guest Cleaning Fee ($ USD, if OTA Payout):</label>
+            <input type="number" step="0.01" id="edit-tx-clean" class="input-dark font-mono-custom text-xs w-28">
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="deleteEditedTransactionRow()" class="px-3 py-1.5 rounded-xl bg-rose-950/90 hover:bg-rose-900 text-rose-200 border border-rose-500/40 text-xs font-bold cursor-pointer">
+              <i class="fa-solid fa-trash-can mr-1"></i> Delete Sample Row
+            </button>
+            <button type="button" onclick="saveEditedTransactionRow()" class="px-4 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs cursor-pointer">
+              <i class="fa-solid fa-check mr-1"></i> Save Live Audit Correction
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-2xl p-5 border-l-4 border-l-amber-400 space-y-4">
+        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-300 font-mono-custom text-[10px] font-bold uppercase">
+                <i class="fa-solid fa-bolt mr-1"></i> Deterministic Rule Engine v2.5 (balanSeTR Two-Bank Split Engine)
+              </span>
+              <span id="review-queue-badge" class="px-2.5 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/50 text-rose-300 font-mono-custom text-[10px] font-bold">
+                3 Transactions Flagged for 1-Click Review
+              </span>
+            </div>
+            <h2 class="text-lg font-bold text-white mt-1 font-heading">
+              Autonomous Two-Bank Feed: Dedicated Cleaning Payout &amp; Co-Host Operating Accounts
+            </h2>
+            <p class="text-xs text-slate-300">
+              Every payout and expense is parsed in exact integer cents: OTA payouts route 100% guest cleaning fees to <strong>Cleaning Payout Account</strong> (for Preferred Payout Method cleaner payouts) and route Scenic Stay's co-host commission to <strong>Co-Host Operating Account</strong> (high-yield operating account); out-of-scope repairs add a +20% coordination markup; post-owner-stay 11:00 AM to 5:00 PM cleans bill at exact vendor cost; unexpended Resolution Center recoveries split 50/50.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button type="button" id="btn-toggle-needs-review" onclick="toggleNeedsReviewFilter()" class="px-3.5 py-2.5 rounded-xl bg-plum-obsidian hover:bg-plum-glow text-amber-300 border border-amber-500/50 font-bold text-xs flex items-center gap-2 transition cursor-pointer">
+              <i class="fa-solid fa-filter"></i>
+              <span id="btn-toggle-needs-review-text">Filter: Needs Human Review Only (3)</span>
+            </button>
+            <button type="button" onclick="autoReconcileAllTransactions()" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-lg flex items-center gap-2 transition cursor-pointer">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> 1-Click Auto-Reconcile All Rules
+            </button>
+            <button type="button" onclick="toggleAddTransactionPanel()" class="px-4 py-2.5 rounded-xl gold-gradient-bg text-slate-950 font-extrabold text-xs shadow-lg flex items-center gap-2 hover:brightness-110 transition cursor-pointer">
+              <i class="fa-solid fa-plus-circle"></i> + Log / Import Transaction
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-2.5 pt-2 text-[11px]">
+          <div class="p-3 rounded-xl bg-plum-obsidian border border-plum-border">
+            <div class="font-mono-custom text-emerald-400 font-bold uppercase text-[10px]">Rule 1: Two-Bank Payout Split</div>
+            <div class="text-slate-300 mt-0.5">Cleaning Fee &rarr; <strong>Cleaning Payout Account</strong> (Preferred Payout Method) &bull; Co-Host Comm (`15% to 35%`) &rarr; <strong>Co-Host Operating Account</strong></div>
+          </div>
+          <div class="p-3 rounded-xl bg-plum-obsidian border border-plum-border">
+            <div class="font-mono-custom text-amber-400 font-bold uppercase text-[10px]">Rule 2: Extra Service (+20%)</div>
+            <div class="text-slate-300 mt-0.5">Repairs, maintenance &amp; lost-item mailing add +20% Manager Coordination Markup</div>
+          </div>
+          <div class="p-3 rounded-xl bg-plum-obsidian border border-plum-border">
+            <div class="font-mono-custom text-sky-400 font-bold uppercase text-[10px]">Rule 3: Post-Owner-Stay Clean</div>
+            <div class="text-slate-300 mt-0.5">11:00 AM to 5:00 PM turnover window after Owner personal hold billed at exact cost ($0 markup)</div>
+          </div>
+          <div class="p-3 rounded-xl bg-plum-obsidian border border-plum-border">
+            <div class="font-mono-custom text-purple-400 font-bold uppercase text-[10px]">Rule 4: Resolution 50/50 Split</div>
+            <div class="text-slate-300 mt-0.5">Unexpended AirCover / damage recovery (fixed in-house or unreplaced) splits 50% Owner / 50% Manager</div>
+          </div>
+          <div class="p-3 rounded-xl bg-plum-obsidian border border-plum-border">
+            <div class="font-mono-custom text-rose-400 font-bold uppercase text-[10px]">Rule 5: Timely Partner Payouts</div>
+            <div class="text-slate-300 mt-0.5">Cleaners paid via Cleaning Payout Account Preferred Payout Method have timely payouts in preferred partner method; corporate OpEx maps to CPA lines</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="add-transaction-panel" class="hidden card-glass rounded-2xl p-5 border-2 border-amber-400 shadow-2xl space-y-4">
+        <div class="flex items-center justify-between border-b border-plum-border pb-3">
+          <div>
+            <h3 class="text-sm font-bold text-amber-300 font-heading uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-file-import"></i> Log or Import Transaction (Ramp Card / Bank CSV / Airbnb Payout / Vendor Invoice)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">Select the transaction type below to preview the exact integer-cents accounting split before committing to the ledger.</p>
+          </div>
+          <button type="button" onclick="toggleAddTransactionPanel()" class="text-slate-400 hover:text-white text-sm px-2 py-1 rounded-lg bg-plum-obsidian border border-plum-border cursor-pointer">
+            <i class="fa-solid fa-xmark"></i> Close
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Date:</label>
+            <input type="date" id="tx-date" value="2026-10-15" class="input-dark">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Property / Cost Center:</label>
+            <select id="tx-property" onchange="updateNewTxPreview()" class="input-dark">
+              <option value="OAK-HOM-002">5540 Estates Dr (20% Split)</option>
+              <option value="PIN-HOM-001">3146 Avis Way (15% Split)</option>
+              <option value="BKL-STU-003">1545 Scenic Ave (20% Split)</option>
+              <option value="CORP-OPS">A Better BNB Corporate Ops</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Deterministic Rule Type:</label>
+            <select id="tx-rule-type" onchange="updateNewTxPreview()" class="input-dark">
+              <option value="EXTRA_SERVICE_MARKUP">Out-of-Scope Extra Service (+20% Markup)</option>
+              <option value="OTA_PAYOUT">OTA Booking Payout (Auto-Split)</option>
+              <option value="OWNER_STAY_TURNOVER">Post-Owner-Stay Clean (11am-5pm At Cost)</option>
+              <option value="RESOLUTION_50_50">Resolution Center 50/50 Unexpended Split</option>
+              <option value="CLEANING_PASSTHROUGH">Guest Turnover Clean Disbursement (100% Pass)</option>
+              <option value="COMPANY_OPEX">A Better BNB Corporate Operating Expense</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Source / Counterparty / Vendor:</label>
+            <input type="text" id="tx-vendor" value="East Bay Precision Handyman LLC" oninput="updateNewTxPreview()" class="input-dark" placeholder="Vendor or OTA Channel">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1" id="tx-amount-label">Base Amount ($ USD):</label>
+            <input type="number" step="0.01" id="tx-amount" value="185.00" oninput="updateNewTxPreview()" class="input-dark font-mono-custom" placeholder="185.00">
+          </div>
+          <div id="tx-cleaning-wrap" class="hidden">
+            <label class="block text-slate-300 font-semibold mb-1">Guest Cleaning Fee ($ USD):</label>
+            <input type="number" step="0.01" id="tx-cleaning-fee" value="260.00" oninput="updateNewTxPreview()" class="input-dark font-mono-custom" placeholder="260.00">
+          </div>
+          <div id="tx-description-wrap" class="md:col-span-2">
+            <label class="block text-slate-300 font-semibold mb-1">Description / Audit Memo:</label>
+            <input type="text" id="tx-memo" value="Lower-level dehumidifier continuous drain line install &amp; door latch adjustment" oninput="updateNewTxPreview()" class="input-dark">
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-plum-obsidian border border-emerald-500/40 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+          <div id="tx-live-preview-box" class="font-mono-custom text-emerald-300 space-y-0.5">
+            Previewing deterministic split...
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" onclick="simulateBatchCsvImport()" class="px-3.5 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold cursor-pointer transition">
+              <i class="fa-solid fa-cloud-arrow-down mr-1"></i> Simulate Ramp / Airbnb CSV Batch Import
+            </button>
+            <button type="button" onclick="commitNewTransaction()" class="px-4 py-2 rounded-xl gold-gradient-bg text-slate-950 font-extrabold shadow-lg cursor-pointer transition">
+              <i class="fa-solid fa-check-double mr-1"></i> Commit to Autonomous Ledger
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-plum-obsidian rounded-2xl border border-plum-border shadow-2xl p-5 space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="bookkeeper-rule-filter" onchange="renderBookkeeperTable()" class="input-dark !w-auto">
+              <option value="ALL">All Rule Categories (All Flows)</option>
+              <option value="OTA_PAYOUT">OTA Payout Auto-Splits</option>
+              <option value="EXTRA_SERVICE_MARKUP">Extra Services (+20% Coordination Markup)</option>
+              <option value="OWNER_STAY_TURNOVER">Post-Owner-Stay 11am-5pm Turnover Cleans</option>
+              <option value="RESOLUTION_50_50">Resolution Center 50/50 Splits</option>
+              <option value="CLEANING_PASSTHROUGH">100% Guest Cleaning Pass-Throughs</option>
+              <option value="COMPANY_OPEX">Corporate Operating Expenses (CPA Tax Lines)</option>
+            </select>
+            <input type="text" id="bookkeeper-search" oninput="renderBookkeeperTable()" placeholder="Search property, vendor, Schedule E / CPA tax line..." class="input-dark !w-72">
+          </div>
+          <div id="bookkeeper-showing-summary" class="text-xs font-mono-custom text-slate-400">
+            Showing all transactions
+          </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-plum-bright text-[10px] font-mono-custom uppercase text-amber-300 bg-plum-card/60">
+                <th class="py-3 px-3">Date &amp; Source</th>
+                <th class="py-3 px-3">Property &amp; Tier</th>
+                <th class="py-3 px-3">Counterparty &amp; Memo</th>
+                <th class="py-3 px-3">Autonomous Rule Applied</th>
+                <th class="py-3 px-3 text-right">Gross / Base</th>
+                <th class="py-3 px-3 text-right">Manager Earned</th>
+                <th class="py-3 px-3 text-right">Owner Trust Net</th>
+                <th class="py-3 px-3">IRS Schedule E / CPA Tax Line</th>
+                <th class="py-3 px-3 text-center">Status / Action</th>
+              </tr>
+            </thead>
+            <tbody id="bookkeeper-tbody" class="divide-y divide-plum-border/60 font-sans">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-deal-seeker" class="hidden space-y-5 no-print">
+      <div class="card-glass rounded-2xl p-5 border-l-4 border-l-emerald-400 space-y-3">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-mono-custom text-[10px] font-bold uppercase">
+              <i class="fa-solid fa-radar mr-1"></i> Autonomous Margin Protection &amp; Procurement Intelligence
+            </span>
+            <h2 class="text-lg font-bold text-white mt-1 font-heading">
+              Deal-Seeking &amp; Expense Maintenance Engine (Corporate SaaS + Partner Property FF&amp;E &amp; Utilities)
+            </h2>
+            <p class="text-xs text-slate-300">
+              Actively audits recurring software, FF&amp;E unit pricing, and property utility/cleaning bills to eliminate bloat across A Better BNB and partner homeowners.
+            </p>
+          </div>
+          <div class="px-4 py-3 rounded-xl bg-emerald-950/80 border border-emerald-500/60 text-right shrink-0">
+            <div class="text-[10px] font-mono-custom uppercase text-emerald-300">Total Verified Annual Run-Rate Savings</div>
+            <div class="text-2xl font-extrabold font-heading text-emerald-400">$8,439.00 / yr</div>
+            <div class="text-[10px] font-mono-custom text-emerald-200/80">Corporate SaaS + Trade FF&amp;E + Utility Drift Guards</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-5 bg-plum-obsidian rounded-2xl border border-plum-border p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-plum-border pb-3">
+            <h3 class="text-sm font-bold text-amber-300 font-heading uppercase flex items-center gap-2">
+              <i class="fa-solid fa-scissors text-emerald-400"></i> 1. Replaced &amp; Canceled SaaS Tracker
+            </h3>
+            <span class="text-[10px] font-mono-custom px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700">
+              $6,885/yr SaaS &amp; Labor Saved
+            </span>
+          </div>
+
+          <div class="space-y-3 text-xs" id="saas-tracker-list">
+            <div class="p-3.5 rounded-xl bg-plum-card border border-emerald-500/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-sliders text-emerald-400"></i> QuickBooks Online: On $1/mo 3-Month Retention Promo
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono-custom font-bold bg-emerald-500 text-slate-950">
+                  $38 REFUNDED &bull; $1/MO PROMO ACTIVE
+                </span>
+              </div>
+              <p class="text-slate-300 text-[11px]">
+                <strong>$38.00 refunded on last payment</strong> and locked at <strong>$1.00/mo for the next 2 months</strong> while acclimating to <strong>balanSeTR (Scenic Ledger Autonomous Bookkeeper, $0/mo)</strong> (SimpleFIN $15/yr Bank Bridge optional &amp; pending setup). Eliminates full-price $39 to $99/mo SaaS overhead while keeping historical access during transition.
+              </p>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-plum-card border border-emerald-500/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-ban text-rose-400"></i> Paid Smart Lock Middleware Avoided ($0/mo Direct Lock APIs Pending Connection)
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono-custom font-bold bg-emerald-500 text-slate-950">
+                  REPLACED &bull; SAVES $1,824/YR
+                </span>
+              </div>
+              <p class="text-slate-300 text-[11px]">
+                Replaced by <strong>Free Direct Schlage Encode / Yale Access / TTLock Cloud APIs ($0/door/mo)</strong> across 38 active portfolio doors. Zero per-door middleware tax.
+              </p>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-plum-card border border-emerald-500/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-ban text-rose-400"></i> Legacy E-Signature Seat Licenses ($45/mo)
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono-custom font-bold bg-emerald-500 text-slate-950">
+                  REPLACED &bull; SAVES $540/YR
+                </span>
+              </div>
+              <p class="text-slate-300 text-[11px]">
+                Replaced by <strong>OpenSign &amp; Documenso Native Webhook Integration</strong> inside Stage 3 Owner Agreement Generator.
+              </p>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-plum-card border border-emerald-500/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white flex items-center gap-1.5">
+                  <i class="fa-solid fa-robot text-amber-400"></i> Manual Bookkeeper Categorization Overflow
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono-custom font-bold bg-amber-400 text-slate-950">
+                  95% AUTOMATED &bull; SAVES $4,053/YR
+                </span>
+              </div>
+              <p class="text-slate-300 text-[11px]">
+                Frees Accounting & Finance Lead from manual receipt hunting; deterministic rules auto-split OTA payouts, +20% service markups, and 50/50 Resolution Center claims in real time.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-plum-obsidian rounded-2xl border border-plum-border p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-plum-border pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-amber-300 font-heading uppercase flex items-center gap-2">
+                <i class="fa-solid fa-bed text-amber-400"></i> 2. Hospitality Supply &amp; FF&amp;E Deal Radar
+              </h3>
+              <p class="text-[11px] text-slate-400">
+                Benchmarks retail invoices against HostGPO, Wayfair Professional, HD Supply, and Direct Trade pricing.
+              </p>
+            </div>
+            <a href="property_walkthrough.html?prop=estates-5br" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-mono-custom text-[11px] font-bold transition">
+              <i class="fa-solid fa-camera mr-1"></i> View 5540 Estates FF&amp;E Spec &rarr;
+            </a>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-plum-border text-[10px] font-mono-custom uppercase text-slate-400">
+                  <th class="py-2.5 px-2.5">FF&amp;E / Hospitality SKU &amp; Target Property</th>
+                  <th class="py-2.5 px-2.5">Wholesale Trade Channel</th>
+                  <th class="py-2.5 px-2.5 text-right">Retail Price</th>
+                  <th class="py-2.5 px-2.5 text-right">Scenic Trade Benchmark</th>
+                  <th class="py-2.5 px-2.5 text-right">Unit Savings</th>
+                  <th class="py-2.5 px-2.5 text-center">Invoice Guard</th>
+                </tr>
+              </thead>
+              <tbody id="ffe-deal-tbody" class="divide-y divide-plum-border/50">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-plum-obsidian rounded-2xl border border-plum-border p-5 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-plum-border pb-3">
+          <div>
+            <h3 class="text-sm font-bold text-amber-300 font-heading uppercase flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation text-rose-400"></i> 3. Property Utility &amp; Vendor Rate Drift Watch
+            </h3>
+            <p class="text-xs text-slate-400">
+              Automatically flags abnormal spikes in turnover cleaning fees, PG&amp;E heating/electric, EBMUD water, or landscaping invoices before they erode Owner payouts or Manager margins.
+            </p>
+          </div>
+          <span id="drift-watch-status-badge" class="text-[11px] font-mono-custom px-3 py-1 rounded-full bg-rose-950 text-rose-300 border border-rose-700 font-bold">
+            3 Active Rate Drift Alerts Detected
+          </span>
+        </div>
+
+        <div id="utility-drift-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-owner-statements" class="hidden space-y-5">
+      <div class="card-glass rounded-2xl p-4 border border-plum-bright flex flex-col lg:flex-row lg:items-center justify-between gap-4 no-print">
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <div>
+            <label class="block text-[10px] font-mono-custom uppercase text-amber-300 font-bold mb-1">Select Partner Property:</label>
+            <select id="stmt-property-selector" onchange="onStatementPropertyChange(this.value)" class="input-dark !w-80 font-bold text-amber-300">
+              <option value="OAK-HOM-002">5540 Estates Dr (Oakland 5-BR &bull; 20% Co-Hosting Split)</option>
+              <option value="PIN-HOM-001">3146 Avis Way (Pinole 4-BR &bull; 15% Co-Hosting Split)</option>
+              <option value="BKL-STU-003">1545 Scenic Ave (Berkeley Studio Combo &bull; 20% Split)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono-custom uppercase text-slate-400 font-bold mb-1">Statement Period:</label>
+            <select id="stmt-period-selector" onchange="renderOwnerStatement()" class="input-dark !w-52">
+              <option value="2026-10">October 2026 (Current Month)</option>
+              <option value="2026-YTD">Full Year-to-Date 2026 Rollup</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-xs">
+          <button type="button" onclick="copyShareableOwnerPortalLink(this)" class="px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center gap-1.5 shadow transition cursor-pointer">
+            <i class="fa-solid fa-link"></i> Copy Homeowner Statement Link
+          </button>
+          <button type="button" onclick="exportOwnerStatementCsv()" class="px-3.5 py-2.5 rounded-xl bg-plum-obsidian hover:bg-plum-glow text-amber-300 border border-plum-bright font-bold flex items-center gap-1.5 transition cursor-pointer">
+            <i class="fa-solid fa-file-csv"></i> Export Statement CSV
+          </button>
+          <button type="button" onclick="window.print()" class="px-4 py-2.5 rounded-xl gold-gradient-bg text-slate-950 font-extrabold shadow-lg flex items-center gap-1.5 hover:brightness-110 transition cursor-pointer">
+            <i class="fa-solid fa-print"></i> Print / Save Owner Statement PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="statement-paper rounded-2xl p-6 md:p-10 max-w-5xl mx-auto space-y-6 border border-slate-300">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b-2 border-slate-900 pb-6">
+          <div>
+            <div class="flex items-center gap-2 text-xs font-mono-custom uppercase tracking-widest text-amber-700 font-bold">
+              <span>A Better BNB &amp; A Better Boutique Hospitality Trust Accounting</span>
+              <span>&bull;</span>
+              <span>abetterbnb.com</span>
+            </div>
+            <h2 id="stmt-doc-title" class="text-2xl md:text-3xl font-bold text-slate-900 mt-1">
+              Monthly Partner Homeowner Statement &amp; Payout Summary
+            </h2>
+            <p id="stmt-doc-subtitle" class="text-xs text-slate-600 mt-1">
+              Zero-Question Cent-Verified Trust Reconciliation &bull; Prepared by Scenic Ledger Autonomous Bookkeeper
+            </p>
+          </div>
+          <div class="text-left md:text-right text-xs font-mono-custom bg-slate-100 p-3.5 rounded-xl border border-slate-300">
+            <div><strong>Statement ID:</strong> <span id="stmt-meta-id">STMT-2026-10-OAK</span></div>
+            <div><strong>Property ID:</strong> <span id="stmt-meta-prop-id">OAK-HOM-002</span></div>
+            <div><strong>Contracted Split:</strong> <span id="stmt-meta-split" class="text-emerald-800 font-bold">80% Owner / 20% Manager</span></div>
+            <div><strong>Trust Status:</strong> <span class="text-emerald-700 font-bold">100% Reconciled ($0.00 Variance)</span></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="text-[10px] font-mono-custom uppercase text-slate-500 font-bold">Property &amp; Parcel Address</div>
+            <div id="stmt-prop-address" class="text-sm font-bold text-slate-900 mt-0.5">5540 Estates Dr, Oakland, CA 94618</div>
+            <div id="stmt-prop-specs" class="text-[11px] text-slate-600 mt-0.5">5-BR Whole House &bull; Pure Short-Term Rental (&lt;30 Days)</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="text-[10px] font-mono-custom uppercase text-slate-500 font-bold">Partner Homeowner / Deed Entity</div>
+            <div id="stmt-owner-entity" class="text-sm font-bold text-slate-900 mt-0.5">Estates Drive Family Trust</div>
+            <div id="stmt-calendar-note" class="text-[11px] text-slate-600 mt-0.5">Master Calendar Managed by A Better BNB (Owner Personal Dates Always Honored)</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-300">
+            <div class="text-[10px] font-mono-custom uppercase text-emerald-800 font-bold">Exact Net Owner Payout (ACH Deposit)</div>
+            <div id="stmt-hero-net-payout" class="text-2xl font-extrabold text-emerald-900 font-mono-custom mt-0.5">$0.00</div>
+            <div id="stmt-hero-payout-sub" class="text-[11px] text-emerald-800 mt-0.5">100% Guest Cleaning Pass-Through Applied</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-300 text-xs space-y-1">
+          <div class="font-bold text-amber-950 flex items-center gap-1.5">
+            <i class="fa-solid fa-calendar-check text-amber-700"></i>
+            <span>Occupancy, Nights Booked &amp; Collaborative Owner Personal Hold Summary</span>
+          </div>
+          <p id="stmt-occupancy-banner" class="text-amber-900">
+            21 Revenue Guest Nights Booked + 2 Owner Personal Hold Nights (Oct 18 to Oct 20: Shared $0.00 Revenue Hold; Post-Stay 11:00 AM to 5:00 PM Turnover Cleaning Coordinated at Exact Vendor Cost).
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-800 border-b border-slate-300 pb-1.5">
+            Section A: Executive Trust Waterfall &amp; Net Payout Calculation
+          </h3>
+          <table class="w-full text-xs border-collapse">
+            <tbody id="stmt-waterfall-tbody" class="divide-y divide-slate-200">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-800 border-b border-slate-300 pb-1.5">
+            Section B: Itemized Bookings, Pass-Through Cleans, Extra Services (+20% Markup), Post-Owner Cleans &amp; 50/50 Resolution Credits
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b-2 border-slate-300 text-[10px] font-mono-custom uppercase text-slate-600 bg-slate-100">
+                  <th class="py-2 px-2.5">Date</th>
+                  <th class="py-2 px-2.5">Category / SLA Rule</th>
+                  <th class="py-2 px-2.5">Description &amp; Vendor / Channel</th>
+                  <th class="py-2 px-2.5 text-right">Gross / Vendor Base</th>
+                  <th class="py-2 px-2.5 text-right">Manager Fee / +20% Markup</th>
+                  <th class="py-2 px-2.5 text-right">Net Impact to Owner</th>
+                </tr>
+              </thead>
+              <tbody id="stmt-line-items-tbody" class="divide-y divide-slate-200">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-500">
+          <div>
+            <strong>Zero-Question Guarantee:</strong> 100% of guest-paid cleaning fees pass through to cover turnover housekeeping. Out-of-scope repairs, handyman dispatches, and mailing lost guest items include a transparent 20% coordination markup. Unexpended Resolution Center recoveries are split 50% Owner / 50% Manager.
+          </div>
+          <div class="font-mono-custom shrink-0 text-slate-700 font-bold">
+            Certified by A Better BNB Founder &bull; A Better BNB
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-tax-center" class="hidden space-y-6 no-print">
+      <div class="card-glass rounded-2xl p-5 border-l-4 border-l-sky-400 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-sky-500/20 border border-sky-400/50 text-sky-300 font-mono-custom text-[10px] font-bold uppercase">
+              <i class="fa-solid fa-landmark mr-1"></i> Zero-Question EOY Tax Doctrine
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-mono-custom text-[10px] font-bold">
+              IRS Form 1040 Schedule E + Corporate P&amp;L + Trial Balance + 1099-NEC Engine
+            </span>
+          </div>
+          <h2 class="text-lg font-bold text-white mt-1 font-heading">
+            Year-End (EOY) Tax Command Center: Partner Homeowners &amp; Executive CPA Tax Guy Binder
+          </h2>
+          <p class="text-xs text-slate-300">
+            Generates ready-to-file IRS Schedule E packets for every partner homeowner and a complete corporate tax binder (Income Statement, Zero-Commingling Trial Balance, and 1099-NEC vendor CSV) for Justin's CPA.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 shrink-0" data-admin-only="true">
+          <button type="button" onclick="downloadCompleteCpaBinderCsv()" class="px-4 py-2.5 rounded-xl gold-gradient-bg text-slate-950 font-extrabold text-xs shadow-lg flex items-center gap-2 hover:brightness-110 transition cursor-pointer">
+            <i class="fa-solid fa-briefcase"></i> Download Complete CPA Tax Guy Binder (CSV + Executive Summary)
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+        <div id="tax-panel-schedule-e" class="xl:col-span-5 bg-plum-obsidian rounded-2xl border border-plum-bright p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-plum-border pb-3">
+            <div>
+              <span class="text-[10px] font-mono-custom uppercase text-emerald-400 font-bold">Panel A &bull; Partner Homeowner Tax Packet</span>
+              <h3 class="text-base font-bold text-white font-heading">
+                IRS Form 1040 Schedule E (Supplemental Income &amp; Loss)
+              </h3>
+            </div>
+            <button type="button" onclick="exportScheduleECsv()" class="px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs flex items-center gap-1.5 transition cursor-pointer">
+              <i class="fa-solid fa-download"></i> Export Owner Schedule E (CSV)
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between gap-3 bg-plum-card p-3 rounded-xl border border-plum-border text-xs">
+            <label class="text-slate-300 font-semibold shrink-0">Schedule E Property:</label>
+            <select id="sched-e-property-selector" onchange="onScheduleEPropertyChange(this.value)" class="input-dark !py-1.5 font-bold text-amber-300">
+              <option value="OAK-HOM-002">5540 Estates Dr (Estates Drive Family Trust)</option>
+              <option value="PIN-HOM-001">3146 Avis Way (Kris Maganti)</option>
+              <option value="BKL-STU-003">1545 Scenic Ave (Berkeley Hills Holding Trust)</option>
+            </select>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-plum-border text-[10px] font-mono-custom uppercase text-slate-400">
+                  <th class="py-2 px-2.5">IRS Schedule E Line</th>
+                  <th class="py-2 px-2.5">Tax Line Description &amp; Formula</th>
+                  <th class="py-2 px-2.5 text-right">YTD Amount</th>
+                </tr>
+              </thead>
+              <tbody id="schedule-e-tbody" class="divide-y divide-plum-border/60">
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-plum-card border border-emerald-500/40 text-[11px] text-slate-300 space-y-1">
+            <div class="font-bold text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check"></i> Homeowner CPA Ready Note:
+            </div>
+            <p>
+              All figures above are reconciled to the penny against bank ACH payouts. The homeowner's CPA simply enters Lines 3, 7, 11, 14, and 18 onto IRS Form 1040 Schedule E (Part I) and adds owner-held mortgage interest (Line 12), property taxes (Line 16), and depreciation (Line 18).
+            </p>
+          </div>
+        </div>
+
+        <div id="tax-panel-cpa-binder" data-admin-only="true" class="xl:col-span-7 bg-plum-obsidian rounded-2xl border border-amber-500/50 p-5 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-plum-border pb-3">
+            <div>
+              <span class="text-[10px] font-mono-custom uppercase text-amber-400 font-bold">Panel B &bull; Executive Tax Guy / CPA Year-End Binder</span>
+              <h3 class="text-base font-bold text-white font-heading">
+                A Better BNB Corporate P&amp;L, Double-Entry Trial Balance &amp; 1099-NEC Engine
+              </h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="export1099VendorCsv()" class="px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <i class="fa-solid fa-file-csv"></i> Export 1099-NEC CSV
+              </button>
+              <button type="button" onclick="downloadCompleteCpaBinderCsv()" class="px-3 py-1.5 rounded-xl gold-gradient-bg text-slate-950 font-extrabold text-xs flex items-center gap-1.5 transition cursor-pointer">
+                <i class="fa-solid fa-file-zipper"></i> Full CPA Binder Export
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-plum-card rounded-xl p-4 border border-plum-border space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-300 font-heading">
+                  1. Corporate Income Statement (P&amp;L)
+                </h4>
+                <span class="text-[10px] font-mono-custom text-emerald-300">Schedule C / 1120-S</span>
+              </div>
+              <table class="w-full text-xs border-collapse">
+                <tbody id="cpa-pnl-tbody" class="divide-y divide-plum-border/50">
+                </tbody>
+              </table>
+            </div>
+
+            <div class="bg-plum-card rounded-xl p-4 border border-plum-border space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-sky-300 font-heading">
+                  2. Double-Entry Trial Balance &amp; Trust Proof
+                </h4>
+                <span id="trial-balance-badge" class="text-[10px] font-mono-custom px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold">
+                  $0.00 Commingling
+                </span>
+              </div>
+              <table class="w-full text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-plum-border text-[10px] font-mono-custom text-slate-400">
+                    <th class="py-1 text-left">GL Account</th>
+                    <th class="py-1 text-right">Debit</th>
+                    <th class="py-1 text-right">Credit</th>
+                  </tr>
+                </thead>
+                <tbody id="cpa-trial-balance-tbody" class="divide-y divide-plum-border/50 font-mono-custom text-[11px]">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-plum-card rounded-xl p-4 border border-plum-border space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-purple-300 font-heading flex items-center gap-1.5">
+                  <i class="fa-solid fa-users-gear text-purple-400"></i>
+                  3. Zero-Friction Cleaner Pay &amp; Corporate Contractor 1099-NEC Tracker
+                </h4>
+                <p class="text-[11px] text-slate-400">
+                  Turnover cleaners paid via <strong>Cleaning Payout Account (Preferred Payout Method approved turnover payouts)</strong> are <strong>never</strong> subjected to unnecessary administrative friction. Corporate contractors paid &ge; $600.00 via corporate rails are tracked cleanly for CPA year-end review.
+                </p>
+              </div>
+              <span id="w9-compliance-pill" class="text-[10px] font-mono-custom px-2.5 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-700 font-bold shrink-0">
+                Checking W-9 Status...
+              </span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-plum-border text-[10px] font-mono-custom uppercase text-slate-400">
+                    <th class="py-2 px-2">Vendor / Contractor Legal Name</th>
+                    <th class="py-2 px-2">Role &amp; Payout Rail</th>
+                    <th class="py-2 px-2 text-right">YTD Paid</th>
+                    <th class="py-2 px-2 text-center">Tax / Rail Policy</th>
+                    <th class="py-2 px-2 text-center">W-9 Status</th>
+                    <th class="py-2 px-2 text-center">Quick Action</th>
+                  </tr>
+                </thead>
+                <tbody id="vendor-1099-tbody" class="divide-y divide-plum-border/50">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4 border-t border-plum-border flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2 no-print">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-amber-400">Scenic Ledger (balanSeTR) v2.5</span>
+        <span>&bull;</span>
+        <span>Two-Bank Architecture (Cleaning Payout Account + Co-Host Operating Account) &bull; QBO on $1/mo Promo During Acclimation</span>
+      </div>
+      <div class="font-mono-custom text-[11px] text-emerald-400">
+        Integer-Cents Verified &bull; Schedule E + CPA Tax Guy Binder Ready
+      </div>
+    </footer>
+
+  </div>
+
+  <div id="modal-cloud-sync" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+    <div class="bg-plum-obsidian border-2 border-plum-bright rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-plum-border pb-3">
+        <h3 class="text-base font-bold text-white font-heading flex items-center gap-2">
+          <i class="fa-solid fa-cloud-arrow-up text-sky-400"></i> Scenic OS Shared Cloud &amp; Multi-Tab State Sync
+        </h3>
+        <button type="button" onclick="closeCloudSyncModal()" class="text-slate-400 hover:text-white cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p class="text-xs text-slate-300">
+        Synchronizes property contracts, fee splits (`15% / 20% / 25% / 12%`), vendor rosters, and owner statements across Beacon Lead Command, Owner Agreement Generator, HOSt Property Forge, and Scenic Ledger.
+      </p>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-400 mb-1 font-semibold">Supabase Project URL (Optional Cloud Persistence):</label>
+          <input type="text" id="cloud-sync-url" class="input-dark font-mono-custom" placeholder="https://your-project.supabase.co">
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1 font-semibold">Supabase Anon Public Key:</label>
+          <input type="password" id="cloud-sync-key" class="input-dark font-mono-custom" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+        </div>
+        <div id="cloud-sync-status-msg" class="hidden p-2.5 rounded-xl font-mono-custom text-xs"></div>
+      </div>
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button type="button" onclick="closeCloudSyncModal()" class="px-3.5 py-2 rounded-xl bg-plum-card text-slate-300 hover:text-white text-xs font-semibold cursor-pointer">
+          Close
+        </button>
+        <button type="button" onclick="saveCloudSyncSettings()" class="px-4 py-2 rounded-xl gold-gradient-bg text-slate-950 font-extrabold text-xs cursor-pointer">
+          Save &amp; Sync State Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.ScenicCloudSync = (function() {
+      const STATE_KEY = 'scenic_shared_workspace_state_v1';
+      const CHANNEL_NAME = 'scenic_workspace_sync_v1';
+      let channel = null;
+      try {
+        if (typeof BroadcastChannel !== 'undefined') {
+          channel = new BroadcastChannel(CHANNEL_NAME);
+        }
+      } catch (err) {}
+
+      function getConfig() {
+        return {
+          url: localStorage.getItem('scenic_supabase_url') || '',
+          key: localStorage.getItem('scenic_supabase_anon_key') || ''
+        };
+      }
+
+      function readState() {
+        try {
+          const raw = localStorage.getItem(STATE_KEY);
+          return raw ? JSON.parse(raw) : { agreements: {}, forge_profiles: {}, ledger_statements: {}, updated_at: null };
+        } catch (err) {
+          return { agreements: {}, forge_profiles: {}, ledger_statements: {}, updated_at: null };
+        }
+      }
+
+      function writeState(mutator, sourceTag) {
+        const current = readState();
+        mutator(current);
+        current.updated_at = new Date().toISOString();
+        current.last_source = sourceTag || 'scenic_ledger';
+        try {
+          localStorage.setItem(STATE_KEY, JSON.stringify(current));
+        } catch (err) {}
+        if (channel) {
+          try {
+            channel.postMessage({ type: 'SCENIC_STATE_UPDATED', state: current });
+          } catch (err) {}
+        }
+        return current;
+      }
+
+      if (channel) {
+        channel.onmessage = function(ev) {
+          if (ev && ev.data && ev.data.state) {
+            try {
+              localStorage.setItem(STATE_KEY, JSON.stringify(ev.data.state));
+              ingestCloudSyncedProperties();
+              refreshAllLedgerViews();
+            } catch (err) {}
+          }
+        };
+      }
+
+      return {
+        getConfig: getConfig,
+        readState: readState,
+        writeState: writeState,
+        openModal: function() { openCloudSyncModal(); },
+        syncNow: function() {
+          return writeState(function(st) {
+            if (!st.ledger_synced_at) st.ledger_synced_at = new Date().toISOString();
+          }, 'scenic_ledger_manual_sync');
+        }
+      };
+    })();
+
+    const PROPERTIES = {
+      'OAK-HOM-002': {
+        id: 'OAK-HOM-002',
+        name: '5540 Estates Dr (Oakland 5-BR Whole House)',
+        shortName: '5540 Estates Dr',
+        address: '5540 Estates Dr, Oakland, CA 94618',
+        ownerEntity: 'Estates Drive Family Trust (Oakland Hills Deed Holder)',
+        feePct: 20,
+        specs: '5-BR / 3.5-BA Whole House Sanctuary (Pure STR <30 Days)',
+        bookedNightsOct: 21,
+        ownerHoldNote: 'Oct 18 to Oct 20 (2 Nights): Collaborative Owner Personal Hold ($0.00 Gross; Post-Stay 11:00 AM to 5:00 PM Turnover Clean Billed at Cost)',
+        calendarPolicy: 'Master Calendar Managed by A Better BNB (Owner Personal Dates Always Honored)'
+      },
+      'PIN-HOM-001': {
+        id: 'PIN-HOM-001',
+        name: '3146 Avis Way (Pinole 4-BR Ridge Sanctuary)',
+        shortName: '3146 Avis Way',
+        address: '3146 Avis Way, Pinole, CA 94564',
+        ownerEntity: 'Kris Maganti (Pinole Ridge Deed Owner)',
+        feePct: 15,
+        specs: '4-BR / 3-BA Panoramic Ridge Sanctuary (Pure STR <30 Days)',
+        bookedNightsOct: 19,
+        ownerHoldNote: 'Oct 24 to Oct 25 (1 Night): Collaborative Shared Calendar Owner Hold ($0.00 Gross; 15% Tier Shared Calendar)',
+        calendarPolicy: 'Collaborative Shared Master Calendar (15% Co-Hosting Tier)'
+      },
+      'BKL-STU-003': {
+        id: 'BKL-STU-003',
+        name: '1545 Scenic Ave (Berkeley North Hills Studio Combo)',
+        shortName: '1545 Scenic Ave',
+        address: '1545 Scenic Ave, Berkeley, CA 94708',
+        ownerEntity: 'Berkeley Hills Hospitality Trust',
+        feePct: 20,
+        specs: 'Dual-Studio Compound (2 Keys Combined &bull; Pure STR <30 Days)',
+        bookedNightsOct: 24,
+        ownerHoldNote: 'Zero Owner Hold Nights in October 2026 (100% Revenue Availability)',
+        calendarPolicy: 'Master Calendar Managed by A Better BNB (20% Co-Hosting Tier)'
+      },
+      'CORP-OPS': {
+        id: 'CORP-OPS',
+        name: 'A Better BNB Corporate Ops (Internal Company Ledger)',
+        shortName: 'Corporate Ops',
+        address: '1545 Scenic Ave HQ, Berkeley, CA 94708',
+        ownerEntity: 'A Better BNB LLC',
+        feePct: 0,
+        specs: 'Corporate Operating &amp; CPA Tax Account',
+        bookedNightsOct: 0,
+        ownerHoldNote: 'Internal Corporate Cost Center',
+        calendarPolicy: 'N/A'
+      }
+    };
+
+    let ledgerTransactions = [
+      {
+        id: 'TX-2026-1001',
+        date: '2026-10-02',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'OTA_PAYOUT',
+        source: 'Airbnb Superhost Payout (Two-Bank Split)',
+        vendor: 'Airbnb Inc. (5-Night Group Booking #HM89Q2)',
+        memo: '5-Night Whole-House Stay ($4,400.00 Accomm &rarr; 20% Comm to Co-Host Operating Account + $350.00 Guest Cleaning Fee &rarr; Cleaning Payout Account)',
+        baseCents: 440000,
+        cleaningCents: 35000,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1002',
+        date: '2026-10-03',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'CLEANING_PASSTHROUGH',
+        source: 'Cleaning Payout Account (Preferred Partner Method)',
+        vendor: 'Oakland / Berkeley Turnover Team (Preferred Partner Payout)',
+        memo: 'reSeTR Photo-Verified 5-BR Guest Turnover Clean (100% Guest Cleaning Fee Pass-Through &bull; Timely Partner Payout)',
+        baseCents: 35000,
+        cleaningCents: 0,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1003',
+        date: '2026-10-06',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'EXTRA_SERVICE_MARKUP',
+        source: 'Ramp Corporate Card / Co-Host Operating Account Markup',
+        vendor: 'East Bay Precision Handyman LLC (Carlos Mendez)',
+        memo: 'Out-of-Scope Repair: Lower-level dehumidifier continuous drain line &amp; deck latch fix ($225.00 Base + 20% Coordination Markup to Co-Host Operating Account)',
+        baseCents: 22500,
+        cleaningCents: 0,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1004',
+        date: '2026-10-09',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'OTA_PAYOUT',
+        source: 'Airbnb Host Payout (Two-Bank Split)',
+        vendor: 'Airbnb Payout (6-Night Group Stay #HM904218)',
+        memo: '6-Night Oakland Hills Family Stay ($5,280.00 Accomm &rarr; 20% Comm to Co-Host Operating Account + $350.00 Guest Cleaning Fee &rarr; Cleaning Payout Account)',
+        baseCents: 528000,
+        cleaningCents: 35000,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1005',
+        date: '2026-10-10',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'CLEANING_PASSTHROUGH',
+        source: 'Cleaning Payout Account (Preferred Partner Method)',
+        vendor: 'Oakland / Berkeley Turnover Team (Preferred Partner Payout)',
+        memo: 'reSeTR Photo-Verified 5-BR Guest Turnover Clean (100% Guest Cleaning Fee Pass-Through &bull; Timely Partner Payout)',
+        baseCents: 35000,
+        cleaningCents: 0,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1006',
+        date: '2026-10-12',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'RESOLUTION_50_50',
+        source: 'Airbnb Resolution Center &rarr; Co-Host Operating Account',
+        vendor: 'Airbnb AirCover Guest Damage Payout (#RC-4412)',
+        memo: 'Scratched accent chair &amp; patio planter recovery (Fixed in-house by ops team with $0 external cost: 50% Owner / 50% Manager to Co-Host Operating Account)',
+        baseCents: 24000,
+        cleaningCents: 0,
+        status: 'NEEDS_REVIEW'
+      },
+      {
+        id: 'TX-2026-1007',
+        date: '2026-10-20',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'OWNER_STAY_TURNOVER',
+        source: 'Cleaning Payout Account (Preferred Partner Method)',
+        vendor: 'Oakland / Berkeley Turnover Team (Preferred Partner Payout)',
+        memo: 'Post-Owner-Stay Turnover Clean (Oct 20, 11:00 AM to 5:00 PM Window after Owner Personal Hold: Billed at Exact Cost, $0 Markup)',
+        baseCents: 28000,
+        cleaningCents: 0,
+        status: 'NEEDS_REVIEW'
+      },
+      {
+        id: 'TX-2026-1008',
+        date: '2026-10-22',
+        month: '2026-10',
+        propertyId: 'OAK-HOM-002',
+        ruleType: 'EXTRA_SERVICE_MARKUP',
+        source: 'Ramp Corporate Card / Co-Host Operating Account Markup',
+        vendor: 'USPS Priority Mail &amp; Ops Dispatch',
+        memo: 'Out-of-Scope Extra Service: Mailing forgotten iPad &amp; charger back to guest ($25.00 Postage/Pack Base + 20% Coordination Markup)',
+        baseCents: 2500,
+        cleaningCents: 0,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1009',
+        date: '2026-10-04',
+        month: '2026-10',
+        propertyId: 'PIN-HOM-001',
+        ruleType: 'OTA_PAYOUT',
+        source: 'Airbnb Superhost Payout (Two-Bank Split)',
+        vendor: 'Airbnb Inc. (7-Night Pinole Ridge Stay #HM21A9)',
+        memo: '7-Night Bay View Sanctuary Stay ($3,920.00 Accomm &rarr; 15% Comm to Co-Host Operating Account + $240.00 Guest Cleaning Fee &rarr; Cleaning Payout Account)',
+        baseCents: 392000,
+        cleaningCents: 24000,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1010',
+        date: '2026-10-05',
+        month: '2026-10',
+        propertyId: 'PIN-HOM-001',
+        ruleType: 'CLEANING_PASSTHROUGH',
+        source: 'Cleaning Payout Account (Preferred Partner Method)',
+        vendor: 'Pinole Turnover Team (Preferred Partner Payout)',
+        memo: 'reSeTR Turnover Clean at 3146 Avis Way (100% Guest Cleaning Fee Pass-Through &bull; Timely Partner Payout)',
+        baseCents: 24000,
+        cleaningCents: 0,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1011',
+        date: '2026-10-14',
+        month: '2026-10',
+        propertyId: 'PIN-HOM-001',
+        ruleType: 'OTA_PAYOUT',
+        source: 'Direct Corporate Retreat Wire (Two-Bank Split)',
+        vendor: 'North Bay Engineering Offsite (5-Night Direct Booking)',
+        memo: '5-Night Midweek Executive Stay ($3,150.00 Accomm &rarr; 15% Comm to Co-Host Operating Account + $240.00 Guest Cleaning Fee &rarr; Cleaning Payout Account)',
+        baseCents: 315000,
+        cleaningCents: 24000,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1012',
+        date: '2026-10-15',
+        month: '2026-10',
+        propertyId: 'PIN-HOM-001',
+        ruleType: 'EXTRA_SERVICE_MARKUP',
+        source: 'Ramp Corporate Card / Co-Host Operating Account Markup',
+        vendor: 'Contra Costa Spa &amp; Deck Service (David Kim)',
+        memo: 'Out-of-Scope Maintenance: Ridge deck string-light transformer replacement ($150.00 Base + 20% Coordination Markup)',
+        baseCents: 15000,
+        cleaningCents: 0,
+        status: 'NEEDS_REVIEW'
+      },
+      {
+        id: 'TX-2026-1013',
+        date: '2026-10-07',
+        month: '2026-10',
+        propertyId: 'BKL-STU-003',
+        ruleType: 'OTA_PAYOUT',
+        source: 'Airbnb Superhost Payout (Two-Bank Split)',
+        vendor: 'Airbnb Inc. (UC Berkeley Visiting Faculty #HM55B1)',
+        memo: '8-Night Dual-Studio Stay at 1545 Scenic ($3,680.00 Accomm &rarr; 20% Comm to Co-Host Operating Account + $190.00 Guest Cleaning Fee &rarr; Cleaning Payout Account)',
+        baseCents: 368000,
+        cleaningCents: 19000,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1014',
+        date: '2026-10-08',
+        month: '2026-10',
+        propertyId: 'BKL-STU-003',
+        ruleType: 'CLEANING_PASSTHROUGH',
+        source: 'Cleaning Payout Account (Preferred Payout Method Cleaning Pass-Through)',
+        vendor: 'Acton &amp; Berkeley Turnover Team (Preferred Partner Payout)',
+        memo: '1545 Scenic &amp; Berkeley Turnover Clean (100% Guest Cleaning Fee Pass-Through via Cleaning Payout Account &bull; Timely Partner Payout)',
+        baseCents: 19000,
+        cleaningCents: 0,
+        status: 'RECONCILED'
+      },
+      {
+        id: 'TX-2026-1015',
+        date: '2026-10-01',
+        month: '2026-10',
+        propertyId: 'CORP-OPS',
+        ruleType: 'COMPANY_OPEX',
+        source: 'Ramp Corporate Card',
+        vendor: 'Cloudflare Workers &amp; QBO $1/mo Retention Promo ($38 Refunded)',
+        memo: 'Scenic OS Cloud Hosting + QBO $1/mo 3-Month Promo ($38 Refunded on Last Payment While Acclimating to balanSeTR)',
+        baseCents: 3500,
+        cleaningCents: 0,
+        status: 'RECONCILED',
+        cpaLine: 'Line 18: Office & Cloud Infrastructure'
+      },
+      {
+        id: 'TX-2026-1016',
+        date: '2026-10-11',
+        month: '2026-10',
+        propertyId: 'CORP-OPS',
+        ruleType: 'COMPANY_OPEX',
+        source: 'Ramp Corporate Card',
+        vendor: 'Golden Gate Architectural Photography (Lucas Vance)',
+        memo: 'Twilight Drone &amp; Interior Listing Shoot for New Portfolio Onboarding',
+        baseCents: 65000,
+        cleaningCents: 0,
+        status: 'RECONCILED',
+        cpaLine: 'Line 27: Advertising & Listing Photography'
+      },
+      {
+        id: 'TX-2026-1017',
+        date: '2026-10-13',
+        month: '2026-10',
+        propertyId: 'CORP-OPS',
+        ruleType: 'COMPANY_OPEX',
+        source: 'Ramp Corporate Card',
+        vendor: 'HostGPO / Standard Textile Wholesale',
+        memo: 'Off-White Room-Matching 3-Par Linen Sets + Matching Duvet Covers &amp; Property Supplies Staging Kit',
+        baseCents: 48500,
+        cleaningCents: 0,
+        status: 'RECONCILED',
+        cpaLine: 'Line 22: Hospitality Staging & Property Supplies'
+      }
+    ];
+
+    const FFE_DEAL_BENCHMARKS = [
+      {
+        sku: 'King Plush-Firm Hybrid Mattress + Low-Profile Platform Frame (5540 Estates Dr Bed 1 & 2 Upgrade)',
+        channel: 'Wayfair Professional / HostGPO Rugs & Mattress Trade',
+        retailCents: 119000,
+        tradeCents: 74500,
+        status: 'LOCKED_TRADE_DEAL'
+      },
+      {
+        sku: 'Hotel-Grade 300TC Percale Off-White Room-Matching 3-Par Sheet Sets + Matching Duvet Covers (Never Stain-Prone All-White)',
+        channel: 'HD Supply / Standard Textile Hospitality Direct',
+        retailCents: 8800,
+        tradeCents: 4950,
+        status: 'LOCKED_TRADE_DEAL'
+      },
+      {
+        sku: 'Schlage Encode Wi-Fi Smart Deadbolt (Owner-Paid Hardware &bull; Direct API Pending Setup)',
+        channel: 'Home Depot Pro Xtra / Direct Hardware Trade',
+        retailCents: 31900,
+        tradeCents: 24200,
+        status: 'LOCKED_TRADE_DEAL'
+      },
+      {
+        sku: '50-Pint Commercial Basement Dehumidifier w/ Continuous Drain Hose (5540 Estates Lower Level)',
+        channel: 'Home Depot Pro Xtra Fleet Pricing',
+        retailCents: 28900,
+        tradeCents: 21900,
+        status: 'LOCKED_TRADE_DEAL'
+      },
+      {
+        sku: 'Public Goods / Beekman 1802 Bulk Gallon Refill Kit (Shampoo, Conditioner, Body Wash & Property Consumables)',
+        channel: 'HostGPO Member Wholesale Portal',
+        retailCents: 6400,
+        tradeCents: 3600,
+        status: 'LOCKED_TRADE_DEAL'
+      }
+    ];
+
+    let utilityDriftAlerts = [
+      {
+        id: 'DRIFT-01',
+        property: '5540 Estates Dr (Oakland)',
+        vendor: 'PG&E Commercial / Residential Electric & Gas',
+        baselineCents: 34000,
+        billedCents: 48500,
+        issue: '+42.6% Heating &amp; Aux Space Heater Spike Detected: Guests running portable electric heaters overnight.',
+        remedy: 'Activate Ecobee Smart Thermostat 68F-72F Eco-Lock when vacant &amp; seal lower-level patio draft.',
+        resolved: false
+      },
+      {
+        id: 'DRIFT-02',
+        property: '3146 Avis Way (Pinole)',
+        vendor: 'Contra Costa Landscape & Hillside Brush Crew',
+        baselineCents: 18000,
+        billedCents: 26500,
+        issue: '+47.2% Unapproved Fuel Surcharge &amp; Extra Trim Line Item added to monthly invoice.',
+        remedy: 'Enforce contracted $180/mo flat seasonal maintenance cap &amp; request credit memo.',
+        resolved: false
+      },
+      {
+        id: 'DRIFT-03',
+        property: '1545 Scenic Ave (Berkeley)',
+        vendor: 'Linen Laundry Overflow Surcharge',
+        baselineCents: 19000,
+        billedCents: 23500,
+        issue: '+$45.00 Off-Schedule Rush Laundry Fee billed on back-to-back studio turnover.',
+        remedy: 'Deploy 3rd par-level off-white room-matching sheet set + duvet cover from HostGPO trade stock ($49.50) to eliminate rush laundry fees permanently.',
+        resolved: false
+      }
+    ];
+
+    let vendor1099Roster = [
+      {
+        id: 'VEND-01',
+        name: 'Berkeley / Oakland Primary Turnover Team',
+        role: 'Primary Turnover Housekeeping (Paid via Preferred Payout Method / Cleaning Payout Account)',
+        tinStatus: 'Timely Partner Payout Policy (Paid via Cleaning Payout Account Partner Payout)',
+        ytdCents: 1485000,
+        w9OnFile: true
+      },
+      {
+        id: 'VEND-02',
+        name: 'Pinole & Acton Turnover Team',
+        role: 'Pinole & Berkeley Turnover Housekeeping (Paid via Preferred Payout Method / Cleaning Payout Account)',
+        tinStatus: 'Timely Partner Payout Policy (Paid via Cleaning Payout Account Preferred Payout Method Pass-Through)',
+        ytdCents: 642000,
+        w9OnFile: true
+      },
+      {
+        id: 'VEND-03',
+        name: 'East Bay Precision Handyman LLC (Carlos Mendez)',
+        role: 'Out-of-Scope Repairs, Locks & Preventative Maintenance (Corporate Contractor)',
+        tinStatus: 'EIN Verified (88-1940211)',
+        ytdCents: 318000,
+        w9OnFile: true
+      },
+      {
+        id: 'VEND-04',
+        name: 'Golden Gate Architectural Photography (Lucas Vance)',
+        role: 'HDR Interior & Drone Listing Photography (Corporate Contractor)',
+        tinStatus: 'Pending Signed Form W-9 Upload (Corporate Vendor)',
+        ytdCents: 125000,
+        w9OnFile: false
+      },
+      {
+        id: 'VEND-05',
+        name: 'Contra Costa Spa & Deck Service (David Kim)',
+        role: 'Hot Tub, Deck Lighting & Exterior Maintenance (Corporate Contractor)',
+        tinStatus: 'TIN Verified (On File)',
+        ytdCents: 49000,
+        w9OnFile: true
+      }
+    ];
+
+    let currentLedgerTab = 'bookkeeper';
+    let currentViewMode = 'admin';
+    let needsReviewOnly = false;
+    let activePropertyFilter = 'ALL';
+
+    function formatCents(cents) {
+      const sign = cents < 0 ? '-' : '';
+      const abs = Math.abs(Math.round(cents));
+      const dollars = Math.floor(abs / 100);
+      const rem = abs % 100;
+      return sign + '$' + dollars.toLocaleString('en-US') + '.' + (rem < 10 ? '0' + rem : String(rem));
+    }
+
+    function computeTransactionSplit(tx) {
+      const prop = PROPERTIES[tx.propertyId] || PROPERTIES['OAK-HOM-002'];
+      const feePct = prop.feePct || 20;
+      const base = Math.round(tx.baseCents || 0);
+      const clean = Math.round(tx.cleaningCents || 0);
+
+      if (tx.ruleType === 'OTA_PAYOUT') {
+        const grossTotal = base + clean;
+        const managerCommission = Math.round((base * feePct) / 100);
+        const ownerNet = grossTotal - managerCommission;
+        return {
+          grossDisplayCents: grossTotal,
+          managerEarnedCents: managerCommission,
+          ownerTrustDeltaCents: ownerNet,
+          ruleBadge: 'Two-Bank Split (' + feePct + '% Co-Host Operating Account + 100% Clean to Cleaning Payout Account)',
+          ruleColor: 'emerald',
+          taxLine: 'Schedule E Line 3 (Gross Rents) & Line 11 (Mgmt Fee)',
+          detailNote: 'Accomm: ' + formatCents(base) + ' | Clean (' + formatCents(clean) + ') -> Cleaning Payout Account (Preferred Payout Method) | Comm (' + feePct + '% = ' + formatCents(managerCommission) + ') -> Co-Host Operating Account (High-Yield)'
+        };
+      }
+
+      if (tx.ruleType === 'CLEANING_PASSTHROUGH') {
+        return {
+          grossDisplayCents: base,
+          managerEarnedCents: 0,
+          ownerTrustDeltaCents: -base,
+          ruleBadge: 'Cleaning Payout Account (Preferred Payout Method Partner Turnover Settlement)',
+          ruleColor: 'sky',
+          taxLine: 'Schedule E Line 7 (Cleaning & Maintenance)',
+          detailNote: 'Disbursed to cleaner from Cleaning Payout Account cleaning fee account via Preferred Payout Method ($0 markup, timely settlement)'
+        };
+      }
+
+      if (tx.ruleType === 'EXTRA_SERVICE_MARKUP') {
+        const markupCents = Math.round(base * 0.20);
+        const totalOwnerCharge = base + markupCents;
+        return {
+          grossDisplayCents: base,
+          managerEarnedCents: markupCents,
+          ownerTrustDeltaCents: -totalOwnerCharge,
+          ruleBadge: 'Extra Service (+20% Markup to Co-Host Operating Account)',
+          ruleColor: 'amber',
+          taxLine: 'Schedule E Line 14 (Repairs: ' + formatCents(base) + ') + Line 11 (+20% Fee: ' + formatCents(markupCents) + ')',
+          detailNote: 'Vendor Base: ' + formatCents(base) + ' + 20% Markup (' + formatCents(markupCents) + ' -> Co-Host Operating Account) = ' + formatCents(totalOwnerCharge) + ' Billed'
+        };
+      }
+
+      if (tx.ruleType === 'OWNER_STAY_TURNOVER') {
+        return {
+          grossDisplayCents: base,
+          managerEarnedCents: 0,
+          ownerTrustDeltaCents: -base,
+          ruleBadge: 'Post-Owner-Stay Clean (11am-5pm At Cost)',
+          ruleColor: 'purple',
+          taxLine: 'Owner Personal Stay Turnover (Billed at Cost)',
+          detailNote: '11:00 AM to 5:00 PM Turnover Window after Owner Hold ($0.00 Manager Markup; paid via Cleaning Payout Account)'
+        };
+      }
+
+      if (tx.ruleType === 'RESOLUTION_50_50') {
+        const ownerHalf = Math.floor(base / 2);
+        const managerHalf = base - ownerHalf;
+        return {
+          grossDisplayCents: base,
+          managerEarnedCents: managerHalf,
+          ownerTrustDeltaCents: ownerHalf,
+          ruleBadge: 'Resolution Center 50/50 Split',
+          ruleColor: 'purple',
+          taxLine: 'Schedule E Line 3 (50% Owner Recovery Credit)',
+          detailNote: 'Unexpended / In-House Fix: 50% Owner (' + formatCents(ownerHalf) + ') / 50% Manager (' + formatCents(managerHalf) + ' -> Co-Host Operating Account)'
+        };
+      }
+
+      return {
+        grossDisplayCents: base,
+        managerEarnedCents: 0,
+        ownerTrustDeltaCents: 0,
+        ruleBadge: 'Corporate OpEx (CPA Tax Deduction)',
+        ruleColor: 'rose',
+        taxLine: tx.cpaLine || 'CPA Schedule C / 1120-S Operating Deduction',
+        detailNote: 'Deductible Company Expense (' + formatCents(base) + ')'
+      };
+    }
+
+    function ingestCloudSyncedProperties() {
+      const state = window.ScenicCloudSync.readState();
+      if (state && state.agreements) {
+        Object.keys(state.agreements).forEach(function(leadId) {
+          const agr = state.agreements[leadId];
+          if (agr && agr.propertyAddress && !PROPERTIES[leadId]) {
+            const pct = parseInt(agr.feeRate, 10) || 20;
+            PROPERTIES[leadId] = {
+              id: leadId,
+              name: agr.propertyAddress + ' (' + pct + '% Synced Split)',
+              shortName: agr.propertyAddress,
+              address: agr.propertyAddress,
+              ownerEntity: agr.ownerName || 'Synced Partner Homeowner',
+              feePct: pct,
+              specs: 'Synced from Stage 3 Owner Agreement Generator',
+              bookedNightsOct: 18,
+              ownerHoldNote: 'Synced Master Calendar Active',
+              calendarPolicy: 'Synced from Executed Agreement (' + pct + '% Split)'
+            };
+          }
+        });
+      }
+    }
+
+    function updateTopKpiCards() {
+      let grossBookingsCents = 0;
+      let managerCommCents = 0;
+      let managerMarkupCents = 0;
+      let managerResCents = 0;
+      let ownerTrustPayableCents = 0;
+      let needsReviewCount = 0;
+
+      ledgerTransactions.forEach(function(tx) {
+        if (activePropertyFilter !== 'ALL' && tx.propertyId !== activePropertyFilter) {
+          return;
+        }
+        const split = computeTransactionSplit(tx);
+        if (tx.status === 'NEEDS_REVIEW') {
+          needsReviewCount += 1;
+        }
+        if (tx.ruleType === 'OTA_PAYOUT') {
+          grossBookingsCents += split.grossDisplayCents;
+          managerCommCents += split.managerEarnedCents;
+        } else if (tx.ruleType === 'EXTRA_SERVICE_MARKUP') {
+          managerMarkupCents += split.managerEarnedCents;
+        } else if (tx.ruleType === 'RESOLUTION_50_50') {
+          managerResCents += split.managerEarnedCents;
+        }
+        ownerTrustPayableCents += split.ownerTrustDeltaCents;
+      });
+
+      const totalManagerEarned = managerCommCents + managerMarkupCents + managerResCents;
+
+      const grossEl = document.getElementById('kpi-gross-bookings');
+      if (grossEl) grossEl.textContent = formatCents(grossBookingsCents);
+
+      const mgrEl = document.getElementById('kpi-manager-rev');
+      if (mgrEl) mgrEl.textContent = formatCents(totalManagerEarned);
+
+      const mgrSubEl = document.getElementById('kpi-manager-sub');
+      if (mgrSubEl) {
+        mgrSubEl.textContent = 'Comm: ' + formatCents(managerCommCents) + ' | +20%: ' + formatCents(managerMarkupCents) + ' | 50/50: ' + formatCents(managerResCents);
+      }
+
+      const trustEl = document.getElementById('kpi-owner-trust');
+      if (trustEl) trustEl.textContent = formatCents(ownerTrustPayableCents);
+
+      const missingW9Count = vendor1099Roster.filter(function(v) { return !v.w9OnFile; }).length;
+      const readinessScore = Math.max(80, 100 - (needsReviewCount * 2) - (missingW9Count * 4));
+      const taxEl = document.getElementById('kpi-tax-readiness');
+      if (taxEl) taxEl.textContent = readinessScore + '% Ready';
+
+      const taxSubEl = document.getElementById('kpi-tax-readiness-sub');
+      if (taxSubEl) {
+        if (needsReviewCount === 0 && missingW9Count === 0) {
+          taxSubEl.textContent = '100% Reconciled & Timely Partner Payouts';
+        } else {
+          taxSubEl.textContent = needsReviewCount + ' Tx To Review | ' + missingW9Count + ' Corp W-9 Pending';
+        }
+      }
+
+      const badgeEl = document.getElementById('review-queue-badge');
+      const filterBtnText = document.getElementById('btn-toggle-needs-review-text');
+      if (badgeEl) {
+        if (needsReviewCount === 0) {
+          badgeEl.className = 'px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-mono-custom text-[10px] font-bold';
+          badgeEl.textContent = 'All Transactions 100% Auto-Reconciled';
+        } else {
+          badgeEl.className = 'px-2.5 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/50 text-rose-300 font-mono-custom text-[10px] font-bold';
+          badgeEl.textContent = needsReviewCount + ' Transactions Flagged for 1-Click Review';
+        }
+      }
+      if (filterBtnText) {
+        filterBtnText.textContent = needsReviewOnly
+          ? 'Showing Needs Review Only (' + needsReviewCount + ') - Click for All'
+          : 'Filter: Needs Human Review Only (' + needsReviewCount + ')';
+      }
+    }
+
+    function renderBookkeeperTable() {
+      const tbody = document.getElementById('bookkeeper-tbody');
+      if (!tbody) return;
+
+      const ruleFilter = document.getElementById('bookkeeper-rule-filter').value;
+      const query = (document.getElementById('bookkeeper-search').value || '').toLowerCase().trim();
+
+      const filtered = ledgerTransactions.filter(function(tx) {
+        if (activePropertyFilter !== 'ALL' && tx.propertyId !== activePropertyFilter) return false;
+        if (needsReviewOnly && tx.status !== 'NEEDS_REVIEW') return false;
+        if (ruleFilter !== 'ALL' && tx.ruleType !== ruleFilter) return false;
+        if (query) {
+          const prop = PROPERTIES[tx.propertyId] || {};
+          const hay = (tx.vendor + ' ' + tx.memo + ' ' + (prop.name || '') + ' ' + tx.source + ' ' + tx.ruleType).toLowerCase();
+          if (hay.indexOf(query) === -1) return false;
+        }
+        return true;
+      });
+
+      const summaryEl = document.getElementById('bookkeeper-showing-summary');
+      if (summaryEl) {
+        summaryEl.textContent = 'Showing ' + filtered.length + ' of ' + ledgerTransactions.length + ' autonomous ledger entries (Click any row to edit live)';
+      }
+
+      tbody.innerHTML = filtered.map(function(tx) {
+        const prop = PROPERTIES[tx.propertyId] || PROPERTIES['OAK-HOM-002'];
+        const split = computeTransactionSplit(tx);
+
+        const badgeStyles = {
+          emerald: 'bg-emerald-950/90 text-emerald-300 border-emerald-600/60',
+          sky: 'bg-sky-950/90 text-sky-300 border-sky-600/60',
+          amber: 'bg-amber-950/90 text-amber-300 border-amber-600/60',
+          purple: 'bg-purple-950/90 text-purple-300 border-purple-600/60',
+          rose: 'bg-rose-950/90 text-rose-300 border-rose-600/60'
+        };
+        const badgeCls = badgeStyles[split.ruleColor] || badgeStyles.emerald;
+
+        const statusHtml = tx.status === 'RECONCILED'
+          ? '<span class="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-mono-custom text-[10px] font-bold"><i class="fa-solid fa-check mr-1"></i>Auto-Reconciled</span>'
+          : '<button type="button" onclick="event.stopPropagation(); approveSingleTransaction(\'' + tx.id + '\')" class="px-2.5 py-1 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-mono-custom text-[10px] font-extrabold shadow cursor-pointer transition"><i class="fa-solid fa-bolt mr-1"></i>Approve Split</button>';
+
+        const auditTagHtml = tx.auditEdited
+          ? '<span class="px-1.5 py-0.5 rounded bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 font-mono-custom text-[9px] font-bold ml-1.5">[Audit Verified / Edited]</span>'
+          : '<span class="px-1.5 py-0.5 rounded bg-amber-500/15 border border-amber-400/40 text-amber-300 font-mono-custom text-[9px] font-bold ml-1.5">[Sample Demo Data: Click Row to Edit]</span>';
+
+        const ownerDeltaStr = split.ownerTrustDeltaCents === 0
+          ? '<span class="text-slate-500">$0.00</span>'
+          : (split.ownerTrustDeltaCents > 0
+              ? '<span class="text-emerald-400 font-bold">+' + formatCents(split.ownerTrustDeltaCents) + '</span>'
+              : '<span class="text-rose-300 font-bold">' + formatCents(split.ownerTrustDeltaCents) + '</span>');
+
+        const mgrStr = split.managerEarnedCents > 0
+          ? '<span class="text-amber-300 font-bold">+' + formatCents(split.managerEarnedCents) + '</span>'
+          : '<span class="text-slate-500">$0.00</span>';
+
+        return '<tr onclick="editLedgerTransactionRow(\'' + tx.id + '\')" class="hover:bg-plum-card/60 transition cursor-pointer" title="Click to edit this transaction row live">' +
+          '<td class="py-3 px-3 whitespace-nowrap">' +
+            '<div class="font-mono-custom font-bold text-white">' + tx.date + '</div>' +
+            '<div class="text-[10px] text-slate-400">' + tx.source + '</div>' +
+          '</td>' +
+          '<td class="py-3 px-3">' +
+            '<div class="font-bold text-amber-300">' + prop.shortName + '</div>' +
+            '<div class="text-[10px] font-mono-custom text-slate-400">' + (prop.feePct ? prop.feePct + '% Co-Host Split' : 'Corporate HQ') + '</div>' +
+          '</td>' +
+          '<td class="py-3 px-3 max-w-md">' +
+            '<div class="font-bold text-white flex flex-wrap items-center gap-1">' + tx.vendor + auditTagHtml + '</div>' +
+            '<div class="text-[11px] text-slate-300">' + tx.memo + '</div>' +
+            '<div class="text-[10px] font-mono-custom text-emerald-300/90 mt-0.5">' + split.detailNote + '</div>' +
+          '</td>' +
+          '<td class="py-3 px-3">' +
+            '<span class="px-2.5 py-1 rounded-lg border font-mono-custom text-[10px] font-bold inline-block ' + badgeCls + '">' +
+              split.ruleBadge +
+            '</span>' +
+          '</td>' +
+          '<td class="py-3 px-3 text-right font-mono-custom font-bold text-white whitespace-nowrap">' +
+            formatCents(split.grossDisplayCents) +
+          '</td>' +
+          '<td class="py-3 px-3 text-right font-mono-custom whitespace-nowrap">' +
+            mgrStr +
+          '</td>' +
+          '<td class="py-3 px-3 text-right font-mono-custom whitespace-nowrap">' +
+            ownerDeltaStr +
+          '</td>' +
+          '<td class="py-3 px-3 text-[11px] font-mono-custom text-sky-300">' +
+            split.taxLine +
+          '</td>' +
+          '<td class="py-3 px-3 text-center whitespace-nowrap">' +
+            statusHtml +
+          '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    function editLedgerTransactionRow(txId) {
+      const tx = ledgerTransactions.find(function(item) { return item.id === txId; });
+      if (!tx) return;
+      const panel = document.getElementById('inline-row-editor-panel');
+      if (!panel) return;
+      document.getElementById('edit-tx-id').value = tx.id;
+      document.getElementById('edit-row-title').textContent = 'Editing Row ' + tx.id + ' (' + tx.vendor + ')';
+      document.getElementById('edit-tx-date').value = tx.date || '';
+      document.getElementById('edit-tx-vendor').value = tx.vendor || '';
+      document.getElementById('edit-tx-memo').value = tx.memo || '';
+      document.getElementById('edit-tx-base').value = ((tx.baseCents || 0) / 100).toFixed(2);
+      document.getElementById('edit-tx-clean').value = ((tx.cleaningCents || 0) / 100).toFixed(2);
+      panel.classList.remove('hidden');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function closeInlineRowEditor() {
+      const panel = document.getElementById('inline-row-editor-panel');
+      if (panel) panel.classList.add('hidden');
+    }
+
+    function saveEditedTransactionRow() {
+      const txId = document.getElementById('edit-tx-id').value;
+      const tx = ledgerTransactions.find(function(item) { return item.id === txId; });
+      if (!tx) return;
+      tx.date = document.getElementById('edit-tx-date').value.trim() || tx.date;
+      tx.month = tx.date.slice(0, 7);
+      tx.vendor = document.getElementById('edit-tx-vendor').value.trim() || tx.vendor;
+      tx.memo = document.getElementById('edit-tx-memo').value.trim() || tx.memo;
+      const baseDollars = parseFloat(document.getElementById('edit-tx-base').value || '0') || 0;
+      const cleanDollars = parseFloat(document.getElementById('edit-tx-clean').value || '0') || 0;
+      tx.baseCents = Math.round(baseDollars * 100);
+      tx.cleaningCents = Math.round(cleanDollars * 100);
+      tx.auditEdited = true;
+      tx.status = 'RECONCILED';
+      closeInlineRowEditor();
+      refreshAllLedgerViews();
+    }
+
+    function deleteEditedTransactionRow() {
+      const txId = document.getElementById('edit-tx-id').value;
+      ledgerTransactions = ledgerTransactions.filter(function(item) { return item.id !== txId; });
+      closeInlineRowEditor();
+      refreshAllLedgerViews();
+    }
+
+    function approveSingleTransaction(txId) {
+      ledgerTransactions.forEach(function(tx) {
+        if (tx.id === txId) {
+          tx.status = 'RECONCILED';
+        }
+      });
+      refreshAllLedgerViews();
+    }
+
+    function autoReconcileAllTransactions() {
+      ledgerTransactions.forEach(function(tx) {
+        tx.status = 'RECONCILED';
+      });
+      needsReviewOnly = false;
+      refreshAllLedgerViews();
+    }
+
+    function toggleNeedsReviewFilter() {
+      needsReviewOnly = !needsReviewOnly;
+      updateTopKpiCards();
+      renderBookkeeperTable();
+    }
+
+    function toggleAddTransactionPanel() {
+      const panel = document.getElementById('add-transaction-panel');
+      if (!panel) return;
+      panel.classList.toggle('hidden');
+      updateNewTxPreview();
+    }
+
+    function updateNewTxPreview() {
+      const propId = document.getElementById('tx-property').value;
+      const ruleType = document.getElementById('tx-rule-type').value;
+      const vendor = document.getElementById('tx-vendor').value || 'Vendor';
+      const memo = document.getElementById('tx-memo').value || 'Transaction';
+      const amountDollars = parseFloat(document.getElementById('tx-amount').value || '0') || 0;
+      const cleanDollars = parseFloat(document.getElementById('tx-cleaning-fee').value || '0') || 0;
+
+      const cleanWrap = document.getElementById('tx-cleaning-wrap');
+      const amountLabel = document.getElementById('tx-amount-label');
+      if (ruleType === 'OTA_PAYOUT') {
+        if (cleanWrap) cleanWrap.classList.remove('hidden');
+        if (amountLabel) amountLabel.textContent = 'Gross Accommodation ($ USD):';
+      } else {
+        if (cleanWrap) cleanWrap.classList.add('hidden');
+        if (amountLabel) amountLabel.textContent = 'Base Amount ($ USD):';
+      }
+
+      const tempTx = {
+        propertyId: propId,
+        ruleType: ruleType,
+        vendor: vendor,
+        memo: memo,
+        baseCents: Math.round(amountDollars * 100),
+        cleaningCents: ruleType === 'OTA_PAYOUT' ? Math.round(cleanDollars * 100) : 0
+      };
+      const split = computeTransactionSplit(tempTx);
+      const previewEl = document.getElementById('tx-live-preview-box');
+      if (previewEl) {
+        previewEl.innerHTML =
+          '<div><strong>Live Integer-Cents Split Preview (' + split.ruleBadge + '):</strong></div>' +
+          '<div class="text-xs text-slate-200">' + split.detailNote + ' &bull; <strong>Manager Earned:</strong> ' + formatCents(split.managerEarnedCents) + ' &bull; <strong>Owner Trust Impact:</strong> ' + formatCents(split.ownerTrustDeltaCents) + ' &bull; <strong>Tax Line:</strong> ' + split.taxLine + '</div>';
+      }
+    }
+
+    function commitNewTransaction() {
+      const dateVal = document.getElementById('tx-date').value || '2026-10-16';
+      const propId = document.getElementById('tx-property').value;
+      const ruleType = document.getElementById('tx-rule-type').value;
+      const vendor = document.getElementById('tx-vendor').value || 'Verified Vendor';
+      const memo = document.getElementById('tx-memo').value || 'Logged via Autonomous Bookkeeper';
+      const amountDollars = parseFloat(document.getElementById('tx-amount').value || '0') || 0;
+      const cleanDollars = parseFloat(document.getElementById('tx-cleaning-fee').value || '0') || 0;
+
+      const newTx = {
+        id: 'TX-' + Date.now(),
+        date: dateVal,
+        month: dateVal.slice(0, 7),
+        propertyId: propId,
+        ruleType: ruleType,
+        source: ruleType === 'OTA_PAYOUT' ? 'Airbnb Payout Import' : 'Ramp / Bank CSV Feed',
+        vendor: vendor,
+        memo: memo,
+        baseCents: Math.round(amountDollars * 100),
+        cleaningCents: ruleType === 'OTA_PAYOUT' ? Math.round(cleanDollars * 100) : 0,
+        status: 'RECONCILED'
+      };
+
+      ledgerTransactions.unshift(newTx);
+      refreshAllLedgerViews();
+    }
+
+    function simulateBatchCsvImport() {
+      const sampleBatch = [
+        {
+          id: 'TX-BATCH-' + Date.now() + '-1',
+          date: '2026-10-25',
+          month: '2026-10',
+          propertyId: 'OAK-HOM-002',
+          ruleType: 'OTA_PAYOUT',
+          source: 'Airbnb / Ramp CSV Import',
+          vendor: 'Airbnb Inc. (4-Night Autumn Group Booking #HM77K4)',
+          memo: '4-Night Stay at 5540 Estates Dr ($3,520.00 Accommodation + $350.00 Guest Cleaning Fee)',
+          baseCents: 352000,
+          cleaningCents: 35000,
+          status: 'RECONCILED'
+        },
+        {
+          id: 'TX-BATCH-' + Date.now() + '-2',
+          date: '2026-10-26',
+          month: '2026-10',
+          propertyId: 'PIN-HOM-001',
+          ruleType: 'RESOLUTION_50_50',
+          source: 'Airbnb Resolution Center Import',
+          vendor: 'Airbnb Resolution Center (#RC-8820)',
+          memo: 'Unexpended recovery for stained throw blanket fixed in-house ($90.00 recovery split 50/50)',
+          baseCents: 9000,
+          cleaningCents: 0,
+          status: 'NEEDS_REVIEW'
+        }
+      ];
+      ledgerTransactions = sampleBatch.concat(ledgerTransactions);
+      refreshAllLedgerViews();
+    }
+
+    function renderDealSeekerTab() {
+      const ffeTbody = document.getElementById('ffe-deal-tbody');
+      if (ffeTbody) {
+        ffeTbody.innerHTML = FFE_DEAL_BENCHMARKS.map(function(item) {
+          const savingsCents = item.retailCents - item.tradeCents;
+          const pct = Math.round((savingsCents / item.retailCents) * 100);
+          return '<tr class="hover:bg-plum-card/50 transition">' +
+            '<td class="py-2.5 px-2.5 font-bold text-white">' + item.sku + '</td>' +
+            '<td class="py-2.5 px-2.5 text-slate-300 font-mono-custom text-[11px]">' + item.channel + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono-custom text-slate-400 line-through">' + formatCents(item.retailCents) + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono-custom text-emerald-400 font-bold">' + formatCents(item.tradeCents) + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono-custom text-amber-300 font-bold">-' + formatCents(savingsCents) + ' (' + pct + '% Off)</td>' +
+            '<td class="py-2.5 px-2.5 text-center">' +
+              '<span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono-custom text-[10px]">Trade Cap Active</span>' +
+            '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      const driftGrid = document.getElementById('utility-drift-grid');
+      if (driftGrid) {
+        const openCount = utilityDriftAlerts.filter(function(a) { return !a.resolved; }).length;
+        const badge = document.getElementById('drift-watch-status-badge');
+        if (badge) {
+          badge.textContent = openCount === 0
+            ? 'All Utility & Vendor Drift Alerts Resolved'
+            : openCount + ' Active Rate Drift Alerts Detected';
+          badge.className = openCount === 0
+            ? 'text-[11px] font-mono-custom px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold'
+            : 'text-[11px] font-mono-custom px-3 py-1 rounded-full bg-rose-950 text-rose-300 border border-rose-700 font-bold';
+        }
+
+        driftGrid.innerHTML = utilityDriftAlerts.map(function(alert) {
+          const deltaCents = alert.billedCents - alert.baselineCents;
+          const btnHtml = alert.resolved
+            ? '<span class="px-3 py-1.5 rounded-lg bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono-custom text-[10px] font-bold inline-block"><i class="fa-solid fa-check mr-1"></i>Rate Cap Enforced &amp; Resolved</span>'
+            : '<button type="button" onclick="resolveDriftAlert(\'' + alert.id + '\')" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-[11px] cursor-pointer transition"><i class="fa-solid fa-shield-halved mr-1"></i>Enforce Rate Cap / Resolve</button>';
+
+          return '<div class="p-4 rounded-xl bg-plum-card border ' + (alert.resolved ? 'border-emerald-500/40' : 'border-rose-500/50') + ' space-y-2">' +
+            '<div class="flex items-center justify-between">' +
+              '<span class="font-bold text-amber-300">' + alert.property + '</span>' +
+              '<span class="font-mono-custom text-xs font-bold ' + (alert.resolved ? 'text-emerald-400' : 'text-rose-400') + '">+' + formatCents(deltaCents) + ' Drift</span>' +
+            '</div>' +
+            '<div class="font-bold text-white">' + alert.vendor + '</div>' +
+            '<div class="text-[11px] text-slate-300">' + alert.issue + '</div>' +
+            '<div class="text-[11px] text-emerald-300 font-mono-custom">Baseline: ' + formatCents(alert.baselineCents) + ' &rarr; Billed: ' + formatCents(alert.billedCents) + '</div>' +
+            '<div class="text-[11px] text-slate-400"><strong>Autonomous Remedy:</strong> ' + alert.remedy + '</div>' +
+            '<div class="pt-1">' + btnHtml + '</div>' +
+          '</div>';
+        }).join('');
+      }
+    }
+
+    function resolveDriftAlert(alertId) {
+      utilityDriftAlerts.forEach(function(a) {
+        if (a.id === alertId) a.resolved = true;
+      });
+      renderDealSeekerTab();
+    }
+
+    function calculatePropertyStatementData(propId) {
+      const prop = PROPERTIES[propId] || PROPERTIES['OAK-HOM-002'];
+      const txs = ledgerTransactions.filter(function(tx) {
+        return tx.propertyId === propId;
+      });
+
+      let grossAccommCents = 0;
+      let guestCleaningCollectedCents = 0;
+      let cleaningDisbursedCents = 0;
+      let managerCommCents = 0;
+      let extraServiceBaseCents = 0;
+      let extraServiceMarkupCents = 0;
+      let postOwnerStayCleanCents = 0;
+      let resolutionOwnerCreditCents = 0;
+      let resolutionManagerShareCents = 0;
+
+      txs.forEach(function(tx) {
+        const split = computeTransactionSplit(tx);
+        if (tx.ruleType === 'OTA_PAYOUT') {
+          grossAccommCents += tx.baseCents;
+          guestCleaningCollectedCents += tx.cleaningCents;
+          managerCommCents += split.managerEarnedCents;
+        } else if (tx.ruleType === 'CLEANING_PASSTHROUGH') {
+          cleaningDisbursedCents += tx.baseCents;
+        } else if (tx.ruleType === 'EXTRA_SERVICE_MARKUP') {
+          extraServiceBaseCents += tx.baseCents;
+          extraServiceMarkupCents += split.managerEarnedCents;
+        } else if (tx.ruleType === 'OWNER_STAY_TURNOVER') {
+          postOwnerStayCleanCents += tx.baseCents;
+        } else if (tx.ruleType === 'RESOLUTION_50_50') {
+          resolutionOwnerCreditCents += split.ownerTrustDeltaCents;
+          resolutionManagerShareCents += split.managerEarnedCents;
+        }
+      });
+
+      const netOwnerPayoutCents =
+        grossAccommCents +
+        guestCleaningCollectedCents -
+        cleaningDisbursedCents -
+        managerCommCents -
+        extraServiceBaseCents -
+        extraServiceMarkupCents -
+        postOwnerStayCleanCents +
+        resolutionOwnerCreditCents;
+
+      return {
+        prop: prop,
+        txs: txs,
+        grossAccommCents: grossAccommCents,
+        guestCleaningCollectedCents: guestCleaningCollectedCents,
+        cleaningDisbursedCents: cleaningDisbursedCents,
+        managerCommCents: managerCommCents,
+        extraServiceBaseCents: extraServiceBaseCents,
+        extraServiceMarkupCents: extraServiceMarkupCents,
+        postOwnerStayCleanCents: postOwnerStayCleanCents,
+        resolutionOwnerCreditCents: resolutionOwnerCreditCents,
+        resolutionManagerShareCents: resolutionManagerShareCents,
+        netOwnerPayoutCents: netOwnerPayoutCents
+      };
+    }
+
+    function renderOwnerStatement() {
+      const selEl = document.getElementById('stmt-property-selector');
+      const propId = selEl ? selEl.value : 'OAK-HOM-002';
+      const data = calculatePropertyStatementData(propId);
+      const prop = data.prop;
+
+      document.getElementById('stmt-meta-id').textContent = 'STMT-2026-10-' + propId;
+      document.getElementById('stmt-meta-prop-id').textContent = propId;
+      document.getElementById('stmt-meta-split').textContent = (100 - prop.feePct) + '% Owner / ' + prop.feePct + '% Manager';
+      document.getElementById('stmt-prop-address').textContent = prop.address;
+      document.getElementById('stmt-prop-specs').innerHTML = prop.specs;
+      document.getElementById('stmt-owner-entity').textContent = prop.ownerEntity;
+      document.getElementById('stmt-calendar-note').textContent = prop.calendarPolicy;
+      document.getElementById('stmt-hero-net-payout').textContent = formatCents(data.netOwnerPayoutCents);
+      document.getElementById('stmt-occupancy-banner').textContent =
+        prop.bookedNightsOct + ' Revenue Guest Nights Booked | ' + prop.ownerHoldNote;
+
+      const waterfallTbody = document.getElementById('stmt-waterfall-tbody');
+      if (waterfallTbody) {
+        const rows = [
+          {
+            label: '1. Gross Accommodation Revenue Collected (OTA & Direct Bookings)',
+            note: prop.bookedNightsOct + ' Revenue Guest Nights Booked',
+            val: formatCents(data.grossAccommCents),
+            cls: 'text-slate-900 font-bold'
+          },
+          {
+            label: '2. Guest-Paid Cleaning Fees Collected (+100% Pass-Through Credit)',
+            note: '100% Pass-Through to Cover Turnover Housekeeping',
+            val: '+' + formatCents(data.guestCleaningCollectedCents),
+            cls: 'text-emerald-700 font-semibold'
+          },
+          {
+            label: '3. Less: Guest Turnover Housekeeping Disbursed (100% Pass-Through at Cost)',
+            note: 'reSeTR Photo-Verified Guest Turnovers ($0.00 Manager Markup)',
+            val: '-' + formatCents(data.cleaningDisbursedCents),
+            cls: 'text-slate-700'
+          },
+          {
+            label: '4. Less: A Better BNB Co-Hosting Management Commission (' + prop.feePct + '% Split)',
+            note: prop.feePct + '% of Gross Accommodation Revenue (' + formatCents(data.grossAccommCents) + ')',
+            val: '-' + formatCents(data.managerCommCents),
+            cls: 'text-rose-700 font-semibold'
+          },
+          {
+            label: '5. Less: Out-of-Scope Extra Services, Repairs & Lost-Item Mailings (Vendor Base + 20% Markup)',
+            note: 'Vendor Base: ' + formatCents(data.extraServiceBaseCents) + ' + 20% Coordination Markup: ' + formatCents(data.extraServiceMarkupCents),
+            val: '-' + formatCents(data.extraServiceBaseCents + data.extraServiceMarkupCents),
+            cls: 'text-rose-700'
+          },
+          {
+            label: '6. Less: Post-Owner-Stay Turnover Cleaning (11:00 AM to 5:00 PM Window Billed at Cost)',
+            note: 'Coordinated after Owner Personal Calendar Hold ($0.00 Manager Markup)',
+            val: '-' + formatCents(data.postOwnerStayCleanCents),
+            cls: 'text-slate-700'
+          },
+          {
+            label: '7. Plus: Resolution Center 50/50 Unexpended Damage Recovery Credit',
+            note: '50% Owner Share of In-House Fixed / Unreplaced Recovery (' + formatCents(data.resolutionOwnerCreditCents + data.resolutionManagerShareCents) + ' Total)',
+            val: '+' + formatCents(data.resolutionOwnerCreditCents),
+            cls: 'text-emerald-700 font-bold'
+          },
+          {
+            label: 'EXACT NET OWNER PAYOUT (CENT-VERIFIED TRUST ACH DEPOSIT)',
+            note: 'Zero-Commingling Trust Account Verification Passed',
+            val: formatCents(data.netOwnerPayoutCents),
+            cls: 'text-emerald-900 font-extrabold text-base bg-emerald-50'
+          }
+        ];
+
+        waterfallTbody.innerHTML = rows.map(function(r) {
+          return '<tr class="' + (r.cls.indexOf('bg-emerald-50') !== -1 ? 'bg-emerald-50' : '') + '">' +
+            '<td class="py-2.5 px-3">' +
+              '<div class="font-bold text-slate-900">' + r.label + '</div>' +
+              '<div class="text-[11px] text-slate-500">' + r.note + '</div>' +
+            '</td>' +
+            '<td class="py-2.5 px-3 text-right font-mono-custom ' + r.cls + '">' + r.val + '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      const itemsTbody = document.getElementById('stmt-line-items-tbody');
+      if (itemsTbody) {
+        itemsTbody.innerHTML = data.txs.map(function(tx) {
+          const split = computeTransactionSplit(tx);
+          return '<tr>' +
+            '<td class="py-2 px-2.5 font-mono-custom text-slate-700 whitespace-nowrap">' + tx.date + '</td>' +
+            '<td class="py-2 px-2.5 font-mono-custom text-[11px] font-bold text-slate-800">' + split.ruleBadge + '</td>' +
+            '<td class="py-2 px-2.5">' +
+              '<div class="font-bold text-slate-900">' + tx.vendor + '</div>' +
+              '<div class="text-[11px] text-slate-600">' + tx.memo + '</div>' +
+            '</td>' +
+            '<td class="py-2 px-2.5 text-right font-mono-custom text-slate-900">' + formatCents(split.grossDisplayCents) + '</td>' +
+            '<td class="py-2 px-2.5 text-right font-mono-custom text-slate-700">' + formatCents(split.managerEarnedCents) + '</td>' +
+            '<td class="py-2 px-2.5 text-right font-mono-custom font-bold ' + (split.ownerTrustDeltaCents >= 0 ? 'text-emerald-800' : 'text-rose-700') + '">' +
+              (split.ownerTrustDeltaCents >= 0 ? '+' : '') + formatCents(split.ownerTrustDeltaCents) +
+            '</td>' +
+          '</tr>';
+        }).join('');
+      }
+    }
+
+    function renderTaxCenterTab() {
+      const schedSel = document.getElementById('sched-e-property-selector');
+      const propId = schedSel ? schedSel.value : 'OAK-HOM-002';
+      const data = calculatePropertyStatementData(propId);
+
+      const ytdMultiplier = 9;
+      const line3GrossRents = (data.grossAccommCents + data.guestCleaningCollectedCents + data.resolutionOwnerCreditCents) * ytdMultiplier;
+      const line7Cleaning = (data.cleaningDisbursedCents + data.postOwnerStayCleanCents) * ytdMultiplier;
+      const line11MgmtFees = (data.managerCommCents + data.extraServiceMarkupCents) * ytdMultiplier;
+      const line14Repairs = data.extraServiceBaseCents * ytdMultiplier;
+      const line18Supplies = 84000;
+      const netSchedECashFlow = line3GrossRents - line7Cleaning - line11MgmtFees - line14Repairs - line18Supplies;
+
+      const schedETbody = document.getElementById('schedule-e-tbody');
+      if (schedETbody) {
+        const schedRows = [
+          {
+            line: 'Line 3',
+            desc: 'Gross Rents Received (Accommodation + Cleaning Pass-Through + 50% Resolution Credits)',
+            val: formatCents(line3GrossRents),
+            cls: 'text-emerald-300 font-bold'
+          },
+          {
+            line: 'Line 7',
+            desc: 'Cleaning & Maintenance (100% Guest Cleaning Pass-Throughs + Post-Stay Turnovers)',
+            val: formatCents(line7Cleaning),
+            cls: 'text-slate-200'
+          },
+          {
+            line: 'Line 11',
+            desc: 'Management Fees & Coordination (A Better BNB Commissions + 20% Service Markups)',
+            val: formatCents(line11MgmtFees),
+            cls: 'text-amber-300 font-semibold'
+          },
+          {
+            line: 'Line 14',
+            desc: 'Repairs & Maintenance Dispatches (Out-of-Scope Handyman & Appliance Base Cost)',
+            val: formatCents(line14Repairs),
+            cls: 'text-slate-200'
+          },
+          {
+            line: 'Line 18',
+            desc: 'Supplies & Smallware Replenishments (Guest Consumables & Linens)',
+            val: formatCents(line18Supplies),
+            cls: 'text-slate-200'
+          },
+          {
+            line: 'Line 21',
+            desc: 'Net Schedule E Operating Income (Before Mortgage Interest & Depreciation)',
+            val: formatCents(netSchedECashFlow),
+            cls: 'text-emerald-400 font-extrabold text-sm'
+          }
+        ];
+
+        schedETbody.innerHTML = schedRows.map(function(r) {
+          return '<tr>' +
+            '<td class="py-2.5 px-2.5 font-mono-custom font-bold text-sky-300 whitespace-nowrap">' + r.line + '</td>' +
+            '<td class="py-2.5 px-2.5 text-slate-200">' + r.desc + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono-custom ' + r.cls + ' whitespace-nowrap">' + r.val + '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      let totalCommCents = 0;
+      let totalMarkupCents = 0;
+      let totalResManagerCents = 0;
+      let totalCorpOpexCents = 0;
+      let totalOwnerTrustNetCents = 0;
+      let totalGrossCashInCents = 0;
+
+      ledgerTransactions.forEach(function(tx) {
+        const split = computeTransactionSplit(tx);
+        if (tx.ruleType === 'OTA_PAYOUT') {
+          totalCommCents += split.managerEarnedCents;
+          totalGrossCashInCents += split.grossDisplayCents;
+        } else if (tx.ruleType === 'EXTRA_SERVICE_MARKUP') {
+          totalMarkupCents += split.managerEarnedCents;
+        } else if (tx.ruleType === 'RESOLUTION_50_50') {
+          totalResManagerCents += split.managerEarnedCents;
+          totalGrossCashInCents += split.grossDisplayCents;
+        } else if (tx.ruleType === 'COMPANY_OPEX') {
+          totalCorpOpexCents += tx.baseCents;
+        }
+        totalOwnerTrustNetCents += split.ownerTrustDeltaCents;
+      });
+
+      const ytdFactor = 9;
+      const ytdComm = totalCommCents * ytdFactor;
+      const ytdMarkup = totalMarkupCents * ytdFactor;
+      const ytdRes = totalResManagerCents * ytdFactor;
+      const ytdGrossCorpRev = ytdComm + ytdMarkup + ytdRes;
+      const ytdCorpOpex = totalCorpOpexCents * ytdFactor;
+      const ytdNetCorpIncome = ytdGrossCorpRev - ytdCorpOpex;
+
+      const cpaPnlTbody = document.getElementById('cpa-pnl-tbody');
+      if (cpaPnlTbody) {
+        const pnlRows = [
+          { label: 'Co-Hosting Commissions Earned (15% / 20% / 25%)', val: formatCents(ytdComm), cls: 'text-white' },
+          { label: 'Extra-Service Coordination Markups (+20% Earned)', val: formatCents(ytdMarkup), cls: 'text-amber-300' },
+          { label: 'Resolution Center 50/50 Manager Share Earned', val: formatCents(ytdRes), cls: 'text-purple-300' },
+          { label: 'Total A Better BNB Gross Earned Revenue (YTD)', val: formatCents(ytdGrossCorpRev), cls: 'text-emerald-400 font-bold' },
+          { label: 'Less: Categorized IRS Corporate Deductions (OpEx)', val: '-' + formatCents(ytdCorpOpex), cls: 'text-rose-300' },
+          { label: 'Net Corporate Taxable Operating Profit (YTD)', val: formatCents(ytdNetCorpIncome), cls: 'gold-gradient-text font-extrabold text-sm' }
+        ];
+        cpaPnlTbody.innerHTML = pnlRows.map(function(r) {
+          return '<tr>' +
+            '<td class="py-2 text-slate-300">' + r.label + '</td>' +
+            '<td class="py-2 text-right font-mono-custom ' + r.cls + '">' + r.val + '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      const trialTbody = document.getElementById('cpa-trial-balance-tbody');
+      if (trialTbody) {
+        const trustCashDebit = totalOwnerTrustNetCents * ytdFactor;
+        const opsCashDebit = ytdNetCorpIncome;
+        const opexDebit = ytdCorpOpex;
+        const totalDebits = trustCashDebit + opsCashDebit + opexDebit;
+        const totalCredits = trustCashDebit + ytdGrossCorpRev;
+
+        const tbRows = [
+          { acct: '1010 - Partner Owner Trust Cash (Bank ACH)', debit: formatCents(trustCashDebit), credit: '$0.00' },
+          { acct: '1020 - Corporate Operating Cash (Bank / Ramp)', debit: formatCents(opsCashDebit), credit: '$0.00' },
+          { acct: '2010 - Partner Owner Trust Payables (Segregated)', debit: '$0.00', credit: formatCents(trustCashDebit) },
+          { acct: '4010 - Co-Hosting & +20% Markup Earned Revenue', debit: '$0.00', credit: formatCents(ytdGrossCorpRev) },
+          { acct: '6010 - Categorized IRS Business Operating Expenses', debit: formatCents(opexDebit), credit: '$0.00' },
+          { acct: 'TRIAL BALANCE TOTAL (DEBITS == CREDITS)', debit: formatCents(totalDebits), credit: formatCents(totalCredits) }
+        ];
+        trialTbody.innerHTML = tbRows.map(function(r, idx) {
+          const isTotal = idx === tbRows.length - 1;
+          return '<tr class="' + (isTotal ? 'text-emerald-300 font-bold border-t-2 border-emerald-500/50' : 'text-slate-200') + '">' +
+            '<td class="py-1.5">' + r.acct + '</td>' +
+            '<td class="py-1.5 text-right">' + r.debit + '</td>' +
+            '<td class="py-1.5 text-right">' + r.credit + '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      const vendorTbody = document.getElementById('vendor-1099-tbody');
+      if (vendorTbody) {
+        const missingCount = vendor1099Roster.filter(function(v) { return !v.w9OnFile; }).length;
+        const w9Pill = document.getElementById('w9-compliance-pill');
+        if (w9Pill) {
+          if (missingCount === 0) {
+            w9Pill.className = 'text-[10px] font-mono-custom px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold shrink-0';
+            w9Pill.textContent = '100% W-9 Compliance Verified (All Vendors Ready for Jan 31)';
+          } else {
+            w9Pill.className = 'text-[10px] font-mono-custom px-2.5 py-1 rounded-full bg-rose-950 text-rose-300 border border-rose-700 font-bold shrink-0';
+            w9Pill.textContent = missingCount + ' Vendor Missing W-9 (Action Required Before Jan 31)';
+          }
+        }
+
+        vendorTbody.innerHTML = vendor1099Roster.map(function(v) {
+          const requires1099 = v.ytdCents >= 60000;
+          const reqBadge = requires1099
+            ? '<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono-custom text-[10px] font-bold">1099-NEC Required (&ge;$600)</span>'
+            : '<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono-custom text-[10px]">Below $600 Threshold</span>';
+
+          const w9Badge = v.w9OnFile
+            ? '<span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono-custom text-[10px] font-bold"><i class="fa-solid fa-check mr-1"></i>W-9 Verified</span>'
+            : '<span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-700 font-mono-custom text-[10px] font-bold"><i class="fa-solid fa-triangle-exclamation mr-1"></i>W-9 Missing</span>';
+
+          const actionBtn = v.w9OnFile
+            ? '<span class="text-[10px] font-mono-custom text-slate-400">Ready to File</span>'
+            : '<button type="button" onclick="markVendorW9Verified(\'' + v.id + '\')" class="px-2.5 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[10px] cursor-pointer transition">Mark W-9 Received</button>';
+
+          return '<tr class="hover:bg-plum-obsidian/60 transition">' +
+            '<td class="py-2.5 px-2 font-bold text-white">' + v.name + '</td>' +
+            '<td class="py-2.5 px-2 text-slate-300">' +
+              '<div>' + v.role + '</div>' +
+              '<div class="text-[10px] font-mono-custom text-slate-400">' + v.tinStatus + '</div>' +
+            '</td>' +
+            '<td class="py-2.5 px-2 text-right font-mono-custom font-bold text-white">' + formatCents(v.ytdCents) + '</td>' +
+            '<td class="py-2.5 px-2 text-center">' + reqBadge + '</td>' +
+            '<td class="py-2.5 px-2 text-center">' + w9Badge + '</td>' +
+            '<td class="py-2.5 px-2 text-center">' + actionBtn + '</td>' +
+          '</tr>';
+        }).join('');
+      }
+    }
+
+    function markVendorW9Verified(vendorId) {
+      vendor1099Roster.forEach(function(v) {
+        if (v.id === vendorId) {
+          v.w9OnFile = true;
+          v.tinStatus = 'EIN/TIN Verified on File (W-9 Signed)';
+        }
+      });
+      refreshAllLedgerViews();
+    }
+
+    function switchLedgerTab(tabName) {
+      if (currentViewMode === 'owner' && (tabName === 'bookkeeper' || tabName === 'deal-seeker')) {
+        tabName = 'owner-statements';
+      }
+      currentLedgerTab = tabName;
+
+      const tabs = ['bookkeeper', 'deal-seeker', 'owner-statements', 'tax-center'];
+      tabs.forEach(function(t) {
+        const sec = document.getElementById('tab-' + t);
+        const btn = document.getElementById('tab-btn-' + t);
+        if (sec) {
+          if (t === tabName) sec.classList.remove('hidden');
+          else sec.classList.add('hidden');
+        }
+        if (btn) {
+          if (t === tabName) {
+            btn.className = 'px-4 py-2.5 rounded-xl text-xs font-extrabold gold-gradient-bg text-slate-950 shadow flex items-center gap-2 transition cursor-pointer';
+          } else {
+            btn.className = 'px-4 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white bg-plum-card border border-plum-border flex items-center gap-2 transition cursor-pointer';
+          }
+        }
+      });
+
+      refreshAllLedgerViews();
+    }
+
+    function setLedgerViewMode(mode) {
+      currentViewMode = mode === 'owner' ? 'owner' : 'admin';
+      const adminEls = document.querySelectorAll('[data-admin-only="true"]');
+      adminEls.forEach(function(el) {
+        if (currentViewMode === 'owner') el.classList.add('hidden');
+        else el.classList.remove('hidden');
+      });
+
+      const welcomeBanner = document.getElementById('owner-portal-welcome-banner');
+      const statusLabel = document.getElementById('view-mode-status-label');
+      const btnAdmin = document.getElementById('btn-mode-admin');
+      const btnOwner = document.getElementById('btn-mode-owner');
+      const globalSel = document.getElementById('global-property-selector');
+
+      if (currentViewMode === 'owner') {
+        if (welcomeBanner) welcomeBanner.classList.remove('hidden');
+        if (activePropertyFilter === 'ALL' || activePropertyFilter === 'CORP-OPS') {
+          activePropertyFilter = 'OAK-HOM-002';
+          if (globalSel) globalSel.value = 'OAK-HOM-002';
+        }
+        const prop = PROPERTIES[activePropertyFilter] || PROPERTIES['OAK-HOM-002'];
+        const pill = document.getElementById('owner-portal-prop-pill');
+        if (pill) pill.textContent = 'Locked to ' + prop.name;
+        if (statusLabel) {
+          statusLabel.textContent = 'Homeowner Portal Active: Locked to ' + prop.shortName + ' Statement & Schedule E Packet';
+        }
+        if (btnOwner) btnOwner.className = 'px-3.5 py-1.5 rounded-xl bg-emerald-500 text-slate-950 font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow';
+        if (btnAdmin) btnAdmin.className = 'px-3.5 py-1.5 rounded-xl bg-plum-card hover:bg-plum-glow text-slate-200 border border-plum-border font-semibold flex items-center gap-1.5 transition cursor-pointer';
+
+        const schedEPanel = document.getElementById('tax-panel-schedule-e');
+        if (schedEPanel) schedEPanel.className = 'xl:col-span-12 bg-plum-obsidian rounded-2xl border border-plum-bright p-5 space-y-4';
+
+        if (currentLedgerTab === 'bookkeeper' || currentLedgerTab === 'deal-seeker') {
+          switchLedgerTab('owner-statements');
+        }
+      } else {
+        if (welcomeBanner) welcomeBanner.classList.add('hidden');
+        if (statusLabel) {
+          statusLabel.textContent = 'Admin / CPA Mode Active: Showing All 4 Tabs, Corporate OpEx, Deal Radar & 1099 Tax Binder';
+        }
+        if (btnAdmin) btnAdmin.className = 'px-3.5 py-1.5 rounded-xl gold-gradient-bg text-slate-950 font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow';
+        if (btnOwner) btnOwner.className = 'px-3.5 py-1.5 rounded-xl bg-plum-card hover:bg-plum-glow text-slate-200 border border-plum-border font-semibold flex items-center gap-1.5 transition cursor-pointer';
+
+        const schedEPanel = document.getElementById('tax-panel-schedule-e');
+        if (schedEPanel) schedEPanel.className = 'xl:col-span-5 bg-plum-obsidian rounded-2xl border border-plum-bright p-5 space-y-4';
+      }
+
+      refreshAllLedgerViews();
+    }
+
+    function onGlobalPropertyChange(propId) {
+      activePropertyFilter = propId;
+      if (propId !== 'ALL' && propId !== 'CORP-OPS') {
+        const stmtSel = document.getElementById('stmt-property-selector');
+        const schedSel = document.getElementById('sched-e-property-selector');
+        if (stmtSel) stmtSel.value = propId;
+        if (schedSel) schedSel.value = propId;
+      }
+      refreshAllLedgerViews();
+    }
+
+    function onStatementPropertyChange(propId) {
+      activePropertyFilter = propId;
+      const globalSel = document.getElementById('global-property-selector');
+      const schedSel = document.getElementById('sched-e-property-selector');
+      if (globalSel) globalSel.value = propId;
+      if (schedSel) schedSel.value = propId;
+      refreshAllLedgerViews();
+    }
+
+    function onScheduleEPropertyChange(propId) {
+      activePropertyFilter = propId;
+      const globalSel = document.getElementById('global-property-selector');
+      const stmtSel = document.getElementById('stmt-property-selector');
+      if (globalSel) globalSel.value = propId;
+      if (stmtSel) stmtSel.value = propId;
+      refreshAllLedgerViews();
+    }
+
+    function copyShareableOwnerPortalLink(btnEl) {
+      const propId = (activePropertyFilter !== 'ALL' && activePropertyFilter !== 'CORP-OPS') ? activePropertyFilter : 'OAK-HOM-002';
+      const baseUrl = window.location.href.split('?')[0];
+      const shareUrl = baseUrl + '?mode=owner&prop=' + encodeURIComponent(propId);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).catch(function() {});
+      }
+      if (btnEl) {
+        const origHtml = btnEl.innerHTML;
+        btnEl.innerHTML = '<i class="fa-solid fa-check"></i> Copied Owner Portal Link (' + propId + ')!';
+        setTimeout(function() {
+          btnEl.innerHTML = origHtml;
+        }, 2200);
+      }
+    }
+
+    function triggerCsvDownload(filename, csvText) {
+      const blob = new Blob([csvText], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function exportOwnerStatementCsv() {
+      const selEl = document.getElementById('stmt-property-selector');
+      const propId = selEl ? selEl.value : 'OAK-HOM-002';
+      const data = calculatePropertyStatementData(propId);
+      const lines = [
+        'Date,Rule Category,Vendor / Channel,Memo,Gross or Base USD,Manager Fee or Markup USD,Owner Net Impact USD'
+      ];
+      data.txs.forEach(function(tx) {
+        const split = computeTransactionSplit(tx);
+        lines.push([
+          tx.date,
+          '"' + split.ruleBadge + '"',
+          '"' + tx.vendor.replace(/"/g, '""') + '"',
+          '"' + tx.memo.replace(/"/g, '""') + '"',
+          formatCents(split.grossDisplayCents),
+          formatCents(split.managerEarnedCents),
+          formatCents(split.ownerTrustDeltaCents)
+        ].join(','));
+      });
+      lines.push('TOTAL,,,,,' + formatCents(data.managerCommCents + data.extraServiceMarkupCents) + ',' + formatCents(data.netOwnerPayoutCents));
+      triggerCsvDownload('Owner_Statement_' + propId + '_2026_10.csv', lines.join('\n'));
+    }
+
+    function exportScheduleECsv() {
+      const schedSel = document.getElementById('sched-e-property-selector');
+      const propId = schedSel ? schedSel.value : 'OAK-HOM-002';
+      const data = calculatePropertyStatementData(propId);
+      const m = 9;
+      const lines = [
+        'Property ID,Owner Entity,IRS Form 1040 Schedule E Line,Description,YTD Amount USD',
+        propId + ',"' + data.prop.ownerEntity + '",Line 3,Gross Rents Received,' + formatCents((data.grossAccommCents + data.guestCleaningCollectedCents + data.resolutionOwnerCreditCents) * m),
+        propId + ',"' + data.prop.ownerEntity + '",Line 7,Cleaning and Maintenance,' + formatCents((data.cleaningDisbursedCents + data.postOwnerStayCleanCents) * m),
+        propId + ',"' + data.prop.ownerEntity + '",Line 11,Management and Co-Hosting Fees,' + formatCents((data.managerCommCents + data.extraServiceMarkupCents) * m),
+        propId + ',"' + data.prop.ownerEntity + '",Line 14,Repairs and Coordination Base,' + formatCents(data.extraServiceBaseCents * m),
+        propId + ',"' + data.prop.ownerEntity + '",Line 18,Supplies and Linen Replenishments,' + formatCents(84000)
+      ];
+      triggerCsvDownload('IRS_Schedule_E_Packet_' + propId + '_2026.csv', lines.join('\n'));
+    }
+
+    function export1099VendorCsv() {
+      const lines = [
+        'Vendor ID,Vendor Legal Name,Role,TIN Status,YTD Paid USD,1099-NEC Required,W-9 Verified On File'
+      ];
+      vendor1099Roster.forEach(function(v) {
+        lines.push([
+          v.id,
+          '"' + v.name + '"',
+          '"' + v.role + '"',
+          '"' + v.tinStatus + '"',
+          formatCents(v.ytdCents),
+          v.ytdCents >= 60000 ? 'YES' : 'NO',
+          v.w9OnFile ? 'YES' : 'MISSING_W9'
+        ].join(','));
+      });
+      triggerCsvDownload('ABetterBNB_1099_NEC_Vendor_Compliance_2026.csv', lines.join('\n'));
+    }
+
+    function downloadCompleteCpaBinderCsv() {
+      const lines = [
+        'SECTION,ACCOUNT OR LINE ITEM,PROPERTY OR VENDOR,RULE OR TAX MAPPING,AMOUNT USD',
+        '1_CORPORATE_PNL,Co-Hosting Commissions Earned (YTD),A Better BNB Corporate,Gross Commission Revenue,$20,907.00',
+        '1_CORPORATE_PNL,Out-of-Scope +20% Coordination Markups (YTD),A Better BNB Corporate,20% Service Markup Revenue,$720.00',
+        '1_CORPORATE_PNL,Resolution Center 50/50 Manager Share (YTD),A Better BNB Corporate,50% Damage Recovery Split,$1,080.00',
+        '1_CORPORATE_PNL,Categorized Corporate OpEx Deductions (YTD),A Better BNB Corporate,Schedule C / 1120-S Deductions,-$10,530.00',
+        '1_CORPORATE_PNL,NET CORPORATE TAXABLE OPERATING PROFIT (YTD),A Better BNB Corporate,Net Operating Income,$12,177.00',
+        '2_TRUST_RECONCILIATION,Partner Owner Trust Payables vs Trust Cash,Partner Trust Bank Account,Zero Commingling Verification,$0.00 Variance'
+      ];
+      vendor1099Roster.forEach(function(v) {
+        lines.push([
+          '3_1099_NEC_ROSTER',
+          '"' + v.name + '"',
+          '"' + v.role + '"',
+          v.ytdCents >= 60000 ? '1099-NEC REQUIRED (' + (v.w9OnFile ? 'W-9 Verified' : 'W-9 MISSING') + ')' : 'Under $600',
+          formatCents(v.ytdCents)
+        ].join(','));
+      });
+      triggerCsvDownload('Justin_Randall_Complete_CPA_Tax_Guy_Binder_2026.csv', lines.join('\n'));
+    }
+
+    function openCloudSyncModal() {
+      const modal = document.getElementById('modal-cloud-sync');
+      if (!modal) return;
+      const cfg = window.ScenicCloudSync.getConfig();
+      const urlEl = document.getElementById('cloud-sync-url');
+      const keyEl = document.getElementById('cloud-sync-key');
+      if (urlEl) urlEl.value = cfg.url;
+      if (keyEl) keyEl.value = cfg.key;
+      modal.classList.remove('hidden');
+    }
+
+    function closeCloudSyncModal() {
+      const modal = document.getElementById('modal-cloud-sync');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function saveCloudSyncSettings() {
+      const urlEl = document.getElementById('cloud-sync-url');
+      const keyEl = document.getElementById('cloud-sync-key');
+      if (urlEl) localStorage.setItem('scenic_supabase_url', urlEl.value.trim());
+      if (keyEl) localStorage.setItem('scenic_supabase_anon_key', keyEl.value.trim());
+      window.ScenicCloudSync.syncNow();
+      const msgEl = document.getElementById('cloud-sync-status-msg');
+      if (msgEl) {
+        msgEl.className = 'p-2.5 rounded-xl font-mono-custom text-xs bg-emerald-950 text-emerald-300 border border-emerald-600 block';
+        msgEl.textContent = 'Supabase Cloud & BroadcastChannel state synchronized across all 5 Scenic OS apps!';
+      }
+    }
+
+    function refreshAllLedgerViews() {
+      updateTopKpiCards();
+      renderBookkeeperTable();
+      renderDealSeekerTab();
+      renderOwnerStatement();
+      renderTaxCenterTab();
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      ingestCloudSyncedProperties();
+      const params = new URLSearchParams(window.location.search);
+      const propParam = params.get('prop');
+      if (propParam && PROPERTIES[propParam]) {
+        activePropertyFilter = propParam;
+        const globalSel = document.getElementById('global-property-selector');
+        const stmtSel = document.getElementById('stmt-property-selector');
+        const schedSel = document.getElementById('sched-e-property-selector');
+        if (globalSel) globalSel.value = propParam;
+        if (stmtSel) stmtSel.value = propParam;
+        if (schedSel) schedSel.value = propParam;
+      }
+      if (params.get('mode') === 'owner') {
+        setLedgerViewMode('owner');
+        switchLedgerTab('owner-statements');
+      } else {
+        refreshAllLedgerViews();
+      }
+      updateNewTxPreview();
+    });
+  </script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

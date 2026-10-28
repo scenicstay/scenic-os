@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scenic Stay: Hospitality &amp; Partner Communications Rulebook (Company SOP)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f4f1ea;
+    color: #1c1917;
+    line-height: 1.68;
+  }
+  .top-bar {
+    background: #180820;
+    color: #ffffff;
+    padding: 16px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 2px solid #e59523;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-row img {
+    height: 38px;
+    width: auto;
+  }
+  .brand-title {
+    font-weight: 800;
+    font-size: 1.02rem;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+  .brand-sub {
+    font-size: 0.75rem;
+    color: #ffbe3b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .nav-pill {
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 190, 59, 0.35);
+    transition: all 0.2s;
+  }
+  .nav-pill:hover {
+    background: #ffbe3b;
+    color: #180820;
+  }
+  .container {
+    max-width: 1080px;
+    margin: 40px auto 80px;
+    padding: 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .hero-banner {
+    background: #180820;
+    color: #ffffff;
+    border-radius: 28px;
+    padding: 48px 52px;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 36px;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(24, 8, 32, 0.16);
+  }
+  .hero-kicker {
+    color: #ffbe3b;
+    font-weight: 800;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .hero-lead {
+    font-size: 1.08rem;
+    color: #e7e5e4;
+    line-height: 1.65;
+  }
+  .hero-emblem-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-emblem-wrap img {
+    max-width: 240px;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  }
+  .sop-section {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 38px 44px;
+    border: 1px solid rgba(28, 25, 23, 0.09);
+    box-shadow: 0 12px 32px rgba(28, 25, 23, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .section-tag {
+    align-self: flex-start;
+    background: #f5f5f4;
+    color: #7c2d12;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .sop-section h2 {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1c1917;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .rule-card {
+    background: #faf8f5;
+    border: 1px solid rgba(28, 25, 23, 0.1);
+    border-radius: 16px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .rule-card h3 {
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: #1c1917;
+  }
+  .pipeline-card {
+    background: #180820;
+    color: #f5f5f4;
+    border-radius: 18px;
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 190, 59, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pipeline-step {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #ffbe3b;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .pipeline-card h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+  .pipeline-card p {
+    font-size: 0.9rem;
+    color: #d6d3d1;
+    line-height: 1.58;
+  }
+  .comparison-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .bad-box {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .good-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .slip-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 5px solid #d97706;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .quote-block {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    background: #f5f5f4;
+    padding: 16px 20px;
+    border-left: 4px solid #a97886;
+    border-radius: 0 14px 14px 0;
+  }
+  @media (max-width: 860px) {
+    .hero-banner, .grid-2, .grid-3, .comparison-box { grid-template-columns: 1fr; }
+  }
+</style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="brand-row">
+    <img src="assets/brand/scenic_stay_canonical_redwood_icon.png" alt="Scenic Stay Redwood Icon">
+    <div>
+      <div class="brand-title">Scenic Stay: A Better BNB &amp; A Better Boutique</div>
+      <div class="brand-sub">Company Standard Operating Procedure (SOP)</div>
+    </div>
+  </div>
+  <nav class="nav-links">
+    <a class="nav-pill" href="scenic_os_system_blueprint.html">Master System &amp; Pricing Blueprint</a>
+    <a class="nav-pill" href="scenic_academy_journey.html">1. Sales &amp; Philosophy Academy</a>
+    <a class="nav-pill" href="scenic_operations_academy.html">2. Inside Operations Academy</a>
+    <a class="nav-pill" href="alyssa_shadow_playbook.html">3. Shadow-First Workbook</a>
+    <a class="nav-pill" href="host_dispatch_resetr.html">4. preSeTR + reSeTR Command</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero-banner">
+    <div>
+      <div class="hero-kicker">Official Company Rulebook &amp; Operating Standard</div>
+      <h1 class="hero-title">The Scenic Stay Hospitality &amp; Partner Communications Rulebook</h1>
+      <p class="hero-lead">
+        At Scenic Stay, hospitality is not a script. It is the discipline of adding value first, answering the unspoken question behind every question, and treating guests, property owners, and field partners with warmth, fairness, and clear boundaries.
+      </p>
+    </div>
+    <div class="hero-emblem-wrap">
+      <img src="assets/brand/scenic_stay_canonical_emblem.png" alt="Scenic Stay Canonical Emblem">
+    </div>
+  </section>
+
+  <section class="sop-section">
+    <span class="section-tag">Section 01 &bull; The Four Foundational Pillars</span>
+    <h2>1. How Scenic Stay Approaches Every Interaction</h2>
+    <div class="grid-2">
+      <div class="rule-card">
+        <h3>1. Always Put Adding Value in Front</h3>
+        <p>Whether communicating with a guest, a homeowner, a boutique hotel general manager, or a local cleaner and handyman, lead by being genuinely useful. Solve the problem or provide the local insight before asking for anything in return.</p>
+      </div>
+      <div class="rule-card">
+        <h3>2. Answer the Question Beyond the Question (QBQ)</h3>
+        <p>"Going the extra mile" is a tired cliche. True hospitality means recognizing what a person actually needs behind their literal question and providing that answer before they even have to ask. That is how we create customers and partners for life.</p>
+      </div>
+      <div class="rule-card">
+        <h3>3. Tactful Kindness + Firm Boundaries</h3>
+        <p>Maintain a warm, respectful tone while setting clear, firm expectations. Never equate kindness with weakness, and never equate meanness with strength. We pursue fairness and a sensible, cost-effective approach in every decision.</p>
+      </div>
+      <div class="rule-card">
+        <h3>4. Relate Like a Human (Zero Superficiality)</h3>
+        <p>Read what the other person actually wrote. If a guest shares why they are visiting, connect to their real plans with accurate local knowledge rather than pasting a generic "Have a great stay!" template.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sop-section">
+    <span class="section-tag">Section 02 &bull; Guest Communications Protocol</span>
+    <h2>2. Guest Communications: Anticipatory Care From Booking to Checkout</h2>
+    <p>Every guest touchpoint is designed to eliminate uncertainty so the traveler feels completely at home:</p>
+    <div class="grid-2">
+      <div class="rule-card">
+        <h3>Pre-Arrival, Street/Path Clarity &amp; Visitor Pass Guardrail (60/Year Cap)</h3>
+        <p>Two days before arrival, confirm when we should expect the guest and highlight practical arrival details so they are never surprised after dark (such as street parking rules, keeping the driveway clear, or using a phone flashlight for the two steps down from the driveway at night). <strong>Crucial Guardrail: Never proactively offer Berkeley street parking visitor passes in standard arrival messages.</strong> We are strictly limited to <strong>60 visitor passes per year</strong> and pay for each one. Only provide a visitor pass if a guest specifically asks or genuinely requires weekday daytime parking beyond the 2-hour window.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Proactive Early Check-In Notification</h3>
+        <p>Our standard turnover window runs from <strong>11:00 AM to 5:00 PM</strong>. The moment our cleaning partner finishes and the unit is verified spotless, we update the guest's smart lock code activation time early and send a warm note letting them know the space is ready for them at no extra charge.</p>
+      </div>
+    </div>
+    <div class="comparison-box">
+      <div class="bad-box">
+        <strong style="color:#991b1b; display:block; margin-bottom:6px;">What We Never Send (Talking Their Ear Off or Wrong Geography):</strong>
+        <p style="font-size:0.94rem;">"You are going to have an amazing time at the Greek Theatre, as it is truly one of the best outdoor venues anywhere! The walk there takes about 20 minutes along the hillside streets, and if you want a great spot to pregame or grab a bite beforehand, make sure to pass the Berkeley Rose Garden sunset view on your walk over..."</p>
+        <p style="font-size:0.82rem; color:#7f1d1d; margin-top:8px;"><em>Why this fails:</em> First, guests will not read a long, unprompted wall of text. Second, walking from Scenic Avenue to the Greek Theatre or UC Berkeley goes south/southeast toward campus, whereas the Rose Garden is in the opposite direction to the north.</p>
+      </div>
+      <div class="good-box">
+        <strong style="color:#166534; display:block; margin-bottom:6px;">The Scenic Stay Cadence (Crisp, Brief &amp; Friendly + Short Maps Links When Asked):</strong>
+        <p style="font-size:0.92rem; margin-bottom:8px;"><strong>1. When the guest's booking note has nothing substantial:</strong><br>"Welcome! Let me know if there's anything we can do to help during your visit."</p>
+        <p style="font-size:0.92rem; margin-bottom:8px;"><strong>2. When they mention a reason for their visit (e.g., "Coming for a show at the Greek"):</strong><br>"The Greek is such a great venue. Welcome! Let me know if there's anything we can do to help during your visit."</p>
+        <p style="font-size:0.92rem;"><strong>3. When they ask a specific question (e.g., "Where's a good place to eat before the show?"), dig in and ALWAYS include short Google Maps links:</strong><br>"There are a couple spots near the venue off Euclid like <a href="https://maps.app.goo.gl/LaValsEuclid" target="_blank" rel="noopener">La Val's Pizza</a> and <a href="https://maps.app.goo.gl/LaBurritaEuclid" target="_blank" rel="noopener">La Burrita</a>, though I would recommend hitting up <a href="https://maps.app.goo.gl/BerkeleySocialClub" target="_blank" rel="noopener">Berkeley Social Club</a>, <a href="https://maps.app.goo.gl/EastBaySpiceCo" target="_blank" rel="noopener">East Bay Spice Co.</a>, or <a href="https://maps.app.goo.gl/JupiterBerkeley" target="_blank" rel="noopener">Jupiter</a> downtown."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sop-section">
+    <span class="section-tag">Section 03 &bull; Field Partner &amp; Turnover Protocol</span>
+    <h2>3. Field Operations: preSeTR Advance Schedule Radar, Recommended Off-White 3-Par Linens &amp; Two-Phase Turnover QA</h2>
+    <div class="grid-2">
+      <div class="rule-card">
+        <h3>Cleaner Arrival Info vs. Guest Arrival Info &amp; General Property Supplies</h3>
+        <p><strong>Crucial Operational Rule:</strong> A cleaner's arrival and access instructions are not always the same as a guest's check-in instructions. In <strong>HOSt Property Forge</strong>, <strong>preSeTR</strong>, and <strong>reSeTR</strong>, we maintain separate fields for Guest Arrival (street parking rules, guest path, temporary PIN) vs. Cleaner Service Access (master keypad code, lockbox backup, supply closet location, linen storage, and general property supplies &amp; consumables restock inventory including bathroom supplies, paper goods, kitchen supplies, soaps, and unit hospitality items).</p>
+      </div>
+      <div class="rule-card">
+        <h3>preSeTR Advance Notice + Priority Routing</h3>
+        <p>Cleaners must never receive last-minute surprises. Our <strong>preSeTR</strong> cadence dispatches a <strong>14-day lookahead</strong>, a <strong>Sunday evening weekly digest</strong>, a <strong>48-hour confirmation</strong>, and an <strong>8:30 AM day-of packet</strong> in each partner's preferred language (such as English, Spanish, or Brazilian Portuguese, with more languages added as we partner with teams from or in other countries). When two checkouts fall on the same day, preSeTR explicitly flags <strong>Priority 1 (Same-Day Back-to-Back 11:00 AM to 5:00 PM)</strong> vs. <strong>Priority 2 (Flexible Window with no same-day check-in)</strong>.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Recommended Off-White Room-Matching 3-Par Linens + Matching Duvet Covers</h3>
+        <p>Based on ten years of hosting experience, we recommend <strong>3 full sets of off-white linens per bed (3-par rotation) plus matching duvet covers</strong> that complement each room's palette, rather than all-white linens that show stains easily and require costly frequent replacement. Having 3 sets per bed ensures cleaners can strip, remake, and rotate without same-day laundry bottlenecks, though partner homeowners may always choose to select or manage their own linens.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Two-Phase Turnover QA &amp; Timely Partner Payouts</h3>
+        <p>Inside <strong>reSeTR</strong> (accessible via clean property slugs such as <code>resetr.abetterbnb.com/32ndstreet</code>), cleaners follow a two-phase protocol: Phase 1 is logging any arrival damage or missing items before cleaning begins, and Phase 2 is uploading staging photos once the unit is spotless and supplies are restocked. Because we always put adding value in front for our field partners too, approved turnovers are paid out on a timely basis in our partners' preferred method of payment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sop-section">
+    <span class="section-tag">Section 04 &bull; Homeowner &amp; Boutique Partner Protocol</span>
+    <h2>4. Owner Communications: Plain-Language Transparency &amp; Tactful, Selective Engagement</h2>
+    <p>Communicating with property owners requires a thoughtful approach: we protect their peace of mind by handling day-to-day operational noise ourselves while communicating openly, warmly, and selectively when a real decision is needed.</p>
+    <div class="grid-2">
+      <div class="rule-card">
+        <h3>Calendar Stewardship &amp; Personal Stays</h3>
+        <p>We manage the master calendar across all service tiers. When an owner wants unbooked dates for personal use, <strong>we block the calendar on the owner's behalf</strong>. Both owner and manager recognize that personal blocks represent a <strong>shared revenue loss for both parties</strong>, and neither party ever cancels on confirmed guests. Following an owner stay, we coordinate the turnover cleaners (11:00 AM to 5:00 PM) and invoice the owner at cost.</p>
+      </div>
+      <div class="rule-card">
+        <h3>Plain-Language Economics &amp; Tactful, Selective Owner Engagement</h3>
+        <p>Our agreements and statements use clear, <strong>Plain-Language</strong> terms: routine cleaning fees follow the clear pass-through structure of each owner's agreement, out-of-scope coordination (repairs, maintenance dispatches, mailing lost guest items) carries a transparent <strong>20% coordination markup</strong>, and unexpended Resolution Center recoveries split <strong>50/50</strong>. We practice <strong>tactful, selective owner engagement</strong>: shielding owners from minor day-to-day operational trivia while engaging them warmly, transparently, and respectfully whenever asset stewardship or policy decisions arise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sop-section">
+    <span class="section-tag">Section 05 &bull; ScenicGraph Empirical Audit (1,783 Reviews &bull; 10 Years)</span>
+    <h2>5. ScenicGraph Guest Communications, Review Correlation &amp; Revenue Expansion Audit</h2>
+    <p>
+      Why do we follow the exact communication and turnover rules above? Because our <strong>ScenicGraph Telemetry Engine</strong> audited 10 years of reservation message threads and 1,783 guest reviews across our portfolio to measure which exact behaviors drive 5-star raves, where operational slips occur, and where we can unlock additional revenue per stay.
+    </p>
+
+    <div class="grid-3">
+      <div class="pipeline-card">
+        <div class="pipeline-step">Step 1 &bull; Thread &amp; Review Ingestion</div>
+        <h3>Dual-Source Airbnb Sync</h3>
+        <p>ScenicGraph ingests every Airbnb and Co-Hosted message thread via the official Airbnb Account Data Export JSON plus authenticated Playwright Inbox sync, joining each conversation by <code>reservation_id</code> to public star ratings, category sub-scores (Cleanliness, Check-In, Communication, Value), public review text, and private host feedback notes.</p>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-step">Step 2 &bull; Feature &amp; Timing Extraction</div>
+        <h3>Measuring Operational Signals</h3>
+        <p>For every stay, the pipeline timestamps and scores 6 operational signals: (1) first-response latency, (2) T-48h pre-arrival path &amp; parking note, (3) cleaner advance-notice lead time in <code>preSeTR</code>, (4) proactive early check-in / bag-drop notification, (5) crisp, brief welcome cadence + link-backed answers when asked, and (6) Morning-1 check-in touchpoint.</p>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-step">Step 3 &bull; Outcome &amp; Upsell Detection</div>
+        <h3>Correlating Habits to Stars &amp; Revenue</h3>
+        <p>By comparing message thread signals against review sentiment and private notes, ScenicGraph isolates the exact communication habits that generate "Ritz-Carlton / 5-Star Hotel" praise, flags the gaps that precede a 4-star review, and surfaces high-margin ancillary revenue opportunities.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.25rem; font-weight:800; margin-top:10px; color:#166534;">Where We Excel: Proven 5-Star Drivers Across 10 Years of Host Telemetry</h3>
+    <div class="grid-2">
+      <div class="good-box">
+        <strong style="color:#166534; display:block; margin-bottom:6px;">1. Proactive Early Check-In &amp; Bag-Drop Coordination</strong>
+        <p style="font-size:0.93rem;">When our cleaner finishes early and we immediately activate the smart lock and text the guest that they can drop their bags or check in early, guests arrive already grateful before they even open the door.</p>
+        <div class="quote-block" style="margin-top:10px; font-size:0.92rem;">
+          "Justin was very accommodating and allowed us to check in early and leave our bags while we explored Berkeley... Truly a 5-star experience!" (Julie &amp; Tammy, Verified Guest Reviews)
+        </div>
+      </div>
+
+      <div class="good-box">
+        <strong style="color:#166534; display:block; margin-bottom:6px;">2. Crisp, Friendly Welcome + Digging In With Maps Links When Asked</strong>
+        <p style="font-size:0.93rem;">Keeping initial welcome notes brief and natural ("The Greek is such a great venue. Welcome! Let me know if there's anything we can do to help during your visit.") and then providing specific, Google-Maps-linked recommendations when a guest asks where to eat builds effortless rapport.</p>
+        <div class="quote-block" style="margin-top:10px; font-size:0.92rem;">
+          "Justin! Thank you so much for the lovely bourbon, your hospitality is fantastic (I should know, I worked at the Ritz Carlton in the city)." (Xaviera, Private Host Feedback Note)
+        </div>
+      </div>
+
+      <div class="good-box">
+        <strong style="color:#166534; display:block; margin-bottom:6px;">3. Signature Physical Comforts Backed by Clear Comms</strong>
+        <p style="font-size:0.93rem;">Across hundreds of reviews (258 Comfort tags and 178 Sleep Quality tags on the flagship studio alone), the most frequently praised physical details are our <strong>"super comfortable beds"</strong> (with our recommended off-white room-matching 3-par linens and matching duvet covers) and well-stocked property supplies &amp; welcome essentials.</p>
+      </div>
+
+      <div class="good-box">
+        <strong style="color:#166534; display:block; margin-bottom:6px;">4. Rapid, Compassionate Recovery When Life or Hardware Happens</strong>
+        <p style="font-size:0.93rem;">When an unexpected family medical emergency or maintenance issue occurs, immediate empathetic communication and working out a fair solution turns a potential cancellation or complaint into a glowing 5-star review.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.25rem; font-weight:800; margin-top:12px; color:#9a3412;">Where Things Slip or Go Wrong (And the SOP Guardrails That Fix Them)</h3>
+    <div class="grid-3">
+      <div class="slip-box">
+        <strong style="color:#9a3412; font-size:0.98rem;">Slip 1: Late Cleaner Advance Notice ("The Cleaner Bottleneck")</strong>
+        <p style="font-size:0.88rem; color:#44403c;"><strong>What Happens:</strong> Notifying an assigned cleaning partner too late in the game causes rushed 11:00 AM to 5:00 PM turnovers, stress on multi-turnover days, delayed early check-ins, or missed staging details.</p>
+        <p style="font-size:0.88rem; color:#166534; font-weight:700;">SOP Fix: Mandatory <code>preSeTR</code> 14-day + 7-day + 48-hour automated advance schedule dispatch in each cleaning team's preferred language, explicitly separating Priority 1 Same-Day B2B turns from Priority 2 Flexible turns.</p>
+      </div>
+
+      <div class="slip-box">
+        <strong style="color:#9a3412; font-size:0.98rem;">Slip 2: Expectations Gap on Vintage / Garden Studios ("The 'Simple' Review Trap")</strong>
+        <p style="font-size:0.88rem; color:#44403c;"><strong>What Happens:</strong> When a guest books an affordable, cozy Berkeley hillside studio expecting brand-new luxury hotel marble and receives zero pre-arrival expectation framing or Morning-1 check-in, they leave a lukewarm "simple / basic" review.</p>
+        <p style="font-size:0.88rem; color:#166534; font-weight:700;">SOP Fix: Frame the peaceful garden character, super comfortable bed, and stocked welcome supplies warmly before arrival, and send a brief Morning-1 check-in so any minor need (extra blanket, heater tip) is solved in-stay.</p>
+      </div>
+
+      <div class="slip-box">
+        <strong style="color:#9a3412; font-size:0.98rem;">Slip 3: Confusing Guest Arrival Info with Cleaner Service Access Info</strong>
+        <p style="font-size:0.88rem; color:#44403c;"><strong>What Happens:</strong> Sending guest check-in blurbs to a cleaner (or vice versa) leaves cleaners without supply closet codes, linen storage locations, general property supplies inventory, or clarity on whether a new guest checks in at 5:00 PM today.</p>
+        <p style="font-size:0.88rem; color:#166534; font-weight:700;">SOP Fix: Strict schema and UI separation of <strong>Cleaner Service Access &amp; Property Supplies Closet Info</strong> vs. <strong>Guest Arrival Info</strong> across <code>HOSt Property Forge</code>, <code>preSeTR</code>, and <code>reSeTR</code>.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.25rem; font-weight:800; margin-top:14px; color:#180820;">Common Ways to Improve Revenue: Packaging Optional Guest Extras &amp; Experiences</h3>
+    <div class="grid-3">
+      <div class="rule-card" style="border-top: 4px solid #e59523;">
+        <h3>1. Guaranteed Early Check-In &amp; Late Check-Out Tiers</h3>
+        <p style="font-size:0.9rem;">While we gladly notify guests for free when a room happens to finish early on a light day, travelers who want a <strong>guaranteed early check-in</strong> (locking in 12:00 PM or 1:00 PM arrival) or a <strong>guaranteed late check-out</strong> (extending departure from 11:00 AM to 1:00 PM or 2:00 PM) can purchase a priority turnover upgrade when calendar spacing allows.</p>
+      </div>
+      <div class="rule-card" style="border-top: 4px solid #0f766e;">
+        <h3>2. Curated Experiences &amp; Celebration Add-Ons</h3>
+        <p style="font-size:0.9rem;">Many guests visit for anniversaries, graduations, concerts at the Greek Theatre, or wine-country getaways. Offering optional pre-arrival celebration packages (local wine or small-batch bourbon, fresh flowers, artisanal chocolates), curated local experiences, or optional mid-stay refresh cleanings turns special occasions into ancillary revenue.</p>
+      </div>
+      <div class="rule-card" style="border-top: 4px solid #a97886;">
+        <h3>3. Gap-Night ("Orphan Night") Extensions</h3>
+        <p style="font-size:0.9rem;">Whenever a 1-night unbooked gap sits immediately before a guest's check-in or after their check-out, our messaging workflow can automatically offer the guest a discounted "arrive a night early" or "stay an extra night" extension, monetizing nights that would otherwise sit empty.</p>
+      </div>
+    </div>
+
+    <div class="pipeline-card" style="margin-top:10px; flex-direction:row; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="pipeline-step">Interactive Unit Pilot Sandbox &bull; Your Units First</div>
+        <h3>Explore Unit-by-Unit Pricing Projections &amp; How Every System Connects</h3>
+        <p>Compare current static baseline performance against projected dynamic pricing, gap-night extensions, and early/late window upgrades across your units before wider rollout.</p>
+      </div>
+      <a href="scenic_os_system_blueprint.html#pilot-sandbox" style="background:#ffbe3b; color:#180820; font-weight:800; font-size:0.86rem; padding:12px 20px; border-radius:999px; text-decoration:none; white-space:nowrap;">
+        Open Master System &amp; Pricing Blueprint &rarr;
+      </a>
+    </div>
+  </section>
+</main>
+
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

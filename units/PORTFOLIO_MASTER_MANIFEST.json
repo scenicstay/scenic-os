@@ -1,0 +1,217 @@
+{
+    "version":  "1.1.0",
+    "last_updated":  "2026-10-16T20:10:00Z",
+    "company":  "A Better BNB \u0026 Scenic Stay",
+    "strategy":  "Exclusive AI \u0026 Agentic Co-Host Gateway",
+    "properties":  [
+                       {
+                           "unit_id":  "OAK-HOM-001",
+                           "internal_name":  "1023 32nd st",
+                           "title":  "2 Bed/2 Bath Near Public Transport Oakland",
+                           "market":  "Oakland, CA",
+                           "street_address":  "1023 32nd St, Oakland, CA 94608",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Dedicated private level entrance. Enter cleaner master code on the front door smart keypad.",
+                           "entry_instructions_es":  "Entrada del nivel privado. Ingresa el codigo maestro de limpieza en el teclado inteligente de la puerta principal.",
+                           "entry_instructions_pt":  "Entrada do andar privado. Digite a senha mestre de limpeza no teclado inteligente da porta da frente.",
+                           "custom_url":  "https://airbnb.com/h/2bed32ndst",
+                           "airbnb_id":  "577740514242923213",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/577740514242923213.ics?t=4dc4282690044be881e9624f60ad625b",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Dedicated private level entrance. Enter guest check-in code on the front door smart keypad."
+                       },
+                       {
+                           "unit_id":  "PIN-HOM-001",
+                           "internal_name":  "3146 avis way-pinole",
+                           "title":  "Bay Area Beauty Close to SF and Napa",
+                           "market":  "Pinole, CA",
+                           "street_address":  "3146 Avis Way, Pinole, CA 94564",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Main front door Schlage smart deadbolt plus interior bedroom Yale levers. Enter cleaner master code on the front door keypad.",
+                           "entry_instructions_es":  "Puerta principal con cerradura inteligente Schlage y puertas interiores Yale. Ingresa el codigo de limpieza en el teclado de la puerta principal.",
+                           "entry_instructions_pt":  "Porta principal com fechadura inteligente Schlage e portas internas Yale. Digite a senha de limpeza no teclado da porta principal.",
+                           "custom_url":  null,
+                           "airbnb_id":  "1581921459160928861",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/1581921459160928861.ics?t=068d8ca6955b41028fe6d3f0e7ce16bb",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Main front door Schlage smart deadbolt plus interior bedroom Yale levers. Enter guest check-in code on the front door keypad."
+                       },
+                       {
+                           "unit_id":  "BKL-ADU-001",
+                           "internal_name":  "j+m berkeley-acton downstairs",
+                           "title":  "Comfortable 1 Bd/1 Ba Apt. in Berkeley",
+                           "market":  "Berkeley, CA",
+                           "street_address":  "3007 Acton St (Downstairs Unit), Berkeley, CA 94702",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Front path to downstairs garden suite entrance. Enter cleaner code on the downstairs door smart keypad.",
+                           "entry_instructions_es":  "Camino frontal hacia la entrada de la suite de abajo. Ingresa el codigo de limpieza en el teclado de la puerta inferior.",
+                           "entry_instructions_pt":  "Caminho frontal ate a entrada da suite terrea. Digite a senha de limpeza no teclado da porta inferior.",
+                           "custom_url":  null,
+                           "airbnb_id":  "1486395846281791875",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/1486395846281791875.ics?t=65cb4a776b5a43cd947ad36b6bc82822",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Front path to downstairs garden suite entrance. Enter guest check-in code on the downstairs door smart keypad."
+                       },
+                       {
+                           "unit_id":  "BKL-ADU-003",
+                           "internal_name":  "j+m berkeley-3007 acton both",
+                           "title":  "Cozy duplex 2 fully equipped 1-bd apts in Berkeley",
+                           "market":  "Berkeley, CA",
+                           "street_address":  "3007 Acton St (Both Downstairs \u0026 Upstairs Units), Berkeley, CA 94702",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Access both Downstairs garden entrance and Upstairs exterior stair entrance using the cleaner code on both door smart keypads.",
+                           "entry_instructions_es":  "Acceso a ambas unidades (planta baja y planta alta por las escaleras exteriores) usando el codigo de limpieza en ambos teclados.",
+                           "entry_instructions_pt":  "Acesso a ambas as unidades (terreo e andar superior pela escada externa) usando a senha de limpeza nos dois teclados.",
+                           "custom_url":  null,
+                           "airbnb_id":  "1689940750107146138",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/1689940750107146138.ics?t=fe722dca3766473da1792d1f10a65454",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Access both Downstairs garden entrance and Upstairs exterior stair entrance using the guest check-in code on both door smart keypads."
+                       },
+                       {
+                           "unit_id":  "BKL-ADU-002",
+                           "internal_name":  "j+m berkeley-3007 acton upstairs",
+                           "title":  "Lovely 1 Bd/1 Ba Apt. in Berkeley",
+                           "market":  "Berkeley, CA",
+                           "street_address":  "3007 Acton St (Upstairs Unit), Berkeley, CA 94702",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Exterior stairs to upstairs suite entrance. Enter cleaner code on the upstairs door smart keypad.",
+                           "entry_instructions_es":  "Escaleras exteriores hacia la entrada de la suite de arriba. Ingresa el codigo de limpieza en el teclado de la puerta superior.",
+                           "entry_instructions_pt":  "Escada externa ate a entrada da suite superior. Digite a senha de limpeza no teclado da porta superior.",
+                           "custom_url":  null,
+                           "airbnb_id":  "1392853359328768913",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/1392853359328768913.ics?t=9f92fbb9ef034119ab64ec502dc06b44",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Exterior stairs to upstairs suite entrance. Enter guest check-in code on the upstairs door smart keypad."
+                       },
+                       {
+                           "unit_id":  "BKL-STU-001",
+                           "internal_name":  "scenic-north au pair",
+                           "title":  "Modern Retro Private Studio",
+                           "market":  "Berkeley, CA",
+                           "street_address":  "1545 Scenic Ave (North Studio), Berkeley, CA 94708",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): North Studio is to the left as you face our house at 1545 Scenic Ave, along the neighbor\u0027s half wall lined with rosemary bushes. Use cleaner master code on keypad; vacuum, clean linens, and all-compostable SF Bay Coffee pods, green and black tea, oatmeal, and raw sugar restock supplies are on site.",
+                           "entry_instructions_es":  "Acceso de Limpieza (11:00 AM a 5:00 PM): El North Studio esta a la izquierda mirando de frente nuestra casa en 1545 Scenic Ave, junto al murete del vecino bordeado de arbustos de romero. Usa el codigo maestro de limpieza; aspiradora, sabanas limpias y capsulas compostables de SF Bay Coffee, te verde y negro, avena y azucar cruda estan en sitio.",
+                           "entry_instructions_pt":  "Acesso de Limpeza (11:00 AM as 5:00 PM): O North Studio fica a esquerda olhando de frente para a nossa casa em 1545 Scenic Ave, ao longo do muro baixo do vizinho com arbustos de alecrim. Use a senha mestre de limpeza; aspirador, enxoval limpo e capsulas compostaveis SF Bay Coffee, cha verde e preto, aveia e acucar demerara estao no local.",
+                           "custom_url":  "https://airbnb.com/h/scenic-stays-berk-apartment-n",
+                           "airbnb_id":  "19951024",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/19951024.ics?t=4b53479d96b64be39395a49f9ab1f659",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Free street parking (2-hour limit Mon-Fri 8 AM to 7 PM; ask us for a pass, please do not park in driveway). The North Studio is to the left as you face our house, along the neighbor\u0027s half wall lined with rosemary bushes. Temporary guest door code activates early the moment cleaning finishes."
+                       },
+                       {
+                           "unit_id":  "OAK-HOM-003",
+                           "internal_name":  "5540 estates-upstairs unit",
+                           "title":  "Oakland Hills Modern 3BR, 2 Bath: Great Location",
+                           "market":  "Oakland, CA",
+                           "street_address":  "5540 Estates Dr (3-BR Upstairs Unit), Oakland, CA 94618",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Front steps to main upper entry door. Enter cleaner master code on the upper entry smart keypad.",
+                           "entry_instructions_es":  "Escaleras frontales hacia la puerta principal superior. Ingresa el codigo de limpieza en el teclado inteligente superior.",
+                           "entry_instructions_pt":  "Escada frontal ate a porta de entrada principal superior. Digite a senha de limpeza no teclado inteligente da porta superior.",
+                           "custom_url":  "https://airbnb.com/h/agarwals3brsf",
+                           "airbnb_id":  "1509483696229407204",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/1509483696229407204.ics?t=d36f72d8be5345a4a2926b0b5bcc7f02",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Front steps to main entry door. Enter guest check-in code on the entry smart keypad."
+                       },
+                       {
+                           "unit_id":  "OAK-HOM-002",
+                           "internal_name":  "5540 estates-entire home",
+                           "title":  "Oakland Hills Modern 5BR 3BA Retreat: Great Location",
+                           "market":  "Oakland, CA",
+                           "street_address":  "5540 Estates Dr (5-BR Entire Home), Oakland, CA 94618",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Driveway to main front entry door and lower level. Enter cleaner master code on the main front door smart keypad.",
+                           "entry_instructions_es":  "Entrada principal por la rampa vehicular y nivel inferior. Ingresa el codigo de limpieza en el teclado inteligente de la puerta principal.",
+                           "entry_instructions_pt":  "Entrada principal pela garagem e nivel inferior. Digite a senha de limpeza no teclado inteligente da porta da frente.",
+                           "custom_url":  "https://airbnb.com/h/agarwals5brsf",
+                           "airbnb_id":  "1480611837262432060",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/1480611837262432060.ics?t=42c73d3ca9594c7691db09187d8eabbc",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Driveway to main front entry door and lower level. Enter guest check-in code on the main front door smart keypad."
+                       },
+                       {
+                           "unit_id":  "BKL-STU-002",
+                           "internal_name":  "scenic-south au pair",
+                           "title":  "Spacious Private Garden Studio",
+                           "market":  "Berkeley, CA",
+                           "street_address":  "1545 Scenic Ave (South Studio), Berkeley, CA 94708",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): South Studio is to the right as you face our house at 1545 Scenic Ave, two steps down off the driveway and up the path. Use cleaner master code on keypad; vacuum, clean king linens, and all-compostable SF Bay Coffee pods, green and black tea, oatmeal, and raw sugar restock supplies are on site.",
+                           "entry_instructions_es":  "Acceso de Limpieza (11:00 AM a 5:00 PM): El South Studio esta a la derecha mirando de frente nuestra casa en 1545 Scenic Ave, dos escalones abajo de la entrada vehicular y subiendo por el sendero. Usa el codigo maestro de limpieza; aspiradora, sabanas king y capsulas compostables de SF Bay Coffee, te verde y negro, avena y azucar cruda estan en sitio.",
+                           "entry_instructions_pt":  "Acesso de Limpeza (11:00 AM as 5:00 PM): O South Studio fica a direita olhando de frente para a nossa casa em 1545 Scenic Ave, dois degraus abaixo da rampa da garagem e subindo pelo caminho. Use a senha mestre de limpeza; aspirador, enxoval king e capsulas compostaveis SF Bay Coffee, cha verde e preto, aveia e acucar demerara estao no local.",
+                           "custom_url":  "https://airbnb.com/h/scenic-stays-berk-apartment-s",
+                           "airbnb_id":  "14185254",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/14185254.ics?t=2d0943fa284645838df4a2e136ca9659",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Free street parking (2-hour limit Mon-Fri 8 AM to 7 PM; ask us for a pass, please do not park in driveway). The South Studio is to the right as you face our house, two steps down off the driveway and up the path."
+                       },
+                       {
+                           "unit_id":  "BKL-STU-003",
+                           "internal_name":  "scenic-both units",
+                           "title":  "Two Private Studios, One Location",
+                           "market":  "Berkeley, CA",
+                           "street_address":  "1545 Scenic Ave (North \u0026 South Studios), Berkeley, CA 94708",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Reset both ground-level studios at 1545 Scenic Ave (as you face the house: North Studio to the left along the neighbor\u0027s half wall lined with rosemary bushes, and South Studio to the right, two steps down off the driveway and up the path). Restock all-compostable SF Bay Coffee pods, green and black tea, oatmeal, and raw sugar in both units.",
+                           "entry_instructions_es":  "Acceso de Limpieza (11:00 AM a 5:00 PM): Limpieza de ambos estudios en 1545 Scenic Ave (North Studio a la izquierda junto al murete con romero y South Studio a la derecha, dos escalones abajo de la rampa y subiendo el sendero). Reponer capsulas compostables de SF Bay Coffee, te verde y negro, avena y azucar cruda en ambos.",
+                           "entry_instructions_pt":  "Acesso de Limpeza (11:00 AM as 5:00 PM): Limpeza de ambos os estudios em 1545 Scenic Ave (North Studio a esquerda junto ao muro com alecrim e South Studio a direita, dois degraus abaixo da rampa e subindo pelo caminho). Repor capsulas compostaveis SF Bay Coffee, cha verde e preto, aveia e acucar demerara em ambos.",
+                           "custom_url":  "https://airbnb.com/h/scenic-stays-berk-apartment-b",
+                           "airbnb_id":  "46689853",
+                           "ical_feed":  "https://www.airbnb.com/calendar/ical/46689853.ics?t=eb4ae7e72d894dc487099e328e7102ed",
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Dual-unit booking covering both studios at 1545 Scenic Ave (as you face our house: North Studio to the left along the neighbor\u0027s half wall lined with rosemary bushes, and South Studio to the right, two steps down off the driveway and up the path)."
+                       },
+                       {
+                           "unit_id":  "DEN-ADU-001",
+                           "internal_name":  "3270 w walsh pl",
+                           "title":  "3270 W Walsh Pl ADU Suite",
+                           "market":  "Denver, CO",
+                           "street_address":  "3270 W Walsh Pl (ADU Suite), Denver, CO 80219",
+                           "entry_instructions":  "Cleaner Service Access (11:00 AM to 5:00 PM window): Private ADU suite entrance. Enter cleaner master code on the ADU door smart keypad.",
+                           "entry_instructions_es":  "Entrada privada de la suite ADU. Ingresa el codigo de limpieza en el teclado inteligente de la puerta.",
+                           "entry_instructions_pt":  "Entrada privada da suite ADU. Digite a senha de limpeza no teclado inteligente da porta.",
+                           "custom_url":  null,
+                           "airbnb_id":  null,
+                           "ical_feed":  null,
+                           "agentic_distribution":  {
+                                                        "1stay_stayker":  true,
+                                                        "duffel_stays":  true,
+                                                        "google_vacation_rentals":  true
+                                                    },
+                           "guest_arrival_instructions":  "Private ADU suite entrance. Enter guest check-in code on the ADU door smart keypad."
+                       }
+                   ]
+}

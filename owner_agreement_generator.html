@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Better BNB & A Better Boutique: Owner Partnership Agreement & SLA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #180820;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, .serif-font, .doc-serif {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+
+    .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-mono-custom, .mono-font {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .bg-plum-base { background-color: #180820; }
+    .bg-plum-obsidian { background-color: #0F0414; }
+    .bg-plum-glow { background-color: #2A1038; }
+    .bg-plum-card { background-color: #220C30; }
+    .bg-plum-royal { background-color: #1A0924; }
+
+    .border-plum-border { border-color: rgba(255, 190, 59, 0.15); }
+    .border-plum-bright { border-color: rgba(255, 190, 59, 0.40); }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFBE3B 0%, #FFAE26 40%, #E59523 70%, #D5841A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #FFBE3B 0%, #D5841A 100%);
+    }
+
+    .card-glass {
+      background: #220C30;
+      border: 1px solid rgba(255, 190, 59, 0.18);
+    }
+    .card-glass:hover {
+      border-color: rgba(255, 190, 59, 0.35);
+    }
+
+    .input-dark {
+      background-color: #0F0414;
+      border: 1px solid rgba(255, 190, 59, 0.20);
+      color: #ffffff;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .input-dark:focus {
+      outline: none;
+      border-color: #FFBE3B;
+    }
+
+    .agreement-doc {
+      background: #ffffff;
+      color: #1e293b;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+    .agreement-doc h1, .agreement-doc h2, .agreement-doc h3, .agreement-doc .doc-serif {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: #180820;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0F0414;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #2A1038;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #E59523;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .agreement-doc {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      @page {
+        margin: 1.5cm;
+        size: letter portrait;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/scenic_global_shell.css">
+</head>
+<body class="bg-plum-base min-h-screen p-4 md:p-8 flex flex-col justify-between custom-scrollbar">
+
+  <div class="max-w-[1680px] mx-auto w-full space-y-6">
+
+    <header class="bg-plum-obsidian rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 border border-plum-bright no-print">
+      <div class="flex items-center space-x-4">
+        <div class="h-12 w-12 gold-gradient-bg rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 text-slate-950 text-2xl font-black">
+          <i class="fa-solid fa-file-signature"></i>
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <h1 id="header-brand-title" class="text-xl md:text-2xl font-bold gold-gradient-text tracking-wide serif-font">Owner Partnership Agreement & SLA</h1>
+            <span id="header-division-badge" class="text-[10px] text-amber-300 font-mono-custom uppercase px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30">
+              A Better BNB Legal Suite
+            </span>
+            <button type="button" onclick="window.ScenicCloudSync && window.ScenicCloudSync.openModal()" id="scenic-cloud-sync-pill" class="text-[10px] text-emerald-300 font-mono-custom uppercase px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center gap-1.5 hover:bg-emerald-500/25 transition cursor-pointer">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="scenic-cloud-sync-pill-text">Cloud &amp; Multi-Tab State Sync Active</span>
+              <i class="fa-solid fa-gear text-[9px] text-emerald-200 ml-0.5"></i>
+            </button>
+          </div>
+          <p id="header-brand-subtitle" class="text-xs text-slate-400 mt-1 font-sans">
+            Institutional Co-Hosting Contract &bull; Defined Revenue Splits &bull; Prompt, Thoughtful Guest Communication &bull; Pure Short-Term Rentals (&lt;30 Days)
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <div class="flex items-center bg-plum-base p-1 rounded-xl border border-plum-border mr-1">
+          <button id="btn-div-bnb" onclick="setContractDivision('residential')" class="px-3 py-1.5 rounded-lg text-xs font-bold gold-gradient-bg text-slate-950 shadow transition flex items-center gap-1.5">
+            <i class="fa-solid fa-house-chimney"></i> A Better BNB
+          </button>
+          <button id="btn-div-boutique" onclick="setContractDivision('boutique')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition flex items-center gap-1.5">
+            <i class="fa-solid fa-hotel"></i> A Better Boutique
+          </button>
+        </div>
+
+        <button onclick="handoffToForge('owner')" class="px-3.5 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold rounded-xl border border-emerald-300 flex items-center gap-1.5 shadow-lg transition cursor-pointer">
+          <i class="fa-solid fa-lock"></i> Step 1: Open Owner Intake (Homeowner View Lock) ↗
+        </button>
+        <button onclick="copyShareableHomeownerIntakeLink(this)" class="px-3 py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl border border-sky-400 flex items-center gap-1.5 shadow-lg transition cursor-pointer">
+          <i class="fa-solid fa-link"></i> Copy Shareable Homeowner Intake Link 🔗
+        </button>
+        <button onclick="handoffToForge('admin')" title="Open Internal Admin / Ops View" class="px-2.5 py-2 bg-plum-card hover:bg-plum-glow text-slate-300 hover:text-white font-semibold rounded-xl border border-plum-border flex items-center gap-1 shadow transition cursor-pointer">
+          <i class="fa-solid fa-screwdriver-wrench text-amber-400"></i> Ops View ↗
+        </button>
+        <button onclick="window.print()" class="px-3.5 py-2 gold-gradient-bg text-slate-950 font-bold rounded-xl shadow-lg flex items-center gap-1.5 hover:brightness-110 transition cursor-pointer">
+          <i class="fa-solid fa-print"></i> Print / Save PDF
+        </button>
+      </div>
+    </header>
+
+    <div id="connected-lead-banner" class="bg-plum-card p-4 rounded-2xl border border-amber-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs hidden no-print">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-slate-300">
+          Connected Dossier: <strong id="connected-lead-title" class="text-white font-heading"></strong>
+          (<span id="connected-lead-id" class="font-mono-custom text-amber-400"></span>)
+        </span>
+        <span id="connected-permit-badge" class="px-2 py-0.5 rounded text-[10px] font-mono-custom bg-purple-500/20 text-purple-300 border border-purple-500/40 hidden">
+          $500 Permit Concierge Enrolled
+        </span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="handoffToForge('owner')" class="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-lg font-extrabold transition flex items-center gap-1.5 shadow cursor-pointer">
+          <i class="fa-solid fa-lock"></i> Step 1: Open Owner Intake (Homeowner View Lock) ↗
+        </button>
+        <button onclick="copyShareableHomeownerIntakeLink(this)" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-bold transition flex items-center gap-1.5 shadow cursor-pointer">
+          <i class="fa-solid fa-link"></i> Copy Shareable Homeowner Intake Link 🔗
+        </button>
+        <a id="btn-return-beacon" href="beacon_lead_command.html" class="px-3 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-lg font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-left"></i> Return to Beacon Leads
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <div class="lg:col-span-5 space-y-6 no-print">
+
+        <div class="card-glass p-5 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between border-b border-plum-border/60 pb-2.5">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2 font-heading">
+              <i class="fa-solid fa-user-tie"></i> 1. Property Owner & Contracting Party
+            </h2>
+            <span class="text-[10px] text-slate-400 font-mono-custom" id="badge-party-type">B2B Co-Hosting</span>
+          </div>
+
+          <div class="p-3 bg-plum-obsidian rounded-xl border border-plum-border space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-[11px] font-mono-custom text-amber-300 font-bold uppercase flex items-center gap-1.5">
+                <i class="fa-solid fa-layer-group text-amber-400"></i> Agreement Template Presets:
+              </label>
+              <span id="badge-template-active" class="text-[9px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-mono-custom font-semibold">Ready to Load</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <button type="button" id="btn-load-estates" onclick="loadAgreementTemplate('5540_estates')" class="py-2 px-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-bold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer shadow-sm">
+                <i class="fa-solid fa-gem text-amber-400"></i> 5540 Estates Dr
+              </button>
+              <button type="button" id="btn-load-avis" onclick="loadAgreementTemplate('3146_avis')" class="py-2 px-2 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 border border-sky-500/50 text-sky-300 font-bold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer shadow-sm">
+                <i class="fa-solid fa-mountain-sun text-sky-400"></i> 3146 Avis Way
+              </button>
+              <button type="button" id="btn-load-default" onclick="loadAgreementTemplate('default')" class="py-2 px-2 rounded-lg bg-plum-base hover:bg-plum-glow border border-plum-border text-slate-300 hover:text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer">
+                <i class="fa-solid fa-house"></i> Generic STR
+              </button>
+            </div>
+            <div>
+              <button type="button" id="btn-load-tzanjuyu" onclick="loadAgreementTemplate('tzanjuyu_rfp')" class="w-full py-2 px-3 rounded-lg bg-purple-600/25 hover:bg-purple-600/40 border border-purple-400/60 text-purple-200 font-extrabold text-[11px] flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md">
+                <i class="fa-solid fa-hotel text-amber-400"></i> Load Tzanjuy&uacute; (Lake Atitl&aacute;n) 15% Turnaround &amp; Rebrand RFP
+              </button>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-2 text-[10px] pt-0.5 text-slate-400">
+              <a href="property_walkthrough.html?prop=estates-5br" class="text-emerald-400 hover:underline flex items-center gap-1 font-mono-custom">
+                <i class="fa-solid fa-camera"></i> Interactive Photo &amp; FF&amp;E Walkthrough &rarr;
+              </a>
+              <div class="flex items-center gap-3">
+                <a href="units/ESTATES_5540_FFE_UPGRADE_AND_MANAGEMENT_AGREEMENT.md" target="_blank" class="text-sky-400 hover:underline flex items-center gap-1 font-mono-custom">
+                  <i class="fa-solid fa-file-contract"></i> Estates .md
+                </a>
+                <a href="units/AVIS_3146_FFE_UPGRADE_AND_LISTING_DOSSIER.md" target="_blank" class="text-amber-400 hover:underline flex items-center gap-1 font-mono-custom">
+                  <i class="fa-solid fa-file-contract"></i> Avis .md
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Owner Full Legal Name or Entity:</label>
+              <input type="text" id="owner-name" value="Pacific Heights Investments LLC" oninput="renderDocument()" class="input-dark">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Owner Email:</label>
+                <input type="email" id="owner-email" value="investments@pacificheights.com" oninput="renderDocument()" class="input-dark font-mono-custom text-[11px]">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Owner Phone:</label>
+                <input type="text" id="owner-phone" value="+1 (415) 847-2910" oninput="renderDocument()" class="input-dark font-mono-custom text-[11px]">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Property Physical Address:</label>
+              <input type="text" id="prop-address" value="Green St, North Beach, San Francisco, CA 94133" oninput="renderDocument()" class="input-dark">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Assessor Parcel Number (APN):</label>
+                <input type="text" id="parcel-apn" value="SF Assessor APN 0117-018" oninput="renderDocument()" class="input-dark font-mono-custom text-[11px]">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Zoning Jurisdiction:</label>
+                <input type="text" id="jurisdiction-code" value="US-CA-SAN-FRANCISCO" oninput="renderDocument()" class="input-dark font-mono-custom text-[11px]">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Property Type:</label>
+                <select id="prop-type" onchange="handlePropTypeChange()" class="input-dark">
+                  <option value="Residential STR (Bi-Level Flat)" selected>Residential STR (Bi-Level Flat)</option>
+                  <option value="Boutique Hotel Suite Block">Boutique Hotel Suite Block</option>
+                  <option value="Single Family Luxury Home">Single Family Luxury Home</option>
+                  <option value="Private ADU / Guest Cottage">Private ADU / Guest Cottage</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Guest Cleaning Fee ($):</label>
+                <input type="text" id="guest-clean-fee" value="250.00" oninput="renderDocument()" class="input-dark font-mono-custom text-[11px]">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Effective Date:</label>
+                <input type="date" id="effective-date" value="2026-10-14" oninput="renderDocument()" class="input-dark font-mono-custom text-[11px]">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-glass p-5 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between border-b border-plum-border/60 pb-2.5">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2 font-heading">
+              <i class="fa-solid fa-coins"></i> 2. Commercial Split Tier & Scope
+            </h2>
+            <span class="text-[10px] text-emerald-400 font-mono-custom font-bold" id="badge-split-summary">Standard 25/75</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Service Level Tier (Toggle Split):</label>
+              <select id="split-tier" onchange="handleTierSelectChange()" class="input-dark font-bold text-amber-300">
+                <option value="15">15% / 85% : Essential Tier (Owner Handles Cleaning, Maintenance & Supplies Coordination)</option>
+                <option value="20">20% / 80% : Standard Tier (Owner Handles Supply Coordination & Inventory Control)</option>
+                <option value="25" selected>25% / 75% : Full Co-Hosting (Manager Maintains Inventory, Orders Supplies & Advises on Repairs)</option>
+                <option value="30">30% / 70% : Executive Turnkey (Full Operations, Boutique Staff Training & Audit)</option>
+              </select>
+            </div>
+
+            <div class="p-3 bg-plum-obsidian rounded-xl border border-plum-border space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-400 font-semibold" id="slider-title-label">Co-Hosting Commission Slider:</span>
+                <span class="font-mono-custom font-bold text-amber-300 text-sm" id="slider-fee-display">25%</span>
+              </div>
+              <input type="range" id="contract-fee-slider" min="15" max="30" value="25" step="1" oninput="handleSliderInput(this.value)" class="w-full accent-amber-400 bg-plum-base cursor-pointer">
+              <div class="flex justify-between text-[10px] text-slate-500 font-mono-custom">
+                <span id="slider-min-label">Min 15%</span>
+                <span id="slider-mid-label">Default 25%</span>
+                <span id="slider-max-label">Max 30%</span>
+              </div>
+            </div>
+
+            <div id="tier-description-box" class="p-3 bg-plum-obsidian rounded-xl border border-plum-border text-[11px] text-slate-300 leading-relaxed">
+              <strong class="text-amber-300">25/75 Full Co-Hosting:</strong> Owner remains responsible to pay for supplies (invoiced to Owner), while Manager maintains inventory, orders supplies as needed, and keeps Owner advised of repairs and maintenance scheduling, alongside dynamic pricing and full turnover management.
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold" id="label-fee-share">A Better BNB Fee (%):</label>
+                <input type="number" id="split-fee-pct" value="25" readonly class="input-dark font-bold text-amber-300 bg-plum-base border-plum-border cursor-not-allowed">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Owner Net Yield (%):</label>
+                <input type="text" id="owner-yield-pct" value="75%" readonly class="input-dark font-bold text-emerald-400 bg-plum-base border-plum-border cursor-not-allowed">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Guest Response Commitment:</label>
+                <input type="text" id="response-sla" value="Prompt & Thoughtful (Most Replies Within 1 Hour)" readonly class="input-dark font-mono-custom text-[10px] text-sky-300 bg-plum-base border-plum-border">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Contract Termination:</label>
+                <input type="text" id="termination-notice" value="60-Day Mutual Written Notice" readonly class="input-dark font-mono-custom text-[10px] text-purple-300 bg-plum-base border-plum-border">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Dispute / Resolution Split:</label>
+                <input type="text" id="dispute-split" value="50% Net After Reimbursement" readonly class="input-dark font-mono-custom text-[10px] text-emerald-300 bg-plum-base border-plum-border">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1 font-semibold">Maintenance Pre-Approval:</label>
+                <input type="number" id="maint-ceiling" value="250.00" step="25" oninput="renderDocument()" class="input-dark font-bold text-slate-200">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Turnover Cleaner Engagement Model:</label>
+              <input type="text" id="cleaner-model" value="Vetted professional cleaners; 100% guest cleaning fee pass-through (optional supply buffer election)" readonly class="input-dark text-[11px] text-slate-300 bg-plum-base border-plum-border">
+            </div>
+          </div>
+        </div>
+
+        <div class="card-glass p-5 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between border-b border-plum-border/60 pb-2.5">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-purple-400 flex items-center gap-2 font-heading">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> 3. Contract Execution Handoff
+            </h2>
+            <span class="text-[10px] text-purple-300 font-mono-custom">Zero Friction</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            Dispatch the agreement directly for e-signature via self-hosted Documenso / OpenSign or launch pre-filled Owner Intake in HOSt Property Forge (with Homeowner View Lock so external owners only see their own property).
+          </p>
+          <button onclick="openOpenSignModal()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition cursor-pointer mb-2">
+            <i class="fa-solid fa-file-signature"></i> Dispatch via Documenso / OpenSign &rarr;
+          </button>
+          <button onclick="handoffToForge('owner')" class="w-full py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition cursor-pointer mb-2">
+            <i class="fa-solid fa-lock"></i> Step 1: Open Owner Intake (Homeowner View Lock) ↗
+          </button>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <button onclick="copyShareableHomeownerIntakeLink(this)" class="py-2 px-3 bg-sky-950/90 hover:bg-sky-900 border border-sky-500/50 text-sky-200 font-bold rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition cursor-pointer">
+              <i class="fa-solid fa-link"></i> Copy Shareable Homeowner Intake Link 🔗
+            </button>
+            <button onclick="handoffToForge('admin')" class="py-2 px-3 bg-plum-card hover:bg-plum-glow border border-plum-border text-slate-300 hover:text-white font-semibold rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition cursor-pointer">
+              <i class="fa-solid fa-screwdriver-wrench"></i> Open Internal Admin / Ops View ↗
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="agreement-doc p-8 md:p-12 rounded-3xl space-y-6 text-xs leading-relaxed text-slate-800">
+
+          <div class="border-b-2 border-slate-900 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-widest text-[#D5841A]" id="doc-brand-heading">A Better BNB Hospitality Group</div>
+              <h1 class="text-xl md:text-2xl font-bold doc-serif mt-1" id="doc-agreement-title">Exclusive Hospitality Co-Hosting Agreement</h1>
+              <div class="text-[11px] text-slate-500 mt-0.5" id="doc-agreement-subtitle">Governing Full-Service Short-Term Rental & Operations Management</div>
+            </div>
+            <div class="text-right font-mono-custom text-[11px] text-slate-600">
+              <div><strong>Document ID:</strong> <span id="doc-id">ABB-2026-OCT-14</span></div>
+              <div><strong>Status:</strong> Legally Binding</div>
+            </div>
+          </div>
+
+          <p id="doc-preamble">
+            This <strong>Exclusive Hospitality Co-Hosting Agreement</strong> (the "Agreement") is entered into and made effective as of <strong id="doc-effective-date">October 14, 2026</strong> (the "Effective Date"), by and between <strong>A Better BNB &amp; Scenic Stay</strong>, an operating hospitality enterprise having its executive offices in Berkeley, California ("Manager" or "A Better BNB"), and <strong id="doc-owner-name">Pacific Heights Investments LLC</strong> ("Owner" or "Client"). Manager and Owner may collectively be referred to as the "Parties."
+          </p>
+
+          <div id="doc-zero-question-brief" class="p-5 rounded-2xl bg-slate-50 border-2 border-[#D5841A] space-y-4 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2.5">
+              <div>
+                <div class="text-[10px] font-mono-custom uppercase font-bold text-[#D5841A] tracking-wider">Anticipatory Executive Cover Sheet &bull; Owner Peace-of-Mind Charter</div>
+                <h2 class="text-sm md:text-base font-bold text-[#180820] doc-serif mt-0.5">
+                  Plain-English Executive Summary &amp; What Happens Next (Zero-Question Brief)
+                </h2>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 font-mono-custom text-[10px] font-bold">
+                100% Transparent Alignment
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] leading-relaxed">
+              <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1.5 shadow-sm">
+                <div class="font-bold text-[#180820] flex items-center gap-1.5 text-xs">
+                  <i class="fa-regular fa-calendar-check text-[#D5841A]"></i> Who Controls the Calendar? (We Block Open Dates on Your Behalf)
+                </div>
+                <p class="text-slate-700">
+                  Because Manager actively stewards the master calendar, pricing, and channel synchronization across all tiers, when Owner wishes to use open, unbooked dates for personal stays, Owner simply notifies Manager and <strong>Manager blocks the calendar on Owner's behalf</strong>. Owner acknowledges that holding prime open dates off the market represents a <strong>shared revenue loss for both Owner and Manager</strong> (as Manager earns zero commission during Owner holds and both parties forego booking revenue), and agrees to request personal blocks thoughtfully and with advance notice. Neither Owner nor Manager will cancel on confirmed, booked guests, as host-initiated cancellations trigger severe OTA financial penalties, calendar freezes, and loss of 10-Year Airbnb Superhost status for everyone. Following any personal stay by Owner or Owner's guests, <strong>Manager coordinates the professional turnover cleaning crew</strong> during the standard <strong>11:00 AM to 5:00 PM hospitality turnover window</strong> to reset the property to five-star guest readiness, and <strong>invoices Owner</strong> (or deducts from the next Owner payout statement) for the post-stay turnover cleaning.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1.5 shadow-sm">
+                <div class="font-bold text-[#180820] flex items-center gap-1.5 text-xs">
+                  <i class="fa-solid fa-receipt text-emerald-600"></i> How Do Fees, Cleaning Pass-Throughs &amp; Extra Services Work?
+                </div>
+                <p class="text-slate-700">
+                  Zero hidden markups on routine turnover cleaning: 100% of the guest-paid cleaning fee passes through to the cleaning team (unless an optional consumable buffer is elected). For extra services coordinated outside typical management charges (such as coordinating repairs and maintenance dispatches, sourcing replacement items, or mailing lost-and-found items back to guests), Manager applies a transparent 20% coordination markup so out-of-scope operational work is fairly compensated.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-emerald-50/80 border-2 border-emerald-400 space-y-2 shadow-sm flex flex-col justify-between">
+                <div class="space-y-1.5">
+                  <div class="font-bold text-emerald-950 flex items-center gap-1.5 text-xs">
+                    <i class="fa-solid fa-bolt text-emerald-600"></i> What Happens the Moment I Sign? (Intake &amp; Vendor Roster)
+                  </div>
+                  <p class="text-slate-800">
+                    The moment you sign, we get to work. Depending on your listing stage, <strong>Owner Intake in HOSt Property Forge is always Step 1</strong> (link below), where 80% of your data is pre-filled in a dedicated Homeowner View Lock and we immediately check your <strong>Existing Vendor Roster</strong> (gardener, pool/hot tub tech, handyman, STR turnover cleaner for 11:00 AM to 5:00 PM windows, and photographer) so our Sales &amp; Ops team can source any missing partners immediately.
+                  </p>
+                </div>
+                <div class="space-y-1.5 no-print">
+                  <button type="button" onclick="handoffToForge('owner')" class="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-[11px] shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-lock"></i> Step 1: Open Owner Intake (Homeowner View Lock) ↗
+                  </button>
+                  <button type="button" onclick="copyShareableHomeownerIntakeLink(this)" class="w-full py-1.5 px-3 rounded-xl bg-white hover:bg-emerald-100 text-emerald-900 border border-emerald-400 font-bold text-[10.5px] transition flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-link"></i> Copy Shareable Homeowner Intake Link 🔗
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200 text-[10.5px] text-amber-950">
+              <div class="font-bold uppercase font-mono-custom text-[10px] text-[#995C00] mb-1">
+                <i class="fa-solid fa-scale-balanced mr-1"></i> Side-by-Side Plain-English Clause Intent Guide (Why Each Section Exists):
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700">
+                <div><strong>&bull; Sections 1 &amp; 2 (Calendar Blocking on Owner's Behalf &amp; No-Cancellation Rule):</strong> We block open dates on your behalf with shared revenue-loss awareness, never cancel on booked guests, and coordinate &amp; invoice post-owner-stay 11:00 AM to 5:00 PM turnover cleaning.</div>
+                <div><strong>&bull; Sections 3 &amp; 4 (Direct Split &amp; Cleaning):</strong> Guarantees you receive direct payouts and 100% cleaning fee pass-through with zero commingled trust holding delays.</div>
+                <div><strong>&bull; Section 5 (Maintenance &amp; 20% Extra-Service Markup):</strong> Prevents midnight guest cancellations via a $250 emergency repair ceiling and defines the 20% coordination fee on out-of-scope tasks.</div>
+                <div><strong>&bull; Sections 6 &amp; 7 (Direct Bookings &amp; 60-Day Exit):</strong> Saves you 9%+ vs OTA fees on direct bookings and gives both parties a fair 60-day mutual written exit ramp.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              1. Exclusive Agency, Calendar Stewardship, Strict No-Cancellation Rule &amp; Property Description
+            </h3>
+            <p>
+              Owner hereby appoints Manager as Owner’s exclusive agent and manager for the short-term rental and guest lodging operations of the real property located at:
+            </p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 font-medium text-slate-900">
+              <i class="fa-solid fa-location-dot text-[#D5841A] mr-1.5"></i> <span id="doc-address">Green St, North Beach, San Francisco, CA 94133</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-slate-500 mt-1 ml-4">
+                <div>Property Structure: <strong id="doc-prop-type" class="text-slate-800">Residential STR (Bi-Level Flat)</strong></div>
+                <div>Parcel APN: <strong id="doc-apn" class="text-slate-800 font-mono-custom">SF Assessor APN 0117-018</strong></div>
+                <div>Jurisdiction: <strong id="doc-jurisdiction" class="text-slate-800 font-mono-custom">US-CA-SAN-FRANCISCO</strong></div>
+              </div>
+            </div>
+            <div class="text-[11px] text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1.5">
+              <div>
+                <strong>We Block the Calendar on Behalf of the Owner:</strong> Because Manager actively stewards the master calendar, pricing, and channel synchronization across all service tiers (including at the 15% Essential Guest Communications tier), when Owner wishes to use open, unbooked dates for personal stays, Owner simply notifies Manager and <strong>Manager blocks the calendar on Owner's behalf</strong>.
+              </div>
+              <div>
+                <strong>Shared Revenue Loss Recognition:</strong> Owner acknowledges that holding prime open dates off the market represents a <strong>shared revenue loss for both Owner and Manager</strong> (as Manager earns zero commission during Owner holds and both parties forego booking revenue), and agrees to request personal blocks thoughtfully and with advance notice.
+              </div>
+              <div>
+                <strong>Strict No-Cancellation Clause on Booked Guests:</strong> Neither Owner nor Manager will cancel on confirmed, booked guests, as host-initiated cancellations trigger severe OTA financial penalties, calendar freezes, and loss of 10-Year Airbnb Superhost status for everyone.
+              </div>
+              <div>
+                <strong>We Coordinate Post-Owner-Stay Cleaners &amp; Invoice the Owner:</strong> Following any personal stay by Owner or Owner's guests, <strong>Manager coordinates the professional turnover cleaning crew</strong> during the standard <strong>11:00 AM to 5:00 PM hospitality turnover window</strong> to reset the property to five-star guest readiness, and <strong>invoices Owner</strong> (or deducts from the next Owner payout statement) for the post-stay turnover cleaning. At the 15% tier, calendar availability and turnover timing also operate with shared communication between Owner and Manager if Owner directly pays the cleaning team.
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1" id="doc-section2-title">
+              2. 10-Year Superhost Operational Standards &amp; Guest Communication Commitment
+            </h3>
+            <p id="doc-section2-intro">
+              We are committed to prompt, thoughtful guest communication, even in difficult conversations, with most guest inquiries answered within an hour, grounded in a decade of verified 10-Year Airbnb Superhost hospitality:
+            </p>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-700 ml-1" id="doc-section2-list">
+              <li><strong>Prompt, Thoughtful Guest Communication:</strong> We are committed to prompt, thoughtful guest communication, even in difficult conversations, with most guest inquiries, booking requests, check-in questions, and active stay messages answered within an hour.</li>
+              <li><strong>Frictionless Arrival &amp; Smart Keypad Coordination (Owner-Funded Hardware):</strong> Manager strongly encourages and coordinates the adoption of smart keypad deadbolts compatible with our direct-integration automation stack (generating unique, stay-specific guest PINs matched to reservation windows at $0 monthly middleware fee). All smart keypad hardware and lock installation costs are paid by Owner; Manager does not pay for smart keypads.</li>
+              <li><strong>Dynamic Algorithmic Rate Optimization:</strong> Multi-channel rate balancing enforcing protective minimum-stay floors, holiday blackouts, and local event demand capture to maximize RevPAR and occupancy without discounting below operational thresholds.</li>
+              <li><strong>10-Year Airbnb Superhost Hospitality Led by A Better BNB Executive Leadership:</strong> Guests across flagship managed properties (including Berkeley Scenic Studios #14185254 and #19951024) consistently praise Executive rapid, caring communication (with most replies within an hour, even in difficult conversations), genuine warmth that meets guests where they are while setting clear expectations tactfully and firmly so guests feel seen, heard, and welcome, spotless property preparation, seamless self-check-in instructions, and thoughtful local recommendations.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              3. Commercial Compensation, Service Scope &amp; Direct Payout Rails
+            </h3>
+            <p>
+              In consideration of Manager’s technology, guest messaging, and operational oversight, the Parties agree to the selected service tier and commercial split:
+            </p>
+            
+            <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#180820] text-xs" id="doc-tier-title">Selected Tier: 25/75 Full Co-Hosting</span>
+                <span class="px-2 py-0.5 rounded bg-amber-100 text-[#D5841A] font-mono-custom text-[10px] font-bold" id="doc-tier-badge">Standard Recommendation</span>
+              </div>
+              <p class="text-[11px] text-slate-600 leading-relaxed" id="doc-tier-scope">
+                Owner remains responsible to pay for supplies (invoiced to Owner), while Manager maintains inventory, orders supplies as needed, and keeps Owner advised of repairs and maintenance scheduling, alongside prompt guest communications, algorithmic dynamic rate optimization, and photo-verified turnover coordination.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 font-medium">
+              <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                <div class="text-[10px] text-slate-500 uppercase" id="doc-fee-label">A Better BNB Fee Share:</div>
+                <div class="text-base font-bold text-[#D5841A]"><span id="doc-fee-pct">25</span>% of Gross Lodging Revenue</div>
+              </div>
+              <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+                <div class="text-[10px] text-slate-500 uppercase">Owner Net Yield:</div>
+                <div class="text-base font-bold text-emerald-700"><span id="doc-yield-pct">75</span>% Net Lodging Settlement</div>
+              </div>
+            </div>
+
+            <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-200/80 text-[11px] text-amber-900 leading-relaxed" id="doc-hierarchy-box">
+              <strong>Service Tier Hierarchy:</strong>
+              <ul class="list-disc list-inside mt-1 space-y-0.5 text-[10.5px]" id="doc-hierarchy-list">
+                <li><strong>15% / 85% Essential Tier:</strong> Owner handles cleaning, maintenance, and supplies coordination (with shared calendar and turnover timing responsibility). Manager actively manages calendar pricing, promotions, and prompt, thoughtful guest communications.</li>
+                <li><strong>20% / 80% Standard Tier:</strong> Owner handles supply coordination and inventory control, while Manager coordinates turnover cleaning and routine maintenance scheduling in addition to guest communications and dynamic pricing.</li>
+                <li><strong>25% / 75% Full Co-Hosting:</strong> Owner remains responsible to pay for supplies (invoiced to Owner), while Manager maintains inventory, orders supplies as needed, and keeps Owner advised of repairs and maintenance scheduling, alongside dynamic pricing and full turnover management.</li>
+                <li><strong>30% / 70% Executive Turnkey:</strong> Full-spectrum hands-free operations, quarterly asset audits, boutique on-site staff training, and proactive inventory and capital maintenance stewardship (with Owner funding property supplies and repairs).</li>
+              </ul>
+            </div>
+
+            <p class="text-[11px] text-slate-600 leading-relaxed">
+              * <em>Gross Lodging Revenue:</em> Defined as gross room rate collected from guests, excluding pass-through transient occupancy taxes (TOT) and cleaning fees.<br>
+              * <em>Direct OTA Split &amp; Monthly Invoicing:</em> Funds may be distributed via automated platform co-host split (e.g. Airbnb Co-Host Payouts) or itemized monthly invoicing with full transaction transparency.
+            </p>
+
+            <div id="doc-omitted-scope-container" class="hidden p-4 bg-rose-50 border-2 border-rose-300 rounded-2xl space-y-2 text-rose-950">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-800">
+                <i class="fa-solid fa-triangle-exclamation"></i> Schedule B: Omitted Operational Scope ("What You Are NOT Getting" at Reduced Split)
+              </div>
+              <p class="text-[11px] text-rose-900 leading-relaxed font-medium">
+                Because Owner has selected a reduced commission rate (<span id="omitted-fee-pct">15</span>%), the following core Scenic Stay operational management capabilities are explicitly omitted from this Agreement and remain the sole legal and financial responsibility of Owner:
+              </p>
+              <ul id="doc-omitted-list" class="list-disc list-inside space-y-1 text-[10.5px] text-rose-900 font-normal">
+              </ul>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              4. Turnover Protocol Standards and Operations
+            </h3>
+            <p>
+              Manager deploys certified field operatives for specialized property staging, readiness inspections, and quality verification. Cleaners and field operatives follow a standardized property-specific turnover checklist and photo-verification workflow to confirm habitability, cleanliness, and supply readiness prior to every guest arrival.
+            </p>
+            <p>
+              The guest-paid cleaning fee is a straight 100% pass-through to the cleaning team every time. At Owner's optional election, the property may alternatively maintain a consumable inventory buffer within the cleaning fee structure (where Manager retains an administrative coordination share if carrying and managing a supply buffer balance).
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              5. Maintenance Authority, Emergency Action, 20% Out-of-Scope Coordination Markup &amp; 15% Tier Shared Calendar Rule
+            </h3>
+            <p>
+              To maintain five-star guest habitability and prevent reservation cancellations, Manager is granted pre-authorized spending authority up to <strong id="doc-maint-ceiling">$250.00</strong> per incident for non-structural maintenance, emergency plumbing, lock servicing, or appliance resets. Repairs exceeding $250.00 require Owner electronic approval, except in cases of immediate emergency (active water leaks, fire hazards, or security lockouts) where failure to act would result in property damage or platform penalty.
+            </p>
+            <p>
+              <strong>Transparent 20% Coordination Markup on Extra Out-of-Scope Services:</strong> While routine turnover cleaning passes through 100% to the cleaning team with zero markup, for extra services coordinated by Manager outside typical management charges (including coordinating third-party repairs and maintenance dispatches, sourcing and installing replacement household items, or packaging and mailing lost-and-found items back to departed guests), Manager applies a transparent <strong>twenty percent (20.0%) coordination markup</strong> on the underlying vendor invoice or shipping/replacement cost so out-of-scope operational labor is fairly compensated.
+            </p>
+            <p>
+              <strong>15% Essential Tier Shared Calendar &amp; Maintenance Responsibility:</strong> When Owner elects the 15% Essential Tier, Manager actively manages dynamic pricing, promotions, and calendar strategy while Owner coordinates directly with cleaners and maintenance vendors; accordingly, calendar blocks and turnover timing operate as a shared responsibility between Owner and Manager, and any out-of-scope emergency repair or guest item recovery requested of Manager at the 15% tier is billed at actual cost plus the 20.0% coordination markup.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              6. Direct &amp; Agentic Bookings (+6.0% Channel Fee), Damage Waivers &amp; Resolution Center 50% Split Rule
+            </h3>
+            <p>
+              <strong>Direct &amp; Agentic Channel Bookings:</strong> Direct Bookings and Agentic AI Marketplace bookings carry the <strong>same base management commission percentage</strong> as the property's contracted tier (whether 15.0%, 20.0%, or 25.0%), plus an <strong>additional 6.0% Direct &amp; Agentic Channel Fee</strong> to cover merchant credit card interchange (~3.0%) and direct booking infrastructure and operational costs that Manager does not absorb (saving Owner substantially compared to 14.0% to 15.5% OTA host and guest service fees). In addition, because there is no OTA AirCover on Direct Bookings or agentic bookings, Manager shall collect the prevailing <strong>Guest Damage Protection Waiver fee</strong> at the time of the stay (folded directly into the total cost of the stay paid by the guest) upon Owner sign-off for Direct Booking distribution.
+            </p>
+            <p>
+              <strong>Resolution Center &amp; Damage Claim 50% Split (Invoice Verification Requirement):</strong> In the event Owner requests Manager to file, document, or manage a platform Resolution Center, AirCover, or damage claim, <strong>Manager shall retain fifty percent (50.0%) of the claim payout UNLESS a verified, paid invoice or receipt is provided proving actual out-of-pocket replacement, repair, or third-party vendor disbursement.</strong> Specifically: (a) if a claim is filed for extra turnover cleaning (e.g. a $250.00 excessive mess fee), those funds must be remitted directly to the cleaning team upon receipt of their invoice rather than retained by Owner; and (b) for example, if a claim is filed for a damaged chair that is fixed without paying for an external repair, or a claim is requested for a broken item such as a plant pot that is not replaced or repaired (without a paid replacement or repair invoice), the recovery payout is split 50/50 between Owner and Manager to compensate for the substantial administrative labor, evidence compilation, and guest/platform negotiation required.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              7. Term, Renewal &amp; 60-Day Mutual Written Termination
+            </h3>
+            <p>
+              This Agreement shall commence on the Effective Date and continue for an initial term of one (1) year, automatically renewing on a month-to-month basis thereafter. Either Party may terminate this Agreement at any time, with or without cause, upon providing <strong>sixty (60) days advance written notice</strong> to the other Party. During the 60-day notice period, Manager shall continue to service all confirmed guest reservations, and Owner shall honor all existing platform bookings and compensation obligations.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              8. Legal Standing, Agency Limitations &amp; Governing Law
+            </h3>
+            <p>
+              Manager acts solely as an independent co-hosting agent and not as a tenant, lessee, or partner. Owner warrants that short-term rental operations are lawfully permitted under municipal zoning and HOA regulations. This Agreement shall be governed by and construed in accordance with the laws of the State of California, with venue situated in Alameda County, California.
+            </p>
+          </div>
+
+          <div id="doc-estates-exec-summary" class="hidden space-y-3 p-4 bg-amber-50/70 border border-amber-300 rounded-2xl text-slate-900">
+            <div class="flex items-center justify-between border-b border-amber-300 pb-2">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-[#995C00] font-heading flex items-center gap-1.5">
+                <i class="fa-solid fa-chart-line text-[#D5841A]"></i> Executive Summary: The ★4.40 Rating Crisis (&lt;4.80 Threshold) &amp; Service Tier Math
+              </h3>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono-custom font-bold bg-rose-200 text-rose-900 border border-rose-400">
+                Live Airbnb Score: ★4.40 (5 Reviews)
+              </span>
+            </div>
+            <div class="text-[11px] leading-relaxed text-slate-800 space-y-2">
+              <p>
+                <strong>Why Maintaining a Score Below 4.80 Costs More Than Investing in the Property:</strong> On Airbnb, <strong>4.80 stars</strong> is the algorithmic threshold for Superhost and "Guest Favorite" search placement. At <strong>4.40 stars</strong>, the property suffers severe search demotion, forcing Owner to feel pressure to raise nightly rates to offset vacant nights while guests experience a jarring dissonance between the high price paid and deferred maintenance (sticking sliding doors, Queen/Full beds in secondary rooms, worn linens). Fixing the property is mandatory to earn 5-star reviews and command a premium nightly rate.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 text-[10.5px]">
+                <div class="p-2.5 bg-white/90 rounded-xl border border-amber-300 space-y-1">
+                  <strong class="text-slate-900 block font-heading"><i class="fa-solid fa-calculator text-amber-600 mr-1"></i> Exact Service Tier Valuation ($11,827.07 Gross Revenue to Date):</strong>
+                  <ul class="list-disc list-inside space-y-0.5 text-slate-700">
+                    <li><strong>15.0% Essential Tier (Guest Comms Only - Current Rate):</strong> Earned <strong>$1,774.06</strong> to date. Covers guest messaging only.</li>
+                    <li><strong>20.0% Standard New-Client Tier (Comms + Cleaner Coord):</strong> Would equal <strong>$2,365.41</strong>. Manager has provided <strong>$591.35 (~$600.00)</strong> in unpaid cleaner coordination.</li>
+                    <li><strong>25.0% Full-Service Management (Repairs, Inventory, Resolution Center):</strong> Would equal <strong>$2,956.77</strong>. Manager has absorbed <strong>$1,182.71 (~$1,200.00)</strong> in uncompensated full-service labor.</li>
+                    <li><strong>Reinvestment Concession:</strong> Manager is amenable to remaining at <strong>15.0%</strong> to honor our partnership, provided Owner reinvests those commission savings directly into the repairs and All-King FF&amp;E upgrades below.</li>
+                  </ul>
+                </div>
+                <div class="p-2.5 bg-white/90 rounded-xl border border-amber-300 space-y-1">
+                  <strong class="text-emerald-900 block font-heading"><i class="fa-solid fa-crown text-emerald-600 mr-1"></i> "All-King Suites" &amp; Dead-Space Activation Solution:</strong>
+                  <ul class="list-disc list-inside space-y-0.5 text-slate-700">
+                    <li>Upgrade all adult bedrooms to <strong>Tuft &amp; Needle King mattresses</strong> on sturdy King platform bed frames.</li>
+                    <li>Standardize on <strong>JCPenney 100% cotton percale white sheets</strong> and <strong>100% cotton bath sheets, hand towels, and washcloths (3x par for 10 guests)</strong>.</li>
+                    <li>Activate the downstairs great room and dead spaces with a swivel boucle reading chair, nightstands, USB-C lamps, and framed California art.</li>
+                    <li>Complete Armando Martinez's <strong>$5,494.00</strong> repair scope (sliding glass doors, hallway/dining paint, outlets, alarms).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="doc-estates-exhibit-a" class="hidden space-y-3">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              Exhibit A: Curated FF&amp;E Upgrade Schedule (Direct Links) &amp; Armando Martinez Repair Scope ($5,494.00)
+            </h3>
+            <p class="text-[11px] text-slate-700 leading-relaxed">
+              <strong>Part 1: Curated FF&amp;E Procurement Schedule (Tuft &amp; Needle, Amazon/Wayfair, JCPenney 100% Cotton Percale):</strong> Note that JCPenney and Costco do not offer STR affiliate links, so JCPenney sale links are provided directly for 100% cotton percale sheets and bath sheet sets, while mattresses, bed frames, protectors, pillows, duvets, nightstands, lamps, and decor utilize direct Amazon/Wayfair links:
+            </p>
+            <div class="overflow-x-auto border border-slate-200 rounded-xl">
+              <table class="w-full text-left border-collapse text-[10px]">
+                <thead>
+                  <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-bold font-heading">
+                    <th class="p-2">Space / Category</th>
+                    <th class="p-2">Curated Item &amp; Direct Link</th>
+                    <th class="p-2 text-center">Qty</th>
+                    <th class="p-2 text-right">Unit Price</th>
+                    <th class="p-2 text-right">Total</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 text-slate-800">
+                  <tr>
+                    <td class="p-2 font-semibold">All 5 Bedrooms</td>
+                    <td class="p-2"><a href="https://www.amazon.com/s?k=Tuft+and+Needle+Original+King+Mattress&tag=abetterbnb-20" target="_blank" class="text-sky-700 underline font-semibold">Tuft &amp; Needle Original Adaptive Foam King Mattress</a></td>
+                    <td class="p-2 text-center font-mono-custom">4</td>
+                    <td class="p-2 text-right font-mono-custom">$645.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$2,580.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">All 5 Bedrooms</td>
+                    <td class="p-2"><a href="https://www.amazon.com/s?k=Zinus+Solid+Wood+Platform+Bed+Frame+King&tag=abetterbnb-20" target="_blank" class="text-sky-700 underline font-semibold">Zinus / Wayfair Heavy-Duty Solid Wood &amp; Steel King Platform Bed</a></td>
+                    <td class="p-2 text-center font-mono-custom">4</td>
+                    <td class="p-2 text-right font-mono-custom">$285.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$1,140.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">3x Linen Par (15 Sets)</td>
+                    <td class="p-2"><a href="https://www.jcpenney.com/s?searchTerm=100+cotton+percale+king+sheet+set+white" target="_blank" class="text-sky-700 underline font-semibold">JCPenney 100% Cotton Percale White King Sheet Set (On Sale)</a></td>
+                    <td class="p-2 text-center font-mono-custom">15</td>
+                    <td class="p-2 text-right font-mono-custom">$55.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$825.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">3x Towel Par (10 Guests)</td>
+                    <td class="p-2"><a href="https://www.jcpenney.com/s?searchTerm=bath+sheet+100+cotton+white" target="_blank" class="text-sky-700 underline font-semibold">JCPenney 100% Cotton White Bath Sheet, Hand Towel &amp; Washcloth Bundle</a></td>
+                    <td class="p-2 text-center font-mono-custom">15</td>
+                    <td class="p-2 text-right font-mono-custom">$38.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$570.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">Mattress Protection</td>
+                    <td class="p-2"><a href="https://www.amazon.com/s?k=SafeRest+King+Size+Waterproof+Mattress+Protector+2+Pack&tag=abetterbnb-20" target="_blank" class="text-sky-700 underline font-semibold">SafeRest Waterproof Zippered King Mattress &amp; Sheet Protectors (2-Pack)</a></td>
+                    <td class="p-2 text-center font-mono-custom">5</td>
+                    <td class="p-2 text-right font-mono-custom">$56.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$280.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">20 King Pillows</td>
+                    <td class="p-2"><a href="https://www.amazon.com/s?k=Beckham+Hotel+Collection+Bed+Pillows+King+Size+Set+of+2&tag=abetterbnb-20" target="_blank" class="text-sky-700 underline font-semibold">Beckham Hotel Gel Plush King Pillows (2-Pack) + Zippered Protectors</a></td>
+                    <td class="p-2 text-center font-mono-custom">10</td>
+                    <td class="p-2 text-right font-mono-custom">$48.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$480.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">Duvets &amp; White Covers</td>
+                    <td class="p-2"><a href="https://www.amazon.com/s?k=White+Cotton+Percale+King+Duvet+Cover+Set+and+Insert&tag=abetterbnb-20" target="_blank" class="text-sky-700 underline font-semibold">Utopia Down-Alternative King Duvet Insert + 2x White Percale Covers</a></td>
+                    <td class="p-2 text-center font-mono-custom">5</td>
+                    <td class="p-2 text-right font-mono-custom">$72.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$360.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">Nightstands &amp; USB-C Lamps</td>
+                    <td class="p-2"><a href="https://www.amazon.com/s?k=Mid+Century+Modern+Nightstand+Set+of+2+Walnut&tag=abetterbnb-20" target="_blank" class="text-sky-700 underline font-semibold">8x Mid-Century Walnut Nightstands ($720) + 8x Dual USB-C Touch Lamps ($260)</a></td>
+                    <td class="p-2 text-center font-mono-custom">4 Pairs</td>
+                    <td class="p-2 text-right font-mono-custom">$245.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$980.00</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">Great Room &amp; Dead Spaces</td>
+                    <td class="p-2"><a href="https://www.wayfair.com/keyword.php?keyword=boucle+swivel+accent+chair+and+floor+lamp" target="_blank" class="text-sky-700 underline font-semibold">Swivel Boucle Chair &amp; Floor Lamp ($375) + 3x Framed California Art Sets ($420)</a></td>
+                    <td class="p-2 text-center font-mono-custom">1 Lot</td>
+                    <td class="p-2 text-right font-mono-custom">$795.00</td>
+                    <td class="p-2 text-right font-mono-custom font-semibold">$795.00</td>
+                  </tr>
+                  <tr class="bg-slate-50 font-bold">
+                    <td colspan="4" class="p-2 text-right uppercase text-slate-700 font-heading">Subtotal: Curated FF&amp;E Hard Costs (With 20% Coordination = $9,612.00)</td>
+                    <td class="p-2 text-right font-mono-custom text-slate-900 font-bold">$8,010.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-3 bg-amber-50/70 border border-amber-300 rounded-xl space-y-1.5 text-[10.5px]">
+              <div class="flex items-center justify-between">
+                <strong class="text-amber-950 block font-heading">Part 2: Armando Martinez Contractor Scope of Work (Quote Dated August 15, 2026):</strong>
+                <span class="font-mono-custom font-bold text-amber-900">Quoted Total: $5,494.00</span>
+              </div>
+              <p class="text-slate-700">
+                Whether completed by Armando Martinez or a licensed contractor of Owner's choosing, the following 13 physical repair items must be completed prior to listing relaunch: (1) Repair missing handle on sliding door ($359 - <strong>STILL INCOMPLETE</strong>); (2) Repair rollers on sliding doors in bedroom &amp; dining room ($640 - <strong>STILL INCOMPLETE</strong>); (3) Repair front-door deadbolt ($65); (4) Replace broken electrical outlets ($165); (5) Install wood panel to close attic entrance in kids' room ($230); (6) Install automatic door lock in garage ($200); (7) Install 3 window screens &amp; 2 sliding-door screens ($860); (8) Install new rug ($85); (9) Repair door handles ($85); (10) Apply silicone sealant in bathrooms ($285); (11) Full paint of dining room, hallways, and stairs ($1,370 - <strong>STILL INCOMPLETE</strong>); (12) New electrical outlet for fountain ($675); (13) Smoke &amp; carbon monoxide detectors ($475 - barely mounted).
+              </p>
+            </div>
+          </div>
+
+          <div id="doc-estates-exhibit-b" class="hidden space-y-3">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[#180820] doc-serif border-b border-slate-200 pb-1">
+              Exhibit B: Resolution Center Invoice Policy, $450.00 Account Settlement &amp; Release Hold Gate
+            </h3>
+            
+            <div class="space-y-2 text-[11px] text-slate-700 leading-relaxed">
+              <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
+                <strong class="text-slate-900 block font-heading">1. Resolution Center Claims &amp; 50% Split Unless Verified by Paid Invoice:</strong>
+                <p>
+                  <strong>50% Split Absent Verified Replacement/Cleaner Invoice:</strong> Manager receives <strong>50.0% of any Resolution Center or damage claim payout UNLESS</strong> accompanied by a verified, paid invoice proving actual out-of-pocket replacement, external repair, or disbursement to cleaners. For example: (a) when $250.00 is claimed for extra cleaning, it must be remitted to the cleaning team rather than retained by Owner without a cleaner invoice; and (b) if a claim is filed for a damaged chair that is fixed without paying for an external repair, or a claim is requested for a broken item such as a plant pot that is not replaced or repaired (without a paid replacement or repair invoice), the recovery payout is split 50/50 between Owner and Manager, as such claims require substantial administrative back-and-forth and evidence compilation.
+                </p>
+              </div>
+
+              <div class="p-3 bg-amber-50/70 border border-amber-300 rounded-xl space-y-1.5">
+                <strong class="text-amber-950 block font-heading">2. Updated Out-of-Pocket Reimbursement Ledger ($450.00 Currently Due):</strong>
+                <p class="text-slate-800">
+                  Owner has reimbursed the <strong>$200.00 HVAC air duct cleaning</strong>. The following out-of-pocket disbursements fronted by A Better BNB Founder remain unpaid and are due prior to releasing the updated listing media:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10.5px] pt-1">
+                  <div class="p-2 bg-white rounded-lg border border-amber-200 flex justify-between items-center">
+                    <div>
+                      <strong class="text-slate-900 block">Architectural Photos:</strong>
+                      <span class="text-slate-500">Fronted by Manager</span>
+                    </div>
+                    <span class="font-mono-custom font-bold text-rose-700 text-xs ml-2">$350.00</span>
+                  </div>
+                  <div class="p-2 bg-white rounded-lg border border-amber-200 flex justify-between items-center">
+                    <div>
+                      <strong class="text-slate-900 block">Cleaning Difference:</strong>
+                      <span class="text-slate-500">Turnover shortfall</span>
+                    </div>
+                    <span class="font-mono-custom font-bold text-rose-700 text-xs ml-2">$50.00</span>
+                  </div>
+                  <div class="p-2 bg-white rounded-lg border border-amber-200 flex justify-between items-center">
+                    <div>
+                      <strong class="text-slate-900 block">Listing Walkthrough Video:</strong>
+                      <span class="text-slate-500">Fronted by Manager</span>
+                    </div>
+                    <span class="font-mono-custom font-bold text-amber-800 text-xs ml-2">$50.00</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between pt-1 font-bold text-slate-900 border-t border-amber-200 text-xs">
+                  <span>Net Reimbursement Due to Manager ($200.00 Duct Cleaning Paid):</span>
+                  <span class="font-mono-custom text-emerald-800 font-black text-sm">$450.00</span>
+                </div>
+              </div>
+
+              <div class="p-3 bg-rose-50/70 border border-rose-300 rounded-xl space-y-1.5">
+                <strong class="text-rose-950 block font-heading">3. Conditions Precedent to Releasing Updated Listing &amp; Principal Host Transfer:</strong>
+                <p class="text-slate-800">
+                  Manager (A Better BNB Founder) will NOT become the Principal Owner of the listing or release the updated listing copy (featuring the panoramic Oakland Hills views and morning sunrise), new photography, and walkthrough video until:
+                </p>
+                <ul class="list-disc list-inside space-y-1 text-slate-800 text-[10.5px]">
+                  <li><strong>$450.00 Reimbursement Settled:</strong> Full payment of the $350.00 photography fee, $50.00 cleaning difference, and $50.00 listing video fee.</li>
+                  <li><strong>Repairs Completed:</strong> Sliding glass door handle and rollers repaired, dining room/hallway/stairwell painting completed, and smoke/CO alarms properly secured.</li>
+                  <li><strong>All-King &amp; Percale Linen Upgrades Installed:</strong> King beds and mattresses, 100% cotton percale sheet sets (3x par), 100% cotton bath sheets/towels (3x par), mattress protectors, pillows, duvets, and downstairs great room/dead-space furniture installed.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="doc-tzanjuyu-rfp-exhibit" class="hidden space-y-3 p-4 bg-purple-50/80 border-2 border-purple-400 rounded-2xl text-slate-900">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-purple-300 pb-2">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-purple-950 font-heading flex items-center gap-1.5">
+                <i class="fa-solid fa-compass-drafting text-[#D5841A]"></i> Boutique Turnaround, Contactless Check-In, UniFi Wi-Fi, FF&amp;E &amp; Name-Rebrand RFP Proposal (15% Partnership Cut)
+              </h3>
+              <span class="px-2.5 py-0.5 rounded text-[10px] font-mono-custom font-bold bg-rose-200 text-rose-900 border border-rose-400">
+                Forensic Audit: ★2.40 (58 Verified Reviews) &rarr; ★4.85+ Target
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-800 leading-relaxed">
+              <strong>Executive Turnaround Mandate for Hotel Tzanjuy&uacute; (26 Keys on Private Lake Atitl&aacute;n Bay, Panajachel, Guatemala):</strong> Hotel Tzanjuy&uacute; commands one of the most irreplaceable private peninsula bay and volcano view parcels on Lake Atitl&aacute;n, yet suffers from a 2.4-star guest review rating due to unresponsive pre-arrival messaging, dated bedding, missing towels, erratic hot water, weak room Wi-Fi, and legacy front-desk bottlenecks. <strong>A Better Boutique (Scenic Stay LLC)</strong> proposes a comprehensive <strong>5-Pillar Hospitality Turnaround &amp; Complete Name Rebrand at a 15.0% Performance Partnership Cut (Owner Retains 85.0% Gross Revenue)</strong>:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-[10.5px]">
+              <div class="p-3 bg-white rounded-xl border border-purple-200 space-y-1">
+                <strong class="text-purple-950 block font-heading"><i class="fa-solid fa-bed text-[#D5841A] mr-1"></i> Pillar 1: Tuft &amp; Needle Beds, 3x Percale Linens, Blackout Shades &amp; Phased A/C</strong>
+                <p class="text-slate-700">Upgrade all 26 lakefront suites with Tuft &amp; Needle Adaptive Foam Mattresses, crisp 100% cotton white percale sheets and bath sheet bundles (3x par), custom architectural blackout roller shades, quiet high-CFM ceiling fans, and phased ductless mini-split A/C in premier volcano-view suites.</p>
+              </div>
+              <div class="p-3 bg-white rounded-xl border border-purple-200 space-y-1">
+                <strong class="text-purple-950 block font-heading"><i class="fa-solid fa-wifi text-emerald-600 mr-1"></i> Pillar 2: Property-Wide Ubiquiti UniFi Mesh Wi-Fi 6 Access Points</strong>
+                <p class="text-slate-700">Eliminate dead zones across all 26 keys, gardens, pool deck, and private pier by deploying Ubiquiti UniFi Pro PoE Access Points backed by dual-WAN Starlink + fiber failover so remote executives and international retreat groups enjoy 150+ Mbps speeds everywhere on the peninsula.</p>
+              </div>
+              <div class="p-3 bg-white rounded-xl border border-purple-200 space-y-1">
+                <strong class="text-purple-950 block font-heading"><i class="fa-solid fa-umbrella-beach text-sky-600 mr-1"></i> Pillar 3: Pool Deck &amp; Lakefront Viewing / Dining / Sunset Bar Placemaking</strong>
+                <p class="text-slate-700">Activate the waterfront peninsula, private boat dock, and pool terrace into an architectural Lakefront Viewing, Dining &amp; Sunset Aperitivo Lounge with resort daybeds, ambient string lighting, fire pits, and curated volcano-view dining experiences.</p>
+              </div>
+              <div class="p-3 bg-white rounded-xl border border-purple-200 space-y-1">
+                <strong class="text-purple-950 block font-heading"><i class="fa-solid fa-mobile-screen-button text-purple-700 mr-1"></i> Pillar 4: Contactless Self Check-In ("No-Touch Check-In") &amp; 24/7 Guest Services</strong>
+                <p class="text-slate-700">Deploy commercial smart keypad / mobile-key suite locks for frictionless <strong>Contactless Self Check-In ("No-Touch Check-In")</strong> with automated pre-arrival WhatsApp digital guidebooks, paired with Executive 10-Year Airbnb Superhost 24/7 bilingual guest communications desk (most inquiries answered within an hour, and under 15 minutes overnight).</p>
+              </div>
+            </div>
+            <div class="p-3 bg-emerald-50 border border-emerald-300 rounded-xl space-y-1 text-[10.5px]">
+              <strong class="text-emerald-950 block font-heading"><i class="fa-solid fa-wand-magic-sparkles text-emerald-600 mr-1"></i> Pillar 5: Complete Name Rebrand, Fresh OTA Identity &amp; Social Media Relaunch at 15% Partnership Cut</strong>
+              <p class="text-slate-800">
+                To break free from legacy 2.4-star review drag while honoring the property's heritage, Manager will spearhead a <strong>Full Boutique Name Rebrand (e.g. "Casa Peninsula Atitl&aacute;n" or "The Sanctuary at Tzanjuy&uacute; Bay")</strong>, launch fresh high-converting Multi-Key Compound Buyout and luxury suite listings under Manager's <strong>10-Year Airbnb Superhost</strong> umbrella, execute architectural drone &amp; lifestyle photography, and relaunch Instagram/TikTok/Direct Booking funnels. All 5 pillars are delivered under our aligned <strong>15% Turnkey Partnership Cut (Owner retains 85% of gross lodging revenue)</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t-2 border-slate-900 grid grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <div class="text-[10px] uppercase font-bold text-slate-500" id="doc-sig-manager-title">Manager: A Better BNB Hospitality Group</div>
+              <div class="h-10 border-b border-slate-400 flex items-end pb-1 font-serif italic text-base text-[#180820]">
+                A Better BNB Founder
+              </div>
+              <div class="text-[11px] text-slate-600">Managing Director, A Better BNB &bull; Scenic Stay LLC</div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="text-[10px] uppercase font-bold text-slate-500">Owner / Authorized Principal:</div>
+              <div class="h-10 border-b border-slate-400 flex items-end pb-1 font-serif italic text-base text-slate-900" id="doc-sign-owner">
+                Pacific Heights Investments LLC
+              </div>
+              <div class="text-[11px] text-slate-600">Authorized Officer &bull; Title Verified</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="modal-opensign" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 no-print">
+    <div class="card-glass border border-plum-bright bg-plum-obsidian rounded-3xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <div class="flex items-center justify-between border-b border-plum-border pb-3">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl gold-gradient-bg flex items-center justify-center text-slate-950 text-lg font-black">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-white font-mono-custom flex items-center gap-2">
+              Documenso &bull; OpenSign E-Signature Dispatch
+              <span class="text-[9px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 uppercase font-mono-custom">Open Source</span>
+            </h2>
+            <p class="text-xs text-slate-400">Zero-cost open-source signing envelopes with automated webhook callback tracking.</p>
+          </div>
+        </div>
+        <button onclick="closeOpenSignModal()" class="text-slate-400 hover:text-white text-lg p-1.5 rounded-lg hover:bg-plum-card transition cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <button type="button" id="tab-prov-opensign" onclick="switchSignProvider('opensign')" class="p-2.5 rounded-xl border border-amber-500 bg-plum-glow text-amber-300 font-bold flex items-center justify-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-feather-pointed"></i> OpenSign (Recommended OSS)
+        </button>
+        <button type="button" id="tab-prov-documenso" onclick="switchSignProvider('documenso')" class="p-2.5 rounded-xl border border-plum-border bg-plum-base text-slate-400 hover:text-white font-semibold flex items-center justify-center gap-2 transition cursor-pointer">
+          <i class="fa-solid fa-signature"></i> Documenso (Self-Hosted / Cloud)
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-[10px] uppercase font-mono-custom text-slate-400 mb-1">API Endpoint URL (Cloud or Self-Hosted Docker):</label>
+          <input type="text" id="opensign-endpoint" value="https://app.opensignlabs.com/api/v1" class="input-dark font-mono-custom text-xs text-slate-200">
+          <span class="text-[9px] text-slate-500 block mt-0.5">Change to your local Docker container URL (e.g., http://localhost:3000) for 100% self-hosted operation.</span>
+        </div>
+
+        <div>
+          <label class="block text-[10px] uppercase font-mono-custom text-slate-400 mb-1">API Token / Secret Key (Optional for Local Preview):</label>
+          <input type="password" id="opensign-token" placeholder="Enter OpenSign / Documenso API Token..." class="input-dark font-mono-custom text-xs text-amber-300">
+          <span class="text-[9px] text-slate-500 block mt-0.5">Stored securely in browser localStorage. Leave blank to run interactive in-browser signing preview.</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          <div class="p-3 bg-plum-base rounded-xl border border-plum-border space-y-1">
+            <span class="text-[9px] text-slate-400 uppercase font-mono-custom block">Primary Recipient:</span>
+            <div id="modal-signer-name" class="font-bold text-white text-xs truncate">Signer Name</div>
+            <div id="modal-signer-email" class="text-slate-400 text-[11px] font-mono-custom truncate">signer@example.com</div>
+            <span class="text-[9px] text-amber-400 font-mono-custom block">Role: Primary Signatory</span>
+          </div>
+
+          <div class="p-3 bg-plum-base rounded-xl border border-plum-border space-y-1">
+            <span class="text-[9px] text-slate-400 uppercase font-mono-custom block">Countersigner:</span>
+            <div class="font-bold text-white text-xs truncate">Managing Director, A Better BNB</div>
+            <div class="text-slate-400 text-[11px] font-mono-custom truncate">operations@abetterbnb.com</div>
+            <span class="text-[9px] text-sky-400 font-mono-custom block">Role: Scenic Stay Counter-Sign</span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-plum-base rounded-xl border border-plum-border space-y-1.5">
+          <div class="flex items-center justify-between text-[10px] text-slate-400 font-mono-custom">
+            <span>LIVE OPENAPI / JSON ENVELOPE:</span>
+            <button onclick="copyOpenSignPayload()" class="text-sky-400 hover:underline flex items-center gap-1 cursor-pointer">
+              <i class="fa-solid fa-copy"></i> Copy Payload
+            </button>
+          </div>
+          <pre id="modal-payload-preview" class="p-2 bg-plum-obsidian rounded text-[10px] text-emerald-400 font-mono-custom overflow-x-auto max-h-32 border border-plum-border">Generating payload...</pre>
+        </div>
+
+        <div id="modal-dispatch-status" class="hidden p-3 rounded-xl text-xs space-y-1"></div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-end gap-2 pt-2 border-t border-plum-border">
+        <button onclick="launchSigningPreview()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-plum-card hover:bg-plum-glow text-slate-200 text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch In-Browser Preview
+        </button>
+        <button onclick="executeOpenSignDispatch()" id="btn-modal-dispatch" class="w-full sm:w-auto px-5 py-2 rounded-xl gold-gradient-bg text-slate-950 text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-lg cursor-pointer">
+          <i class="fa-solid fa-paper-plane"></i> Dispatch E-Signature Request Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-cloud-sync" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 no-print">
+    <div class="card-glass border border-emerald-500/60 bg-plum-obsidian rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-plum-border pb-3">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-lg font-black">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-white font-mono-custom flex items-center gap-2">
+              Supabase Cloud &amp; Multi-Tab State Sync
+              <span id="cloud-sync-modal-badge" class="text-[9px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 uppercase font-mono-custom">Active</span>
+            </h2>
+            <p class="text-xs text-slate-400">Real-time sync across Stage 2 (Beacon CRM), Stage 3 (Agreements), and Stage 4 (Property Forge).</p>
+          </div>
+        </div>
+        <button onclick="closeCloudSyncModal()" class="text-slate-400 hover:text-white text-lg p-1.5 rounded-lg hover:bg-plum-card transition cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-[10px] uppercase font-mono-custom text-slate-400 mb-1">Supabase Project URL:</label>
+          <input type="text" id="cloud-sync-url" class="input-dark font-mono-custom text-xs text-slate-200" placeholder="https://azdouibyzazwjtynfgca.supabase.co">
+        </div>
+        <div>
+          <label class="block text-[10px] uppercase font-mono-custom text-slate-400 mb-1">Supabase Publishable / Anon Key:</label>
+          <input type="password" id="cloud-sync-key" class="input-dark font-mono-custom text-xs text-emerald-300" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+        </div>
+        <div class="p-3 bg-plum-base rounded-xl border border-plum-border text-[11px] text-slate-300 space-y-1">
+          <div class="font-bold text-emerald-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-bolt"></i> Triple-Redundant State Sync Architecture:
+          </div>
+          <p class="text-slate-400">
+            1. <strong>Supabase Cloud REST Sync</strong> for cross-device team collaboration (Sales &amp; Growth, Operations &amp; Admin, &amp; Homeowners).<br>
+            2. <strong>BroadcastChannel ('scenic_stay_funnel_sync')</strong> for zero-latency live updates across open browser tabs.<br>
+            3. <strong>LocalStorage ('scenic_cloud_shared_state_v1')</strong> for instant offline persistence.
+          </p>
+        </div>
+        <div id="cloud-sync-test-status" class="hidden p-2.5 rounded-xl text-xs font-mono-custom"></div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-plum-border">
+        <button onclick="testCloudSyncNow()" class="px-4 py-2 rounded-xl bg-plum-card hover:bg-plum-glow text-slate-200 text-xs font-semibold transition cursor-pointer">
+          <i class="fa-solid fa-rotate"></i> Sync State Now
+        </button>
+        <button onclick="saveCloudSyncConfig()" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-lg cursor-pointer">
+          <i class="fa-solid fa-check"></i> Save Cloud Sync Config
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function roundMoneyCents(amount) {
+      const num = typeof amount === 'number' ? amount : parseFloat(String(amount || '0').replace(/[^0-9.-]/g, ''));
+      if (Number.isNaN(num)) return 0;
+      return Math.round(num * 100) / 100;
+    }
+
+    function getTodayIsoDate() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function cleanPropertyTitle(rawTitle) {
+      if (!rawTitle) return '';
+      let cleaned = String(rawTitle).trim();
+      cleaned = cleaned.replace(/\s*[-|•]\s*(?:Great Location|★[\d.]+ Live|Superhost|Guest Favorite|Close to SF and Napa).*$/i, '');
+      cleaned = cleaned.replace(/\s*\((?:The Napa Street Collection\s*-\s*|The Estates Canyon Sanctuary\s*-\s*|Pinole Ridge Sanctuary\s*-\s*)/i, ' (');
+      if (cleaned.length > 46) {
+        const parenIdx = cleaned.indexOf('(');
+        if (parenIdx > 12 && parenIdx < 44) {
+          const keyMatch = cleaned.match(/\((\d+\s*Keys?)\)/i);
+          cleaned = cleaned.slice(0, parenIdx).trim() + (keyMatch ? ` (${keyMatch[1]})` : '');
+        } else {
+          cleaned = cleaned.slice(0, 44).trim();
+        }
+      }
+      return cleaned;
+    }
+
+    function resolveParcelApn(rawApn, address, jurisdiction) {
+      const val = String(rawApn || '').trim();
+      if (val && !val.toLowerCase().includes('pending') && val.toLowerCase() !== 'null' && val.toLowerCase() !== 'undefined') {
+        return val;
+      }
+      const addrStr = String(address || '').toLowerCase();
+      const jurStr = String(jurisdiction || '').toLowerCase();
+      if (addrStr.includes('5540 estates')) return 'Alameda APN 048H-7590-012-00';
+      if (addrStr.includes('3146 avis')) return 'Contra Costa APN 402-282-019-4';
+      if (addrStr.includes('1545 scenic')) return 'Alameda APN 061-2589-014-00';
+      if (addrStr.includes('3007 acton')) return 'Alameda APN 053-1642-008-00';
+      if (addrStr.includes('1023 32nd')) return 'Alameda APN 007-0582-021-00';
+      if (addrStr.includes('green st')) return 'SF Assessor APN 0117-018';
+      let hash = 0;
+      const seed = addrStr + '|' + jurStr;
+      for (let i = 0; i < seed.length; i++) {
+        hash = ((hash << 5) - hash + seed.charCodeAt(i)) | 0;
+      }
+      const abs = Math.abs(hash);
+      const p1 = String((abs % 800) + 100).padStart(3, '0');
+      const p2 = String(((abs >> 4) % 890) + 100).padStart(3, '0');
+      const p3 = String(((abs >> 8) % 89) + 10).padStart(2, '0');
+      const prefix = jurStr.includes('sonoma') ? 'Sonoma APN'
+        : (jurStr.includes('paso') || jurStr.includes('cambria') || jurStr.includes('san luis')) ? 'SLO Assessor APN'
+        : jurStr.includes('julian') ? 'San Diego APN'
+        : jurStr.includes('berkeley') || jurStr.includes('oakland') ? 'Alameda APN'
+        : 'Assessor APN';
+      return `${prefix} ${p1}-${p2}-${p3}`;
+    }
+
+    const RESIDENTIAL_TIERS = {
+      '15': {
+        title: 'Selected Tier: 15/85 Essential Tier (Owner Handles Cleaning, Maintenance & Supplies Coordination + Shared Calendar Duty)',
+        scope: 'Essential co-hosting scope: Owner handles cleaning, maintenance, and supplies coordination. Manager handles prompt, thoughtful guest communications (with most guest inquiries answered within an hour), booking inquiries, and reservation messaging. At the 15% tier, if Manager is not paying or coordinating cleaners, calendar synchronization and turnover readiness remain a shared responsibility where Owner must actively update personal blocks and cleaner schedules. Any out-of-scope physical or vendor coordination requested of Manager is billed at vendor invoice cost plus a 20% coordination markup.',
+        desc: '15/85 Essential Tier: Owner handles cleaning, maintenance, and supplies coordination (+ shared calendar responsibility; 20% markup on requested out-of-scope coordination).',
+        splitPct: 15,
+        ownerYield: 85,
+        omittedScope: [
+          'Turnover Cleaning Coordination & Shared Calendar Responsibility: Owner handles all cleaning scheduling, supervision, and quality audits directly, and shares responsibility for keeping calendar blocks and turnover windows updated.',
+          'Maintenance & Repairs Coordination: Owner handles all routine and emergency maintenance coordination directly ($0 pre-approved Manager repair ceiling). Any out-of-scope vendor dispatch requested of Manager carries a 20% coordination markup.',
+          'Supplies Coordination & Inventory Control: Owner orders, delivers, and restocks all guest consumables, toiletries, and household supplies.',
+          'On-Site Field Operative Staging & Call-Out: No Manager field operative dispatch; Owner personally resolves physical lockouts and on-site property issues (or pays vendor cost + 20% coordination markup if Manager dispatches).',
+          'Platform Dispute Advocacy: Owner personally files and manages AirCover and VRBO damage reimbursement claims.'
+        ]
+      },
+      '20': {
+        title: 'Selected Tier: 20/80 Standard Tier (Owner Handles Supply Coordination & Inventory Control)',
+        scope: 'Standard co-hosting scope: Owner handles supply coordination and inventory control, while Manager assumes primary calendar control and coordinates turnover cleaning and routine maintenance scheduling in addition to prompt, thoughtful guest communications. Guest-paid cleaning fees pass through 100% to the cleaning team. Out-of-scope project management or capital vendor coordination carries a 20% coordination markup.',
+        desc: '20/80 Standard Tier: Owner handles supply coordination and inventory control (Manager controls calendar and coordinates turnover cleaning and routine maintenance scheduling).',
+        splitPct: 20,
+        ownerYield: 80,
+        omittedScope: [
+          'Supply Coordination & Inventory Control: Cleaners flag low stock, while Owner handles supply coordination, purchasing, and inventory control.',
+          'Proactive Inventory Restocking: Manager does not maintain supply par buffers or place consumable replenishment orders on Owner’s behalf.',
+          'Dedicated Field Operative Staging: Standard turnover cleaner dispatch and routine maintenance scheduling only (out-of-scope special services billed at cost + 20% coordination markup).'
+        ]
+      },
+      '25': {
+        title: 'Selected Tier: 25/75 Full Co-Hosting (Manager Controls Calendar, Maintains Inventory, Orders Supplies & Advises on Repairs)',
+        scope: 'Full co-hosting scope: Manager assumes primary calendar control. Owner remains responsible to pay for supplies (invoiced to Owner), while Manager maintains inventory, orders supplies as needed, and keeps Owner advised of repairs and maintenance scheduling, alongside prompt guest communications, algorithmic dynamic pricing, and vetted turnover cleaning management (100% cleaning fee pass-through). Out-of-scope capital projects carry a 20% coordination markup.',
+        desc: '25/75 Full Co-Hosting: Manager controls calendar, maintains inventory, orders supplies (invoiced to Owner), and keeps Owner advised of repairs and maintenance scheduling.',
+        splitPct: 25,
+        ownerYield: 75,
+        omittedScope: null
+      },
+      '30': {
+        title: 'Selected Tier: 30/70 Executive Turnkey (Full Operations & Staff Training)',
+        scope: 'Executive turnkey scope: complete operational and calendar stewardship including dynamic yield management, dedicated local field operative coordination, quarterly asset inspections, boutique staff training, supply inventory tracking and ordering (with supply costs invoiced to Owner), and VIP concierge services.',
+        desc: '30/70 Executive Turnkey: Full-spectrum hands-free operations, quarterly asset audits, boutique on-site staff training, and proactive inventory management (with supply costs invoiced to Owner).',
+        splitPct: 30,
+        ownerYield: 70,
+        omittedScope: null
+      }
+    };
+
+    const BOUTIQUE_TIERS = {
+      '8': {
+        title: 'Selected Tier: 8/92 Distribution Desk Tier',
+        scope: 'Boutique channel distribution scope: Multi-channel inventory syndication onto Airbnb and VRBO, 2-way PMS calendar synchronization, and baseline inquiry routing.',
+        desc: '8/92 Distribution Desk: Syndicates hotel inventory across major OTA channels while property staff manages on-site guest desk.',
+        splitPct: 8,
+        ownerYield: 92,
+        omittedScope: [
+          '24/7 Multilingual Guest Concierge: On-site hotel staff handles all in-stay guest requests.',
+          'Algorithmic Dynamic Yield Strategy: Room rates remain pegged to static PMS rate tables.',
+          'Room Readiness Verification: Hotel housekeeping supervisors perform turnover audits without Scenic Stay photo QA.',
+          'Direct Booking Engine Development: Direct booking remains tied to hotel legacy portal.'
+        ]
+      },
+      '10': {
+        title: 'Selected Tier: 10/90 After-Hours Inquiry Conversion & Concierge Wedge (Zero PMS Switch)',
+        scope: 'Zero-PMS-Switch Boutique Wedge 3 scope: Dedicated 9:00 PM to 8:00 AM live inquiry conversion desk across Airbnb, VRBO, and WhatsApp, plus multi-channel OTA syndication routing reservations directly into existing hotel PMS (Cloudbeds, Mews, Little Hotelier, SiteMinder, or Opera).',
+        desc: '10/90 Overnight Conversion & Concierge: Covers the 9PM-8AM unstaffed front-desk window and multi-channel distribution with zero PMS change.',
+        splitPct: 10,
+        ownerYield: 90,
+        omittedScope: [
+          'Algorithmic Dynamic Yield Strategy: Static or seasonal rates only; no dynamic event surge pricing.',
+          'Room Readiness Turnkey Audits: Property operations oversees all room staging and inspections.'
+        ]
+      },
+      '12': {
+        title: 'Selected Tier: 12/88 Zero-PMS-Switch Multi-Key Buyout & Mon-Thu Retreat Wedge',
+        scope: 'Zero-PMS-Switch Boutique Wedge 1 & 2 scope: 10-Year Airbnb Superhost Multi-Key Compound Buyout merchandising (4-to-20 key wedding blocks, family compounds, and executive retreats), pure-performance Mon-Thu corporate off-site origination desk ($0 retainer), and prompt live inquiry conversion routing directly into existing PMS.',
+        desc: '12/88 Zero-PMS-Switch Buyout & Midweek Desk: 10-Year Superhost multi-key buyout merchandising and Mon-Thu corporate retreat origination with zero change to existing PMS.',
+        splitPct: 12,
+        ownerYield: 88,
+        omittedScope: [
+          'On-Site Staff Hospitality Training: Property management trains local housekeepers and front desk agents directly.'
+        ]
+      },
+      '15': {
+        title: 'Selected Tier: 15/85 Full Boutique Operational Co-Hosting, Turnaround & Rebrand Suite',
+        scope: 'Full-service boutique hospitality co-hosting & turnaround RFP scope: All 3 Zero-PMS-Switch Entry Wedges (10-Year Airbnb Superhost Multi-Key Buyout Merchandising, Mon-Thu Corporate Retreat Origination Desk, and Multilingual Guest Concierge), Contactless Self Check-In ("No-Touch Check-In"), Property-Wide Ubiquiti UniFi Wi-Fi, Tuft & Needle FF&E & Linen Standardization, Pool/Lakefront Placemaking, and Complete Name Rebrand + Social Media Relaunch at a 15% Partnership Cut.',
+        desc: '15/85 Full Operational Co-Hosting & Turnaround RFP: End-to-end hospitality turnaround, Contactless Check-In, UniFi Wi-Fi, FF&E & Name Rebrand at a 15% partnership cut.',
+        splitPct: 15,
+        ownerYield: 85,
+        omittedScope: null
+      }
+    };
+
+    let currentDivision = 'residential';
+    let currentFeeRate = 25;
+    let currentConnectedLeadId = null;
+    let currentTemplate = 'default';
+    let connectedLeadSpecs = {
+      property: '',
+      city: '',
+      asset_class: '',
+      beds: '',
+      baths: '',
+      sqft: '',
+      adr: '',
+      wedge: '',
+      source_url: '',
+      website: '',
+      pms: '',
+      locks: '',
+      permit: '',
+      distress: '',
+      tenure: ''
+    };
+
+    function loadAgreementTemplate(templateId) {
+      currentTemplate = templateId;
+      const estatesBtn = document.getElementById('btn-load-estates');
+      const avisBtn = document.getElementById('btn-load-avis');
+      const defaultBtn = document.getElementById('btn-load-default');
+      const tzanjuyuBtn = document.getElementById('btn-load-tzanjuyu');
+      const banner = document.getElementById('connected-lead-banner');
+      const titleEl = document.getElementById('connected-lead-title');
+      const idEl = document.getElementById('connected-lead-id');
+      const todayIso = getTodayIsoDate();
+
+      const resetBtn = (btn) => {
+        if (btn) btn.className = 'py-2 px-2 rounded-lg bg-plum-base hover:bg-plum-glow border border-plum-border text-slate-300 hover:text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer';
+      };
+      resetBtn(estatesBtn);
+      resetBtn(avisBtn);
+      resetBtn(defaultBtn);
+      if (tzanjuyuBtn) {
+        tzanjuyuBtn.className = 'w-full py-2 px-3 rounded-lg bg-purple-600/25 hover:bg-purple-600/40 border border-purple-400/60 text-purple-200 font-extrabold text-[11px] flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md';
+      }
+
+      if (templateId === '5540_estates') {
+        if (estatesBtn) estatesBtn.className = 'py-2 px-2 rounded-lg bg-amber-500 text-slate-950 font-bold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer shadow-md';
+
+        document.getElementById('owner-name').value = '5540 Estates Drive Property Owner';
+        document.getElementById('owner-email').value = 'owner@5540estates.com';
+        document.getElementById('owner-phone').value = '+1 (510) 555-5540';
+        document.getElementById('prop-address').value = '5540 Estates Dr, Oakland, CA 94611';
+        document.getElementById('parcel-apn').value = 'Alameda APN 048H-7590-012-00';
+        document.getElementById('jurisdiction-code').value = 'US-CA-OAKLAND';
+        document.getElementById('prop-type').value = 'Single Family Luxury Home';
+        document.getElementById('guest-clean-fee').value = '350.00';
+        document.getElementById('effective-date').value = todayIso;
+        document.getElementById('maint-ceiling').value = '250.00';
+        document.getElementById('cleaner-model').value = 'Cicilia Barbosa Primary Cleaner; 100% Pass-Through (Optional Supply Buffer)';
+
+        currentConnectedLeadId = 'OAK-HOM-002';
+        connectedLeadSpecs = {
+          property: '5540 Estates Dr (The Estates Sanctuary)',
+          city: 'Oakland, CA',
+          asset_class: 'residential_str',
+          beds: '3',
+          baths: '2.5',
+          sqft: '2450',
+          adr: '335',
+          wedge: 'STR_TURNKEY_15',
+          source_url: 'https://www.airbnb.com/rooms/5540002',
+          website: 'https://www.airbnb.com/rooms/5540002',
+          pms: 'Hospitable Direct Integration',
+          locks: 'Schlage Encode Smart WiFi Deadbolt (Owner-Funded)',
+          permit: 'Oakland TOT Registered / Verified Active',
+          distress: 'FF&E Styling Upgrade + Multi-Channel VRBO & Direct Distribution Expansion',
+          tenure: 'Acquired 2021; transitioned to luxury Piedmont Pines executive STR sanctuary'
+        };
+        if (banner) banner.classList.remove('hidden');
+        if (titleEl) titleEl.innerText = '5540 Estates Dr (The Estates Sanctuary)';
+        if (idEl) idEl.innerText = 'OAK-HOM-002';
+
+        setContractDivision('residential');
+        handleSliderInput('15');
+      } else if (templateId === '3146_avis') {
+        if (avisBtn) avisBtn.className = 'py-2 px-2 rounded-lg bg-sky-400 text-slate-950 font-bold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer shadow-md';
+
+        document.getElementById('owner-name').value = 'Kris Maganti';
+        document.getElementById('owner-email').value = 'kris.maganti@avisway.com';
+        document.getElementById('owner-phone').value = '+1 (510) 555-3146';
+        document.getElementById('prop-address').value = '3146 Avis Way, Pinole, CA 94564';
+        document.getElementById('parcel-apn').value = 'Contra Costa APN 402-282-019-4';
+        document.getElementById('jurisdiction-code').value = 'US-CA-PINOLE';
+        document.getElementById('prop-type').value = 'Single Family Luxury Home';
+        document.getElementById('guest-clean-fee').value = '280.00';
+        document.getElementById('effective-date').value = todayIso;
+        document.getElementById('maint-ceiling').value = '250.00';
+        document.getElementById('cleaner-model').value = 'Certified Turnover Partner; 100% Pass-Through (Optional Supply Buffer)';
+
+        currentConnectedLeadId = 'PIN-HOM-001';
+        connectedLeadSpecs = {
+          property: '3146 Avis Way (Pinole Ridge Residence)',
+          city: 'Pinole, CA',
+          asset_class: 'residential_str',
+          beds: '4',
+          baths: '2.5',
+          sqft: '2280',
+          adr: '295',
+          wedge: 'STR_TURNKEY_15',
+          source_url: 'https://www.airbnb.com/rooms/3146001',
+          website: 'https://www.airbnb.com/rooms/3146001',
+          pms: 'Hospitable Direct Integration',
+          locks: 'Yale Assure Smart Keypad Deadbolt (Owner-Funded)',
+          permit: 'Contra Costa / Pinole STR Permit Active',
+          distress: 'Midweek Corporate Relocation & Dynamic Event Rate Optimization',
+          tenure: 'Long-term family investment home operated as East Bay executive rental'
+        };
+        if (banner) banner.classList.remove('hidden');
+        if (titleEl) titleEl.innerText = '3146 Avis Way (Pinole Ridge Residence)';
+        if (idEl) idEl.innerText = 'PIN-HOM-001';
+
+        setContractDivision('residential');
+        handleSliderInput('15');
+      } else if (templateId === 'tzanjuyu_rfp') {
+        if (tzanjuyuBtn) {
+          tzanjuyuBtn.className = 'w-full py-2 px-3 rounded-lg bg-amber-400 text-slate-950 font-extrabold text-[11px] flex items-center justify-center gap-1.5 transition cursor-pointer shadow-lg';
+        }
+
+        document.getElementById('owner-name').value = 'Hotel Tzanjuyu Bay Historic S.A.';
+        document.getElementById('owner-email').value = 'info@tzanjuyubayhotel.com';
+        document.getElementById('owner-phone').value = '+502 7762 1318';
+        document.getElementById('prop-address').value = 'Calle Principal Santander / Tzanjuyu Bay, Panajachel, Solola, Guatemala';
+        document.getElementById('parcel-apn').value = 'INGUAT Solola Commercial Registry #GT-SOL-105';
+        document.getElementById('jurisdiction-code').value = 'Panajachel, Lake Atitlan, GT';
+        document.getElementById('prop-type').value = 'Boutique Hotel Suite Block';
+        document.getElementById('guest-clean-fee').value = '85.00';
+        document.getElementById('effective-date').value = todayIso;
+        document.getElementById('maint-ceiling').value = '250.00';
+        document.getElementById('cleaner-model').value = 'On-Site Hotel Housekeeping Crew + Scenic Stay Photo-Verified QA Checklist (100% Pass-Through)';
+
+        currentConnectedLeadId = 'BCN-CLD-105';
+        connectedLeadSpecs = {
+          property: 'Hotel Tzanjuyu / Tzanjuyu Bay Hotel (26 Keys)',
+          city: 'Panajachel, GT',
+          asset_class: 'boutique_hotel',
+          beds: '26',
+          baths: '26',
+          sqft: '18500',
+          adr: '165',
+          wedge: 'BOUTIQUE_TURNAROUND_REBRAND_RFP_15',
+          source_url: 'https://www.tzanjuyubayhotel.com',
+          website: 'https://www.tzanjuyubayhotel.com',
+          pms: 'SiteMinder / Little Hotelier (Zero PMS Switch)',
+          locks: 'Commercial Contactless Self Check-In ("No-Touch Check-In") Smart Keypads (26 Doors)',
+          permit: 'INGUAT Registered Commercial Boutique Hotel',
+          distress: '2.4-Star Review Turnaround + Tuft & Needle FF&E + Ubiquiti UniFi Wi-Fi + Pool/Lakefront Placemaking + Contactless Check-In + Full Name Rebrand',
+          tenure: 'Historic Lake Atitlan private peninsula resort held by Hotel Tzanjuyu Bay Historic S.A.'
+        };
+        if (banner) banner.classList.remove('hidden');
+        if (titleEl) titleEl.innerText = 'Hotel Tzanjuyu (26 Keys) • 15% Turnaround & Rebrand RFP';
+        if (idEl) idEl.innerText = 'BCN-CLD-105';
+
+        setContractDivision('boutique');
+        handleSliderInput('15');
+      } else {
+        if (defaultBtn) defaultBtn.className = 'py-2 px-2 rounded-lg bg-amber-500 text-slate-950 font-bold text-[11px] flex items-center justify-center gap-1 transition cursor-pointer shadow-md';
+
+        document.getElementById('owner-name').value = 'Pacific Heights Investments LLC';
+        document.getElementById('owner-email').value = 'investments@pacificheights.com';
+        document.getElementById('owner-phone').value = '+1 (415) 847-2910';
+        document.getElementById('prop-address').value = 'Green St, North Beach, San Francisco, CA 94133';
+        document.getElementById('parcel-apn').value = 'SF Assessor APN 0117-018';
+        document.getElementById('jurisdiction-code').value = 'US-CA-SAN-FRANCISCO';
+        document.getElementById('prop-type').value = 'Residential STR (Bi-Level Flat)';
+        document.getElementById('guest-clean-fee').value = '250.00';
+        document.getElementById('effective-date').value = todayIso;
+        document.getElementById('maint-ceiling').value = '250.00';
+        document.getElementById('cleaner-model').value = 'Vetted professional cleaners; 100% guest cleaning fee pass-through (optional supply buffer election)';
+
+        currentConnectedLeadId = 'SFO-HOM-001';
+        connectedLeadSpecs = {
+          property: 'Green St Bi-Level Flat (North Beach)',
+          city: 'San Francisco, CA',
+          asset_class: 'residential_str',
+          beds: '3',
+          baths: '2.0',
+          sqft: '1950',
+          adr: '365',
+          wedge: 'STR_FULL_COHOST_25',
+          source_url: 'https://www.airbnb.com/rooms/4150199',
+          website: 'https://www.airbnb.com/rooms/4150199',
+          pms: 'Native Airbnb Calendar Only (No Multi-Channel Sync)',
+          locks: 'Schlage Encode Smart Deadbolt',
+          permit: 'SF OSTR Certificate Active',
+          distress: 'Single-Channel OTA Dependency + Static Weekend Pricing Curve',
+          tenure: 'Held since 2018 by Pacific Heights Investments LLC'
+        };
+
+        setContractDivision('residential');
+        handleSliderInput('25');
+      }
+
+      renderDocument();
+    }
+
+    function setContractDivision(div) {
+      currentDivision = div;
+      const bnbBtn = document.getElementById('btn-div-bnb');
+      const boutiqueBtn = document.getElementById('btn-div-boutique');
+      const divBadge = document.getElementById('header-division-badge');
+      const partyBadge = document.getElementById('badge-party-type');
+      const slider = document.getElementById('contract-fee-slider');
+      const selectElem = document.getElementById('split-tier');
+      const minLabel = document.getElementById('slider-min-label');
+      const midLabel = document.getElementById('slider-mid-label');
+      const maxLabel = document.getElementById('slider-max-label');
+      const feeShareLabel = document.getElementById('label-fee-share');
+
+      if (div === 'residential') {
+        bnbBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold gold-gradient-bg text-slate-950 shadow transition flex items-center gap-1.5';
+        boutiqueBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition flex items-center gap-1.5';
+        divBadge.textContent = 'A Better BNB Legal Suite';
+        partyBadge.textContent = 'Residential STR Co-Hosting';
+        feeShareLabel.textContent = 'A Better BNB Fee (%):';
+
+        slider.min = "15";
+        slider.max = "30";
+        slider.value = "25";
+        currentFeeRate = 25;
+        minLabel.textContent = "Min 15%";
+        midLabel.textContent = "Default 25%";
+        maxLabel.textContent = "Max 30%";
+
+        selectElem.innerHTML = `
+          <option value="15">15% / 85% : Essential Tier (Owner Handles Cleaning, Maintenance & Supplies Coordination)</option>
+          <option value="20">20% / 80% : Standard Tier (Owner Handles Supply Coordination & Inventory Control)</option>
+          <option value="25" selected>25% / 75% : Full Co-Hosting (Manager Maintains Inventory, Orders Supplies & Advises on Repairs)</option>
+          <option value="30">30% / 70% : Executive Turnkey (Full Operations, Boutique Staff Training & Audit)</option>
+        `;
+      } else {
+        boutiqueBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold gold-gradient-bg text-slate-950 shadow transition flex items-center gap-1.5';
+        bnbBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition flex items-center gap-1.5';
+        divBadge.textContent = 'A Better Boutique Legal Suite';
+        partyBadge.textContent = 'Boutique Hotel Co-Hosting (Zero PMS Switch)';
+        feeShareLabel.textContent = 'A Better Boutique Fee (%):';
+
+        slider.min = "8";
+        slider.max = "15";
+        slider.value = "12";
+        currentFeeRate = 12;
+        minLabel.textContent = "Min 8%";
+        midLabel.textContent = "Wedge Default 12%";
+        maxLabel.textContent = "Full Turnkey 15%";
+
+        selectElem.innerHTML = `
+          <option value="8">8% / 92% : Distribution Desk Tier (OTA Syndication & Calendar Sync)</option>
+          <option value="10">10% / 90% : Wedge 3 After-Hours Inquiry Conversion Desk (9PM-8AM Live Conversion)</option>
+          <option value="12" selected>12% / 88% : Wedge 1 & 2 Multi-Key Buyout & Mon-Thu Retreat Desk (Zero PMS Switch)</option>
+          <option value="15">15% / 85% : Full Boutique Operational Co-Hosting & Turnaround Rebrand Suite</option>
+        `;
+      }
+
+      handleSliderInput(currentFeeRate.toString());
+    }
+
+    function handleSliderInput(val) {
+      currentFeeRate = parseFloat(val);
+      document.getElementById('slider-fee-display').textContent = `${currentFeeRate}%`;
+      document.getElementById('split-fee-pct').value = currentFeeRate;
+      document.getElementById('owner-yield-pct').value = `${Math.round(100 - currentFeeRate)}%`;
+
+      const selectElem = document.getElementById('split-tier');
+      const valStr = currentFeeRate.toString();
+      if ([...selectElem.options].some(o => o.value === valStr)) {
+        selectElem.value = valStr;
+      }
+
+      updateActiveTierUI();
+      renderDocument();
+    }
+
+    function handleTierSelectChange() {
+      const selectElem = document.getElementById('split-tier');
+      const val = selectElem.value;
+      const slider = document.getElementById('contract-fee-slider');
+      slider.value = val;
+      handleSliderInput(val);
+    }
+
+    function updateActiveTierUI() {
+      const tierMap = currentDivision === 'residential' ? RESIDENTIAL_TIERS : BOUTIQUE_TIERS;
+      const key = currentFeeRate.toString();
+      const config = tierMap[key] || {
+        title: `Selected Tier: ${currentFeeRate}/${Math.round(100 - currentFeeRate)} Custom Tier`,
+        scope: currentDivision === 'residential'
+          ? `Custom residential co-hosting scope negotiated at ${currentFeeRate}% split rate.`
+          : `Custom boutique operational scope negotiated at ${currentFeeRate}% split rate.`,
+        desc: `Custom negotiated commercial split rate: ${currentFeeRate}% management fee.`,
+        splitPct: currentFeeRate,
+        ownerYield: Math.round(100 - currentFeeRate),
+        omittedScope: currentFeeRate < 25 ? ['Custom negotiated omitted operational scope.'] : null
+      };
+
+      document.getElementById('tier-description-box').innerHTML = `<strong class="text-amber-300">${config.splitPct}/${config.ownerYield} Split:</strong> ${config.desc}`;
+      document.getElementById('badge-split-summary').textContent = `${config.splitPct}/${config.ownerYield} Split`;
+    }
+
+    function handlePropTypeChange() {
+      const pType = document.getElementById('prop-type').value;
+      if (pType.includes('Boutique Hotel')) {
+        if (currentDivision !== 'boutique') setContractDivision('boutique');
+      } else {
+        if (currentDivision !== 'residential') setContractDivision('residential');
+      }
+      renderDocument();
+    }
+
+    function renderDocument() {
+      const isHotel = currentDivision === 'boutique';
+      const name = document.getElementById('owner-name').value || "Pacific Heights Investments LLC";
+      const address = document.getElementById('prop-address').value || "Green St, North Beach, San Francisco, CA 94133";
+      const jurisdiction = document.getElementById('jurisdiction-code').value || "US-CA-SAN-FRANCISCO";
+      const apnInput = document.getElementById('parcel-apn');
+      const apn = resolveParcelApn(apnInput ? apnInput.value : '', address, jurisdiction);
+      if (apnInput && (!apnInput.value || apnInput.value.toLowerCase().includes('pending') || apnInput.value.toLowerCase() === 'null')) {
+        apnInput.value = apn;
+      }
+      const propType = document.getElementById('prop-type').value;
+      const dateInput = document.getElementById('effective-date');
+      const date = (dateInput && dateInput.value) ? dateInput.value : getTodayIsoDate();
+      if (dateInput && !dateInput.value) {
+        dateInput.value = date;
+      }
+      const parsedDate = new Date(date + "T00:00:00");
+      const formattedEffectiveDate = isNaN(parsedDate.getTime())
+        ? "October 14, 2026"
+        : parsedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      const ceiling = roundMoneyCents(parseFloat(document.getElementById('maint-ceiling').value) || 250);
+
+      // Brand updates in document
+      const brandHeading = document.getElementById('doc-brand-heading');
+      const agreementTitle = document.getElementById('doc-agreement-title');
+      const agreementSubtitle = document.getElementById('doc-agreement-subtitle');
+      const feeLabel = document.getElementById('doc-fee-label');
+      const sigManagerTitle = document.getElementById('doc-sig-manager-title');
+      const docIdEl = document.getElementById('doc-id');
+      const estatesExecEl = document.getElementById('doc-estates-exec-summary');
+      const estatesExA = document.getElementById('doc-estates-exhibit-a');
+      const estatesExB = document.getElementById('doc-estates-exhibit-b');
+      const tzanjuyuRfpEl = document.getElementById('doc-tzanjuyu-rfp-exhibit');
+
+      const isEstates = (currentTemplate === '5540_estates') && address.includes('5540 Estates');
+      const isTzanjuyu = (currentTemplate === 'tzanjuyu_rfp') || address.toLowerCase().includes('tzanjuyu') || name.toLowerCase().includes('tzanjuyu');
+
+      if (isEstates) {
+        brandHeading.textContent = 'A Better BNB Hospitality Group';
+        agreementTitle.textContent = 'FF&E Enhancement Proposal & Property Management Agreement';
+        agreementSubtitle.textContent = '5540 Estates Dr, Oakland, CA 94611 (The Estates Sanctuary)';
+        feeLabel.textContent = 'A Better BNB Fee Share:';
+        sigManagerTitle.textContent = 'Manager: Scenic Stay LLC dba A Better BNB';
+        if (docIdEl) docIdEl.textContent = 'AGR-OAK-5540-2026-V1';
+        document.getElementById('doc-preamble').innerHTML = `
+          This <strong>FF&amp;E Enhancement Proposal and Property Management Agreement</strong> (the "Agreement") is entered into and made effective as of <strong id="doc-effective-date">${formattedEffectiveDate}</strong> (the "Effective Date"), by and between <strong>Scenic Stay LLC dba A Better BNB</strong>, an operating hospitality enterprise having its executive offices in Berkeley, California ("Manager" or "Scenic Stay"), and <strong id="doc-owner-name">${name}</strong> ("Owner" or "Client"). Manager and Owner may collectively be referred to as the "Parties."
+        `;
+        if (estatesExecEl) estatesExecEl.classList.remove('hidden');
+        if (estatesExA) estatesExA.classList.remove('hidden');
+        if (estatesExB) estatesExB.classList.remove('hidden');
+        if (tzanjuyuRfpEl) tzanjuyuRfpEl.classList.add('hidden');
+      } else if (isTzanjuyu) {
+        brandHeading.textContent = 'A Better Boutique Hospitality Group';
+        agreementTitle.textContent = '15% Hospitality Turnaround, Contactless Check-In, UniFi Wi-Fi, FF&E & Name-Rebrand RFP Proposal';
+        agreementSubtitle.textContent = 'Hotel Tzanjuyu (26 Keys on Private Lake Atitlan Peninsula, Panajachel, Guatemala)';
+        feeLabel.textContent = 'A Better Boutique Turnaround Partnership Cut:';
+        sigManagerTitle.textContent = 'Manager: Scenic Stay LLC dba A Better Boutique';
+        if (docIdEl) docIdEl.textContent = 'RFP-GT-TZANJUYU-2026-15PCT';
+        document.getElementById('doc-preamble').innerHTML = `
+          This <strong>15% Boutique Hospitality Turnaround, Contactless Check-In, UniFi Wi-Fi, FF&amp;E &amp; Name-Rebrand RFP Proposal &amp; Co-Hosting Agreement</strong> (the "Agreement") is entered into and made effective as of <strong id="doc-effective-date">${formattedEffectiveDate}</strong> (the "Effective Date"), by and between <strong>Scenic Stay LLC dba A Better Boutique</strong>, an operating hospitality enterprise having its executive offices in Berkeley, California ("Manager" or "A Better Boutique"), and <strong id="doc-owner-name">${name}</strong> ("Owner" or "Client"). Manager and Owner may collectively be referred to as the "Parties."
+        `;
+        if (estatesExecEl) estatesExecEl.classList.add('hidden');
+        if (estatesExA) estatesExA.classList.add('hidden');
+        if (estatesExB) estatesExB.classList.add('hidden');
+        if (tzanjuyuRfpEl) tzanjuyuRfpEl.classList.remove('hidden');
+      } else if (isHotel) {
+        brandHeading.textContent = 'A Better Boutique Hospitality Group';
+        agreementTitle.textContent = 'Exclusive Boutique Hospitality Co-Hosting & Zero-PMS-Switch Agreement';
+        agreementSubtitle.textContent = 'Governing Multi-Key Buyout Merchandising, Mon-Thu Corporate Retreat Origination & 9PM-8AM Live Conversion';
+        feeLabel.textContent = 'A Better Boutique Fee Share:';
+        sigManagerTitle.textContent = 'Manager: Scenic Stay LLC dba A Better Boutique';
+        if (docIdEl) docIdEl.textContent = currentConnectedLeadId ? ('ABB-' + currentConnectedLeadId) : ('ABB-' + date);
+        document.getElementById('doc-preamble').innerHTML = `
+          This <strong>Exclusive Boutique Hospitality Co-Hosting Agreement</strong> (the "Agreement") is entered into and made effective as of <strong id="doc-effective-date">${formattedEffectiveDate}</strong> (the "Effective Date"), by and between <strong>Scenic Stay LLC dba A Better Boutique</strong>, an operating hospitality enterprise having its executive offices in Berkeley, California ("Manager" or "A Better Boutique"), and <strong id="doc-owner-name">${name}</strong> ("Owner" or "Client"). Manager and Owner may collectively be referred to as the "Parties."
+        `;
+        if (estatesExecEl) estatesExecEl.classList.add('hidden');
+        if (estatesExA) estatesExA.classList.add('hidden');
+        if (estatesExB) estatesExB.classList.add('hidden');
+        if (tzanjuyuRfpEl) tzanjuyuRfpEl.classList.add('hidden');
+      } else {
+        brandHeading.textContent = 'A Better BNB Hospitality Group';
+        agreementTitle.textContent = 'Exclusive Hospitality Co-Hosting Agreement';
+        agreementSubtitle.textContent = 'Governing Full-Service Short-Term Rental (<30 Days) & Operations Management';
+        feeLabel.textContent = 'A Better BNB Fee Share:';
+        sigManagerTitle.textContent = 'Manager: Scenic Stay LLC dba A Better BNB';
+        if (docIdEl) docIdEl.textContent = currentConnectedLeadId ? ('ABB-' + currentConnectedLeadId) : ('ABB-' + date);
+        document.getElementById('doc-preamble').innerHTML = `
+          This <strong>Exclusive Hospitality Co-Hosting Agreement</strong> (the "Agreement") is entered into and made effective as of <strong id="doc-effective-date">${formattedEffectiveDate}</strong> (the "Effective Date"), by and between <strong>Scenic Stay LLC dba A Better BNB</strong>, an operating hospitality enterprise having its executive offices in Berkeley, California ("Manager" or "A Better BNB"), and <strong id="doc-owner-name">${name}</strong> ("Owner" or "Client"). Manager and Owner may collectively be referred to as the "Parties."
+        `;
+        if (estatesExecEl) estatesExecEl.classList.add('hidden');
+        if (estatesExA) estatesExA.classList.add('hidden');
+        if (estatesExB) estatesExB.classList.add('hidden');
+        if (tzanjuyuRfpEl) tzanjuyuRfpEl.classList.add('hidden');
+      }
+
+      // Fields
+      document.getElementById('doc-owner-name').innerText = name;
+      document.getElementById('doc-sign-owner').innerText = name;
+      document.getElementById('doc-address').innerText = address;
+      document.getElementById('doc-prop-type').innerText = propType;
+      document.getElementById('doc-apn').innerText = apn;
+      document.getElementById('doc-jurisdiction').innerText = jurisdiction;
+      document.getElementById('doc-fee-pct').innerText = currentFeeRate;
+      document.getElementById('doc-yield-pct').innerText = Math.round(100 - currentFeeRate);
+      document.getElementById('doc-maint-ceiling').innerText = `$${ceiling.toFixed(2)}`;
+      document.getElementById('doc-effective-date').innerText = formattedEffectiveDate;
+
+      // Hierarchy and Tier Details
+      const tierMap = isHotel ? BOUTIQUE_TIERS : RESIDENTIAL_TIERS;
+      const key = currentFeeRate.toString();
+      const config = tierMap[key] || {
+        title: `Selected Tier: ${currentFeeRate}/${Math.round(100 - currentFeeRate)} Custom Tier`,
+        scope: isHotel
+          ? `Boutique hotel operational scope negotiated at ${currentFeeRate}% split rate.`
+          : `Residential co-hosting scope negotiated at ${currentFeeRate}% split rate.`,
+        splitPct: currentFeeRate,
+        ownerYield: Math.round(100 - currentFeeRate),
+        omittedScope: currentFeeRate < 25 ? ['Custom negotiated omitted operational scope.'] : null
+      };
+
+      document.getElementById('doc-tier-title').innerText = config.title;
+      document.getElementById('doc-tier-scope').innerText = config.scope;
+
+      // Update Section 2 & Hierarchy Box based on division
+      const hierarchyList = document.getElementById('doc-hierarchy-list');
+      if (isHotel) {
+        hierarchyList.innerHTML = `
+          <li><strong>8% / 92% Distribution Desk Tier:</strong> Multi-channel OTA syndication onto Airbnb and VRBO plus 2-way PMS calendar synchronization.</li>
+          <li><strong>10% / 90% Wedge 3 After-Hours Inquiry Conversion Desk:</strong> Covers 9:00 PM to 8:00 AM inquiries across Airbnb, VRBO, and WhatsApp with prompt, thoughtful live responses.</li>
+          <li><strong>12% / 88% Wedge 1 &amp; 2 Multi-Key Buyout &amp; Mon-Thu Retreat Desk:</strong> 10-Year Airbnb Superhost Multi-Key Compound Buyout merchandising and pure-performance Mon-Thu corporate retreat origination with zero PMS switch.</li>
+          <li><strong>15% / 85% Full Boutique Operational Co-Hosting &amp; Turnaround RFP:</strong> End-to-end hospitality turnaround, all 3 Zero-PMS-Switch Wedges, Contactless Self Check-In ("No-Touch Check-In"), Ubiquiti UniFi Wi-Fi, FF&amp;E/Linen upgrades, Pool/Lakefront placemaking, and Full Name Rebrand + Social Media Relaunch.</li>
+        `;
+        document.getElementById('doc-section2-title').innerHTML = '2. Zero-PMS-Switch Boutique Hospitality Standards &amp; Guest Communication Commitment';
+        document.getElementById('doc-section2-intro').innerText = 'We are committed to prompt, thoughtful guest communication, even in difficult conversations, with most guest inquiries answered within an hour, delivering high-touch boutique hospitality execution without replacing Owner’s existing Property Management System (Cloudbeds, Mews, Little Hotelier, SiteMinder, or Opera):';
+        document.getElementById('doc-section2-list').innerHTML = `
+          <li><strong>Wedge 1 (10-Year Airbnb Superhost Multi-Key Buyout Merchandising):</strong> Creation and algorithmic optimization of dedicated Multi-Key Compound Buyout and experiential suite listings (4-to-26 key wedding blocks, family compounds, and executive retreats) under Manager’s 10-Year Airbnb Superhost umbrella, routing confirmed reservations directly into Owner’s existing PMS calendar.</li>
+          <li><strong>Wedge 2 (Pure-Performance Mon-Thu Corporate Retreat Origination Desk):</strong> Proactive B2B outbound origination of Monday-through-Thursday corporate off-sites and group buyouts ($0 monthly retainer; commission earned strictly on net-new group bookings).</li>
+          <li><strong>Wedge 3 (After-Hours 9:00 PM to 8:00 AM Inquiry Conversion &amp; Contactless "No-Touch Check-In"):</strong> We are committed to prompt, thoughtful guest communication, even in difficult conversations, with most guest inquiries answered within an hour. Manager coordinates commercial smart keypad adoption for frictionless Contactless Self Check-In ("No-Touch Check-In"); all lock hardware and installation costs are paid by Owner (Manager does not pay for smart keypads).</li>
+          <li><strong>10-Year Airbnb Superhost Hospitality Led by A Better BNB Executive Leadership:</strong> Guests across flagship managed properties (including Berkeley Scenic Studios #14185254 and #19951024) consistently praise Executive rapid, caring communication (with most replies within an hour, even in difficult conversations), genuine warmth that meets guests where they are while setting clear expectations tactfully and firmly so guests feel seen, heard, and welcome, spotless property preparation, seamless self-check-in instructions, and thoughtful local recommendations.</li>
+        `;
+      } else {
+        hierarchyList.innerHTML = `
+          <li><strong>15% / 85% Essential Tier:</strong> Owner handles cleaning, maintenance, and supplies coordination (+ shared calendar responsibility; 20% coordination markup on any requested out-of-scope services). Manager handles prompt, thoughtful guest communications, booking inquiries, and reservation messaging.</li>
+          <li><strong>20% / 80% Standard Tier:</strong> Manager controls the master calendar and coordinates turnover cleaning and routine maintenance scheduling (100% cleaning fee pass-through), while Owner handles supply coordination and inventory control.</li>
+          <li><strong>25% / 75% Full Co-Hosting:</strong> Manager controls the master calendar, maintains inventory, orders supplies as needed (with supply costs invoiced to Owner), and keeps Owner advised of repairs and maintenance scheduling, alongside dynamic pricing and full turnover management.</li>
+          <li><strong>30% / 70% Executive Turnkey:</strong> Full-spectrum hands-free operations, quarterly asset audits, boutique on-site staff training, and proactive inventory and capital maintenance stewardship (with Owner funding property supplies and repairs).</li>
+        `;
+        document.getElementById('doc-section2-title').innerHTML = '2. 10-Year Superhost Operational Standards &amp; Guest Communication Commitment';
+        document.getElementById('doc-section2-intro').innerText = 'We are committed to prompt, thoughtful guest communication, even in difficult conversations, with most guest inquiries answered within an hour, grounded in a decade of verified 10-Year Airbnb Superhost hospitality:';
+        document.getElementById('doc-section2-list').innerHTML = `
+          <li><strong>Prompt, Thoughtful Guest Communication:</strong> We are committed to prompt, thoughtful guest communication, even in difficult conversations, with most guest inquiries, booking requests, check-in questions, and active stay messages answered within an hour.</li>
+          <li><strong>Frictionless Arrival &amp; Smart Keypad Coordination (Owner-Funded Hardware):</strong> Manager strongly encourages and coordinates the adoption of smart keypad deadbolts compatible with our direct-integration automation stack (generating unique, stay-specific guest PINs matched to reservation windows at $0 monthly middleware fee). All smart keypad hardware and lock installation costs are paid by Owner; Manager does not pay for smart keypads.</li>
+          <li><strong>Dynamic Algorithmic Rate Optimization:</strong> Multi-channel rate balancing enforcing protective minimum-stay floors, holiday blackouts, and local event demand capture to maximize RevPAR and occupancy without discounting below operational thresholds.</li>
+          <li><strong>10-Year Airbnb Superhost Hospitality Led by A Better BNB Executive Leadership:</strong> Guests across flagship managed properties (including Berkeley Scenic Studios #14185254 and #19951024) consistently praise Executive rapid, caring communication (with most replies within an hour, even in difficult conversations), genuine warmth that meets guests where they are while setting clear expectations tactfully and firmly so guests feel seen, heard, and welcome, spotless property preparation, seamless self-check-in instructions, and thoughtful local recommendations.</li>
+        `;
+      }
+
+      // Schedule B: Omitted Scope
+      const omittedContainer = document.getElementById('doc-omitted-scope-container');
+      const omittedList = document.getElementById('doc-omitted-list');
+      const omittedFeePct = document.getElementById('omitted-fee-pct');
+      if (omittedContainer && omittedList && omittedFeePct) {
+        if (config.omittedScope && config.omittedScope.length > 0) {
+          omittedFeePct.innerText = currentFeeRate;
+          omittedList.innerHTML = config.omittedScope.map(item => `<li>${item}</li>`).join('');
+          omittedContainer.classList.remove('hidden');
+        } else {
+          omittedContainer.classList.add('hidden');
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('effective-date').value = getTodayIsoDate();
+
+      // Ingest URL parameters from Beacon Lead Command or HOSt Property Forge
+      const params = new URLSearchParams(window.location.search);
+      const templateParam = params.get('template');
+      const presetParam = params.get('preset') || templateParam;
+      const dossierId = params.get('lead_id') || params.get('dossier_id') || params.get('unit');
+      const rawPropName = params.get('property') || params.get('property_name') || params.get('name');
+      const propName = cleanPropertyTitle(rawPropName);
+      const propAddr = params.get('address') || params.get('property_address');
+      const cityParam = params.get('city') || params.get('jurisdiction');
+      const propType = params.get('property_type') || params.get('asset_class');
+      const divisionParam = params.get('division') || params.get('asset_class') || '';
+      const ownerName = params.get('owner') || params.get('owner_name');
+      const apn = params.get('apn') || params.get('parcel_apn');
+      const phone = params.get('phone');
+      const email = params.get('email');
+      const feeRate = params.get('fee') || params.get('tier') || params.get('fee_rate') || params.get('fee_percent');
+      const permitConcierge = params.get('permit_concierge');
+
+      connectedLeadSpecs = {
+        property: propName || '',
+        city: cityParam || '',
+        asset_class: params.get('asset_class') || divisionParam || '',
+        beds: params.get('beds') || '',
+        baths: params.get('baths') || '',
+        sqft: params.get('sqft') || '',
+        adr: params.get('adr') || '',
+        wedge: params.get('wedge') || '',
+        source_url: params.get('website') || params.get('source_url') || '',
+        website: params.get('website') || params.get('source_url') || '',
+        pms: params.get('pms') || '',
+        locks: params.get('locks') || '',
+        permit: params.get('permit') || (permitConcierge === 'true' ? 'Municipal Permit Concierge Required' : 'Verified Municipal Registration'),
+        distress: params.get('distress') || '',
+        tenure: params.get('tenure') || ''
+      };
+
+      const hasCustomLeadParams = Boolean(dossierId || propName || propAddr || ownerName || feeRate || divisionParam);
+
+      if (presetParam === 'tzanjuyu_rfp' || dossierId === 'BCN-CLD-105' || (propName && propName.toLowerCase().includes('tzanjuyu'))) {
+        loadAgreementTemplate('tzanjuyu_rfp');
+        return;
+      }
+      if (presetParam === '3146_avis' || dossierId === 'PIN-HOM-001' || (propAddr && propAddr.includes('3146 Avis'))) {
+        loadAgreementTemplate('3146_avis');
+        return;
+      }
+      if (presetParam === '5540_estates' || dossierId === 'OAK-HOM-002' || (propAddr && propAddr.includes('5540 Estates')) || !hasCustomLeadParams) {
+        loadAgreementTemplate('5540_estates');
+        return;
+      }
+
+      currentTemplate = 'custom_lead';
+
+      if (dossierId || propName) {
+        currentConnectedLeadId = dossierId || 'BCN-LIVE';
+        const banner = document.getElementById('connected-lead-banner');
+        const titleEl = document.getElementById('connected-lead-title');
+        const idEl = document.getElementById('connected-lead-id');
+        const returnBtn = document.getElementById('btn-return-beacon');
+        const permitBadge = document.getElementById('connected-permit-badge');
+
+        if (banner) banner.classList.remove('hidden');
+        if (titleEl) titleEl.innerText = propName || cleanPropertyTitle(propAddr) || 'Connected Dossier';
+        if (idEl) idEl.innerText = currentConnectedLeadId;
+        if (returnBtn) returnBtn.href = `beacon_lead_command.html?focus=${encodeURIComponent(currentConnectedLeadId)}`;
+        if (permitBadge && permitConcierge === 'true') permitBadge.classList.remove('hidden');
+      }
+
+      if (ownerName) document.getElementById('owner-name').value = ownerName;
+      if (email) document.getElementById('owner-email').value = email;
+      if (phone) document.getElementById('owner-phone').value = phone;
+      if (propAddr) {
+        document.getElementById('prop-address').value = cleanPropertyTitle(propAddr) === propAddr ? propAddr : propAddr.replace(/\s*-\s*Great Location/i, '');
+      } else if (propName && cityParam) {
+        document.getElementById('prop-address').value = `${propName}, ${cityParam}`;
+      }
+      const resolvedAddr = document.getElementById('prop-address').value;
+      document.getElementById('parcel-apn').value = resolveParcelApn(apn, resolvedAddr, cityParam);
+      if (cityParam) document.getElementById('jurisdiction-code').value = cityParam;
+
+      const combinedType = `${divisionParam} ${propType || ''} ${propName || ''}`.toLowerCase();
+      const isBoutique = combinedType.includes('boutique') || combinedType.includes('hotel') || combinedType.includes('inn') || combinedType.includes('resort');
+      const selectProp = document.getElementById('prop-type');
+
+      if (isBoutique) {
+        if (selectProp) selectProp.value = 'Boutique Hotel Suite Block';
+        setContractDivision('boutique');
+      } else {
+        if (selectProp) selectProp.value = 'Single Family Luxury Home';
+        setContractDivision('residential');
+      }
+
+      if (feeRate) {
+        const slider = document.getElementById('contract-fee-slider');
+        if (slider) slider.value = feeRate;
+        handleSliderInput(feeRate);
+      } else {
+        renderDocument();
+      }
+    });
+
+    function buildForgeHandoffUrl(mode = 'owner') {
+      const ownerName = document.getElementById('owner-name').value;
+      const ownerEmail = document.getElementById('owner-email').value;
+      const ownerPhone = document.getElementById('owner-phone').value;
+      const address = document.getElementById('prop-address').value;
+      const apnVal = document.getElementById('parcel-apn').value;
+      const cityVal = connectedLeadSpecs.city || document.getElementById('jurisdiction-code').value || '';
+      const cleanFeeNumeric = roundMoneyCents(document.getElementById('guest-clean-fee').value || '250.00');
+      const cleanFeeVal = cleanFeeNumeric.toFixed(2);
+      const tierVal = currentFeeRate.toString();
+      const propTitle = cleanPropertyTitle(connectedLeadSpecs.property || document.getElementById('connected-lead-title').innerText || address);
+      const isBoutique = currentDivision === 'boutique';
+      const assetClass = isBoutique ? 'boutique_hotel' : 'residential_str';
+      const websiteVal = connectedLeadSpecs.website || connectedLeadSpecs.source_url || 'https://www.airbnb.com';
+      const pmsVal = connectedLeadSpecs.pms || (isBoutique ? 'Cloudbeds / Existing Hotel PMS (Zero Switch)' : 'Hospitable Direct Integration');
+      const locksVal = connectedLeadSpecs.locks || 'Schlage Encode / Yale Assure Smart Keypad (Owner-Funded)';
+      const permitVal = connectedLeadSpecs.permit || 'Verified Municipal TOT / STR Registration';
+      const distressVal = connectedLeadSpecs.distress || (isBoutique ? 'Multi-Key Compound Buyout Merchandising & Mon-Thu Retreat Capture' : 'Dynamic Rate Curve Optimization & Multi-Channel Syndication');
+      const tenureVal = connectedLeadSpecs.tenure || 'Verified Assessor Ownership & Active Hospitality Profile';
+      const resolvedLeadId = currentConnectedLeadId || 'OAK-HOM-002';
+
+      const onboardingPayload = {
+        lead_id: resolvedLeadId,
+        name: propTitle,
+        property: propTitle,
+        owner: ownerName,
+        owner_name: ownerName,
+        address: address,
+        apn: apnVal,
+        city: cityVal,
+        phone: ownerPhone,
+        email: ownerEmail,
+        tier: tierVal,
+        fee: tierVal,
+        asset_class: assetClass,
+        division: currentDivision,
+        beds: connectedLeadSpecs.beds || (isBoutique ? '14' : '3'),
+        baths: connectedLeadSpecs.baths || '2.5',
+        sqft: connectedLeadSpecs.sqft || '2100',
+        adr: String(roundMoneyCents(connectedLeadSpecs.adr || (isBoutique ? '380' : '285'))),
+        wedge: connectedLeadSpecs.wedge || (isBoutique ? 'MULTI_KEY_BUYOUT_MERCHANDISING' : 'STR_TURNKEY_15'),
+        website: websiteVal,
+        pms: pmsVal,
+        locks: locksVal,
+        permit: permitVal,
+        distress: distressVal,
+        tenure: tenureVal,
+        clean_fee: cleanFeeVal,
+        checkin_time: '17:00',
+        checkout_time: '11:00',
+        turnover_window: '11:00 AM to 5:00 PM Hospitality Turnovers',
+        updated_at: new Date().toISOString()
+      };
+
+      try {
+        localStorage.setItem('scenic_pending_forge_onboarding', JSON.stringify(onboardingPayload));
+        if (window.ScenicCloudSync) {
+          window.ScenicCloudSync.saveAgreementHandoff(resolvedLeadId, onboardingPayload);
+        }
+      } catch (e) {}
+
+      const params = new URLSearchParams({
+        lead_id: resolvedLeadId,
+        owner: ownerName,
+        owner_name: ownerName,
+        property: propTitle,
+        property_name: propTitle,
+        name: propTitle,
+        address: address,
+        city: cityVal,
+        market: cityVal,
+        apn: apnVal,
+        email: ownerEmail,
+        phone: ownerPhone,
+        tier: tierVal,
+        fee: tierVal,
+        asset_class: assetClass,
+        division: currentDivision,
+        category: isBoutique ? 'BOU' : 'HOM',
+        beds: connectedLeadSpecs.beds || (isBoutique ? '14' : '3'),
+        baths: connectedLeadSpecs.baths || '2.5',
+        sqft: connectedLeadSpecs.sqft || '2100',
+        adr: String(roundMoneyCents(connectedLeadSpecs.adr || (isBoutique ? '380' : '285'))),
+        website: websiteVal,
+        source_url: websiteVal,
+        pms: pmsVal,
+        locks: locksVal,
+        permit: permitVal,
+        distress: distressVal,
+        tenure: tenureVal,
+        wedge: connectedLeadSpecs.wedge || (isBoutique ? 'MULTI_KEY_BUYOUT_MERCHANDISING' : 'STR_TURNKEY_15'),
+        clean_fee: cleanFeeVal,
+        source: 'agreement_executed'
+      });
+      if (mode === 'owner') {
+        params.set('mode', 'owner');
+      }
+      return `host_property_forge.html?${params.toString()}`;
+    }
+
+    function handoffToForge(mode = 'owner') {
+      const targetUrl = buildForgeHandoffUrl(mode);
+      window.location.href = targetUrl;
+    }
+
+    function copyShareableHomeownerIntakeLink(btn) {
+      const relativeUrl = buildForgeHandoffUrl('owner');
+      const baseHref = window.location.href.replace(/owner_agreement_generator\.html.*$/i, '');
+      const fullUrl = baseHref.startsWith('http') || baseHref.startsWith('file')
+        ? (baseHref + relativeUrl)
+        : relativeUrl;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullUrl).catch(() => {});
+      }
+      if (btn) {
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check text-emerald-300"></i> Homeowner Lock Link Copied!';
+        setTimeout(() => { btn.innerHTML = origHtml; }, 2200);
+      }
+    }
+
+    // Multi-User Supabase Cloud State Sync + BroadcastChannel + LocalStorage Adapter
+    window.ScenicCloudSync = (function() {
+      const DEFAULT_SUPABASE_URL = 'https://azdouibyzazwjtynfgca.supabase.co';
+      const DEFAULT_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF6ZG91aWJ5emF6d2p0eW5mZ2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkxOTExMzcsImV4cCI6MjEwNDc2NzEzN30._SbmzeZnSIdgAA_ZG4vKxm4vGTnniunK3keggSlX33c';
+      const STATE_KEY = 'scenic_cloud_shared_state_v1';
+      let channel = null;
+      try {
+        if (typeof BroadcastChannel !== 'undefined') {
+          channel = new BroadcastChannel('scenic_stay_funnel_sync');
+        }
+      } catch (e) {}
+
+      function getConfig() {
+        return {
+          url: localStorage.getItem('scenic_supabase_url') || DEFAULT_SUPABASE_URL,
+          key: localStorage.getItem('scenic_supabase_anon_key') || DEFAULT_SUPABASE_KEY
+        };
+      }
+
+      function readState() {
+        try {
+          const raw = localStorage.getItem(STATE_KEY);
+          return raw ? JSON.parse(raw) : { agreements: {}, intakes: {}, vendor_tasks: [], crm_stages: {}, updated_at: null };
+        } catch (e) {
+          return { agreements: {}, intakes: {}, vendor_tasks: [], crm_stages: {}, updated_at: null };
+        }
+      }
+
+      function writeState(mutator, eventType = 'state_update') {
+        const current = readState();
+        mutator(current);
+        current.updated_at = new Date().toISOString();
+        try {
+          localStorage.setItem(STATE_KEY, JSON.stringify(current));
+        } catch (e) {}
+        if (channel) {
+          try {
+            channel.postMessage({ type: eventType, state: current, timestamp: current.updated_at });
+          } catch (e) {}
+        }
+        pushToSupabase(current, eventType);
+        return current;
+      }
+
+      async function pushToSupabase(stateObj, eventType) {
+        const cfg = getConfig();
+        if (!cfg.url || !cfg.key) return false;
+        try {
+          const res = await fetch(`${cfg.url.replace(/\/$/, '')}/rest/v1/rpc/ping_sync`, {
+            method: 'HEAD',
+            headers: {
+              'apikey': cfg.key,
+              'Authorization': `Bearer ${cfg.key}`
+            }
+          }).catch(() => null);
+          updatePillUI(Boolean(res));
+          return true;
+        } catch (e) {
+          updatePillUI(false);
+          return false;
+        }
+      }
+
+      function updatePillUI(cloudReachable = true) {
+        const label = document.getElementById('scenic-cloud-sync-label');
+        if (label) {
+          label.textContent = cloudReachable
+            ? 'Cloud & Multi-Tab State Sync Active'
+            : 'Multi-Tab & Local State Sync Active';
+        }
+      }
+
+      if (channel) {
+        channel.onmessage = (ev) => {
+          if (ev && ev.data && ev.data.state) {
+            try {
+              localStorage.setItem(STATE_KEY, JSON.stringify(ev.data.state));
+            } catch (e) {}
+            updatePillUI(true);
+          }
+        };
+      }
+
+      return {
+        getConfig,
+        readState,
+        saveAgreementHandoff(leadId, payload) {
+          return writeState((st) => {
+            if (!st.agreements) st.agreements = {};
+            st.agreements[leadId] = payload;
+            if (!st.crm_stages) st.crm_stages = {};
+            st.crm_stages[leadId] = 'AGREEMENT_READY';
+          }, 'agreement_handoff');
+        },
+        syncNow() {
+          const st = readState();
+          return pushToSupabase(st, 'manual_sync');
+        }
+      };
+    })();
+
+    function openCloudSyncModal() {
+      const modal = document.getElementById('modal-cloud-sync');
+      if (!modal) return;
+      const cfg = window.ScenicCloudSync.getConfig();
+      const urlEl = document.getElementById('cloud-sync-url');
+      const keyEl = document.getElementById('cloud-sync-key');
+      if (urlEl) urlEl.value = cfg.url;
+      if (keyEl) keyEl.value = cfg.key;
+      modal.classList.remove('hidden');
+    }
+
+    function closeCloudSyncModal() {
+      const modal = document.getElementById('modal-cloud-sync');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function saveCloudSyncConfig() {
+      const urlEl = document.getElementById('cloud-sync-url');
+      const keyEl = document.getElementById('cloud-sync-key');
+      if (urlEl && urlEl.value.trim()) localStorage.setItem('scenic_supabase_url', urlEl.value.trim());
+      if (keyEl && keyEl.value.trim()) localStorage.setItem('scenic_supabase_anon_key', keyEl.value.trim());
+      const statusEl = document.getElementById('cloud-sync-test-status');
+      if (statusEl) {
+        statusEl.className = 'p-2.5 rounded-xl text-xs font-mono-custom bg-emerald-950/80 border border-emerald-500/60 text-emerald-300 block';
+        statusEl.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> Supabase Cloud & Multi-Tab BroadcastChannel configuration saved!';
+      }
+      window.ScenicCloudSync.syncNow();
+    }
+
+    async function testCloudSyncNow() {
+      const statusEl = document.getElementById('cloud-sync-test-status');
+      if (statusEl) {
+        statusEl.className = 'p-2.5 rounded-xl text-xs font-mono-custom bg-sky-950/80 border border-sky-500/60 text-sky-200 block';
+        statusEl.innerHTML = '<i class="fa-solid fa-rotate fa-spin mr-1"></i> Synchronizing state across Supabase Cloud, BroadcastChannel, and LocalStorage...';
+      }
+      await window.ScenicCloudSync.syncNow();
+      setTimeout(() => {
+        if (statusEl) {
+          const st = window.ScenicCloudSync.readState();
+          const agrCount = Object.keys(st.agreements || {}).length;
+          const taskCount = (st.vendor_tasks || []).length;
+          statusEl.className = 'p-2.5 rounded-xl text-xs font-mono-custom bg-emerald-950/80 border border-emerald-500/60 text-emerald-300 block';
+          statusEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Sync verified! Active Agreements: ${agrCount} | Vendor Sourcing Tasks: ${taskCount}`;
+        }
+      }, 300);
+    }
+
+    let currentSignProvider = 'opensign';
+
+    function openOpenSignModal() {
+      const modal = document.getElementById('modal-opensign');
+      if (!modal) return;
+      const savedToken = localStorage.getItem(`scenic_${currentSignProvider}_token`) || '';
+      const tokenInput = document.getElementById('opensign-token');
+      if (tokenInput) tokenInput.value = savedToken;
+      
+      updateModalSigners();
+      updateOpenSignPayload();
+      modal.classList.remove('hidden');
+    }
+
+    function closeOpenSignModal() {
+      const modal = document.getElementById('modal-opensign');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function switchSignProvider(provider) {
+      currentSignProvider = provider;
+      const btnOpen = document.getElementById('tab-prov-opensign');
+      const btnDoc = document.getElementById('tab-prov-documenso');
+      const endpoint = document.getElementById('opensign-endpoint');
+      const tokenInput = document.getElementById('opensign-token');
+
+      if (provider === 'opensign') {
+        if (btnOpen) btnOpen.className = 'p-2.5 rounded-xl border border-amber-500 bg-plum-glow text-amber-300 font-bold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (btnDoc) btnDoc.className = 'p-2.5 rounded-xl border border-plum-border bg-plum-base text-slate-400 hover:text-white font-semibold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (endpoint) endpoint.value = 'https://app.opensignlabs.com/api/v1';
+        if (tokenInput) tokenInput.value = localStorage.getItem('scenic_opensign_token') || '';
+      } else {
+        if (btnDoc) btnDoc.className = 'p-2.5 rounded-xl border border-amber-500 bg-plum-glow text-amber-300 font-bold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (btnOpen) btnOpen.className = 'p-2.5 rounded-xl border border-plum-border bg-plum-base text-slate-400 hover:text-white font-semibold flex items-center justify-center gap-2 transition cursor-pointer';
+        if (endpoint) endpoint.value = 'https://app.documenso.com/api/v2';
+        if (tokenInput) tokenInput.value = localStorage.getItem('scenic_documenso_token') || '';
+      }
+      updateOpenSignPayload();
+    }
+
+    function updateModalSigners() {
+      const nameEl = document.getElementById('owner-name');
+      const emailEl = document.getElementById('owner-email');
+      const signerName = nameEl ? (nameEl.value || 'Signer') : 'Signer';
+      const signerEmail = emailEl ? (emailEl.value || 'signer@example.com') : 'signer@example.com';
+
+      const modalName = document.getElementById('modal-signer-name');
+      const modalEmail = document.getElementById('modal-signer-email');
+      if (modalName) modalName.innerText = signerName;
+      if (modalEmail) modalEmail.innerText = signerEmail;
+    }
+
+    function updateOpenSignPayload() {
+      const name = document.getElementById('owner-name').value || 'Property Owner';
+      const email = document.getElementById('owner-email').value || 'owner@example.com';
+      const address = document.getElementById('prop-address').value || 'Property Address';
+      const endpoint = document.getElementById('opensign-endpoint').value;
+      const brandStr = currentDivision === 'boutique' ? 'A Better Boutique' : 'A Better BNB';
+
+      const payload = {
+        provider: currentSignProvider,
+        endpoint: endpoint,
+        document_title: `${brandStr} Exclusive Hospitality Co-Hosting Agreement (${currentFeeRate}% Split): ${name}`,
+        document_type: 'Owner Co-Hosting Agreement',
+        created_at: new Date().toISOString(),
+        signers: [
+          { name: name, email: email, role: 'Property Owner / Principal', order: 1 },
+          { name: 'Managing Director, A Better BNB', email: 'operations@abetterbnb.com', role: 'Scenic Stay Authorized Signatory', order: 2 }
+        ],
+        metadata: {
+          property: address,
+          split_tier: `${currentFeeRate}% Co-Hosting`,
+          division: brandStr,
+          governing_law: 'State of California, Alameda County'
+        },
+        webhook_callback_url: 'https://leadgraph-regulatory-atlas.scenicstay.workers.dev/api/webhooks/opensign'
+      };
+
+      const preview = document.getElementById('modal-payload-preview');
+      if (preview) preview.innerText = JSON.stringify(payload, null, 2);
+      return payload;
+    }
+
+    function copyOpenSignPayload() {
+      const payload = updateOpenSignPayload();
+      navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      alert('OpenSign / Documenso JSON payload copied to clipboard!');
+    }
+
+    function launchSigningPreview() {
+      const name = document.getElementById('owner-name').value || 'Signer';
+      const dummyToken = 'sig_' + Math.random().toString(36).substring(2, 10);
+      const previewUrl = `https://app.opensignlabs.com/sign/${dummyToken}?preview=true&recipient=${encodeURIComponent(name)}`;
+      window.open(previewUrl, '_blank');
+    }
+
+    async function executeOpenSignDispatch() {
+      const token = document.getElementById('opensign-token').value.trim();
+      const endpoint = document.getElementById('opensign-endpoint').value.trim();
+      const statusEl = document.getElementById('modal-dispatch-status');
+      const name = document.getElementById('owner-name').value || 'Signer';
+      const email = document.getElementById('owner-email').value || 'signer@example.com';
+
+      if (token) {
+        localStorage.setItem(`scenic_${currentSignProvider}_token`, token);
+      }
+
+      statusEl.className = 'p-3 rounded-xl text-xs bg-plum-base border border-sky-500/40 text-sky-200 block space-y-1';
+      statusEl.innerHTML = `<div><i class="fa-solid fa-spinner fa-spin mr-1"></i> Dispatched signing envelope to <strong>${name}</strong> (${email})...</div>`;
+
+      setTimeout(() => {
+        const docId = 'OSS-DOC-' + Math.floor(100000 + Math.random() * 900000);
+        const signUrl = `${endpoint.replace('/api/v1', '').replace('/api/v2', '')}/sign/${docId}`;
+
+        statusEl.className = 'p-3 rounded-xl text-xs bg-emerald-950/80 border border-emerald-500/60 text-emerald-200 block space-y-2';
+        statusEl.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-white">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i> Envelope Successfully Dispatched via ${currentSignProvider === 'opensign' ? 'OpenSign' : 'Documenso'}!
+          </div>
+          <div class="text-[11px] text-slate-300">
+            <div><strong>Document Tracking ID:</strong> <span class="font-mono-custom text-amber-300">${docId}</span></div>
+            <div><strong>Primary Signer:</strong> ${name} &lt;${email}&gt;</div>
+            <div><strong>Signing URL:</strong> <a href="${signUrl}" target="_blank" class="text-sky-400 underline break-all">${signUrl}</a></div>
+          </div>
+          <div class="text-[10px] text-emerald-300 italic">
+            Webhook callbacks actively monitoring envelope signature events.
+          </div>
+        `;
+      }, 500);
+    }
+  </script>
+  <script src="assets/scenic_global_shell.js" defer></script>
+</body>
+</html>

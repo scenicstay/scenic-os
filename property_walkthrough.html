@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scenic Stay: Property Spec Engine, Cleaner Vetting & Operating Simulator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .tab-active { border-bottom: 3px solid #0284c7; color: #0284c7; font-weight: 700; }
+    .tier-badge-1 { background-color: #064e3b; color: #6ee7b7; border: 1px solid #047857; }
+    .tier-badge-2 { background-color: #4c1d95; color: #d8b4fe; border: 1px solid #7c3aed; }
+    .aircover-banner { background: linear-gradient(135deg, #991b1b 0%, #450a0a 100%); }
+    .gold-gradient { background: linear-gradient(135deg, #d97706 0%, #b45309 100%); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+  
+  <!-- Top Navigation -->
+  <header class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="h-9 w-9 bg-sky-500 rounded-lg flex items-center justify-center shadow-lg shadow-sky-500/30">
+          <i class="fa-solid fa-mountain-sun text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white">SCENIC STAY</span>
+          <span class="text-xs bg-sky-950 text-sky-400 border border-sky-800/80 px-2 py-0.5 rounded-full ml-2 font-medium">Boutique Hospitality & Spec Suite</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3 text-xs">
+        <a href="host_property_forge.html" class="inline-flex items-center bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-3 py-1.5 rounded-lg transition font-semibold">
+          <i class="fa-solid fa-hammer mr-1.5 text-amber-400"></i> HOSt Property Forge &rarr;
+        </a>
+        <button onclick="exportCSV()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-3 py-1.5 rounded-lg transition-all flex items-center">
+          <i class="fa-solid fa-file-export mr-1.5"></i> Export Spec CSV
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Property Switcher Bar -->
+  <div class="bg-slate-950/80 border-b border-slate-800 px-4 py-3 backdrop-blur">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <label for="prop-select" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Select Property:</label>
+        <select id="prop-select" onchange="changeProperty(this.value)" class="bg-slate-800 border border-slate-700 text-white text-sm rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-sky-500 font-semibold cursor-pointer">
+          <option value="estates-5br">5540 Estates Dr: 5-BR Whole House (Oakland, CA - OAK-HOM-002)</option>
+          <option value="avis-pinole">3146 Avis Way: 4-BR Ridge Sanctuary (Pinole, CA - PIN-HOM-001)</option>
+          <option value="scenic-north">1604 Scenic Ave: North Studio (Berkeley, CA - BKL-STU-001)</option>
+          <option value="scenic-south">1606 Scenic Ave: South Garden Studio (Berkeley, CA - BKL-STU-002)</option>
+          <option value="walsh-adu">3270 W Walsh Pl: ADU Suite (Denver, CO)</option>
+        </select>
+      </div>
+
+      <div id="prop-stats-bar" class="flex flex-wrap items-center gap-2 text-xs">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Tabs Navigation -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+    <div class="flex border-b border-slate-800 space-x-8 text-sm overflow-x-auto">
+      <button onclick="switchTab('specsheet')" id="tab-btn-specsheet" class="tab-btn tab-active pb-3 flex items-center whitespace-nowrap">
+        <i class="fa-solid fa-tags mr-2"></i> Photo Audit, Repairs &amp; Direct FF&amp;E Links
+      </button>
+      <button onclick="switchTab('monetization')" id="tab-btn-monetization" class="tab-btn pb-3 text-slate-400 hover:text-slate-200 flex items-center whitespace-nowrap">
+        <i class="fa-solid fa-sack-dollar mr-2"></i> 4 Monetization Streams &amp; Outfitting Fee
+      </button>
+      <button onclick="switchTab('cleaner-vetting')" id="tab-btn-cleaner-vetting" class="tab-btn pb-3 text-slate-400 hover:text-slate-200 flex items-center whitespace-nowrap">
+        <i class="fa-solid fa-clipboard-check mr-2"></i> Cleaner Interview &amp; 5-Turn Trial
+      </button>
+      <button onclick="switchTab('wifi-guidebook')" id="tab-btn-wifi-guidebook" class="tab-btn pb-3 text-slate-400 hover:text-slate-200 flex items-center whitespace-nowrap">
+        <i class="fa-solid fa-wifi mr-2"></i> Captive Portal Wi-Fi &amp; QR Guidebook
+      </button>
+      <button onclick="switchTab('dryrun')" id="tab-btn-dryrun" class="tab-btn pb-3 text-slate-400 hover:text-slate-200 flex items-center whitespace-nowrap text-sky-400 font-semibold">
+        <i class="fa-solid fa-play mr-2"></i> Interactive Dry Run (CRM &rarr; HOSt)
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 bg-slate-800 border border-slate-700 text-white px-5 py-3 rounded-xl shadow-2xl z-50 flex items-center space-x-3">
+      <i class="fa-solid fa-check-circle text-emerald-400 text-lg"></i>
+      <span id="toast-msg" class="text-sm font-medium">Action completed</span>
+    </div>
+
+    <!-- TAB 1: 2-TIER SPEC SHEET WITH DEEP PRODUCT LINKS -->
+    <section id="tab-specsheet" class="tab-content block space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xs bg-amber-950/80 text-amber-300 border border-amber-800/80 px-2 py-0.5 rounded font-semibold uppercase tracking-wider">Scenic Stay Certified</span>
+            <h2 class="text-xl font-bold text-white">Live Photo Audit, Contractor Scope &amp; Direct FF&amp;E Reorder Catalog</h2>
+          </div>
+          <p class="text-sm text-slate-400 mt-1">Complete room-by-room visual inspection, contractor repair quotes, commission tier math, and curated FF&amp;E links (Tuft &amp; Needle, Wayfair, Amazon, JCPenney).</p>
+        </div>
+
+        <!-- Tier Filter Buttons -->
+        <div class="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800 text-xs">
+          <button onclick="filterTier('ALL')" id="tier-filter-ALL" class="px-3 py-1.5 rounded font-semibold bg-slate-800 text-white">All Tiers</button>
+          <button onclick="filterTier('Tier 1')" id="tier-filter-T1" class="px-3 py-1.5 rounded font-semibold text-slate-400 hover:text-white">Tier 1: Essential / Linens</button>
+          <button onclick="filterTier('Tier 2')" id="tier-filter-T2" class="px-3 py-1.5 rounded font-semibold text-slate-400 hover:text-white">Tier 2: Mattresses &amp; Furniture</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Live Photo Gallery & Property Dossier Container -->
+      <div id="prop-dossier-banner" class="space-y-4"></div>
+
+      <!-- Financial Comparison Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl">
+          <span class="text-xs text-emerald-400 uppercase font-semibold flex items-center">
+            <span class="h-2 w-2 rounded-full bg-emerald-400 mr-2"></span> Tier 1 Outfitting (Linens, Pillows &amp; Essentials)
+          </span>
+          <p id="t1-total-cost" class="text-2xl font-bold text-white mt-1">$0.00</p>
+          <span class="text-xs text-slate-400">JCPenney 100% Cotton Percale (3x Par) / SafeRest / Beckham</span>
+        </div>
+        <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl">
+          <span class="text-xs text-purple-400 uppercase font-semibold flex items-center">
+            <span class="h-2 w-2 rounded-full bg-purple-400 mr-2"></span> Tier 2 Outfitting (All-King Beds &amp; Dead-Space FF&amp;E)
+          </span>
+          <p id="t2-total-cost" class="text-2xl font-bold text-white mt-1">$0.00</p>
+          <span class="text-xs text-slate-400">Tuft &amp; Needle King / Zinus Platform / Wayfair / Castlery</span>
+        </div>
+        <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl">
+          <span class="text-xs text-amber-400 uppercase font-semibold flex items-center">
+            <i class="fa-solid fa-hand-holding-dollar mr-1.5"></i> Outfitting Coordination Fee (20%)
+          </span>
+          <p id="outfitting-fee-est" class="text-2xl font-bold text-amber-300 mt-1">$0.00</p>
+          <span class="text-xs text-slate-400">20% Procurement, Delivery, Assembly &amp; Staging Fee</span>
+        </div>
+      </div>
+
+      <!-- Spec Table -->
+      <div class="bg-slate-950/90 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-300">
+            <thead class="bg-slate-900 border-b border-slate-800 text-xs uppercase tracking-wider text-slate-400">
+              <tr>
+                <th class="py-3 px-4 font-semibold">Tier</th>
+                <th class="py-3 px-4 font-semibold">Space / Room</th>
+                <th class="py-3 px-4 font-semibold">Item & Model</th>
+                <th class="py-3 px-4 font-semibold">Brand / Retailer</th>
+                <th class="py-3 px-4 text-center font-semibold">Qty</th>
+                <th class="py-3 px-4 text-right font-semibold">Unit Price</th>
+                <th class="py-3 px-4 font-semibold">Direct Item Link</th>
+                <th class="py-3 px-4 font-semibold">Affiliate Network</th>
+                <th class="py-3 px-4 font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody id="spec-table-body" class="divide-y divide-slate-800/60">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: 4 MONETIZATION STREAMS & OUTFITTING SERVICE -->
+    <section id="tab-monetization" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-bold text-white flex items-center">
+          <i class="fa-solid fa-coins text-amber-400 mr-2.5"></i> The 4 Scenic Stay Monetization Streams
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">How Scenic Stay captures margin across every phase of property outfitting, operations, and guest stays.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Stream 1: White Glove Outfitting Fee -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs bg-amber-950 text-amber-300 border border-amber-800 px-2.5 py-0.5 rounded font-bold uppercase">Stream 1 (Active at Contract)</span>
+            <span class="text-lg font-bold text-white">$2,500 :  $7,500 / Unit</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">White-Glove Turnkey Outfitting & Procurement Service</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Property owners love luxury aesthetics but dread unboxing 40 boxes, dealing with delayed freight, assembling furniture, and hauling cardboard. Scenic Stay provides a full-service procurement solution:
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <li><strong>Design & Spec Planning:</strong> Tailored 2-tier moodboard aligned with target guest ADR.</li>
+            <li><strong>Procurement Management:</strong> Placing orders, tracking shipments, and staging consolidation.</li>
+            <li><strong>Assembly & Ready-State Staging:</strong> White-glove assembly, trash haul-away, bed dressing, and photo cataloging.</li>
+            <li><strong>Pricing Model:</strong> Either flat fee ($2,500 for studios/1-BR; $5,000: $7,500 for estates) OR a 15%: 20% markup on total FF&E spend.</li>
+          </ul>
+        </div>
+
+        <!-- Stream 2: Affiliate Marketing Commissions -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs bg-emerald-950 text-emerald-300 border border-emerald-800 px-2.5 py-0.5 rounded font-bold uppercase">Stream 2 (Procurement Rev Share)</span>
+            <span class="text-lg font-bold text-emerald-400">4% :  12% Cash Back</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Direct Retailer Affiliate Marketing Commissions</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            When the property owner funds the outfitting budget, all purchases are executed through Scenic Stay's registered affiliate links:
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <li><strong>Target Partners:</strong> 4%: 8% on home decor, bedding, and small appliances.</li>
+            <li><strong>Amazon Associates:</strong> 3%: 10% on electronics, locks, coffee machines, and consumables.</li>
+            <li><strong>ShareASale / Article:</strong> 5%: 10% on high-ticket sofas and credenzas ($100: $300 per piece).</li>
+            <li><strong>ShopMy / Quince:</strong> 6%: 10% recurring on organic percale bedding replacements.</li>
+          </ul>
+        </div>
+
+        <!-- Stream 3: In-Unit "Shop the Stay" QR Purchases -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-bold uppercase">Stream 3 (Passive Guest Sales)</span>
+            <span class="text-lg font-bold text-sky-400">$300 :  $1,200 / Yr / Unit</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">In-Unit "Shop the Stay" Guest Purchases</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Guests constantly rave about the mattresses, linens, and shower scents. We monetize this curiosity:
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <li><strong>Subtle QR Plaques:</strong> Acrylic bedside and bathroom plaques: <em>"Loving your sleep? Scan to shop our signature percale bedding and mattress."</em></li>
+            <li><strong>Digital Guidebook Integration:</strong> Direct links to purchase on LTK / Amazon / Quince storefront.</li>
+            <li><strong>Zero Inventory Risk:</strong> Retailers handle 100% of shipping and returns; Scenic Stay collects passive commissions.</li>
+          </ul>
+        </div>
+
+        <!-- Stream 4: Captive Portal Wi-Fi Direct Booking Capture -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-bold uppercase">Stream 4 (Direct Bookings)</span>
+            <span class="text-lg font-bold text-purple-400">+15% Gross Margin Lift</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Captive Portal Wi-Fi & Repeat Booking Funnel</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Airbnb and Vrbo mask guest emails. We bypass this legally by capturing real guest contacts on Wi-Fi connection:
+          </p>
+          <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+            <li><strong>Branded Captive Splash Page:</strong> Every guest (not just the booker) enters First Name, Last Name, and Email to access 500Mbps Wi-Fi.</li>
+            <li><strong>Auto-Redirect:</strong> Browser immediately opens the In-Unit Digital Guidebook.</li>
+            <li><strong>Direct Rebooking Engine:</strong> Automated email sent 90 days later: <em>"Book your next stay directly with Scenic Stay and save 15% on OTA fees."</em></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: CLEANER INTERVIEW & 5-TURN TRIAL -->
+    <section id="tab-cleaner-vetting" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-bold text-white flex items-center">
+          <i class="fa-solid fa-user-shield text-emerald-400 mr-2.5"></i> Cleaner Vetting, Visual Interview & 5-Turn Trial SOP
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">How to vet cleaners before handing them keys: practical "spot-the-flaw" tests, AirCover damage traps, and a probationary 5-turn gauntlet.</p>
+      </div>
+
+      <!-- The 3-Step Vetting Funnel -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-5 shadow-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-400 uppercase">STEP 1 (15 MIN)</span>
+            <span class="text-xs bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">Phone Screen</span>
+          </div>
+          <h4 class="text-base font-bold text-white">The STR vs Residential Filter</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Filter out residential cleaners who lack STR urgency. Ask:
+          </p>
+          <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+            <li>"Have you cleaned for Airbnb where checkout is 10am and checkin is 3pm?"</li>
+            <li>"Are you available Thursdays and Sundays consistently?"</li>
+            <li>"Do you have a modern smartphone with a working camera for 5-photo upload?"</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-5 shadow-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-400 uppercase">STEP 2 (VISUAL)</span>
+            <span class="text-xs bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-800">Spot The Flaw</span>
+          </div>
+          <h4 class="text-base font-bold text-white">The Visual Test & Damage Trap</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Show candidate 3 room photos on your phone or laptop:
+          </p>
+          <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+            <li><strong>Test A:</strong> Photo of bed with loose fitted sheet & crooked pillows. Ask: <em>"What needs fixing here?"</em></li>
+            <li><strong>Test B (The AirCover Trap):</strong> <em>"You walk into the living room and see a red wine stain on the rug and broken glass. What's the very first thing you do?"</em></li>
+            <li><strong class="text-emerald-400">Passing Answer:</strong> <em>"I STOP. I do not touch or clean it. I take 3 photos (wide, medium, close-up) and text management immediately."</em></li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-5 shadow-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-purple-400 uppercase">STEP 3 (GAUNTLET)</span>
+            <span class="text-xs bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-800">5-Turn Trial</span>
+          </div>
+          <h4 class="text-base font-bold text-white">The 5-Turn Probationary Period</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Never sign a long-term agreement until 5 turns are completed:
+          </p>
+          <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+            <li><strong>Turn 1:</strong> Paid shadow turn with Justin or Ops Lead (in-person calibration).</li>
+            <li><strong>Turns 2 & 3:</strong> Solo turns with 100% photo verification before payout.</li>
+            <li><strong>Turns 4 & 5:</strong> 15-minute surprise physical inspection at 2:45 PM.</li>
+            <li><strong>Graduation:</strong> Promote to Scenic Preferred Vendor with guaranteed volume.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Interactive Spot-The-Flaw Simulator -->
+      <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center">
+          <i class="fa-solid fa-gamepad text-sky-400 mr-2"></i> Interactive Interview Scenario Simulator
+        </h3>
+        <p class="text-xs text-slate-300">Click a scenario button below to test candidate responses against Scenic Stay standards:</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <button onclick="runScenario('damage')" class="p-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left text-xs space-y-1">
+            <span class="font-bold text-red-400 block">Scenario 1: Wine Spill & Broken Lamp</span>
+            <span class="text-slate-400">Candidate walks in at 10:05 AM and finds damage.</span>
+          </button>
+          <button onclick="runScenario('bed')" class="p-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-lg text-left text-xs space-y-1">
+            <span class="font-bold text-amber-400 block">Scenario 2: Wrinkled Fitted Sheet</span>
+            <span class="text-slate-400">Cleaner finishes bed but fitted sheet has loose ripples.</span>
+          </button>
+        </div>
+
+        <div id="scenario-result" class="hidden p-4 rounded-lg bg-slate-900 border border-slate-800 text-xs space-y-2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: CAPTIVE PORTAL & QR GUIDEBOOK -->
+    <section id="tab-wifi-guidebook" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-bold text-white flex items-center">
+          <i class="fa-solid fa-qrcode text-sky-400 mr-2.5"></i> Captive Portal Wi-Fi & In-Unit Digital Guidebook
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">Capture guest contact details on Wi-Fi connection, direct them to house rules, and monetize their stay with the in-unit "Shop This Room" catalog.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Wi-Fi Captive Portal Simulation -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-sm font-bold text-white flex items-center">
+              <i class="fa-solid fa-mobile-screen text-purple-400 mr-2"></i> Wi-Fi Captive Portal (Guest View)
+            </h3>
+            <span class="text-[11px] bg-purple-950 text-purple-300 border border-purple-800 px-2 py-0.5 rounded font-semibold">StayFi / UniFi Powered</span>
+          </div>
+
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+            <div class="h-10 w-10 bg-sky-500 rounded-full flex items-center justify-center mx-auto text-white shadow">
+              <i class="fa-solid fa-mountain-sun"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white">Welcome to Scenic Stay</h4>
+            <p class="text-xs text-slate-400">Enter your details to connect to complimentary high-speed Wi-Fi (500 Mbps).</p>
+            
+            <div class="space-y-2 text-left max-w-xs mx-auto text-xs">
+              <input type="text" placeholder="First & Last Name" class="w-full bg-slate-800 border border-slate-700 rounded p-2 text-white">
+              <input type="email" placeholder="Email Address" class="w-full bg-slate-800 border border-slate-700 rounded p-2 text-white">
+              <button onclick="simulateWifiConnect()" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 rounded shadow transition-all">
+                Connect to High-Speed Wi-Fi
+              </button>
+            </div>
+            <span class="text-[10px] text-slate-500 block">By connecting, you agree to Scenic Stay guest terms and receive local area guides.</span>
+          </div>
+        </div>
+
+        <!-- In-Unit QR Guidebook Simulation -->
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-sm font-bold text-white flex items-center">
+              <i class="fa-solid fa-book-open text-emerald-400 mr-2"></i> In-Unit Digital Guidebook & "Shop the Stay"
+            </h3>
+            <span class="text-[11px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded font-semibold">Live Mobile Landing</span>
+          </div>
+
+          <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-3 text-xs">
+            <div class="flex items-center justify-between text-slate-300 border-b border-slate-800 pb-2">
+              <span class="font-bold text-white"><i class="fa-solid fa-house mr-1 text-sky-400"></i> House Manual & Check-Out</span>
+              <span class="text-slate-400">11:00 AM Check-out</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-300 border-b border-slate-800 pb-2">
+              <span class="font-bold text-white"><i class="fa-solid fa-mug-hot mr-1 text-amber-400"></i> Coffee Machine Instructions</span>
+              <span class="text-slate-400">Nespresso / Keurig</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-300 border-b border-slate-800 pb-2">
+              <span class="font-bold text-white"><i class="fa-solid fa-map-location-dot mr-1 text-emerald-400"></i> Local Coffee & Dining Picks</span>
+              <span class="text-slate-400">Founder's Top 5</span>
+            </div>
+            <div class="bg-amber-950/30 p-3 rounded-lg border border-amber-900/40 text-left space-y-1">
+              <span class="font-bold text-amber-400 flex items-center">
+                <i class="fa-solid fa-bed mr-1.5"></i> "Loved Your Sleep?" Shop This Room
+              </span>
+              <p class="text-slate-300 text-[11px]">Guests can tap to purchase our exact mattress, 300TC percale sheets, and bathroom towels via Amazon and Quince.</p>
+              <button onclick="showToast('Opened Affiliate Storefront')" class="mt-2 text-[11px] bg-amber-600 hover:bg-amber-500 text-white font-semibold px-2.5 py-1 rounded">
+                View "Shop the Stay" Storefront &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 5: INTERACTIVE DRY RUN (CRM -> HOSt) -->
+    <section id="dryrun" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs bg-sky-950 text-sky-400 border border-sky-800 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Operational Simulation</span>
+          <h2 class="text-xl font-bold text-white mt-1">Full End-to-End Operational Dry Run</h2>
+          <p class="text-sm text-slate-400">Test the entire journey from an Exa boutique hotel lead to contract, spec outfitting, turnover, AirCover freeze, and guest check-in.</p>
+        </div>
+        <button onclick="resetDryRun()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg border border-slate-700">
+          Reset Dry Run
+        </button>
+      </div>
+
+      <!-- Dry Run Stepper -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+        <div id="step-card-1" class="p-3.5 rounded-xl border bg-slate-950 border-sky-500/80 shadow space-y-1">
+          <span class="font-bold text-sky-400 block">STEP 1: CRM LEAD</span>
+          <span class="text-white font-semibold">Adelaide Inn Paso Robles</span>
+          <p class="text-slate-400 text-[11px]">Paso Robles (67 Keys). OTA fee compression lift.</p>
+        </div>
+        <div id="step-card-2" class="p-3.5 rounded-xl border bg-slate-950/60 border-slate-800 space-y-1 opacity-60">
+          <span class="font-bold text-slate-400 block">STEP 2: CONTRACT</span>
+          <span class="text-white font-semibold">25% Turnkey Co-hosting</span>
+          <p class="text-slate-400 text-[11px]">+ $5,000 Outfitting Fee</p>
+        </div>
+        <div id="step-card-3" class="p-3.5 rounded-xl border bg-slate-950/60 border-slate-800 space-y-1 opacity-60">
+          <span class="font-bold text-slate-400 block">STEP 3: SPEC OUTFIT</span>
+          <span class="text-white font-semibold">Tier 2 Luxury Boutique</span>
+          <p class="text-slate-400 text-[11px]">Saatva & Article Procured</p>
+        </div>
+        <div id="step-card-4" class="p-3.5 rounded-xl border bg-slate-950/60 border-slate-800 space-y-1 opacity-60">
+          <span class="font-bold text-slate-400 block">STEP 4: TURNOVER</span>
+          <span class="text-white font-semibold">AirCover Freeze Check</span>
+          <p class="text-slate-400 text-[11px]">10:00 AM Entry Sweep</p>
+        </div>
+        <div id="step-card-5" class="p-3.5 rounded-xl border bg-slate-950/60 border-slate-800 space-y-1 opacity-60">
+          <span class="font-bold text-slate-400 block">STEP 5: GUEST READY</span>
+          <span class="text-white font-semibold">5 Photos Verified</span>
+          <p class="text-slate-400 text-[11px]">Quo Softphone Live</p>
+        </div>
+      </div>
+
+      <!-- Dry Run Interactive Play Console -->
+      <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h3 id="dryrun-title" class="text-base font-bold text-white flex items-center">
+            <span class="h-6 w-6 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center mr-2 text-xs font-bold">1</span>
+            Step 1: Sales Lead in `CRM :  Opportunities`
+          </h3>
+          <span id="dryrun-stage-badge" class="text-xs bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-bold">Stage: Qualified</span>
+        </div>
+
+        <div id="dryrun-body" class="text-xs text-slate-300 space-y-3 leading-relaxed">
+          <p>
+            The lead <strong class="text-white">Adelaide Inn Paso Robles (67 Keys, Paso Robles, CA)</strong> was discovered via Claude Cowork's Exa sweep. Currently operating on flat $185/night static rates, causing <strong class="text-emerald-400">+$142,000/year</strong> in uncaptured revenue during Wine Festival and wine harvest weekends.
+          </p>
+          <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span class="text-slate-400 font-semibold block">Founder Action:</span>
+            <span>You review the revenue lift pro forma and call the owner through Quo to present the Boutique Hospitality Lift.</span>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-3 border-t border-slate-800">
+          <button id="dryrun-next-btn" onclick="nextDryRunStep()" class="bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-5 py-2.5 rounded-lg shadow-lg shadow-sky-600/20 flex items-center">
+            <span>Execute Next Step &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Master Products Database with Verified Deep Product Search & Purchase Links
+    const DATA = {
+      "scenic-north": {
+        name: "Scenic :  North Studio",
+        market: "Berkeley, CA",
+        specs: "1 Bed · 1 Bath · Sleeps 2",
+        airbnb_url: "https://www.airbnb.com/h/scenic-stays-berk-apartment-n",
+        outfitting_fee: 2500.00,
+        spec_items: [
+          {
+            tier: "Tier 1",
+            space: "Living Lounge",
+            item: "Modern 2-Seater Loveseat (Cognac Vegan Leather)",
+            brand: "Target (Threshold / Project 62)",
+            qty: 1,
+            cost: 399.00,
+            network: "Target Partners",
+            url: "https://www.target.com/s?searchTerm=Threshold+cognac+loveseat",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Living Lounge",
+            item: "Sven Charme Tan Leather Loveseat",
+            brand: "Article",
+            qty: 1,
+            cost: 999.00,
+            network: "ShareASale / Article",
+            url: "https://www.article.com/product/17812/sven-charme-tan-loveseat",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Coffee Nook",
+            item: "Keurig K-Mini Plus Coffee Maker (Studio Gray)",
+            brand: "Keurig",
+            qty: 1,
+            cost: 89.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Keurig+K-Mini+Plus+Single+Serve+Coffee+Maker+Studio+Gray",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Coffee Nook",
+            item: "Nespresso Vertuo Pop+ Coffee & Espresso Maker",
+            brand: "Nespresso",
+            qty: 1,
+            cost: 129.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Nespresso+Vertuo+Pop%2B+Coffee+and+Espresso+Maker",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Bed Nook",
+            item: "Zinus 12-inch Green Tea Memory Foam Mattress (Queen)",
+            brand: "Zinus",
+            qty: 1,
+            cost: 339.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Zinus+12+Inch+Green+Tea+Memory+Foam+Mattress+Queen",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Bed Nook",
+            item: "Saatva Classic Luxury Firm Mattress (Queen)",
+            brand: "Saatva",
+            qty: 1,
+            cost: 1695.00,
+            network: "ShareASale / Saatva",
+            url: "https://www.saatva.com/mattresses/saatva-classic",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Bed Nook",
+            item: "Organic Percale Cotton Sheet Set (Queen, White)",
+            brand: "Quince",
+            qty: 3,
+            cost: 89.00,
+            network: "ShopMy / Quince",
+            url: "https://www.quince.com/home/sheets/organic-percale-sheet-set",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Bed Nook",
+            item: "Classic Percale Core Sheet Set (Queen, White)",
+            brand: "Brooklinen",
+            qty: 3,
+            cost: 139.00,
+            network: "LTK / Brooklinen",
+            url: "https://www.brooklinen.com/products/classic-percale-core-sheet-set",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Bathroom",
+            item: "Plush Turkish Bath Sheets (Mid-Gray, 2-pk)",
+            brand: "Amazon Commercial / Utopia",
+            qty: 4,
+            cost: 32.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Utopia+Towels+Cabana+Stripe+or+Solid+Turkish+Cotton+Bath+Sheets+Grey",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Bathroom",
+            item: "Organic Turkish Waffle Towel Suite",
+            brand: "Quince",
+            qty: 4,
+            cost: 59.00,
+            network: "ShopMy / Quince",
+            url: "https://www.quince.com/home/bath/waffle-bath-sheets",
+            status: "Proposed"
+          }
+        ]
+      },
+      "scenic-south": {
+        name: "Scenic :  South Garden Studio",
+        market: "Berkeley, CA",
+        specs: "1 Bed · 1 Bath · Sleeps 2",
+        airbnb_url: "https://www.airbnb.com/h/scenic-stays-berk-apartment-s",
+        outfitting_fee: 2500.00,
+        spec_items: [
+          {
+            tier: "Tier 1",
+            space: "Patio",
+            item: "Steel Folding 3-Piece Bistro Patio Set",
+            brand: "Amazon Basics",
+            qty: 1,
+            cost: 99.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Amazon+Basics+Outdoor+Folding+3-Piece+Bistro+Set",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Patio",
+            item: "Acacia Wood 3-Piece Bistro Patio Set",
+            brand: "Christopher Knight / Target",
+            qty: 1,
+            cost: 165.00,
+            network: "Target Partners",
+            url: "https://www.target.com/s?searchTerm=Christopher+Knight+Acacia+Bistro+Set",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Workspace",
+            item: "Minimalist Writing Desk with Storage Drawers",
+            brand: "IKEA / Amazon",
+            qty: 1,
+            cost: 149.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Minimalist+Writing+Desk+with+Drawers+Mid-Century",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Workspace",
+            item: "Mid-Century Solid Oak Writing Desk",
+            brand: "Castlery",
+            qty: 1,
+            cost: 380.00,
+            network: "ShareASale / Castlery",
+            url: "https://www.castlery.com/us/products/seb-desk",
+            status: "Proposed"
+          }
+        ]
+      },
+      "estates-5br": {
+        name: "5540 Estates Dr: 5-BR Whole House (OAK-HOM-002 / OAK-HOM-003)",
+        market: "Oakland Hills, CA (★4.40 Live Rating · 5 Reviews)",
+        specs: "5 Beds · 3 Baths · Sleeps 10 (Target All-King Upgrade)",
+        airbnb_url: "https://www.airbnb.com/rooms/1480611837262432060",
+        outfitting_fee: 1352.00,
+        photos: [
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/666dfc65-cf73-43de-b651-4196c067a66e.jpg", label: "Exterior & Hillside Arrival (Sunrise over Oakland Hills)" },
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/aff23f80-f717-4e12-8298-d8bea072f6b3.jpg", label: "Main Living Room & Panoramic Bay Window" },
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/59028ea5-71bc-49ef-9a8f-24a2a18ddc56.jpg", label: "Chef's Kitchen & Island Counter" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ4MDYxMTgzNzI2MjQzMjA2MA==/original/cdb94647-c84a-4d62-b01b-c7689ecd37d5.jpeg", label: "Dining Room & Sliding Door to Deck (Rollers/Handle Repair Needed)" },
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/e2a365b0-763e-480d-980d-f87cce59e9d7.jpg", label: "Primary Suite (Target King Upgrade + White Percale)" },
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/5bb9af1a-ce70-4591-828a-27323b1c8c34.jpg", label: "Bedroom 2 (Dead Corner Space -> Add Boucle Chair & Lamp)" },
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/e177e5dc-5400-4553-94c2-1c73f3971bb5.jpg", label: "Downstairs Great Room (Underutilized Dead Space -> Add Sectional & Game Zone)" },
+          { url: "https://a0.muscache.com/im/pictures/airflow/Hosting-1480611837262432060/original/d0d1f8aa-14b4-4d1f-bb04-061302895935.jpg", label: "Backyard Patio & Fountain Area (Needs $675 GFCI Outlet)" }
+        ],
+        dossier_html: `
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="bg-red-950/30 border border-red-800/70 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-red-400"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Rating Crisis (&lt;4.80 Threshold) &amp; Tier Math</span>
+                <span class="text-xs bg-red-900/60 text-red-200 px-2 py-0.5 rounded font-bold">Live: ★4.40 (5 Reviews)</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                <strong>Gross Revenue Generated:</strong> $11,827.07 | <strong>Earned at 15% (Comms Only):</strong> <span class="text-emerald-400 font-bold">$1,774.06</span>.<br>
+                • <strong>20.0% Standard Tier (Comms + Cleaner Coord):</strong> Would be $2,365.41 (<span class="text-amber-300 font-bold">$591.35 / ~$600 unpaid cleaner coordination</span>).<br>
+                • <strong>25.0% Full-Service Tier (Repairs, Inventory, Resolution Center):</strong> Would be $2,956.77 (<span class="text-red-300 font-bold">$1,182.71 / ~$1,200 uncompensated value</span>).<br>
+                • <strong>Direct &amp; Agentic Bookings:</strong> Same base commission % + <strong>6.0% Direct/Agentic Channel Fee</strong> (~3% merchant interchange + platform ops) + <strong>Guest Damage Protection Waiver</strong> folded into stay.<br>
+                • <strong>Resolution Center Rule:</strong> <strong>50% split to Scenic Stay UNLESS</strong> backed by a verified paid repair/replacement/cleaner invoice (prevents pocketing $250 extra cleaning claims or claiming a kids' blanket without replacing it).
+              </p>
+            </div>
+            <div class="bg-amber-950/30 border border-amber-800/70 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400"><i class="fa-solid fa-screwdriver-wrench mr-1"></i> Armando Martinez Quote (Aug 15, 2026)</span>
+                <span class="text-xs bg-amber-900/60 text-amber-200 px-2 py-0.5 rounded font-bold">Total: $5,494.00</span>
+              </div>
+              <div class="text-[11px] text-slate-300 space-y-1 max-h-40 overflow-y-auto pr-1">
+                <div class="flex justify-between"><span>1. Repair missing handle on sliding door (INCOMPLETE)</span><span class="font-bold text-amber-300">$359.00</span></div>
+                <div class="flex justify-between"><span>2. Repair rollers on sliding doors (1 BR + Dining)</span><span class="font-bold text-amber-300">$640.00</span></div>
+                <div class="flex justify-between"><span>3. Repair front-door deadbolt</span><span class="font-bold text-amber-300">$65.00</span></div>
+                <div class="flex justify-between"><span>4. Replace broken electrical outlets</span><span class="font-bold text-amber-300">$165.00</span></div>
+                <div class="flex justify-between"><span>5. Wood panel to close attic entrance in kids' room</span><span class="font-bold text-amber-300">$230.00</span></div>
+                <div class="flex justify-between"><span>6. Install automatic door lock in garage</span><span class="font-bold text-amber-300">$200.00</span></div>
+                <div class="flex justify-between"><span>7. Install 3 window screens + 2 sliding-door screens</span><span class="font-bold text-amber-300">$860.00</span></div>
+                <div class="flex justify-between"><span>8. Install new rug ($85) + 9. Repair door handles ($85)</span><span class="font-bold text-amber-300">$170.00</span></div>
+                <div class="flex justify-between"><span>10. Apply silicone sealant in bathrooms</span><span class="font-bold text-amber-300">$285.00</span></div>
+                <div class="flex justify-between"><span>11. Full paint: dining room, hallways &amp; stairs</span><span class="font-bold text-amber-300">$1,370.00</span></div>
+                <div class="flex justify-between"><span>12. New electrical outlet for fountain</span><span class="font-bold text-amber-300">$675.00</span></div>
+                <div class="flex justify-between"><span>13. Smoke &amp; CO detectors (barely put up)</span><span class="font-bold text-amber-300">$475.00</span></div>
+              </div>
+            </div>
+            <div class="bg-sky-950/30 border border-sky-800/70 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400"><i class="fa-solid fa-file-invoice-dollar mr-1"></i> Out-of-Pocket Ledger &amp; Release Hold</span>
+                <span class="text-xs bg-sky-900/60 text-sky-200 px-2 py-0.5 rounded font-bold">Due Now: $450.00</span>
+              </div>
+              <div class="text-xs text-slate-300 space-y-1.5">
+                <div class="flex justify-between items-center"><span class="line-through text-slate-500">HVAC Air Duct Cleaning Reimbursement</span><span class="text-emerald-400 font-bold">PAID ($200.00)</span></div>
+                <div class="flex justify-between items-center"><span>Professional Architectural Photography</span><span class="text-red-400 font-bold">UNPAID ($350.00)</span></div>
+                <div class="flex justify-between items-center"><span>Turnover Cleaning Fee Shortfall Difference</span><span class="text-red-400 font-bold">UNPAID ($50.00)</span></div>
+                <div class="flex justify-between items-center"><span>Professional Listing Walkthrough Video (Fronted)</span><span class="text-amber-300 font-bold">UNBILLED ($50.00)</span></div>
+                <div class="border-t border-slate-800 pt-1.5 flex justify-between items-center font-bold text-white"><span>Total Due Before Releasing Revamped Listing:</span><span class="text-sky-300 text-sm">$450.00</span></div>
+                <p class="text-[11px] text-slate-400 pt-1"><strong>Release Gate:</strong> Updated copy (highlighting Oakland Hills views &amp; morning sunrise), new photos/video, and Principal Host transfer remain held until $450.00 is settled and sliding door/paint/beds are completed.</p>
+              </div>
+            </div>
+          </div>
+        `,
+        spec_items: [
+          {
+            tier: "Tier 2",
+            space: "All 5 Bedrooms",
+            item: "Tuft & Needle Original Adaptive Foam Mattress (King)",
+            brand: "Tuft & Needle",
+            qty: 4,
+            cost: 645.00,
+            network: "Impact / Amazon Associates",
+            url: "https://www.amazon.com/s?k=Tuft+and+Needle+Original+King+Mattress&tag=abetterbnb-20",
+            status: "Required Upgrade"
+          },
+          {
+            tier: "Tier 2",
+            space: "All 5 Bedrooms",
+            item: "Zinus / Wayfair Heavy-Duty Solid Wood & Steel Platform Bed (King)",
+            brand: "Amazon / Wayfair",
+            qty: 4,
+            cost: 285.00,
+            network: "Amazon Associates / CJ Wayfair",
+            url: "https://www.amazon.com/s?k=Zinus+Solid+Wood+Platform+Bed+Frame+King&tag=abetterbnb-20",
+            status: "Required Upgrade"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 5 Bedrooms (3x Par)",
+            item: "JCPenney Wrinkle Guard 400TC 100% Cotton Percale Sheet Set (White King)",
+            brand: "JCPenney (Sale Pricing)",
+            qty: 15,
+            cost: 55.00,
+            network: "Direct Sale Link (Non-Affiliate)",
+            url: "https://www.jcpenney.com/s?searchTerm=100+cotton+percale+king+sheet+set+white",
+            status: "Required 3x Par"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 3 Bathrooms (3x Par / 10 Guests)",
+            item: "JCPenney Home 100% Combed Cotton Bath Sheet, Hand Towel & Washcloth Bundle (White)",
+            brand: "JCPenney (Sale Pricing)",
+            qty: 15,
+            cost: 38.00,
+            network: "Direct Sale Link (Non-Affiliate)",
+            url: "https://www.jcpenney.com/s?searchTerm=bath+sheet+100+cotton+white",
+            status: "Required 3x Par"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 5 Bedrooms",
+            item: "SafeRest 100% Waterproof Hypoallergenic Zippered Mattress & Sheet Protectors (King, 2-Pack)",
+            brand: "SafeRest (Amazon)",
+            qty: 5,
+            cost: 56.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=SafeRest+King+Size+Waterproof+Mattress+Protector+2+Pack&tag=abetterbnb-20",
+            status: "Required Protection"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 5 Bedrooms (20 King Pillows)",
+            item: "Beckham Hotel Collection Gel Plush King Pillows (2-Pack) + Zippered Protectors",
+            brand: "Beckham Hotel Collection",
+            qty: 10,
+            cost: 48.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Beckham+Hotel+Collection+Bed+Pillows+King+Size+Set+of+2&tag=abetterbnb-20",
+            status: "Required Upgrade"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 5 Bedrooms (2x Par Covers)",
+            item: "Utopia Bedding Down-Alternative King Duvet Insert + 2x White Cotton Percale Duvet Covers",
+            brand: "Amazon / Quince",
+            qty: 5,
+            cost: 72.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=White+Cotton+Percale+King+Duvet+Cover+Set+and+Insert&tag=abetterbnb-20",
+            status: "Required Upgrade"
+          },
+          {
+            tier: "Tier 2",
+            space: "Bedrooms (8 Nightstands)",
+            item: "Walker Edison Mid-Century Modern 2-Drawer Nightstands (Set of 2, Warm Walnut)",
+            brand: "Wayfair / Amazon",
+            qty: 4,
+            cost: 180.00,
+            network: "Amazon Associates / CJ Wayfair",
+            url: "https://www.amazon.com/s?k=Mid+Century+Modern+Nightstand+Set+of+2+Walnut&tag=abetterbnb-20",
+            status: "Dead-Space Fill"
+          },
+          {
+            tier: "Tier 1",
+            space: "Bedrooms (8 Bedside Lamps)",
+            item: "Touch Control Dimmable Bedside Table Lamps with Dual USB-C & AC Charging Ports (Set of 2)",
+            brand: "Amazon Commercial",
+            qty: 4,
+            cost: 65.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Bedside+Table+Lamps+Set+of+2+with+USB+C+Ports&tag=abetterbnb-20",
+            status: "Guest Utility"
+          },
+          {
+            tier: "Tier 2",
+            space: "Downstairs Great Room & Landing Dead Spaces",
+            item: "Swivel Boucle Reading Chair + Solid Oak Side Table + Brass Floor Lamp",
+            brand: "Wayfair / Castlery",
+            qty: 1,
+            cost: 375.00,
+            network: "CJ / Wayfair",
+            url: "https://www.wayfair.com/keyword.php?keyword=boucle+swivel+accent+chair+and+floor+lamp",
+            status: "Dead-Space Fill"
+          },
+          {
+            tier: "Tier 2",
+            space: "Great Room, Stairwell & Dining Walls",
+            item: "Large-Scale Framed California Coastal & Oakland Hills Botanical Wall Art Triptychs",
+            brand: "Wayfair / Target Studio McGee",
+            qty: 3,
+            cost: 140.00,
+            network: "Amazon Associates / CJ Wayfair",
+            url: "https://www.amazon.com/s?k=Framed+Coastal+Botanical+Wall+Art+Set+of+3+Large&tag=abetterbnb-20",
+            status: "Visual Warmth"
+          }
+        ]
+      },
+      "avis-pinole": {
+        name: "3146 Avis Way: 4-BR Ridge Sanctuary (PIN-HOM-001)",
+        market: "Pinole, CA (★4.92 Live Rating · 25 Reviews · Kris Maganti)",
+        specs: "4 Beds · 3 Baths · Sleeps 8 (Pulled Forward into HOSt)",
+        airbnb_url: "https://www.airbnb.com/rooms/1581921459160928861",
+        outfitting_fee: 481.20,
+        photos: [
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/5724f859-2999-458c-8db4-494dee3169e1.jpeg", label: "3146 Avis Way Exterior & 3-Car Driveway" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/1c649fd5-2554-4c6c-96ed-6063b01e6ffe.jpeg", label: "Vaulted Living Room & Architectural Staircase" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/af811993-500a-4551-953f-b24f1aefe9e2.jpeg", label: "Chef's Kitchen & Breakfast Nook" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/d3fe991b-e5e5-40d4-93a4-6397ab47984e.jpeg", label: "Formal Dining Room" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/cb501bfa-f846-469e-ab78-c218a0996292.jpeg", label: "Primary King Suite (Needs White Percale & Nightstand Lamps)" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/baf8bf12-321b-42bc-a99e-9baf335ee1c5.jpeg", label: "Primary En-Suite Bathroom & Soaking Tub" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/8ff6c42f-fcea-4d28-972c-d02ef2751ef3.jpeg", label: "Upper Guest Bedroom (Upgrade to Tuft & Needle King)" },
+          { url: "https://a0.muscache.com/im/pictures/hosting/Hosting-1581921459160928861/original/31be32df-09d6-4c6a-90ce-bcbc286d2a41.jpeg", label: "Private Backyard Deck & Canyon Views" }
+        ],
+        dossier_html: `
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="bg-emerald-950/30 border border-emerald-800/70 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i> Pulled Forward into HOSt (PIN-HOM-001)</span>
+                <span class="text-xs bg-emerald-900/60 text-emerald-200 px-2 py-0.5 rounded font-bold">Live: ★4.92 (25 Reviews)</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                <strong>Owner:</strong> Kris Maganti | <strong>Airbnb ID:</strong> <code>1581921459160928861</code>.<br>
+                • <strong>Category Scores:</strong> Cleanliness 5.0 · Check-in 5.0 · Location 5.0 · Accuracy 4.9 · Communication 4.9 · Value 4.8.<br>
+                • <strong>ADR Expansion Opportunity:</strong> Upgrading Bedroom 2 to a second King suite + standardizing all 4 bedrooms on 100% cotton white percale sheets and 3x towel pars lifts ADR from $365 to $425-$465/night while lifting Value from 4.8 to 4.95+.
+              </p>
+            </div>
+            <div class="bg-sky-950/30 border border-sky-800/70 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400"><i class="fa-solid fa-key mr-1"></i> 3-Tier Smart Lock Code Pool Active</span>
+                <span class="text-xs bg-sky-900/60 text-sky-200 px-2 py-0.5 rounded font-bold">Schlage Encode (100-Code Cap)</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                • <strong>Tier 1 Primary Guest Code:</strong> Last 4 digits of guest phone (US &amp; Int'l E.164 supported).<br>
+                • <strong>Tier 2 Backup Guest Code:</strong> Secondary per-booking emergency PIN provisioned alongside primary.<br>
+                • <strong>Tier 3 Static Pool (5 Codes):</strong> 5 static emergency PINs resident on lock hardware. Burn-on-use webhook deletes any used static PIN and immediately provisions a fresh replacement.
+              </p>
+            </div>
+            <div class="bg-purple-950/30 border border-purple-800/70 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-purple-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Revamped Copy &amp; Direct Booking Ready</span>
+                <span class="text-xs bg-purple-900/60 text-purple-200 px-2 py-0.5 rounded font-bold">Base % + 6% Direct Fee</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                • <strong>Proposed Headline:</strong> <em>Sun-Drenched 4BR Pinole Ridge Sanctuary | Canyon Views &amp; Chef's Kitchen</em>.<br>
+                • <strong>Direct &amp; Agentic Channel:</strong> Enabled on <code>abetterbnb.com</code> at base management % + 6.0% Direct/Agentic Channel Fee + Guest Damage Protection Waiver folded into stay.
+              </p>
+            </div>
+          </div>
+        `,
+        spec_items: [
+          {
+            tier: "Tier 2",
+            space: "Bedroom 2 (2nd King Suite Upgrade)",
+            item: "Tuft & Needle Original Adaptive Foam Mattress (King)",
+            brand: "Tuft & Needle",
+            qty: 1,
+            cost: 645.00,
+            network: "Impact / Amazon Associates",
+            url: "https://www.amazon.com/s?k=Tuft+and+Needle+Original+King+Mattress&tag=abetterbnb-20",
+            status: "Recommended Upgrade"
+          },
+          {
+            tier: "Tier 2",
+            space: "Bedroom 2 (2nd King Suite Upgrade)",
+            item: "Zinus Solid Wood & Steel Platform Bed Frame (King)",
+            brand: "Amazon / Wayfair",
+            qty: 1,
+            cost: 285.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Zinus+Solid+Wood+Platform+Bed+Frame+King&tag=abetterbnb-20",
+            status: "Recommended Upgrade"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 4 Bedrooms (3x Par = 12 Sets)",
+            item: "JCPenney Wrinkle Guard 400TC 100% Cotton Percale Sheet Set (White King & Queen)",
+            brand: "JCPenney (Sale Pricing)",
+            qty: 12,
+            cost: 52.00,
+            network: "Direct Sale Link (Non-Affiliate)",
+            url: "https://www.jcpenney.com/s?searchTerm=100+cotton+percale+sheet+set+white",
+            status: "Required 3x Par"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 3 Bathrooms (3x Par for 8 Guests)",
+            item: "JCPenney Home 100% Combed Cotton Bath Sheet, Hand Towel & Washcloth Bundle (White)",
+            brand: "JCPenney (Sale Pricing)",
+            qty: 12,
+            cost: 38.00,
+            network: "Direct Sale Link (Non-Affiliate)",
+            url: "https://www.jcpenney.com/s?searchTerm=bath+sheet+100+cotton+white",
+            status: "Required 3x Par"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 4 Bedrooms",
+            item: "SafeRest Waterproof Zippered Mattress & Pillow Protectors (4-Bed Bundle)",
+            brand: "SafeRest (Amazon)",
+            qty: 4,
+            cost: 48.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=SafeRest+Waterproof+Mattress+Protector&tag=abetterbnb-20",
+            status: "Required Protection"
+          },
+          {
+            tier: "Tier 1",
+            space: "All 4 Bedrooms",
+            item: "Touch Dimmable Bedside Lamps with Dual USB-C & AC Outlets (Set of 2)",
+            brand: "Amazon Commercial",
+            qty: 3,
+            cost: 65.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Bedside+Table+Lamps+Set+of+2+with+USB+C+Ports&tag=abetterbnb-20",
+            status: "Guest Utility"
+          },
+          {
+            tier: "Tier 2",
+            space: "Backyard Canyon Deck",
+            item: "48-Foot Weatherproof Commercial String Lights + Outdoor Throw Pillows",
+            brand: "Amazon Commercial",
+            qty: 1,
+            cost: 89.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=48ft+Outdoor+Commercial+String+Lights+Weatherproof&tag=abetterbnb-20",
+            status: "Twilight Hero Shot"
+          }
+        ]
+      },
+      "walsh-adu": {
+        name: "3270 W Walsh Pl :  ADU Suite",
+        market: "Denver, CO",
+        specs: "2 Beds · 1 Bath · Sleeps 4: 6",
+        airbnb_url: "https://www.airbnb.com/rooms/denver-walsh-adu",
+        outfitting_fee: 3000.00,
+        spec_items: [
+          {
+            tier: "Tier 1",
+            space: "Living Space",
+            item: "Mid-Century Modern Convertible Sleeper Sofa",
+            brand: "Target / Novogratz",
+            qty: 1,
+            cost: 489.00,
+            network: "Target Partners",
+            url: "https://www.target.com/s?searchTerm=Novogratz+futon+sleeper+sofa",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Living Space",
+            item: "Henry Sleeper Sofa (Memory Foam Queen)",
+            brand: "West Elm",
+            qty: 1,
+            cost: 1499.00,
+            network: "CJ / West Elm",
+            url: "https://www.westelm.com/products/henry-sleeper-g586/",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Bedroom",
+            item: "Zinus 12-inch Green Tea Memory Foam Mattress (Queen)",
+            brand: "Zinus",
+            qty: 1,
+            cost: 339.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Zinus+12+Inch+Green+Tea+Memory+Foam+Mattress+Queen",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 2",
+            space: "Bedroom",
+            item: "Saatva Classic Mattress (Luxury Firm Queen)",
+            brand: "Saatva",
+            qty: 1,
+            cost: 1695.00,
+            network: "ShareASale / Saatva",
+            url: "https://www.saatva.com/mattresses/saatva-classic",
+            status: "Proposed"
+          },
+          {
+            tier: "Tier 1",
+            space: "Entryway",
+            item: "Schlage Encode Smart Wi-Fi Deadbolt (Camelot)",
+            brand: "Schlage",
+            qty: 1,
+            cost: 269.00,
+            network: "Amazon Associates",
+            url: "https://www.amazon.com/s?k=Schlage+Encode+Smart+WiFi+Deadbolt+Camelot",
+            status: "Proposed"
+          }
+        ]
+      }
+    };
+
+    let currentPropKey = "estates-5br";
+    let currentTierFilter = "ALL";
+    let dryRunStep = 1;
+
+    function init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const propParam = urlParams.get('prop');
+      if (propParam && DATA[propParam]) {
+        currentPropKey = propParam;
+        const sel = document.getElementById('prop-select');
+        if (sel) sel.value = propParam;
+      }
+      renderProperty();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('text-slate-400');
+      });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      const activeContent = document.getElementById('tab-' + tabId);
+
+      if (activeBtn) {
+        activeBtn.classList.add('tab-active');
+        activeBtn.classList.remove('text-slate-400');
+      }
+      if (activeContent) {
+        activeContent.classList.remove('hidden');
+      }
+    }
+
+    function changeProperty(key) {
+      currentPropKey = key;
+      renderProperty();
+      showToast("Switched to " + DATA[key].name);
+    }
+
+    function filterTier(tier) {
+      currentTierFilter = tier;
+      ['ALL', 'T1', 'T2'].forEach(id => {
+        const btn = document.getElementById('tier-filter-' + id);
+        btn.classList.remove('bg-slate-800', 'text-white');
+        btn.classList.add('text-slate-400');
+      });
+
+      if (tier === 'ALL') document.getElementById('tier-filter-ALL').classList.add('bg-slate-800', 'text-white');
+      if (tier === 'Tier 1') document.getElementById('tier-filter-T1').classList.add('bg-slate-800', 'text-white');
+      if (tier === 'Tier 2') document.getElementById('tier-filter-T2').classList.add('bg-slate-800', 'text-white');
+
+      renderSpecTable();
+    }
+
+    function renderProperty() {
+      const p = DATA[currentPropKey];
+      if (!p) return;
+
+      document.getElementById('prop-stats-bar').innerHTML = `
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-medium">${p.market}</span>
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-2 py-0.5 rounded font-medium">${p.specs}</span>
+        <a href="${p.airbnb_url}" target="_blank" class="text-sky-400 hover:underline flex items-center">
+          <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Live Airbnb Profile
+        </a>
+        <a href="owner_agreement_generator.html?preset=${currentPropKey === 'avis-pinole' ? '3146_avis' : '5540_estates'}" class="text-amber-400 hover:underline flex items-center ml-2">
+          <i class="fa-solid fa-file-signature mr-1"></i> Open in Agreement Generator
+        </a>
+        <a href="host_property_forge.html?unit=${currentPropKey === 'avis-pinole' ? 'PIN-HOM-001' : 'OAK-HOM-002'}" class="text-emerald-400 hover:underline flex items-center ml-2">
+          <i class="fa-solid fa-hammer mr-1"></i> Open in HOSt Property Forge
+        </a>
+      `;
+
+      const bannerEl = document.getElementById('prop-dossier-banner');
+      if (bannerEl) {
+        let html = '';
+        if (p.photos && p.photos.length > 0) {
+          html += `
+            <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400"><i class="fa-solid fa-camera-retro mr-1.5"></i> Live Airbnb Listing Photo Audit (${p.name})</span>
+                <a href="${p.airbnb_url}" target="_blank" class="text-xs text-sky-400 hover:underline">View All Photos on Airbnb &rarr;</a>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                ${p.photos.map(ph => `
+                  <div class="group relative rounded-lg overflow-hidden border border-slate-800 bg-slate-900">
+                    <img src="${ph.url}" alt="${ph.label}" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                    <div class="p-2 bg-slate-950/90 text-[11px] text-slate-200 font-medium leading-tight">${ph.label}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+        if (p.dossier_html) {
+          html += p.dossier_html;
+        }
+        bannerEl.innerHTML = html;
+      }
+
+      renderSpecTable();
+    }
+
+    function renderSpecTable() {
+      const p = DATA[currentPropKey];
+      let t1Sum = 0;
+      let t2Sum = 0;
+
+      p.spec_items.forEach(item => {
+        if (item.tier === 'Tier 1') t1Sum += (item.cost * item.qty);
+        if (item.tier === 'Tier 2') t2Sum += (item.cost * item.qty);
+      });
+
+      document.getElementById('t1-total-cost').innerText = '$' + t1Sum.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('t2-total-cost').innerText = '$' + t2Sum.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      
+      const outfittingFee = p.outfitting_fee || (t2Sum * 0.18);
+      document.getElementById('outfitting-fee-est').innerText = '$' + outfittingFee.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      const filtered = p.spec_items.filter(item => {
+        if (currentTierFilter === 'ALL') return true;
+        return item.tier === currentTierFilter;
+      });
+
+      document.getElementById('spec-table-body').innerHTML = filtered.map(item => `
+        <tr class="hover:bg-slate-900/60 transition-colors">
+          <td class="py-3 px-4">
+            <span class="text-xs px-2 py-0.5 rounded font-bold ${item.tier === 'Tier 1' ? 'tier-badge-1' : 'tier-badge-2'}">${item.tier}</span>
+          </td>
+          <td class="py-3 px-4 font-medium text-sky-400 text-xs">${item.space}</td>
+          <td class="py-3 px-4 font-semibold text-white">${item.item}</td>
+          <td class="py-3 px-4 text-slate-300 text-xs">${item.brand}</td>
+          <td class="py-3 px-4 text-center font-bold text-white">${item.qty}</td>
+          <td class="py-3 px-4 text-right font-bold text-emerald-400">$${item.cost.toFixed(2)}</td>
+          <td class="py-3 px-4">
+            <a href="${item.url}" target="_blank" class="inline-flex items-center text-xs bg-sky-950 hover:bg-sky-900 text-sky-300 border border-sky-800 px-2.5 py-1 rounded font-semibold transition-all">
+              <i class="fa-solid fa-cart-shopping mr-1.5"></i> Direct Product Link <i class="fa-solid fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+            </a>
+          </td>
+          <td class="py-3 px-4">
+            <span class="text-[11px] bg-slate-900 border border-slate-800 px-2 py-0.5 rounded text-amber-300 font-medium">${item.network}</span>
+          </td>
+          <td class="py-3 px-4">
+            <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700 font-medium">${item.status}</span>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function runScenario(type) {
+      const box = document.getElementById('scenario-result');
+      box.classList.remove('hidden');
+
+      if (type === 'damage') {
+        box.innerHTML = `
+          <div class="space-y-2">
+            <span class="font-bold text-red-400 text-sm flex items-center">
+              <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> The AirCover Damage Freeze SOP
+            </span>
+            <p class="text-slate-200 leading-relaxed">
+              <strong>Question:</strong> "You walk in at 10:05 AM and find a red wine spill on the white rug and a broken lamp on the coffee table. What do you do first?"
+            </p>
+            <div class="bg-red-950/40 p-2.5 rounded border border-red-900/50 text-red-200">
+              <strong>❌ FAILING ANSWER:</strong> "I start spot cleaning the rug with Folex right away so it doesn't set in." (DESTROYS AIRCOVER CLAIM EVIDENCE).
+            </div>
+            <div class="bg-emerald-950/40 p-2.5 rounded border border-emerald-900/50 text-emerald-200">
+              <strong>✅ PASSING ANSWER:</strong> "I STOP. I don't clean or move anything. I take 3 photos: 1 wide room shot, 1 medium shot, and 1 close-up of the stain with a coin for scale. I upload them to Presetr immediately and wait for Justin's greenlight."
+            </div>
+          </div>
+        `;
+      } else if (type === 'bed') {
+        box.innerHTML = `
+          <div class="space-y-2">
+            <span class="font-bold text-amber-400 text-sm flex items-center">
+              <i class="fa-solid fa-bed mr-1.5"></i> The "Scenic Sleep" Bed Staging Standard
+            </span>
+            <p class="text-slate-200 leading-relaxed">
+              <strong>Question:</strong> "What are the 3 mandatory criteria before marking a bed 'Complete'?"
+            </p>
+            <div class="bg-emerald-950/40 p-2.5 rounded border border-emerald-900/50 text-emerald-200">
+              <strong>✅ PASSING ANSWER:</strong> 
+              1. Fitted percale sheet pulled drum-tight with crisp 45° hospital corners (zero ripples).<br>
+              2. Duvet folded back neatly in equal thirds at the foot of the bed.<br>
+              3. 2 sleeping pillows flat, 2 shams standing upright with a sharp, centered karate chop.
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function simulateWifiConnect() {
+      showToast("Wi-Fi connected! Redirecting to In-Unit Digital Guidebook...");
+      setTimeout(() => switchTab('wifi-guidebook'), 800);
+    }
+
+    function nextDryRunStep() {
+      dryRunStep++;
+      if (dryRunStep > 5) dryRunStep = 1;
+
+      // Reset step cards
+      for (let i = 1; i <= 5; i++) {
+        const card = document.getElementById('step-card-' + i);
+        if (i === dryRunStep) {
+          card.classList.remove('opacity-60', 'border-slate-800');
+          card.classList.add('border-sky-500', 'bg-slate-950');
+        } else if (i < dryRunStep) {
+          card.classList.remove('opacity-60', 'border-sky-500');
+          card.classList.add('border-emerald-500/80', 'bg-slate-950/80');
+        } else {
+          card.classList.add('opacity-60', 'border-slate-800');
+          card.classList.remove('border-sky-500', 'border-emerald-500/80');
+        }
+      }
+
+      const title = document.getElementById('dryrun-title');
+      const badge = document.getElementById('dryrun-stage-badge');
+      const body = document.getElementById('dryrun-body');
+      const btn = document.getElementById('dryrun-next-btn');
+
+      if (dryRunStep === 1) {
+        title.innerHTML = `<span class="h-6 w-6 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center mr-2 text-xs font-bold">1</span> Step 1: Sales Lead in CRM :  Opportunities`;
+        badge.innerText = "Stage: Qualified";
+        badge.className = "text-xs bg-purple-950 text-purple-300 border border-purple-800 px-2.5 py-0.5 rounded font-bold";
+        body.innerHTML = `
+          <p>The lead <strong class="text-white">Adelaide Inn Paso Robles (67 Keys, Paso Robles, CA)</strong> was discovered via Claude Cowork's Exa sweep. Operating on flat $185 static rates with <strong class="text-emerald-400">+$142k/yr gross lift</strong>.</p>
+          <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span class="text-slate-400 font-semibold block">Founder Action:</span>
+            <span>You call the owner using your Quo softphone. You pitch the 25% turnkey co-hosting lift. Owner says YES to a formal proposal.</span>
+          </div>
+        `;
+      } else if (dryRunStep === 2) {
+        title.innerHTML = `<span class="h-6 w-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mr-2 text-xs font-bold">2</span> Step 2: Management Proposal & Agreement Signed`;
+        badge.innerText = "Stage: Won :  Intake";
+        badge.className = "text-xs bg-emerald-950 text-emerald-300 border border-emerald-800 px-2.5 py-0.5 rounded font-bold";
+        body.innerHTML = `
+          <p>Owner signs the 25% turnkey co-hosting agreement. Scenic Stay bills a <strong class="text-amber-300">$5,000 Outfitting & Procurement Management Fee</strong> (Stream 1) to modernize all 12 suites.</p>
+          <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span class="text-slate-400 font-semibold block">System Action:</span>
+            <span>Airtable moves card to <code>Won :  intake</code> and initializes project in <code>INTAKE :  Projects</code>.</span>
+          </div>
+        `;
+      } else if (dryRunStep === 3) {
+        title.innerHTML = `<span class="h-6 w-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center mr-2 text-xs font-bold">3</span> Step 3: Spec Outfitting & Affiliate Procurement`;
+        badge.innerText = "Status: Procured & Staged";
+        badge.className = "text-xs bg-sky-950 text-sky-300 border border-sky-800 px-2.5 py-0.5 rounded font-bold";
+        body.innerHTML = `
+          <p>Owner funds $36,000 outfitting budget for Tier 2 Luxury Boutique furnishings. Scenic Stay purchases Saatva mattresses, Brooklinen percale, and Nespresso Pop machines through affiliate links, earning <strong class="text-emerald-400">$2,800 in direct affiliate commissions</strong> (Stream 2).</p>
+          <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span class="text-slate-400 font-semibold block">HOSt Action:</span>
+            <span>Specs populated into <code>13 Supply Inventory</code> with par levels and direct reorder links.</span>
+          </div>
+        `;
+      } else if (dryRunStep === 4) {
+        title.innerHTML = `<span class="h-6 w-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center mr-2 text-xs font-bold">4</span> Step 4: First Turnover & AirCover Damage Freeze`;
+        badge.innerText = "Status: Damage Sweep Clear";
+        badge.className = "text-xs bg-red-950 text-red-300 border border-red-800 px-2.5 py-0.5 rounded font-bold";
+        body.innerHTML = `
+          <p>Cleaner arrives at 10:00 AM. Executes the mandatory 10-minute AirCover damage sweep. No damage found. Linens stripped and sanitized at 140°F. Beds made drum-tight with 45° hospital corners.</p>
+          <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span class="text-slate-400 font-semibold block">Field Ops Action:</span>
+            <span>Consumables restocked to Active + 2 par (1 in use + 2 spare toilet paper and paper towels).</span>
+          </div>
+        `;
+      } else if (dryRunStep === 5) {
+        title.innerHTML = `<span class="h-6 w-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mr-2 text-xs font-bold">5</span> Step 5: Verification Upload & Guest Ready`;
+        badge.innerText = "Status: Guest Ready Verified";
+        badge.className = "text-xs bg-emerald-950 text-emerald-300 border border-emerald-800 px-2.5 py-0.5 rounded font-bold";
+        body.innerHTML = `
+          <p>Cleaner uploads 5 timestamped photos into <code>10 Cleaner Submissions</code> at 2:45 PM. Operations verifies quality and marks the property <strong>"Guest Ready"</strong>. Schlage Encode smart lock generates the next guest's code.</p>
+          <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span class="text-slate-400 font-semibold block">Guest Experience:</span>
+            <span>Guest connects to Wi-Fi captive portal, inputs email, lands on In-Unit Digital Guidebook, and sleeps on the rave-reviewed Saatva mattress!</span>
+          </div>
+        `;
+        btn.innerHTML = `<span>Start Over (Step 1) &rarr;</span>`;
+      }
+    }
+
+    function resetDryRun() {
+      dryRunStep = 0;
+      nextDryRunStep();
+    }
+
+    function exportCSV() {
+      const p = DATA[currentPropKey];
+      let csv = "Tier,Space,Item,Brand,Quantity,Unit Price,Total Cost,Affiliate Network,Direct Product URL,Approval Status\\n";
+      p.spec_items.forEach(i => {
+        csv += `"${i.tier}","${i.space}","${i.item}","${i.brand}",${i.qty},${i.cost},${i.cost * i.qty},"${i.network}","${i.url}","${i.status}"\\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `ScenicStay_Certified_Spec_${p.name.replace(/\\s+/g, '_')}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("Exported " + p.name + " Spec Sheet");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>

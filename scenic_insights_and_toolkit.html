@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Better BNB &amp; Scenic Stay | Field Notes, Agentic Direct-Booking Rescue &amp; Host Toolkit</title>
+  <style>
+    :root {
+      --bg: #0b1116;
+      --surface: #121b24;
+      --surface-elevated: #182532;
+      --border: #253849;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --emerald: #10b981;
+      --emerald-soft: rgba(16, 185, 129, 0.14);
+      --amber: #f59e0b;
+      --amber-soft: rgba(245, 158, 11, 0.14);
+      --sky: #38bdf8;
+      --sky-soft: rgba(56, 189, 248, 0.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--sky); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar {
+      background: rgba(18, 27, 36, 0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .brand-badge {
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.84rem;
+      padding: 0.38rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text);
+      background: var(--surface-elevated);
+      border-color: var(--border);
+      text-decoration: none;
+    }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .hero {
+      background: linear-gradient(135deg, #12212f 0%, #0f1922 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 {
+      margin: 0.35rem 0 0.75rem;
+      font-size: 2rem;
+      line-height: 1.25;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 820px;
+      margin: 0 0 1.25rem;
+      font-size: 1.02rem;
+    }
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+    .tab-btn {
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.7rem 1.15rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+      border-color: var(--sky);
+    }
+    .tab-btn.active {
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      border-color: var(--emerald);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.25rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.45rem;
+    }
+    .card h3 {
+      margin: 0.35rem 0 0.6rem;
+      font-size: 1.18rem;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .pill-emerald { background: var(--emerald-soft); color: var(--emerald); }
+    .pill-amber { background: var(--amber-soft); color: var(--amber); }
+    .pill-sky { background: var(--sky-soft); color: var(--sky); }
+    .btn {
+      background: var(--emerald);
+      color: #042f2e;
+      border: none;
+      padding: 0.6rem 1.05rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      background: var(--surface-elevated);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.95rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: var(--sky); }
+    .chat-box {
+      background: #090e13;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.15rem;
+      min-height: 220px;
+      margin-top: 0.85rem;
+    }
+    .msg-bubble {
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+    }
+    .msg-guest {
+      background: var(--surface-elevated);
+      border-left: 3px solid var(--sky);
+    }
+    .msg-agent {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 3px solid var(--emerald);
+    }
+    pre {
+      background: #080c10;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.83rem;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+    }
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--emerald);
+      color: #042f2e;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 700;
+      display: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span>A Better BNB &amp; A Better Boutique</span>
+      <span class="brand-badge">INSIGHTS, AGENTIC DIRECT BOOKING &amp; TOOLKIT</span>
+    </div>
+    <nav class="nav-links">
+      <a href="beacon_lead_command.html">Beacon Lead Command</a>
+      <a href="owner_agreement_generator.html">Owner Agreement</a>
+      <a href="host_property_forge.html">HOSt Property Forge</a>
+      <a href="host_dispatch_resetr.html">preSeTR &amp; reSeTR</a>
+      <a href="scenic_ledger_bookkeeper.html">balanSeTR Ledger</a>
+      <a href="scenic_academy_journey.html">Scenic Academy</a>
+      <a href="scenic_insights_and_toolkit.html" class="active">Insights &amp; Toolkit</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="pill pill-emerald">Behind the Stay: Field Notes &amp; Agentic Solutions</span>
+      <h1>Anticipatory Hospitality, Agentic Direct-Booking Rescue &amp; The Scenic Tested Toolkit</h1>
+      <p>
+        Culled directly from 10 years of Airbnb Superhost telemetry (`ScenicGraph`), independent boutique hotel turnarounds (`&lt;= 26 keys`), and our zero-bloat operations stack. Built for homeowners, independent hoteliers, DIY hosts, and our content team (`#content-creation`).
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center;">
+        <input id="newsletter-email" type="email" placeholder="Enter your email for the Weekly Hospitality Dispatch..." style="padding:0.65rem 1rem; border-radius:8px; border:1px solid var(--border); background:#090e13; color:var(--text); min-width:310px;" />
+        <button class="btn" onclick="subscribeNewsletter()">Join Weekly Dispatch (Free)</button>
+        <span id="newsletter-status" style="color:var(--emerald); font-size:0.88rem; font-weight:600;"></span>
+      </div>
+    </section>
+
+    <div class="tab-bar" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('insights', this)">1. Field Notes &amp; Case Studies (/insights)</button>
+      <button class="tab-btn" onclick="switchTab('agentic', this)">2. Agentic Direct-Booking &amp; Checkout Rescue</button>
+      <button class="tab-btn" onclick="switchTab('toolkit', this)">3. The "Scenic Tested" Spec Sheet (/toolkit)</button>
+      <button class="tab-btn" onclick="switchTab('louie', this)">4. Louie's Social Media Studio (#content-creation)</button>
+    </div>
+
+    <!-- TAB 1: FIELD NOTES & CASE STUDIES -->
+    <section id="panel-insights" class="tab-panel active">
+      <div class="grid-2">
+        <article class="card">
+          <span class="pill pill-emerald">Issue #01 • ScenicGraph Telemetry</span>
+          <h3>The Question Behind the Question (QBQ): Why Offering an Early Bag Drop Converts Travel Stress into 5-Star Gratitude</h3>
+          <p style="color:var(--muted);">
+            When a guest asks <em>"What time is check-in?"</em> on the morning of arrival, they are rarely asking about your house rules. They are asking: <em>"Where do I put my suitcases when my flight lands at noon?"</em>
+          </p>
+          <p style="color:var(--muted);">
+            Across 10 years of guest threads correlated in `ScenicGraph`, proactively offering an 11:30 AM entryway bag drop while our turnover crew resets the home between 11:00 AM and 5:00 PM is the single highest-leverage driver of "five-star hotel" reviews.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="pill pill-amber">Issue #02 • Boutique &amp; Villa Case Study</span>
+          <h3>High Buzz, High Friction: How a 120,000-Follower Design Villa Loses 30% of Direct Bookings at Checkout</h3>
+          <p style="color:var(--muted);">
+            Many design-forward inns and villa estates win editorial press in <em>Vogue</em> and <em>Condé Nast Traveler</em>, only to send guests into a bifurcated `/booking-rooms/` vs. `/booking-homes/` maze requiring manual 50% bank wires and separate security deposit invoices.
+          </p>
+          <p style="color:var(--muted);">
+            Here is how unifying room + standalone house inventory onto a single wholesale checkout with an embedded Agentic Concierge recovers 25% to 35% of abandoned direct bookings in 48 hours.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="pill pill-sky">Issue #03 • Turnover Choreography</span>
+          <h3>The 11:00 AM to 5:00 PM Window: Why Late Cleaner Notice Kills 5-Star Reviews (And How preSeTR Fixes It)</h3>
+          <p style="color:var(--muted);">
+            Not every checkout is equal. When two properties check out on Sunday at 11:00 AM, the cleaner needs to know 14 days in advance which unit has a same-day 5:00 PM arrival (`Priority 1`) and which unit has an open night (`Priority 2`).
+          </p>
+          <p style="color:var(--muted);">
+            Plus: why you must strictly separate your Cleaner Service Access Guide (linen closet codes, ozone/lint tools, coffee bar backstock) from your Guest Arrival Guide.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="pill pill-emerald">Issue #04 • Agentic Hospitality</span>
+          <h3>Why Static Direct-Booking Websites Are Dying: Making Your Boutique Inn &amp; STR Agent-Bookable in 2026</h3>
+          <p style="color:var(--muted);">
+            Travelers now ask ChatGPT, Claude, Gemini, and Perplexity to find and compare boutique stays where they can book direct without 18% OTA markups. If your rates and room specs are trapped inside an opaque iframe widget, AI agents skip right past you.
+          </p>
+          <p style="color:var(--muted);">
+            We install structured `llms.txt` availability feeds, schema.org lodging graphs, and a 24/7 on-site Agentic Concierge that turns natural-language questions into instant direct bookings.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 2: AGENTIC DIRECT-BOOKING & CHECKOUT RESCUE -->
+    <section id="panel-agentic" class="tab-panel">
+      <div class="card" style="margin-bottom:1.25rem;">
+        <span class="pill pill-emerald">For Independent Hosts, Villas &amp; Boutique Hotels (&lt;= 26 Keys)</span>
+        <h3>The Agentic Direct-Booking &amp; Checkout Rescue Suite</h3>
+        <p style="color:var(--muted);">
+          When we upgrade a host's or boutique hotel's direct booking site, we don't just swap out a payment button. We install a complete **3-Layer Agentic Conversion Engine** using zero-retail, wholesale payment and automation rails:
+        </p>
+        <div class="grid-3" style="margin-top:1rem;">
+          <div class="card" style="background:var(--surface-elevated);">
+            <span class="pill pill-emerald">Layer 1 • On-Site &amp; WhatsApp Agent</span>
+            <h3>24/7 QBQ Direct-Booking Concierge</h3>
+            <p style="color:var(--muted); font-size:0.9rem;">
+              Trained on every room, standalone villa, bed configuration, pet policy, and parking detail. Answers the Question Behind the Question in seconds on your website, WhatsApp, and Instagram DMs, then drops a pre-filled 1-click checkout link.
+            </p>
+          </div>
+          <div class="card" style="background:var(--surface-elevated);">
+            <span class="pill pill-sky">Layer 2 • AI Search &amp; Agent Discovery</span>
+            <h3>`llms.txt` + Agentic Inventory Feed</h3>
+            <p style="color:var(--muted); font-size:0.9rem;">
+              Exposes clean, machine-readable room specs, real-time calendar windows, and direct-booking advantages so ChatGPT, Claude, Perplexity, and AI travel assistants recommend your direct site over Airbnb and Booking.com.
+            </p>
+          </div>
+          <div class="card" style="background:var(--surface-elevated);">
+            <span class="pill pill-amber">Layer 3 • Wholesale Checkout &amp; Recovery</span>
+            <h3>Zero-Bloat Checkout &amp; Buyout Closer</h3>
+            <p style="color:var(--muted); font-size:0.9rem;">
+              Replaces clunky 7-step wire/deposit forms with instant Apple Pay, wholesale interchange-plus card rails (`Helcim`), and `$0`-to-`$5` ACH bank transfers for high-ticket villa stays and full-property retreat buyouts.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="pill pill-sky">Interactive Demo</span>
+          <h3>Test the Live Agentic Direct-Booking Concierge</h3>
+          <p style="color:var(--muted); font-size:0.88rem;">Click any real guest/planner scenario below to see how our embedded Agentic Concierge converts a complex question into an instant direct booking:</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
+            <button class="btn-secondary" onclick="runAgenticScenario('bagdrop')">Scenario 1: Early Flight + Garden Suite Inquiry</button>
+            <button class="btn-secondary" onclick="runAgenticScenario('buyout')">Scenario 2: 10-Key Boutique Retreat Buyout ($18k)</button>
+            <button class="btn-secondary" onclick="runAgenticScenario('repeat')">Scenario 3: Past OTA Guest Direct Re-Booking</button>
+          </div>
+          <div id="agentic-chat-demo" class="chat-box"></div>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-amber">Under the Hood</span>
+          <h3>What AI Travel Agents See (`/llms.txt` &amp; Agentic Endpoint)</h3>
+          <p style="color:var(--muted); font-size:0.88rem;">We auto-generate and sync this structured discovery manifest on every client's direct booking domain so AI search engines route travelers straight to the owner:</p>
+          <pre id="agentic-llms-preview"># A Better Boutique / Direct Booking Agentic Manifest (/llms.txt)
+Property: Estates Redwood Residence &amp; Garden Suites (Oakland Hills, CA)
+Scale: 5 Bedrooms / 2 Modular Units (<= 26 Keys Independent)
+Direct_Booking_Advantage: 0% OTA service fee + Complimentary 11:30 AM Early Bag Drop
+Sleep_Standard: Tuft &amp; Needle Hospitality Mattresses + Blackout Shades + Quiet High-CFM Fans
+Connectivity: Ubiquiti UniFi Mesh Wi-Fi (350+ Mbps property-wide)
+Check_In_Protocol: Contactless Smart Keypad (11:00 AM to 5:00 PM reSeTR verified)
+Checkout_Rails: Zero-Fee ACH Transfer | Wholesale Interchange-Plus Card | Apple Pay
+Agentic_Quote_Endpoint: /api/v1/agentic-direct-quote</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: THE SCENIC TESTED SPEC SHEET (/TOOLKIT) -->
+    <section id="panel-toolkit" class="tab-panel">
+      <div class="grid-3">
+        <div class="card">
+          <span class="pill pill-emerald">Sleep &amp; In-Room Comfort</span>
+          <h3>Tuft &amp; Needle Mattresses + Blackout &amp; White Linen Protocol</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">
+            "Super comfortable bed" is the #1 recurring phrase across 10 years of our 5-star reviews. We pair Tuft &amp; Needle mattresses with crisp white triple-sheeting, 4 plumped pillows, full blackout shades, and quiet high-CFM fans.
+          </p>
+          <span class="pill pill-sky">Affiliate &amp; Trade Spec Ready</span>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-emerald">Property-Wide Connectivity</span>
+          <h3>Ubiquiti UniFi Weatherproof Mesh Wi-Fi</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">
+            Consumer routers fail across thick plaster walls, courtyards, and lakefront pool decks. We deploy Ubiquiti UniFi PoE mesh access points so remote workers and boutique hotel guests get seamless roaming everywhere.
+          </p>
+          <span class="pill pill-sky">Hardware Spec Sheet</span>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-emerald">Contactless Check-In (Zero Monthly Tax)</span>
+          <h3>Schlage Encode &amp; Yale Direct-API Smart Keypads</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">
+            We eliminated $4/door/month lock middleware (Seam) by connecting directly to manufacturer smart lock APIs for automated guest code provisioning and `11:00 AM to 5:00 PM` cleaner access windows.
+          </p>
+          <span class="pill pill-sky">Zero Middleware Fee</span>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-amber">Wholesale Payments &amp; Banking</span>
+          <h3>Helcim Interchange-Plus + Zero-Fee ACH / Zelle</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">
+            Stop paying retail Stripe `2.9% + $0.30` on high-ticket direct bookings and B2B invoices. Route B2B and villa deposits via `$0` ACH/Zelle or `0.5%` capped bank transfers, and use Helcim wholesale interchange-plus for cards.
+          </p>
+          <span class="pill pill-amber">Saves $1,500 to $8,000/yr</span>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-amber">Zero-Bloat Automation &amp; Scheduling</span>
+          <h3>Self-Hosted `n8n` + `Cal.com` + `DocuSeal`</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">
+            Replaces `$50/mo` Zapier task limits, `$20/mo` Calendly seats, and `$45/mo` DocuSign plans with unlimited open-source webhooks, scheduling, and e-signatures at `$0/mo` license cost.
+          </p>
+          <span class="pill pill-amber">100% Open-Source Stack</span>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-amber">Autonomous Bookkeeping</span>
+          <h3>`balanSeTR` (Scenic Ledger) + `$15/yr` SimpleFIN Bridge</h3>
+          <p style="color:var(--muted); font-size:0.9rem;">
+            Replaces `$39 to $99/mo` QuickBooks Online with deterministic double-entry bookkeeping, automatic `+20%` extra-service coordination markups, `50/50` Resolution Center splits, and 1-click IRS Schedule E &amp; 1099-NEC packets.
+          </p>
+          <span class="pill pill-amber">Replaces QBO ($468+/yr Saved)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: LOUIE'S SOCIAL MEDIA STUDIO (#CONTENT-CREATION) -->
+    <section id="panel-louie" class="tab-panel">
+      <div class="card" style="margin-bottom:1.25rem;">
+        <span class="pill pill-emerald">Built for Louie in #💬｜content-creation</span>
+        <h3>1-Click Social Media, Carousel &amp; Reel Copy Deck</h3>
+        <p style="color:var(--muted);">
+          Every piece below is pre-verified against our brand rules (zero em dashes, zero MTR/Turno/Premier Host drift) and ready for Louie to drop straight into Instagram, LinkedIn, TikTok/Reels, and the website blog.
+        </p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="pill pill-emerald">Post #1 • IG/LinkedIn Carousel</span>
+          <h3>"The Question Behind the Question (QBQ): The Early Bag Drop Secret"</h3>
+          <pre id="copy-post-1">SLIDE 1: When a guest messages "What time is check-in?" at 9:00 AM, they aren't asking because they forgot how to read your listing.
+SLIDE 2: The Question Behind the Question is: "I land at 12:30 PM with two suitcases and don't know what to do with my bags for four hours."
+SLIDE 3: Amateur reply: "Check-in is strictly at 4:00 PM."
+SLIDE 4: Anticipatory reply: "Our team resets the home between 11:00 AM and 5:00 PM, and you're welcome to drop bags inside the entryway starting at 11:30 AM while they finish! I'll text you the second the suite is ready early."
+SLIDE 5: Across 10 years of ScenicGraph guest data, proactive bag-drop offers are the #1 predictor of a 5-star review before the guest even unlocks the door.
+
+CAPTION: Most 4-star reviews happen because a guest felt uncertain in the first 6 hours of travel day. At A Better BNB &amp; Scenic Stay, we train every system around one rule: Answer the Question Behind the Question before it is asked. Full breakdown at abetterbnb.com/insights</pre>
+          <button class="btn" onclick="copyText('copy-post-1')">Copy Carousel #1 + Caption</button>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-amber">Post #2 • 45-Sec Reel / TikTok Script</span>
+          <h3>"High Buzz, High Friction: Why 100k-Follower Boutique Inns Lose 30% at Checkout"</h3>
+          <pre id="copy-post-2">HOOK (0:00-0:05): Here is the craziest blind spot we see in boutique hotels and luxury villas right now.
+BODY (0:05-0:28): A 16-key inn or villa estate spends years building incredible architecture and growing 100,000 Instagram followers. Then a guest clicks the link in bio to book direct... and hits a wall. Separate calendars for rooms vs. standalone houses. Seven clicks just to check Saturday. Manual wire-transfer deposit rules and a dead contact form. 30% of those guests bounce back to Airbnb or Booking.com, costing the owner 15% to 18% in OTA fees on their own traffic.
+SOLUTION (0:28-0:45): That's why we built our Agentic Direct-Booking Rescue: unified 1-click checkout on wholesale payment rails, a 24/7 Agentic Concierge on your site + WhatsApp that answers room questions and sends an instant checkout link, and full llms.txt readiness so ChatGPT and Claude can book your property direct.
+CTA: DM us "DIRECT" for a forensic teardown of your booking funnel.</pre>
+          <button class="btn" onclick="copyText('copy-post-2')">Copy Reel Script #2</button>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-sky">Post #3 • Operations Carousel</span>
+          <h3>"The 11:00 AM to 5:00 PM Choreography: How to Never Lose a Great Cleaner"</h3>
+          <pre id="copy-post-3">SLIDE 1: The #1 reason hosts lose their best turnover cleaners? Late notice and zero priority context.
+SLIDE 2: Texting your cleaner Saturday night about a Sunday double-header causes panic and missed details.
+SLIDE 3: Not every 11:00 AM checkout is equal. In preSeTR, we flag Same-Day 5:00 PM Check-Ins as Priority 1 (Hard Window) and open-calendar checkouts as Priority 2 (Flexible Window) 14 days in advance.
+SLIDE 4: In reSeTR, cleaners get a dedicated Service Access Guide (separate from the Guest Arrival Guide) in English, Portugues, or Espanol, with instant next-day payout release.
+SLIDE 5: See our full Turnover Protocol at abetterbnb.com/toolkit</pre>
+          <button class="btn" onclick="copyText('copy-post-3')">Copy Carousel #3</button>
+        </div>
+
+        <div class="card">
+          <span class="pill pill-emerald">Post #4 • Gear &amp; Tech Stack Feature</span>
+          <h3>"The Scenic Tested Spec Sheet: What We Put in Every Turnaround"</h3>
+          <pre id="copy-post-4">1. SLEEP: Tuft &amp; Needle mattresses + crisp white hospitality triple-sheeting + blackout shades + quiet high-CFM fans ("Super comfortable bed" is our #1 review phrase across 10 years).
+2. WI-FI: Ubiquiti UniFi weatherproof mesh access points across rooms, gardens, and pool decks.
+3. ACCESS: Direct-API Schlage Encode &amp; Yale smart keypads (zero $4/door/mo lock middleware fees).
+4. BACK OFFICE: Replaced $39/mo QuickBooks Online with Scenic Ledger (balanSeTR) + $15/yr SimpleFIN bank feed, and replaced retail Stripe/Zapier taxes with wholesale ACH/Helcim and self-hosted n8n.
+Explore the full toolkit at abetterbnb.com/toolkit</pre>
+          <button class="btn" onclick="copyText('copy-post-4')">Copy Spec Sheet Post #4</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    const AGENTIC_SCENARIOS = {
+      bagdrop: {
+        guest: "Hi! We're looking at the Garden Suite for Oct 24 to Oct 27, but our flight into OAK lands at 11:15 AM on Friday and my wife has a 1:30 PM Zoom call. Would we be stuck with our bags until 5:00 PM?",
+        agent: "Not at all! Both the North and South Garden Suites are open Oct 24 to Oct 27. While our hospitality team resets the suite between 11:00 AM and 5:00 PM, we can set your personal smart-lock code to go live at 11:45 AM for an entryway bag drop, and your wife is welcome to take her 1:30 PM Zoom call from the covered garden patio (350+ Mbps UniFi mesh Wi-Fi). I also just prioritized your turnover in preSeTR so I can text you the second the room is ready early. Here is your 1-click direct booking link (0% OTA fee): abetterbnb.com/checkout/garden-oct24"
+      },
+      buyout: {
+        guest: "Do you allow full-property buyouts for an executive retreat of 10 people in November? We need separate bedrooms and fast Wi-Fi, and prefer paying by corporate ACH rather than a credit card with a 3% fee.",
+        agent: "Yes! Our 6 Farmhouse Suites + 4 Standalone Villas (10 private king bedrooms total) are available for a full-estate buyout Nov 9 to Nov 13. Every villa and courtyard is covered by enterprise Ubiquiti UniFi mesh Wi-Fi, and we process corporate buyouts via zero-fee Direct ACH Transfer (saving you $540 in card fees on the $18,000 buyout). I have placed a courtesy 24-hour hold on all 10 keys and generated your itemized Retreat Buyout Packet & ACH Deposit Link here: abetterbnb.com/buyout/nov9-estate"
+      },
+      repeat: {
+        guest: "Hey Justin, we stayed at 5540 Estates last summer through Airbnb and loved the beds! We want to come back for Thanksgiving week. Should we book on Airbnb again?",
+        agent: "So glad you loved the Tuft & Needle beds! Definitely book direct with us here instead of Airbnb: you'll skip Airbnb's 15% guest service fee (saving you $412 on Thanksgiving week), and since you're returning guests, we'll have the kitchen coffee, tea, and oatmeal station stocked with extra Peet's coffee and early 11:30 AM bag-drop access ready for you. Here is your returning-guest direct link: abetterbnb.com/repeat/estates-thanksgiving"
+      }
+    };
+
+    function switchTab(panelKey, btnEl) {
+      document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById('panel-' + panelKey);
+      if (target) target.classList.add('active');
+      if (btnEl) btnEl.classList.add('active');
+    }
+
+    function runAgenticScenario(key) {
+      const data = AGENTIC_SCENARIOS[key] || AGENTIC_SCENARIOS.bagdrop;
+      const box = document.getElementById('agentic-chat-demo');
+      box.innerHTML =
+        '<div class="msg-bubble msg-guest"><strong>Prospective Guest / Planner:</strong><br/>' + data.guest + '</div>' +
+        '<div class="msg-bubble msg-agent"><strong>Scenic Agentic Direct-Booking Concierge (Instant Reply):</strong><br/>' + data.agent + '</div>';
+    }
+
+    function copyText(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText);
+      const t = document.getElementById('toast');
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2000);
+    }
+
+    function subscribeNewsletter() {
+      const input = document.getElementById('newsletter-email');
+      const status = document.getElementById('newsletter-status');
+      if (input && input.value.includes('@')) {
+        status.textContent = 'Subscribed! Issue #01 (The Question Behind the Question) is on its way.';
+        input.value = '';
+      } else {
+        status.textContent = 'Please enter a valid email address.';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runAgenticScenario('bagdrop');
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('tab');
+      if (tab && document.getElementById('panel-' + tab)) {
+        const idxMap = { insights: 0, agentic: 1, toolkit: 2, louie: 3 };
+        const btns = document.querySelectorAll('.tab-btn');
+        switchTab(tab, btns[idxMap[tab] || 0]);
+      }
+    });
+  </script>
+</body>
+</html>
